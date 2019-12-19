@@ -1,38 +1,99 @@
-.questionBar{
+.questionBar {
     display: flex;
     justify-content: space-between;
-    background: rgba(136, 136, 136, 1);
+    background: rgba(65, 65, 70, 1);
     color: rgba(255, 255, 255, 1);
     padding: 2px 10px;
     margin-bottom: 0;
 }
+
 .questionContent {
     margin: auto 0px;
 }
+
 .questionLabel {
     color: rgba(255,214,0,1);
     padding: 0px !important;
 }
+
 .questionText {
     padding: 0px !important;
 }
+
 .plus {
     margin: auto;
 }
+
 .content {
     box-shadow: 2px 2px 7px rgba(136, 136, 136, 1);
+}
+
+.topIcons {
+    display: flex;
+    justify-content: space-between;
+}
+#locker {
+    margin-right: -8px;
+}
+.lock {
+    color: rgba(255, 255, 255, 1);
+}
+.arrow {
+    position: relative;
+    right: 16px;
+    top: -5px;
 }
 .fa-sort-down {
     color: rgba(255, 255, 255, 1);
     font-size: xx-large;
-    position: relative;
 }
+
 .fa-sort-up {
     color: rgba(255, 255, 255, 1);
     font-size: xx-large;
-    position: relative;
 }
+
 a:active, a:focus, a:visited {
     outline: none !important;
     box-shadow: none !important;
+}
+
+.bottom {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btnOk {
+    background: rgba(255,214,0,1);
+    padding: 5px 15px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.btnOk:hover {
+    box-shadow: 2px 2px 5px rgba(136, 136, 136, 1);
+}
+
+.card-footer {
+    background: rgba(65, 65, 70, 1) !important;
+}
+
+.footerOptions {
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footerIcons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.update, .delete ,.lock {
+    margin: 0px 5px;
+    background: rgba(65, 65, 70, 1) !important;
+    border: none !important;
+}
+
+.fa {
+    color: rgba(255, 255, 255, 1);
 }
