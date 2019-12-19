@@ -88,9 +88,11 @@ body {
 }
 .teacherMenuItem{
     margin: 13px;
+    box-shadow:4px 7px 5px black;
 }
 .teacherMenuItem a:hover{
     text-decoration: none;
+   
 }
 .burgerIcon{
     display: none;
@@ -109,19 +111,19 @@ body {
     }   
 }
 @media screen and (max-width: 576px){
-    .openUp .teacherMenu{
+    .openTeacherMenu .teacherMenu{
         display:flex;
        justify-content: center;
         background:  rgba(102,102,102,1);
         margin: auto;
         margin-left: 18px;
         padding: 0px;
+        box-shadow:4px 7px 5px black;
     }
-    .openUp .burgerIcon{
+    .openTeacherMenu .burgerIcon{
         display: flex;
         align-items: center;
         color:  rgba(255, 214, 0, 1);
-        
         font-size:35px ;
         margin-left: 20px;
     }
@@ -130,14 +132,15 @@ body {
         text-decoration: none;
 
     }
-    .openUp .teacherMenuItem{
-        position: relative;
+    .openTeacherMenu .teacherMenuItem{
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        width: 184px;
+        box-shadow:none;
     }
-   
-    .openUp li{
-        float: none;
-        display: block;
-        text-align: left;
+    .openTeacherMenu #bottomTeacherMenuItem{
+        border-top: 1px solid black;
     }
 }
 .profileBox{
@@ -153,6 +156,32 @@ body {
     align-items: center;
     /* margin: 7px; */
 }
+.hiddenProfile{
+    display: none;
+}
+.openProfileBox .hiddenProfile {
+    display: flex;
+    flex-direction: column;
+    background:  rgba(102,102,102,1);
+    position: absolute;
+    margin-top: 64px;
+    box-shadow:4px 7px 5px black;
+    width: 115px;
+    align-items: center;
+}
+.openProfileBox .hiddenProfile p{
+    margin-bottom:5px;
+    font-size: 18px;
+    color: rgba(255, 214, 0, 1);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+#bottomProfile{
+    border-top: 1px solid black;
+}
+
 .fa-user{
     font-size: 35px !important; 
     color: rgba(255, 214, 0, 1);
@@ -183,8 +212,23 @@ main {
     height:5px;
     margin:0 10px   
 }
-
-
+.studentContent{
+    width: 100%;
+    display:flex;
+    
+}
+.informationBox{
+    border: 1px black solid;
+    display: flex;
+    flex-direction: column;
+}
+.informationBox li{
+    display: flex;
+}
+.informationTitle{
+    background: rgba(65,65,70,1);
+    color: rgba(255,214,0,1);
+}
 footer {
     background: rgba(65,65,70,1);
     border-bottom: 20px rgba(255, 214, 0, 1) solid;
