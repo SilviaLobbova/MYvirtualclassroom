@@ -10,7 +10,7 @@
     <link rel = "stylesheet" href= "View/studentPageStyle.css" media="all" type=text/css>
     <!--Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <title>Home page</title>
+    <title>Student page</title>
 </head>
 <body>
     <div class="container">
@@ -42,50 +42,54 @@
                     <i class="fa fa-bars"></i>
                     </a>
                 <ul class="nav teacherMenu col-lg-7 col-md-7 col-sm-10" >
-                    <li class="teacherMenuItem">
+                    <li class="teacherMenuItem" id="topTeacherMenuItem">
                       <a class="" href="#">
                           <button class= "navButton">Create Question</button>   
                          </a>
                     </li>
-                    <li class="teacherMenuItem">
+                    <li class="teacherMenuItem" id="bottomTeacherMenuItem">
                         <a class="" href="#">
                           <button class= "navButton">Classroom List</button>
                         </a>
                     </li>
                 </ul>
-                <script>
-                    function openBurger() {
-                        var burg = document.getElementById("teacherMenu");
-                        if(burg.className === "navBarUser"){
-                            burg.className += " openUp";
-                        }
-                        else{
-                            burg.className = "navBarUser"
-                        }
-                    }
-                </script>
-                <div class="profileBox col-lg-5 col-md-4">
+                <div class="profileBox col-lg-5 col-md-4" id="userProfileBox">
                     <h5 class="profileName col-sm-0">
                         <div class="d-none d-md-block">
                         Anthony</div>
                     </h5>
-                    <a class="profileIcon" href="">
+                    <a class="profileIcon" href="javascript:void(0);" onclick="openUserProfile()">
                         <i class="fas fa-user"></i>
                     </a>
+                    <div class="hiddenProfile">
+                        <p id="topProfile">Profile</p>
+                        <p id="bottomProfile">Logout</p>
+                    </div>
                 </div>
             </div>
         </header>
         <main>
             <div class="pageContent">
-            <div class="pageTitle" id="title">
-                <div class="title">
-                    <h1>Questions</h1>
+                <div class="pageTitle" id="title">
+                    <div class="title">
+                        <h1>Questions</h1>
+                    </div>
+                    <div class="underline">
+                        <span></span>
+                    </div>
                 </div>
-                <div class="underline">
-                    <span></span>
+                <div class="studentContent">
+                    <div class="informationBox">
+                        <h5 class="informationTitle">
+                           Information
+                        </h5>
+                    <ul>
+                        <li>Lesson</li>
+                        <li>Correction</li>
+                    </ul>
+                    </div>
                 </div>
             </div>
-        </div>
         </main> 
         <footer>
             <div class="footerGrid">
@@ -102,6 +106,26 @@
 
         </footer>
     </div>
+    <script>
+        function openBurger() {
+            var burg = document.getElementById("teacherMenu");
+            if(burg.className === "navBarUser"){
+                burg.className += " openTeacherMenu";
+            }
+            else{
+                burg.className = "navBarUser"
+            }
+        }
+        function openUserProfile(){
+            var userProfile = document.getElementById("userProfileBox");
+            if(userProfile.className === "profileBox col-lg-5 col-md-4"){
+                userProfile.className += " openProfileBox"
+            }
+            else{
+                userProfile.className = "profileBox col-lg-5 col-md-4"
+            }
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
