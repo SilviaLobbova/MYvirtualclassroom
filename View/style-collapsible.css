@@ -19,6 +19,32 @@
 .questionText {
     padding: 0px !important;
 }
+<<<<<<< HEAD
+.topIcons {
+    display: flex;
+    justify-content: space-between;
+}
+#locker {
+    margin-right: -8px;
+}
+.lock {
+    color: rgba(255, 255, 255, 1);
+}
+.arrow {
+    position: relative;
+    right: 16px;
+    top: -5px;
+=======
+
+.plus {
+    margin: auto;
+}
+
+.content {
+    box-shadow: 2px 2px 7px rgba(136, 136, 136, 1);
+>>>>>>> b4b220fa3e36183b05a419a424c339596aeac2ff
+}
+
 .topIcons {
     display: flex;
     justify-content: space-between;
@@ -87,4 +113,8 @@ a:active, a:focus, a:visited {
 
 .fa {
     color: rgba(255, 255, 255, 1);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b4b220fa3e36183b05a419a424c339596aeac2ff
