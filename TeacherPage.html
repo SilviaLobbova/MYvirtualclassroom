@@ -1,212 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
-<script src="https://kit.fontawesome.com/b09ddc6dd2.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel = "stylesheet" href= "View/teacherPageStyle.css" media="all" type=text/css>
-<link rel = "stylesheet" href= "View/style-collapsible.css" media="all" type=text/css>
-<link rel = "stylesheet" href= "View/style-studentOnline.css" media="all" type=text/css>
-
-<!--Fonts-->
-<link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-<title>Teacher page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b09ddc6dd2.js" crossorigin="anonymous"></script>
+    <link href= "View/teacherPageStyle.css" rel="stylesheet" media="screen" type="text/css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Teacher page</title>
 </head>
 <body>
-<div class="container">
-    <header id="header">
-        <div class="infoBar">
-            <div class="widget">
-                <a href="#">
-                    <span class="transition2"></span>
-                    <i class="fas fa-info"></i>
-                </a>
-            </div>
-        </div>
-        <div class="titleBar row">
-            <div class="titleBox col-lg-6 col-sm-12">
-                <div class="mainTitle">
-                    <h2>Virtual School</h2>
-                </div>
-                <div class="subTitle">
-                    <h4>Formation Android et Java</h4>
-                </div>
-            </div>
-            <div class="lineBox col-lg-6 col-sm-0">
-                <div class="line d-none d-lg-block">
-                </div>
-            </div>
-        </div>
-        <div class="navBarUser" id="teacherMenu">
-            <a href="javascript:void(0);" class="burgerIcon" onclick="openBurger()">
-                <i class="fa fa-bars"></i>
-                </a>
-            <ul class="nav teacherMenu col-lg-7 col-md-7 col-sm-10" >
-                <li class="teacherMenuItem" id="topTeacherMenuItem">
-                    <a class="" href="#">
-                        <button class= "navButton">Create Question</button>   
-                        </a>
-                </li>
-                <li class="teacherMenuItem" id="bottomTeacherMenuItem">
-                    <a class="" href="#">
-                        <button class= "navButton">Classroom List</button>
+    <div class="container">
+        <header id="header">
+            <div class="infoBar">
+                <div class="widget">
+                    <a href="#">
+                        <span class="transition2"></span>
+                        <i class="fas fa-info"></i>
                     </a>
-                </li>
-            </ul>
-            <div class="profileBox col-lg-5 col-md-4" id="userProfileBox">
-                <h5 class="profileName col-sm-0">
-                    <div class="d-none d-md-block">
-                    Anthony</div>
-                </h5>
-                <a class="profileIcon" href="javascript:void(0);" onclick="openUserProfile()">
-                    <i class="fas fa-user"></i>
-                </a>
-                <div class="hiddenProfile">
-                    <p id="topProfile">Profile</p>
-                    <p id="bottomProfile">Logout</p>
                 </div>
             </div>
-        </div>
-    </header>
-    <main>
-        <div class="pageContent">
-            <div class="pageTitle" id="title">
-                <div class="title">
-                    <h1>Questions</h1>
-                </div>
-                <div class="underline">
-                    <span></span>
-                </div>
-            </div>
-            <div class="studentContent">
-                <div class="leftContent">
-                    <div class="informationBox">
-                        <div class="informationTitle">
-                           Information
-                        <i class="fas fa-plus"></i>
+            <div class="titleBar row">
+                <div class="titleBox col-lg-6 col-sm-12">
+                    <div class="mainTitle">
+                        <h2>Virtual School</h2>
                     </div>
-                        <div class="linkWrap">
-                            <div class="linkAndInfo">
-                                <p class="linkTitle">Lesson
+                    <div class="subTitle">
+                        <h4>Formation Android et Java</h4>
+                    </div>
+                </div>
+                <div class="lineBox col-lg-6 col-sm-0">
+                    <div class="line d-none d-lg-block">
+                    </div>
+                </div>
+            </div>
+            <div class="navBarUser" id="teacherMenu">
+                <a href="javascript:void(0);" class="burgerIcon" onclick="openBurger()">
+                    <i class="fa fa-bars"></i>
+                    </a>
+                <ul class="nav teacherMenu col-lg-7 col-md-7 col-sm-10" >
+                    <li class="teacherMenuItem" id="topTeacherMenuItem">
+                      <a class="" href="#">
+                          <button class= "navButton">Create Question</button>   
+                         </a>
+                    </li>
+                    <li class="teacherMenuItem" id="bottomTeacherMenuItem">
+                        <a class="" href="#">
+                          <button class= "navButton">Classroom List</button>
+                        </a>
+                    </li>
+                </ul>
+                <div class="profileBox col-lg-5 col-md-4" id="userProfileBox">
+                    <h5 class="profileName col-sm-0">
+                        <div class="d-none d-md-block">
+                        Anthony</div>
+                    </h5>
+                    <a class="profileIcon" href="javascript:void(0);" onclick="openUserProfile()">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="hiddenProfile">
+                        <p id="topProfile">Profile</p>
+                        <p id="bottomProfile">Logout</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="pageContent">
+                <div class="pageTitle" id="title">
+                    <div class="title">
+                        <h1>Questions</h1>
+                    </div>
+                    <div class="underline">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="teacherContent col-md-10">
+
+                    <div class="teacherLeftContent">
+                        <div class="informationBox">
+                            <div class="informationTitle">
+                               Information
+                            <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="linkWrap">
+                                <div class="linkAndInfo">
+                                    <p class="linkTitle">Lesson
+                                        <span class="linkWrapIcons">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </span>
+                                    </p>
+                                    <a href="" class="infoLink">http://www.amonteiro.fr/index.html</a>
+                                </div>
+                                <div class="linkAndInfo">
+                                <p class="linkTitle">Correction
                                     <span class="linkWrapIcons">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </span>
                                 </p>
-                                
                                 <a href="" class="infoLink">http://www.amonteiro.fr/index.html</a>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="studentFrame">
+                            <div class="frameHeader"> DEV19-03
+                                <div class="frameHeaderOptions">
+                                    <button class="updateFrame"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                    <button class="deleteFrame"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                </div>
                             </div>
-                            <div class="linkAndInfo">
-                            <p class="linkTitle">Correction
-                                <span class="linkWrapIcons">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </span>
-                            </p>
-                            <a href="" class="infoLink">http://www.amonteiro.fr/index.html</a>
+                            <div class="frameBody">
+                                <ul>
+                                    <li>Name1<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
+                                    <li>Name2<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
+                                    <li>Name3<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
+                                    <li>Name4<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
+                                    <li>Name5<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
+                                    <li>Name6<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
+                                    <li>Name7<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
+                                    <li>Name8<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
+                                </ul>
                             </div>
                         </div>
+
                     </div>
-                    <div class="studentFrame">
-                        <div class="frameHeader"> DEV19-03
-                            <div class="frameHeaderOptions">
-                                <button class="updateFrame"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                <button class="deleteFrame"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    <div class="teacherRightContent"> 
+                        <div class="questionBox">
+                            <div class="questionBar ">
+                                <div class="questionContent">
+                                    <span class="questionLabel">Question 1: </span>
+                                    <span class="questionText">What is the family name of Mickey ?</span> 
+                                </div>
+                                <div class="topIcons">
+                                    <a class="lockIcon" role="button">
+                                    <i class="fa fa-lock" id="locker" ></i>
+                                    </a>
+                                    <a class="arrowIcon" onclick="openQuestionContent()" data-toggle="collapse" href="#answer" role="button" aria-expanded="false" aria-controls="collapse">
+                                    <i class="fas fa-sort-down" id="iconUpDown"></i>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="frameBody">
-                            <ul>
-                                <li>Name1<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
-                                <li>Name2<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
-                                <li>Name3<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
-                                <li>Name4<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
-                                <li>Name5<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
-                                <li>Name6<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
-                                <li>Name7<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
-                                <li>Name8<button class="deleteIcon"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="questionBox">
-                    <div class="questionBar">
-                        <span class="questionContent">
-                            <span class="questionLabel">Question 1: </span>
-                            <span class="questionText">What is the family name of Mickey ?</span> 
-                        </span>
-                        <span class="topIcons">
-                            <a class="btn col-1 lock" role="button">
-                            <i class="fa fa-lock" id="locker" ></i>
-                            </a>
-                            <a class="btn col-1 arrow" data-toggle="collapse" href="#answer" role="button" aria-expanded="false" aria-controls="collapse">
-                            <i class="fas fa-sort-down" id="iconUpDown"></i>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="collapse" id="answer">
-                        <div class="card card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                        <div class="bottom"><button class="btnOk">OK</button></div>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <div class="footerOptions">
-                            <div class="footerIcons">
-                                <button class="update"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                <button class="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                            </div>
+                            <div id="hiddenAnswer" class="hiddenAnswer">
+                                <div class="answerContent" >
+                                    <div class="answerBody">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                    </div>
+                                    <div class="answerButtonBar">
+                                        <button class="teacherOk">
+                                            OK
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="answerFooter">
+                                    <div clas="answerFooterIcons">
+                                        <button class="updateAnswer"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                        <button class="deleteAnswer"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main> 
-    <footer>
-        <div class="footerGrid">
-            <div class="policyBox">
-                <p class="trademark">© 2014 All Rights Reserved.</p>
-                <p class="company">Fiche Entreprise MONTEIRO ANTHONY
-                    <br> Information des Entreprises</p>
-            </div>
-            <div class= "toTheTop transition"> 
-                <a href="#title">
-                    <i class="fas fa-angle-up"></i> 
+        </main> 
+        <footer>
+            <div class="footerGrid">
+                <div class="policyBox">
+                    <p class="trademark">© 2014 All Rights Reserved.</p>
+                    <p class="company">Fiche Entreprise MONTEIRO ANTHONY
+                        <br> Information des Entreprises</p>
+                </div>
+                <div class= "toTheTop transition"> 
+                    <a href="#title"><i class="fas fa-angle-up"></i> 
                 </a>
             </div>
-        </div>
-    </footer>
-</div>
-<script>
-    function openBurger() {
-        var burg = document.getElementById("teacherMenu");
-        if(burg.className === "navBarUser"){
-            burg.className += " openTeacherMenu";
+            </div>
+
+        </footer>
+    </div>
+    <script>
+        function openBurger() {
+            var burg = document.getElementById("teacherMenu");
+            if(burg.className === "navBarUser"){
+                burg.className += " openTeacherMenu";
+            }
+            else{
+                burg.className = "navBarUser"
+            }
         }
-        else{
-            burg.className = "navBarUser"
+        function openUserProfile(){
+            var userProfile = document.getElementById("userProfileBox");
+            if(userProfile.className === "profileBox col-lg-5 col-md-4"){
+                userProfile.className += " openProfileBox"
+            }
+            else{
+                userProfile.className = "profileBox col-lg-5 col-md-4"
+            }
         }
-    }
-    function openUserProfile(){
-        var userProfile = document.getElementById("userProfileBox");
-        if(userProfile.className === "profileBox col-lg-5 col-md-4"){
-            userProfile.className += " openProfileBox"
+        function openQuestionContent(){
+            var hiddenAns = document.getElementById("hiddenAnswer");
+            if(hiddenAns.className === "hiddenAnswer"){
+                hiddenAns.className += " showAnswer"
+            }
+            else{
+                hiddenAns.className = "hiddenAnswer"
+            }
         }
-        else{
-            userProfile.className = "profileBox col-lg-5 col-md-4"
-        }
-    }
-$('#iconUpDown').click(function(){
-    $(this).toggleClass("fa-sort-down fa-sort-up");
-});
-$('#locker').click(function(){
-    $(this).toggleClass("fa-lock  fa-lock-open");
-});
-</script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
