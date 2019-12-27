@@ -44,14 +44,19 @@ body {
 }
 .titleBar h2 {
     color: rgba(255,255,255,1);
-    font-size: 3rem;    
+    font-size: 3rem;
 }
-.titleBar a:hover{
-    text-decoration: none !important;
+.titleBar a {
+    color: rgba(255, 255, 255, 1)!important;
+    text-decoration: none;
+}
+.titleBar a:hover {
+    color: rgba(255, 255, 255, 1)!important;
+    text-decoration: none;
 }
 .titleBar h4 {
     color: rgba(102,102,102,1);
-    font-size: 2;
+    font-size: 2em;
 }
 .titleBox {
     position: relative !important;
@@ -60,7 +65,7 @@ body {
 }
 .titleBox, .pageTitle, .classroomList{
     font-family: 'Bebas Neue',cursive;
-   
+    /* text-transform: none !important; */
 }
 .line {
     background: rgba(255, 255, 255, 1);
@@ -79,7 +84,7 @@ body {
 }
 main {
     background: rgba(255, 255, 255, 1);
-    margin: 20px 0px;
+    margin: 20px 0;
 }
 .pageContent{
     display:flex;
@@ -95,12 +100,13 @@ main {
     height:5px;
     margin:0 10px   
 }
+/**************** MAIN CONTENT ****************/
 .content{
     display: flex;
     justify-content: center;
+    width: 100%;
+    height:100%;
     padding-bottom: 10%;
-    width:100%;
-    height: 100%;
 }
 .signUpFrame {
     padding: 10px;
@@ -146,6 +152,7 @@ main {
     margin: auto;
     width: 300px;
 }
+
 .loginFrame{
     box-shadow: 5px 1px 10px #888888;
     padding: 10px; 
@@ -194,7 +201,7 @@ main {
 
 .backBtn {
     font-size: 1.5em !important;
-    padding: 0px 20px !important;
+    padding: 0 20px !important;
 }
 
 .backBtn a {
@@ -243,9 +250,9 @@ footer {
     width: 40px;
 }
 .toTheTop:hover{
-    box-shadow: 7px 9px 0px 0px rgba(255,255,255,0.5); 
-    -webkit-box-shadow: 7px 9px 0px 0px rgba(255,255,255,0.5);
-    -moz-box-shadow: 7px 9px 0px 0px rgba(255,255,255,0.5);
+    box-shadow: 7px 9px 0 0 rgba(255,255,255,0.5);
+    -webkit-box-shadow: 7px 9px 0 0 rgba(255,255,255,0.5);
+    -moz-box-shadow: 7px 9px 0 0 rgba(255,255,255,0.5);
 } 
 .transition {
     transition: all 500ms linear;
