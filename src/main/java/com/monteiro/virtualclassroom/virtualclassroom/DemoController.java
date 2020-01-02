@@ -28,20 +28,32 @@ public class DemoController {
         model.addAttribute("tasks", tasks);
 
 
-        return "welcome"; //view
+        return "HomePage"; //view
     }
 
     // /hello?name=toto
-    @GetMapping("/hello")
-    public String mainWithParam(
-            @RequestParam(name = "name", required = false, defaultValue = "")
-                    String name, Model model) {
+   @GetMapping("/LoginPage")
+    public String mainWithParam(){
+//            @RequestParam(//            //            name = "name", required = false, defaultValue = "")
+//                    String name, Model model) {
+//
+//        System.out.println("/DemoController.mainWithParam name=" + name);
+//
+//        model.addAttribute("message", name);
 
-        System.out.println("/DemoController.mainWithParam name=" + name);
+        return "LoginPage"; //view
+    }
 
-        model.addAttribute("message", name);
+    @GetMapping("/SignUpPage")
+    public String mainWithParam1(){
+//            @RequestParam(//            //            name = "name", required = false, defaultValue = "")
+//                    String name, Model model) {
+//
+//        System.out.println("/DemoController.mainWithParam name=" + name);
+//
+//        model.addAttribute("message", name);
 
-        return "welcome"; //view
+        return "SignUpPage"; //view
     }
 
 }
