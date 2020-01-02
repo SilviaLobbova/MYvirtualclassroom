@@ -26,15 +26,13 @@ public class DemoController {
 
         model.addAttribute("message", message);
         model.addAttribute("tasks", tasks);
-
-
         return "HomePage"; //view
     }
 
     // /hello?name=toto
    @GetMapping("/LoginPage")
     public String mainWithParam(){
-//            @RequestParam(//            //            name = "name", required = false, defaultValue = "")
+//            @RequestParam( name = "name", required = false, defaultValue = "")
 //                    String name, Model model) {
 //
 //        System.out.println("/DemoController.mainWithParam name=" + name);
@@ -44,16 +42,27 @@ public class DemoController {
         return "LoginPage"; //view
     }
 
+    // render sign up Page
     @GetMapping("/SignUpPage")
-    public String mainWithParam1(){
-//            @RequestParam(//            //            name = "name", required = false, defaultValue = "")
-//                    String name, Model model) {
-//
-//        System.out.println("/DemoController.mainWithParam name=" + name);
-//
-//        model.addAttribute("message", name);
-
+    public String signUpRender() {
         return "SignUpPage"; //view
+    }
+
+    // render profile page
+    @GetMapping("/Profile")
+    public String profileRender() {
+        return "Profile"; //view
+    }
+
+    // render password update form
+    @GetMapping("/UpdatePassword")
+    public String updatePwdRender() {
+        return "UpdatePassword"; //view
+    }
+
+    @GetMapping("/TeacherPage")
+    public String teacherPageRender() {
+        return "TeacherPage";
     }
 
 }
