@@ -4,6 +4,7 @@ public class Option {
     private int id_option;
     private String option_content;
 
+    public Option() {}
     public Option(String option_content) {
         this.option_content = option_content;
     }
