@@ -15,6 +15,8 @@ public class UserBean {
     @DatabaseField
     private String surname;
 
+
+
     //Constructeur vide obligatoire avec cette ORM
     public UserBean() {
     }

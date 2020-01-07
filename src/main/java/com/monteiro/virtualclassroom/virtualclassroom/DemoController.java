@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.websocket.Session;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,22 +27,27 @@ public class DemoController {
 
         model.addAttribute("message", message);
         model.addAttribute("tasks", tasks);
+
         return "HomePage"; //view
     }
 
     // /hello?name=toto
-   @GetMapping("/LoginPage")
-    public String mainWithParam(){
-//            @RequestParam( name = "name", required = false, defaultValue = "")
-//                    String name, Model model) {
-//
-//        System.out.println("/DemoController.mainWithParam name=" + name);
-//
-//        model.addAttribute("message", name);
+   @GetMapping("/hello")
+    public String mainWithParam(
+            @RequestParam( name = "name", required = false, defaultValue = "")
+                    String name, Model model)
+       { System.out.println("/DemoController.mainWithParam name=" + name);
 
-        return "LoginPage"; //view
+        model.addAttribute("message", name);
+
+        return "welcome"; //view
     }
 
+    //render login page
+    @GetMapping("/LoginPage")
+    public String loginRender(){
+        return "LoginPage";
+    }
     // render sign up Page
     @GetMapping("/SignUpPage")
     public String signUpRender() {

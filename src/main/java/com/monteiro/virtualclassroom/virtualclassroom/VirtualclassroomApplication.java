@@ -6,6 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
+//on ne touche pas
 @SpringBootApplication
 public class VirtualclassroomApplication extends SpringBootServletInitializer {
 
