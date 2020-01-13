@@ -2,20 +2,14 @@ package com.monteiro.virtualclassroom.virtualclassroom.model.dao;
 
 // Import required packages
 
-
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
-import com.j256.ormlite.stmt.PreparedQuery;
-import com.j256.ormlite.stmt.StatementExecutor;
-import com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt;
+import com.j256.ormlite.stmt.UpdateBuilder;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
-import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
@@ -50,36 +44,57 @@ public class UserDao {
         }
     }
 
-    public static List<User> readAll(){
-
+    public static List<User> readAll() throws SQLException, IOException {
+        JdbcConnectionSource connectionSource = null;
         try {
-            JdbcConnectionSource connectionSource = null;
+            // initiate the dao with the connection source
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<User, String> readTable = DaoManager.createDao(connectionSource, User.class);
             return readTable.queryForAll();
+        } finally {
+            connectionSource.close();
         }
-
-        catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-
     }
 
     // delete user
-    public static void deleteUser(int id) throws Exception {
+    public static void deleteUser(int id) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
-        // initiate the dao with the connection source
         try {
+            // initiate the dao with the connection source
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<User, String> test = DaoManager.createDao(connectionSource, User.class);
 
-            // delete function call
+            /*                    ----delete call----              */
+            // DAO setting
             DeleteBuilder<User, String> deleteBuilder = test.deleteBuilder();
+            // request initialization
             deleteBuilder.where().eq("id_user", id);
+            // request execution
             deleteBuilder.delete();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } finally {
+            connectionSource.close();
+        }
+    }
+
+    // update user
+    public static void updateUser(int id,String targetColumn, String newValue) throws SQLException, IOException {
+        JdbcConnectionSource connectionSource = null;
+        try {
+            // initiate the DAO with the connection source
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<User, String> update = DaoManager.createDao(connectionSource, User.class);
+
+            /*                      ----update call----                 */
+            // DAO setting
+            UpdateBuilder<User,String > updateBuilder = update.updateBuilder();
+            // set the criteria
+            updateBuilder.where().eq("id_user", id);
+            // update the value of the target fields
+            updateBuilder.updateColumnValue(targetColumn, newValue);
+            // update execution
+            updateBuilder.update();
+        } finally {
+            connectionSource.close();
         }
     }
 }

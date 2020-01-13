@@ -5,63 +5,62 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Information;
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Option;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
-import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.BDD_PSW;
 
-public class ClassroomDao {
-    public ClassroomDao(){
-    }
+
+public class OptionDao {
+
+    // constructor
+    public OptionDao() {}
 
     // save classroom method
-    public static void saveClassroom(Classroom classroom) throws SQLException, IOException {
+    public static void saveOption(Option option) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         // instantiate the dao with the connection source
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
 
-            Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class); //creates a new dao object
-            clashClassroomDao.createOrUpdate(classroom);
+            Dao<Option, String> clashOptionDao = DaoManager.createDao(connectionSource, Option.class); //creates a new dao object
+            clashOptionDao.createOrUpdate(option);
         } finally {
             connectionSource.close();
         }
     }
 
     // retrieve classroom method
-    public static Classroom getClassroom(int classroomId) throws SQLException, IOException {
+    public static Option getOption(int option_id) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
 
-            Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class);//creates a new dao object
+            Dao<Option, String> clashOptionDao = DaoManager.createDao(connectionSource, Option.class);//creates a new dao object
 
-            return clashClassroomDao.queryBuilder().where().eq("id_classroom", classroomId).queryForFirst();
+            return clashOptionDao.queryBuilder().where().eq("id_classroom", option_id).queryForFirst();
 
         }  finally {
             connectionSource.close();
         }
     }
 
-    // delete classroom method
-    public static void deleteClassroom(int id) throws SQLException, IOException {
+    // delete information method
+    public static void deleteOption(int id) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the dao with the connection source
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
-            Dao<Classroom, String> classroom = DaoManager.createDao(connectionSource, Classroom.class);
+            Dao<Option, String> option = DaoManager.createDao(connectionSource, Option.class);
 
             /*                    ----delete call----              */
             // DAO setting
-            DeleteBuilder<Classroom, String> deleteBuilder = classroom.deleteBuilder();
+            DeleteBuilder<Option, String> deleteBuilder = option.deleteBuilder();
             // request initialization
-            deleteBuilder.where().eq("id_classroom", id);
+            deleteBuilder.where().eq("id_option", id);
             // request execution
             deleteBuilder.delete();
         } finally {
@@ -69,19 +68,19 @@ public class ClassroomDao {
         }
     }
 
-    // update classroom
+    // update Option
     public static void updateQuestion(int id,String targetColumn, String newValue) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the DAO with the connection source
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
-            Dao<Classroom, String>  classroomUpdate = DaoManager.createDao(connectionSource, Classroom.class);
+            Dao<Option, String>  optionUpdate = DaoManager.createDao(connectionSource, Option.class);
 
             /*                      ----update call----                 */
             // DAO setting
-            UpdateBuilder<Classroom,String > updateBuilder = classroomUpdate.updateBuilder();
+            UpdateBuilder<Option,String > updateBuilder = optionUpdate.updateBuilder();
             // set the criteria
-            updateBuilder.where().eq("id_classroom", id);
+            updateBuilder.where().eq("id_option", id);
             // update the value of the target fields
             updateBuilder.updateColumnValue(targetColumn, newValue);
             // update execution
