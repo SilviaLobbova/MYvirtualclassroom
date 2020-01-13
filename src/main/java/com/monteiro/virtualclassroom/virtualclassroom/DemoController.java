@@ -43,14 +43,18 @@ public class DemoController {
         return "welcome"; //view
     }
 
+
     //render login page
     @GetMapping("/LoginPage")
     public String loginRender(){
         return "LoginPage";
     }
+
+
     // render sign up Page
     @GetMapping("/SignUpPage")
     public String signUpRender() {
+
         return "SignUpPage"; //view
     }
 

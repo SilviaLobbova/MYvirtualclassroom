@@ -1,15 +1,17 @@
 package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "user")
+@DatabaseTable(tableName = "users")
 public class User {
-    @DatabaseField(id = true)
+
+    @DatabaseField(generatedId = true)
     private int id_user;
 
     @DatabaseField
-    private String user_name;
+    public String user_name;
 
     @DatabaseField
     private String user_lastname;
@@ -20,13 +22,37 @@ public class User {
     @DatabaseField
     private String user_password;
 
+    @DatabaseField
+    private boolean isAdmin;
+
+    @DatabaseField (canBeNull = false, foreign = true, foreignColumnName = "id_classroom", foreignAutoCreate = true)
+    private Classroom classroom;
+
     public User(){};
 
-    public User(String user_name, String user_lastname, String user_email, String user_password) {
+    public User(String user_name){
+        this.user_name = user_name;
+    };
+
+    public User(String user_email, String user_password){
+        this.user_email = user_email;
+        this.user_password = user_password;
+    }
+
+    public User(String user_name, String user_lastname, String user_email, String user_password){
         this.user_name = user_name;
         this.user_lastname = user_lastname;
         this.user_email = user_email;
         this.user_password = user_password;
+    }
+
+    public User(String user_name, String user_lastname, String user_email, String user_password, boolean isAdmin,Classroom classroom) {
+        this.user_name = user_name;
+        this.user_lastname = user_lastname;
+        this.user_email = user_email;
+        this.user_password = user_password;
+        this.isAdmin = isAdmin;
+        this.classroom = classroom;
     }
 
     public int getId_user() {
@@ -67,5 +93,26 @@ public class User {
 
     public void setUser_password(String user_password) {
         this.user_password = user_password;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public Classroom get_classroom() {
+        return classroom;
+    }
+
+    public void set_classroom(Classroom classroom) {
+        this.classroom = classroom;
+    }
+
+    @Override
+    public String toString(){
+        return "("+ user_name + " "+ user_lastname +")";
     }
 }

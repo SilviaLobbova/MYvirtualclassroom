@@ -1,7 +1,16 @@
 package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
+
+@DatabaseTable( tableName = "classrooms")
 public class Classroom {
+
+    @DatabaseField(columnName = "id_classroom", generatedId = true)
     private int id_classroom;
+
+    @DatabaseField
     private String classroom_name;
 
     public Classroom(){
@@ -11,13 +20,7 @@ public class Classroom {
         this.classroom_name = classroom_name;
     }
 
-    public int getId_classroom() {
-        return id_classroom;
-    }
 
-    public void setId_classroom(int id_classroom) {
-        this.id_classroom = id_classroom;
-    }
 
     public String getClassroom_name() {
         return classroom_name;
@@ -25,5 +28,10 @@ public class Classroom {
 
     public void setClassroom_name(String classroom_name) {
         this.classroom_name = classroom_name;
+    }
+
+    @Override
+    public String toString(){
+        return "("+ classroom_name +")";
     }
 }

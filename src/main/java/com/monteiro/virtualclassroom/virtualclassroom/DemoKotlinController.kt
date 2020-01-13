@@ -40,7 +40,6 @@ class DemoKotlinController {
 
         print("/DemoKotlinController.mainWithParam name=$name")
 
-
         val message: String
 
         //Charge le 1er user de ce nom la
