@@ -55,6 +55,7 @@
                 <div class="loginFrame col-lg-7 col-md-10 col-sm-12">
                     <!--/*@thymesVar id="user" type=""*/-->
                     <form class="loginForm col-10" method="post" action="#" th:action="@{/LoginPage}" th:object="${user}">
+                        <!--/*@thymesVar id="invalidCredentials" type=""*/-->
                         <p th:if="${invalidCredentials}" class="error">Username or password incorrect</p>
                         <div class="loginField form-group row col-sm-12">
                            <label for="user_name" class ="loginLabel col-md-4">Login</label>

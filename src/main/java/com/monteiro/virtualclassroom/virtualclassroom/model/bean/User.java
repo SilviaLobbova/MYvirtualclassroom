@@ -16,19 +16,19 @@ import java.security.NoSuchAlgorithmException;
 public class User {
 
     @DatabaseField(generatedId = true)
-    private static int id_user;
+    private int id_user;
 
     @DatabaseField(canBeNull = false)
-    private static String user_name;
+    private String user_name;
 
     @DatabaseField(canBeNull = false)
-    private static String user_email;
+    private String user_email;
 
     @DatabaseField(canBeNull = false, dataType = DataType.SERIALIZABLE)
-    private static String  user_password;
+    private String  user_password;
 
     @DatabaseField(canBeNull = false)
-    private static String user_lastname;
+    private String user_lastname;
 
     @DatabaseField
     private boolean isAdmin;
@@ -51,7 +51,7 @@ public class User {
     }
 
     // setter/getter id_user
-    public static int getUser_id() {
+    public int getUser_id() {
         return id_user;
     }
 
@@ -60,7 +60,7 @@ public class User {
     }
 
     // setter/getter lastname
-    public static String getUser_lastname() {
+    public String getUser_lastname() {
         return user_lastname;
     }
 
@@ -69,7 +69,7 @@ public class User {
     }
 
     // setter/getter password
-    public static String getUser_password() {
+    public String getUser_password() {
         return user_password;
     }
 
@@ -79,7 +79,7 @@ public class User {
 
 
     // setter/getter email
-    public static String getUser_email() {
+    public String getUser_email() {
         return user_email;
     }
 
@@ -88,7 +88,7 @@ public class User {
     }
 
     // setter/getter name
-    public static String getUser_name() {
+    public String getUser_name() {
         return user_name;
     }
 

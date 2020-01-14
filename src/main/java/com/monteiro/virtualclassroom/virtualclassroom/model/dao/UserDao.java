@@ -33,12 +33,12 @@ public class UserDao {
         }
     }
 
-    public static User getUser(String name) throws SQLException, IOException {
+    public static User getUser(String email) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<User, String> clashUserDao = DaoManager.createDao(connectionSource, User.class); //creates a new dao object
-            return clashUserDao.queryBuilder().where().eq("user_name", name).queryForFirst();
+            return clashUserDao.queryBuilder().where().eq("user_email", email).queryForFirst();
         }  finally {
             connectionSource.close();
         }
