@@ -16,7 +16,7 @@ class DemoKotlinController {
 
     // inject via application.properties
     @Value("\${welcome.message}")
-    private val message: String? = null
+   private val message: String? = null
 
     private val tasks = Arrays.asList("a", "b", "c", "d", "e", "f", "g")
 

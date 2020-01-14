@@ -32,7 +32,7 @@ public class UserDao {
                         connectionSource.close();
                 }
         }
-        public static User getUser(String name) throws SQLException, IOException {
+        public static User getUser(String email, String password) throws SQLException, IOException {
                 JdbcConnectionSource connectionSource = null;
                 try {
                         connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
@@ -40,12 +40,17 @@ public class UserDao {
                         Dao<User, String> clashUserDao = DaoManager.createDao(connectionSource, User.class);
                         Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class);//creates a new dao object
 
-                       User returnedUser = clashUserDao.queryBuilder().where().eq("user_name", name).queryForFirst();
+                       User returnedUser = clashUserDao.queryBuilder().where().
+                               eq("user_email", email).eq("user_password", password).queryForFirst();
                         return returnedUser;
                 }  finally {
                         connectionSource.close();
                 }
         }
+
+        //while (rs.hasNext()) { // will traverse through all rows
+        //        String firstName = rs.getString("first_name");
+         //       String lastName = rs.getString("last_name");
 
         public static List<User> readAll(){
 

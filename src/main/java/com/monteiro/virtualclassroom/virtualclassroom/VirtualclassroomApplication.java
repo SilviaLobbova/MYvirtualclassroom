@@ -7,10 +7,12 @@ import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.List;
 
 //on ne touche pas
+
 @SpringBootApplication
 public class VirtualclassroomApplication extends SpringBootServletInitializer {
 
@@ -24,7 +26,7 @@ public class VirtualclassroomApplication extends SpringBootServletInitializer {
         //for(User user: allUsers)
             //System.out.println( user.toString());
 
-        Classroom classroom = ClassroomDao.getClassroom(1);
-        System.out.println(classroom.getClassroom_name());
+       // Classroom classroom = ClassroomDao.getClassroom(1);
+       // System.out.println(classroom.getClassroom_name());
     }
 }

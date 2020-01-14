@@ -53,18 +53,22 @@
             </div>
             <div class="content col-lg-12 col-md-9 col-sm-12">
                 <div class="loginFrame col-lg-7 col-md-10 col-sm-12">
-                    <form class="loginForm col-10">
+                    <!--/*@thymesVar id="user" type=""*/-->
+                    <form class="loginForm col-10" method="post" action="#" th:action="@{/LoginPage}" th:object="${user}">
+                        <p th:if="${invalidCredentials}" class="error">Username or password incorrect</p>
                         <div class="loginField form-group row col-sm-12">
-                           <label for="login" class ="loginLabel col-md-4">Login</label> 
-                            <input class = "loginInput form-control rounded-0  col-md-8" type="text" id="login" name="login" value="" placeholder="Enter login"> 
+                           <label for="user_name" class ="loginLabel col-md-4">Login</label>
+                            <input class = "loginInput form-control rounded-0  col-md-8" type="text" id="user_name" name="user_email"
+                                   value="" placeholder="Enter login" >
                         </div>
                         <div class="loginField form-group row col-sm-12">
                             <label for="password" class ="loginLabel  col-md-4">Password</label>
-                            <input class = "loginInput form-control rounded-0  col-md-8" type="password" id="password" name="password" value="" placeholder="Enter password"> 
+                            <input class = "loginInput form-control rounded-0  col-md-8" type="password" id="password" name="user_password"
+                                   value="" placeholder="Enter password" >
                         </div>
                         <div class="loginSubmitBtn row col-sm-12">
-                            <a id="signUpLink" th:href="@{SignUpPage}">Sign Up</a>
-                            <input class ="SubmitBtn btn rounded-0" type="submit" value="OK">
+                            <a id="signUpLink" th:href="@{/SignUpPage}">Sign Up</a>
+                            <input class="SubmitBtn btn rounded-0" type="submit" value="OK">
                     </div>
                     </form>
                 </div>
@@ -86,8 +90,9 @@
 
         </footer>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script th:src="@{https://code.jquery.com/jquery-3.4.1.slim.min.js}" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <!---<script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>-->
+    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

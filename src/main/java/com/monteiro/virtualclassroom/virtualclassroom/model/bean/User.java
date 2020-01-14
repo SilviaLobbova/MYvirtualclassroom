@@ -28,7 +28,9 @@ public class User {
     @DatabaseField (canBeNull = false, foreign = true, foreignColumnName = "id_classroom", foreignAutoCreate = true)
     private Classroom classroom;
 
-    public User(){};
+    public User(){
+        super();
+    };
 
     public User(String user_name){
         this.user_name = user_name;
@@ -111,8 +113,8 @@ public class User {
         this.classroom = classroom;
     }
 
-    @Override
-    public String toString(){
-        return "("+ user_name + " "+ user_lastname +")";
+
+    public String userToString(){
+        return "("+ user_email + " "+ user_password +")";
     }
 }
