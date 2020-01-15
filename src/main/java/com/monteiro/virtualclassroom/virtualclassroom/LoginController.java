@@ -11,7 +11,9 @@ import java.sql.SQLException;
 
 
 @Controller
-public class LoginController {
+public class LoginController{
+    UserDao dao = new UserDao();
+
 
     //render login page
     @GetMapping("/LoginPage")
@@ -20,27 +22,81 @@ public class LoginController {
         return "LoginPage";
     }
 
-
     //checking for credentials
     @PostMapping("/LoginPage")
-    public String loginFormValue(@ModelAttribute User user, Model model) {
-        String user_email = user.getUser_email();
-        String user_password = user.getUser_password();
-        //UserDao.getUser(user_email,user_password);
-        String credentials = "admin";
+    public String handleLoginRequest(
+            @RequestParam String user_email,
+            @RequestParam String user_password,
+            User user,
+            //we are also sending back the model from the DispatcherServlet controller to the view
+            Model model) throws IOException, SQLException {
         System.out.println(user_email);
-        //User searchUserMail = UserDao.getUser(user_email);
-        //User searchUserPsw = UserDao.getUser(user_password);
-        if (credentials.equals(user_email) && credentials.equals(user_password)) {
-            //(searchUserMail.getUser_email()).equals(user_email) && (searchUserPsw.getUser_password()).equals(user_password))
-          System.out.println("Login Successful");
+        User myMail = dao.getUser(user_email);
+        String mail = myMail.getUser_email();
+        String surname = myMail.getUser_name();
+        System.out.println(surname);
+        if ((mail.equals(user_email)) && (user_password.equals("hello"))){
             return "TeacherPage";
         } else {
-        model.addAttribute("invalidCredentials", true);
+            model.addAttribute("invalidCredentials", true);
             return "LoginPage";
         }
-
     }
+//            String surname = myMail.getUser_name();
+//            System.out.println(surname);
+//            return "TeacherPage";
+//    }
+
+   // String user_email = user.getUser_email();
+//        String user_password = user.getUser_password();
+//        //UserDao.getUser(user_email,user_password);
+//        String credentials = "admin";
+//        System.out.println(user_email);
+//        //User searchUserMail = UserDao.getUser(user_email);
+//        //User searchUserPsw = UserDao.getUser(user_password);
+//        if (credentials.equals(user_email) && credentials.equals(user_password)) {
+//            //(searchUserMail.getUser_email()).equals(user_email) && (searchUserPsw.getUser_password()).equals(user_password))
+//          System.out.println("Login Successful");
+//            return "TeacherPage";
+       // System.out.println(dao.getUser(user_email).getUser_email());
+//           // if(dao.getUser(user_email).getUser_email()==user_email){
+//                return "TeacherPage";
+////            }
+////
+//
+//        //(@ModelAttribute User user, Model model)
+//
+////        String user_email = user.getUser_email();
+////        String user_password = user.getUser_password();
+////        //UserDao.getUser(user_email,user_password);
+////        String credentials = "admin";
+////
+////        User searchUserMail = UserDao.getUser(user_email);
+////        System.out.println(searchUserMail.getUser_email());
+//        //User searchUserPsw = UserDao.getUser(user_password);
+////        if (credentials.equals(user_email) && credentials.equals(user_password)) {
+////            //(searchUserMail.getUser_email()).equals(user_email) && (searchUserPsw.getUser_password()).equals(user_password))
+////          System.out.println("Login Successful");
+////            return "TeacherPage";
+////        } else {
+////        model.addAttribute("invalidCredentials", true);
+////            return "LoginPage";
+////        }
+//
+//    }
+
+
+    //checking for credentials
+//    @PostMapping("/LoginPage")
+//    public String loginFormValue(@ModelAttribute User user, Model model) {
+//
+//        } else {
+//        model.addAttribute("invalidCredentials", true);
+//            return "LoginPage";
+//        }
+//
+//    }
+
     @GetMapping("/TeacherPage")
     public String teacherPageRender () {
         return "TeacherPage";

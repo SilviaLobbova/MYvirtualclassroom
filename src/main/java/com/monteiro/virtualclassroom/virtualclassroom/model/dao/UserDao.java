@@ -17,7 +17,9 @@ import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
 
 public class UserDao {
 
-    public  UserDao() {}
+    public  UserDao() {
+
+    }
 
     public static void saveUser(User user) throws Exception {
         JdbcConnectionSource connectionSource = null;
@@ -33,7 +35,7 @@ public class UserDao {
         }
     }
 
-    public static User getUser(String email) throws SQLException, IOException {
+    public User getUser(String email) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
@@ -52,6 +54,7 @@ public class UserDao {
             Dao<User, String> readTable = DaoManager.createDao(connectionSource, User.class);
             return readTable.queryForAll();
         } finally {
+
             connectionSource.close();
         }
     }
@@ -72,6 +75,7 @@ public class UserDao {
             // request execution
             deleteBuilder.delete();
         } finally {
+
             connectionSource.close();
         }
     }
@@ -94,6 +98,7 @@ public class UserDao {
             // update execution
             updateBuilder.update();
         } finally {
+
             connectionSource.close();
         }
     }

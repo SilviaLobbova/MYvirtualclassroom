@@ -2,7 +2,7 @@ package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
+
 
 @DatabaseTable( tableName = "classrooms")
 public class Classroom {

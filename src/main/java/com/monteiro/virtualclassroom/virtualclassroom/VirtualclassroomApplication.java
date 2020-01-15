@@ -2,7 +2,6 @@ package com.monteiro.virtualclassroom.virtualclassroom;
 
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
-import com.monteiro.virtualclassroom.virtualclassroom.model.dao.ClassroomDao;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,8 +17,12 @@ public class VirtualclassroomApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(VirtualclassroomApplication.class, args);
-        //User user1 = new User("Cleopatra", "Egyptienne", "cleo@eg.eg", "cesaristhebest",false, 6 );
-        //UserDao.saveUser(user1);
+//        UserDao dao1= new UserDao();
+//        User user1 = dao1.getUser("mLobb@toto.com");
+//        System.out.println(user1.getUser_name());
+//
+//        UserDao.saveUser(new User("Hola", "Hihi", "hh@hh.fr", "123456",false,5));
+
         //User test1 = UserDao.getUser("Martin");
         //System.out.println(test1.getUser_email());
         //List<User> allUsers= UserDao.readAll();

@@ -1,14 +1,11 @@
 package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
 // imports
-import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import org.attoparser.util.TextUtil;
-import org.thymeleaf.util.TextUtils;
+
 
 import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 //annotations ORMLite
@@ -24,7 +21,7 @@ public class User {
     @DatabaseField(canBeNull = false)
     private String user_email;
 
-    @DatabaseField(canBeNull = false, dataType = DataType.SERIALIZABLE)
+    @DatabaseField(canBeNull = false)
     private String  user_password;
 
     @DatabaseField(canBeNull = false)
@@ -33,21 +30,23 @@ public class User {
     @DatabaseField
     private boolean isAdmin;
 
-    @DatabaseField (canBeNull = false, foreign = true, foreignColumnName = "id_classroom", foreignAutoCreate = true)
-    private Classroom classroom;
+    @DatabaseField (canBeNull = false
+//            foreign = true, foreignColumnName = "id_classroom", foreignAutoCreate = true
+    )
+    private int id_classroom;
 
     // mandatory no-argument-constructor for ORMlite
     public User() {
     }
 
     // constructor
-    public User(String name, String lastname, String email, String password, boolean isAdmin, Classroom classroom) {
+    public User(String name, String lastname, String email, String password, boolean isAdmin, int classroom) {
         this.user_name = name;
         this.user_lastname = lastname;
         this.user_email = email;
         this.user_password = password;
         this.isAdmin = isAdmin;
-        this.classroom = classroom;
+        this.id_classroom = classroom;
     }
 
     // setter/getter id_user
@@ -106,12 +105,12 @@ public class User {
     }
 
     // setter/getter id_classroom
-    public Classroom get_classroom() {
-        return classroom;
+    public int get_classroom() {
+        return id_classroom;
     }
 
-    public void set_classroom(Classroom classroom) {
-        this.classroom = classroom;
+    public void set_classroom(int classroom) {
+        this.id_classroom = classroom;
     }
 
 }
