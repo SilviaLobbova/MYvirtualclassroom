@@ -2,6 +2,7 @@ package com.monteiro.virtualclassroom.virtualclassroom;
 
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,8 @@ import java.sql.SQLException;
 
 @Controller
 public class LoginController{
-    UserDao dao = new UserDao();
+    @Autowired
+    UserDao dao;
 
 
     //render login page
@@ -30,12 +32,13 @@ public class LoginController{
             User user,
             //we are also sending back the model from the DispatcherServlet controller to the view
             Model model) throws IOException, SQLException {
-        System.out.println(user_email);
-        User myMail = dao.getUser(user_email);
-        String mail = myMail.getUser_email();
-        String surname = myMail.getUser_name();
-        System.out.println(surname);
-        if ((mail.equals(user_email)) && (user_password.equals("hello"))){
+        //System.out.println(user_email);
+        User myMail = dao.getUser(user_email, user_password);
+        if(myMail == null){
+            model.addAttribute("invalidCredentials", true);
+            return "LoginPage";
+        }
+        else if (myMail.getUser_email().equals(user_email) && myMail.getUser_password().equals(user_password)){
             return "TeacherPage";
         } else {
             model.addAttribute("invalidCredentials", true);

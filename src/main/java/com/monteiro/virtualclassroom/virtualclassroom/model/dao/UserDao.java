@@ -8,13 +8,15 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
+import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
 
-
+@Service
 public class UserDao {
 
     public  UserDao() {
@@ -35,15 +37,26 @@ public class UserDao {
         }
     }
 
-    public User getUser(String email) throws SQLException, IOException {
+    public User getUser(String email, String password) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
+        User gotUserMail = null;
+        User gotUserPsw = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<User, String> clashUserDao = DaoManager.createDao(connectionSource, User.class); //creates a new dao object
-            return clashUserDao.queryBuilder().where().eq("user_email", email).queryForFirst();
+            gotUserMail = clashUserDao.queryBuilder().where().eq("user_email", email).queryForFirst();
+            gotUserPsw = clashUserDao.queryBuilder().where().eq("user_password", password).queryForFirst();
+            System.out.println(gotUserMail);
+            if(gotUserMail == gotUserPsw){
+                return gotUserMail;
+            }
+            else if(gotUserMail == null){
+                return null;
+            }
         }  finally {
             connectionSource.close();
         }
+        return gotUserMail;
     }
 
     public static List<User> readAll() throws SQLException, IOException {
