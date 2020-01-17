@@ -264,3 +264,8 @@ footer {
     font-size: 2em;
     color: rgba(255,255,255,1);
 }
+.error {
+    text-align: center;
+    background: red;
+    color: white;
+}
