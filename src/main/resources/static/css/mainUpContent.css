@@ -12,7 +12,7 @@ main {
 
 .pageTitle {
     width: 100%;
-    margin: 30% 0;
+    margin: 30% 0 !important;
     font-family: 'Bebas Neue', cursive;
 }
 
