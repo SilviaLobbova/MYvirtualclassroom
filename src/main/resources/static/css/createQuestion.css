@@ -1,0 +1,19 @@
+/* right part content */
+.teacherRightContent {
+    margin-left: 35px;
+    width: 600px;
+}
+.questionBox {
+    box-shadow: 2px 2px 5px rgba(65, 65, 70, 1);
+}
+.questionBar {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(65, 65, 70, 1);
+    color: rgba(255, 255, 255, 1);
+    padding: 2px 10px;
+}
+.questionContent {
+    display: flex;
+    align-items: flex-start;
+}
