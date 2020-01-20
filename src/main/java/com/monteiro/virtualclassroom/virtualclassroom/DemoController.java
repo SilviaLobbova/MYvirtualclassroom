@@ -42,12 +42,4 @@ public class DemoController {
 
 
 
-    // render password update form
-    @GetMapping("/UpdatePassword")
-    public String updatePwdRender() {
-        return "UpdatePassword"; //view
-    }
-
-
-
 }

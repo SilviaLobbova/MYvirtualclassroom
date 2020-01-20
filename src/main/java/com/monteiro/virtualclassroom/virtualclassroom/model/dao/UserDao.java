@@ -112,7 +112,7 @@ public class UserDao {
     }
 
     // update user
-    public static void updateUserName(String column, String oldValue, String newValue) throws SQLException, IOException {
+    public static void updateUser(String column, String oldValue, String newValue) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             System.out.println("in the update");
@@ -126,18 +126,9 @@ public class UserDao {
             // set the criteria
             updateBuilder.where().eq(column, oldValue);
             System.out.println("column update research");
-//            updateBuilder.where().eq("user_lastname", oldValue);
-//            System.out.println("lastname update research");
-//            updateBuilder.where().eq("user_email", oldValue);
-//            updateBuilder.where().eq("user_password", oldValue);
-
             // update the value of the target fields
             updateBuilder.updateColumnValue(column, newValue);
             System.out.println("column update done");
-//            updateBuilder.updateColumnValue("user_lastname", newValue);
-//            System.out.println("lastname update done");
-//            updateBuilder.updateColumnValue("user_email", newValue);
-//            updateBuilder.updateColumnValue("user_password", newValue);
             // update execution
             updateBuilder.update();
         } finally {
@@ -146,27 +137,6 @@ public class UserDao {
         }
     }
 
-    public static void updateUserLastName(String oldValue, String newValue) throws SQLException, IOException {
-        JdbcConnectionSource connectionSource = null;
-        try {
-            // initiate the DAO with the connection source
-            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
-            Dao<User, String> update = DaoManager.createDao(connectionSource, User.class);
-
-            /*                      ----update call----                 */
-            // DAO setting
-            UpdateBuilder<User,String > updateBuilder = update.updateBuilder();
-            // set the criteria
-            updateBuilder.where().eq("user_lastname", oldValue);
-            // update the value of the target fields
-            updateBuilder.updateColumnValue(oldValue, newValue);
-            // update execution
-            updateBuilder.update();
-        } finally {
-
-            connectionSource.close();
-        }
-    }
     public static void updateUserEmail(String oldValue, String newValue) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {

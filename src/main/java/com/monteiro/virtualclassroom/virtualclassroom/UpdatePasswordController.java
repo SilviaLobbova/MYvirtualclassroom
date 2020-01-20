@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.SQLOutput;
 
 @Controller
+//@SessionAttributes("login")
 public class UpdatePasswordController {
 //    @Autowired // add @service in the corresponding DAO
     UserDao dao = new UserDao();
@@ -18,13 +19,12 @@ public class UpdatePasswordController {
     // render password update form
     @GetMapping("/UpdatePassword")
     public String updatePwdRender() {
-        System.out.println("get");
+        System.out.println("get UpdatePsw html");
         return "UpdatePassword"; //view
     }
 
     @PostMapping("/UpdatePassword")
-
-    public String handleUpdateRequest (
+    public String handleUpdatePswRequest (
             @RequestParam String currentPassword,
             @RequestParam String newPassword,
             @RequestParam String repeatPassword,
@@ -35,6 +35,10 @@ public class UpdatePasswordController {
         // retrieve target user in the db
         User myUser = dao.getUser(usermail, currentPassword);
 //        System.out.println("user_name: " + myUser.getUser_name() + " user_lastname: " + myUser.getUser_lastname());
+        String oldPassword = myUser.getUser_password();
+//        if(oldPassword != newPassword){
+//            UserDao.updateUser("user_password",oldPassword, newPassword);
+//        }return "ProfilePage";
 
         if (myUser == null) {
             // display error msg

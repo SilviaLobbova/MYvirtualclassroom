@@ -6,11 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
 
 @Controller
+//@SessionAttributes("login_first", "login", "login_last", "login_psw")
+
 public class LoginController{
 
     //render login page
@@ -24,29 +27,54 @@ public class LoginController{
     //checking for credentials
     @PostMapping("/LoginPage")
     public String handleLoginRequest(
-            @RequestParam String login,
-            @RequestParam String login_psw,
+            @RequestParam String login_name,
+            @RequestParam String login_password,
             //we are also sending back the model from the DispatcherServlet controller to the view
+            User user,
+            HttpSession session,
             Model model) throws IOException, SQLException {
 
         System.out.println("POST /LoginPage (LoginController)");
         //System.out.println(user_email);
-        User myMail = UserDao.getUser(login, login_psw);
+        User myMail = UserDao.getUser(login_name, login_password);
         if(myMail == null){
             model.addAttribute("invalidCredentials", true);
             return "LoginPage";
         }
-        else if (myMail.getUser_email().equals(login) && myMail.getUser_password().equals(login_psw)){
+        else if (myMail.getUser_email().equals(login_name) && myMail.getUser_password().equals(login_password)){
+            System.out.println("getting logged in");
+            addUserInSession(myMail,session);
+            System.out.println(session.getAttribute("login"));
+            System.out.println(session.getAttribute("login_psw"));
+            System.out.println(session.getAttribute("login_first"));
+            System.out.println(session.getAttribute("login_last"));
             return "TeacherPage";
         } else {
             model.addAttribute("invalidCredentials", true);
             return "LoginPage";
         }
     }
-
+    private void addUserInSession(User user, HttpSession session){
+            session.setAttribute("login", user.getUser_email());
+            session.setAttribute("login_psw", user.getUser_password());
+            session.setAttribute("login_first", user.getUser_name());
+            session.setAttribute("login_last", user.getUser_lastname());
+            session.setAttribute("is_Admin", user.getIsAdmin());
+    }
 
     @GetMapping("/TeacherPage")
     public String teacherPageRender () {
         return "TeacherPage";
+    }
+
+    @RequestMapping(value = "/Logout")
+    public String logout(HttpSession session) {
+        System.out.println("in logout");
+        session.invalidate();
+        return "HomePage";
+    }
+    @GetMapping("/HomePage")
+    public String homePageRender(){
+        return "HomePage";
     }
 }
