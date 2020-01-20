@@ -25,16 +25,17 @@
     box-shadow: 2px 2px 5px rgba(106, 106, 106,1);
     font-weight: bold;
 }
-.profileEmail, .profileLastName {
+.profileFirstName, .profileEmail, .profileLastName, .profilePassword{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    border: none;
 }
 /* on change profile information */
 .newProfileInput{
     border:none;
     border-bottom: 2px rgba(0,0,0,.6) solid;
 }
-.btnLastName, .btnEmail {
+.btnFirstName, .btnLastName, .btnEmail {
     display: contents;
 }

@@ -40,18 +40,7 @@ public class DemoController {
         return "welcome"; //view
     }
 
-    // render sign up Page
-    @GetMapping("/SignUpPage")
-    public String signUpRender() {
 
-        return "signUpPage"; //view
-    }
-
-    // render profile page
-    @GetMapping("/Profile")
-    public String profileRender() {
-        return "Profile"; //view
-    }
 
     // render password update form
     @GetMapping("/UpdatePassword")

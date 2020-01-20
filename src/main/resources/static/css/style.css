@@ -131,6 +131,9 @@ main {
     box-shadow: 3px 3px 7px rgba(65,65,70,1);
     color: white;
 }
+#finalButton{
+    float: right;
+}
 
 .signUpField{
     display: flex;

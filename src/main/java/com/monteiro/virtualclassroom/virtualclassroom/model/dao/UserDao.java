@@ -8,7 +8,6 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,7 +15,7 @@ import java.util.List;
 
 import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
 
-@Service
+
 public class UserDao {
 
     public  UserDao() {
@@ -37,7 +36,7 @@ public class UserDao {
         }
     }
 
-    public User getUser(String email, String password) throws SQLException, IOException {
+    public static User getUser(String email, String password) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         User gotUserMail = null;
         User gotUserPsw = null;
@@ -58,6 +57,25 @@ public class UserDao {
         }
         return gotUserMail;
     }
+    public static User  getUserByMail(String email) throws SQLException, IOException {
+        JdbcConnectionSource connectionSource = null;
+        User gotUserMail = null;
+        try {
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<User, String> clashUserDao = DaoManager.createDao(connectionSource, User.class); //creates a new dao object
+            gotUserMail = clashUserDao.queryBuilder().where().eq("user_email", email).queryForFirst();
+            System.out.println(gotUserMail);
+            if(gotUserMail == null){
+                return null;
+            }
+            else {
+                return gotUserMail;
+            }
+        }  finally {
+            connectionSource.close();
+        }
+    }
+
 
     public static List<User> readAll() throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
@@ -94,7 +112,41 @@ public class UserDao {
     }
 
     // update user
-    public static void updateUser(int id,String targetColumn, String newValue) throws SQLException, IOException {
+    public static void updateUserName(String column, String oldValue, String newValue) throws SQLException, IOException {
+        JdbcConnectionSource connectionSource = null;
+        try {
+            System.out.println("in the update");
+            // initiate the DAO with the connection source
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<User, String> update = DaoManager.createDao(connectionSource, User.class);
+
+            /*                      ----update call----                 */
+            // DAO setting
+            UpdateBuilder<User,String > updateBuilder = update.updateBuilder();
+            // set the criteria
+            updateBuilder.where().eq(column, oldValue);
+            System.out.println("column update research");
+//            updateBuilder.where().eq("user_lastname", oldValue);
+//            System.out.println("lastname update research");
+//            updateBuilder.where().eq("user_email", oldValue);
+//            updateBuilder.where().eq("user_password", oldValue);
+
+            // update the value of the target fields
+            updateBuilder.updateColumnValue(column, newValue);
+            System.out.println("column update done");
+//            updateBuilder.updateColumnValue("user_lastname", newValue);
+//            System.out.println("lastname update done");
+//            updateBuilder.updateColumnValue("user_email", newValue);
+//            updateBuilder.updateColumnValue("user_password", newValue);
+            // update execution
+            updateBuilder.update();
+        } finally {
+
+            connectionSource.close();
+        }
+    }
+
+    public static void updateUserLastName(String oldValue, String newValue) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the DAO with the connection source
@@ -105,9 +157,30 @@ public class UserDao {
             // DAO setting
             UpdateBuilder<User,String > updateBuilder = update.updateBuilder();
             // set the criteria
-            updateBuilder.where().eq("id_user", id);
+            updateBuilder.where().eq("user_lastname", oldValue);
             // update the value of the target fields
-            updateBuilder.updateColumnValue(targetColumn, newValue);
+            updateBuilder.updateColumnValue(oldValue, newValue);
+            // update execution
+            updateBuilder.update();
+        } finally {
+
+            connectionSource.close();
+        }
+    }
+    public static void updateUserEmail(String oldValue, String newValue) throws SQLException, IOException {
+        JdbcConnectionSource connectionSource = null;
+        try {
+            // initiate the DAO with the connection source
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<User, String> update = DaoManager.createDao(connectionSource, User.class);
+
+            /*                      ----update call----                 */
+            // DAO setting
+            UpdateBuilder<User,String > updateBuilder = update.updateBuilder();
+            // set the criteria
+            updateBuilder.where().eq("user_email", oldValue);
+            // update the value of the target fields
+            updateBuilder.updateColumnValue(oldValue, newValue);
             // update execution
             updateBuilder.update();
         } finally {

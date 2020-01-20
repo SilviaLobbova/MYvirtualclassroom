@@ -8,6 +8,7 @@ import com.j256.ormlite.table.DatabaseTable;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
+
 //annotations ORMLite
 @DatabaseTable(tableName = "USERS")
 public class User {

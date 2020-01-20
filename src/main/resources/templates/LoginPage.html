@@ -55,17 +55,17 @@
                 <div class="loginFrame col-lg-7 col-md-10 col-sm-12">
                     <!--/*@thymesVar id="user" type=""*/-->
                     <!--/*@thymesVar id="userDao" type=""*/-->
-                    <form class="loginForm col-10" method="post" action="#" th:action="@{/LoginPage}" th:object="${userDao}">
+                    <form class="loginForm col-10" method="post" action="#" th:action="@{/LoginPage}" th:object="${user}">
                         <!--/*@thymesVar id="invalidCredentials" type=""*/-->
                         <p th:if="${invalidCredentials}" class="error">Username or password incorrect</p>
                         <div class="loginField form-group row col-sm-12">
                            <label for="user_name" class ="loginLabel col-md-4">Login</label>
-                            <input class = "loginInput form-control rounded-0  col-md-8" type="text" id="user_name" name="user_email"
+                            <input class = "loginInput form-control rounded-0  col-md-8" type="email" id="user_name" name="login"
                                    value="" placeholder="Enter login" >
                         </div>
                         <div class="loginField form-group row col-sm-12">
                             <label for="password" class ="loginLabel  col-md-4">Password</label>
-                            <input class = "loginInput form-control rounded-0  col-md-8" type="password" id="password" name="user_password"
+                            <input class = "loginInput form-control rounded-0  col-md-8" type="password" id="password" name="login_psw"
                                    value="" placeholder="Enter password" >
                         </div>
                         <div class="loginSubmitBtn row col-sm-12">
