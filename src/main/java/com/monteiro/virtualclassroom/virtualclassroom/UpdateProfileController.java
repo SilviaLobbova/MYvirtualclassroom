@@ -49,7 +49,6 @@ public class UpdateProfileController {
         else if(oldName != user_name_value){
             System.out.println(" name reussi");
             System.out.println(user_name_value);
-//            System.out.println(user_name_update);
             System.out.println(oldName);
             UserDao.updateUser("user_name", oldName, user_name_value);
             if(oldLastName != user_lastname_value){
