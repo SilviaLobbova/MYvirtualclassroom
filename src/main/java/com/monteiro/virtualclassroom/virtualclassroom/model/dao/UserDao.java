@@ -7,6 +7,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
+import com.j256.ormlite.stmt.Where;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
 
 public class UserDao {
 
-    public  UserDao() {
+    public UserDao() {
 
     }
 
@@ -46,13 +47,12 @@ public class UserDao {
             gotUserMail = clashUserDao.queryBuilder().where().eq("user_email", email).queryForFirst();
             gotUserPsw = clashUserDao.queryBuilder().where().eq("user_password", password).queryForFirst();
             System.out.println(gotUserMail);
-            if(gotUserMail == gotUserPsw){
+            if (gotUserMail == gotUserPsw) {
                 return gotUserMail;
-            }
-            else if(gotUserMail == null){
+            } else if (gotUserMail == null) {
                 return null;
             }
-        }  finally {
+        } finally {
             connectionSource.close();
         }
         return gotUserMail;
@@ -176,7 +176,7 @@ public class UserDao {
 
             /*                      ----update call----                 */
             // DAO setting
-            UpdateBuilder<User,String > updateBuilder = update.updateBuilder();
+            UpdateBuilder<User, String> updateBuilder = update.updateBuilder();
             // set the criteria
             updateBuilder.where().eq("user_email", oldValue);
             // update the value of the target fields
@@ -188,5 +188,42 @@ public class UserDao {
             connectionSource.close();
         }
     }
-}
 
+    // update password user
+    public void updatePwdUser(String user_email, String newPassword) throws SQLException, IOException {
+        JdbcConnectionSource connectionSource = null;
+
+        try {
+            // initiate the DAO with the connection source
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<User, String> update = DaoManager.createDao(connectionSource, User.class);
+            System.out.println("db_connection ok");
+            System.out.println("entry_param1 : " + user_email);
+            System.out.println("entry_param2 : " + newPassword);
+            /*                      ----update call----                 */
+            // DAO setting
+            UpdateBuilder<User, String> updateBuilder = update.updateBuilder();
+
+            // set the criteria like i would a QueryBuilder
+            updateBuilder.where().eq("user_email", user_email);
+
+            // print the query
+//            System.out.println(updateBuilder.where().eq("user_email", user_email));
+
+            // update the value of the target fields
+            updateBuilder.updateColumnValue("user_password", newPassword);
+
+            // print of targeted field
+//            System.out.println(updateBuilder.updateColumnValue("user_password", newPassword));
+
+            // query exec
+            updateBuilder.update();
+
+            //print the result of update
+//            System.out.println(updateBuilder.update());
+
+        } finally {
+            connectionSource.close();
+        }
+    }
+}
