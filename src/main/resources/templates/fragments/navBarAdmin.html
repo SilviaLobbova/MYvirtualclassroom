@@ -1,0 +1,32 @@
+<div th:fragment="navBarAdmin" class="navBarUser" id="teacherMenu">
+    <a href="javascript:void(0);" class="burgerIcon" onclick="openBurger()">
+        <i class="fa fa-bars"></i>
+    </a>
+    <!-- Teacher menu -->
+    <ul class="nav teacherMenu col-lg-7 col-md-7 col-sm-10" >
+        <li class="teacherMenuItem" id="topTeacherMenuItem">
+            <a class="" href="#">
+                <button class= "navButton">Create Question</button>
+            </a>
+        </li>
+        <li class="teacherMenuItem" id="bottomTeacherMenuItem">
+            <a class="" href="#">
+                <button class= "navButton">Classroom List</button>
+            </a>
+        </li>
+    </ul>
+    <!-- End teacher menu -->
+    <div class="profileBox col-lg-5 col-md-4" id="userProfileBox">
+        <h5 class="profileName col-sm-0">
+            <div class="d-none d-md-block">
+                Anthony</div>
+        </h5>
+        <a class="profileIcon" href="javascript:void(0);" onclick="openUserProfile()">
+            <i class="fas fa-user"></i>
+        </a>
+        <div class="hiddenProfile">
+            <p id="topProfile">Profile</p>
+            <p id="bottomProfile">Logout</p>
+        </div>
+    </div>
+</div>
