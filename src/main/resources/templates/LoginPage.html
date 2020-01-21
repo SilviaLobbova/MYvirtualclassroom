@@ -1,71 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-<!--    <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">-->
-    <script src="https://kit.fontawesome.com/b09ddc6dd2.js" crossorigin="anonymous"></script>
+<!-- Head -->
+    <div th:replace = "fragments/head.html :: head" />
+
+    <!-- CSS stylesheet -->
     <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 
-    <!--Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
     <title>Login page</title>
 </head>
 <body>
     <div class="mainContainer">
-        <header id="header">
-            <div class="infoBar">
-                <div class="widget">
-                    <a href="#">
-                        <span class="transition2"></span>
-                        <i class="fas fa-info"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="titleBar row">
-                <div class="titleBox col-lg-6 col-md-12">
-                    <div class="mainTitle">
-                        <a href="HomePage.html"><h2>Virtual School</h2></a>
-                    </div>
-                    <div class="subTitle">
-                        <h4>Formation Android et Java</h4>
-                    </div>
-                </div>
-                <div class="lineBox col-lg-6 col-sm-0">
-                    <div class="line d-none d-lg-block">
-                    </div>
-                </div>
-            </div>
-            <div class="navBar"></div>
-        </header>
+        <!-- Header -->
+        <header id="header" th:replace = "fragments/header.html :: header" />
+        <!-- MenuBar -->
+        <div class="navBar"></div>
         <main>
             <div class="pageContent">
-            <div class="pageTitle" id="title">
-                <div class="title">
-                    <h1>Login</h1>
-                </div>
-                <div class="underline">
-                    <span></span>
-                </div>
+                <div th:replace = "~{fragments/titlePage.html :: titlePage(title='Login')}"></div>
             </div>
             <div class="content col-lg-12 col-md-9 col-sm-12">
                 <div class="loginFrame col-lg-7 col-md-10 col-sm-12">
                     <!--/*@thymesVar id="user" type=""*/-->
                     <!--/*@thymesVar id="userDao" type=""*/-->
-                    <form class="loginForm col-10" method="post" action="#" th:action="@{/LoginPage}" th:object="${user}">
+                    <form class="loginForm col-10" method="post" action="#" th:action="@{/LoginPage}" th:object="${userDao}">
                         <!--/*@thymesVar id="invalidCredentials" type=""*/-->
                         <p th:if="${invalidCredentials}" class="error">Username or password incorrect</p>
                         <div class="loginField form-group row col-sm-12">
                            <label for="user_name" class ="loginLabel col-md-4">Login</label>
-                            <input class = "loginInput form-control rounded-0  col-md-8" type="email" id="user_name" name="login_name"
+                            <input class = "loginInput form-control rounded-0  col-md-8" type="text" id="user_name" name="user_email"
                                    value="" placeholder="Enter login" >
                         </div>
                         <div class="loginField form-group row col-sm-12">
                             <label for="password" class ="loginLabel  col-md-4">Password</label>
-                            <input class = "loginInput form-control rounded-0  col-md-8" type="password" id="password" name="login_password"
+                            <input class = "loginInput form-control rounded-0  col-md-8" type="password" id="password" name="user_password"
                                    value="" placeholder="Enter password" >
                         </div>
                         <div class="loginSubmitBtn row col-sm-12">
@@ -75,22 +43,8 @@
                     </form>
                 </div>
             </div>
-        </div>
-        </main> 
-        <footer>
-            <div class="footerGrid">
-                <div class="policyBox">
-                    <p class="trademark">© 2014 All Rights Reserved.</p>
-                    <p class="company">Fiche Entreprise MONTEIRO ANTHONY
-                        <br> Information des Entreprises</p>
-                </div>
-                <div class= "toTheTop transition"> 
-                    <a href="#title"><i class="fas fa-angle-up"></i> 
-                </a>
-            </div>
-            </div>
-
-        </footer>
+        </main>
+    <footer th:replace = "fragments/footer.html :: footer" />
     </div>
     <script th:src="@{https://code.jquery.com/jquery-3.4.1.slim.min.js}" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
