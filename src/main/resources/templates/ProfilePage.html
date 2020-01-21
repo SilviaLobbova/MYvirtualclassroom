@@ -1,57 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <script src="https://kit.fontawesome.com/b09ddc6dd2.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Head -->
+    <div th:replace = "fragments/head.html :: head" />
 
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- CSS stylesheet -->
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
     <link rel="stylesheet" th:href="@{/css/profile-style.css}"/>
-    <!--Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <title>Home page</title>
+
+    <title>Profile page</title>
 </head>
 <body>
     <div class="container">
-        <header id="header">
-            <div class="infoBar">
-                <div class="widget">
-                    <a href="#">
-                        <span class="transition2"></span>
-                        <i class="fas fa-info"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="titleBar row">
-                <div class="titleBox col-lg-6 col-sm-12">
-                    <div class="mainTitle">
-                        <a href="HomePage.html"><h2>Virtual School</h2></a>
-                    </div>
-                    <div class="subTitle">
-                        <h4>Formation Android et Java</h4>
-                    </div>
-                </div>
-                <div class="lineBox col-lg-6 col-sm-0">
-                    <div class="line d-none d-lg-block">
-                    </div>
-                </div>
-            </div>
-            <div class="navBar"></div>
-        </header>
+        <!-- Header -->
+        <header id="header" th:replace = "fragments/header.html :: header" />
+        <!-- MenuBar -->
+        <div th:replace="fragments/navBarUser.html :: navBarUser" />
         <main>
             <div class="pageContent">
-                <div class="pageTitle" id="title">
-                    <div class="title">
-                        <h1>Profile</h1>
-                    </div>
-                    <div class="underline">
-                        <span></span>
-                    </div>
+                <div th:replace = "~{fragments/titlePage.html :: titlePage(title='Profile')}"></div>
+            <div class="profileContent">
+                <div class="profileLine">
+                    <div class="profileLabel col-4"><div class="frameLabel"><span class="labelContent">First Name</span></div></div>
+                    <div class="profileFirstName col-4">toto</div>
+                    <div class="profileUpdate  col-4"><a href="#" class="btnFirstName">Update</a></div>
                 </div>
                 <div class="profileContent">
                     <form method="post" name="nameUpdate" action="#" th:action="@{/ProfilePage}" th:object="${user}">
@@ -90,81 +62,59 @@
                             </div>
                     </form>
                 </div>
-            </div>
-        </main> 
-        <footer>
-            <div class="footerGrid">
-                <div class="policyBox">
-                    <p class="trademark">© 2014 All Rights Reserved.</p>
-                    <p class="company">Fiche Entreprise MONTEIRO ANTHONY
-                        <br> Information des Entreprises</p>
+                <div class="profileLine">
+                    <div class="profileLabel col-lg-4 col-4"><div class="frameLabel"><span class="labelContent">Email</span></div></div>
+                    <div class="profileEmail col-lg-4 col-4">monjoireSaintDenis@gmule.com</div>
+                    <div class="profileUpdate col-lg-4 col-4"><a href="#" class="btnEmail">Update</a></div>
                 </div>
-                <div class= "toTheTop transition"> 
-                    <a href="#title">
-                        <i class="fas fa-angle-up"></i>
-                    </a>
+                <div class="profileLine">
+                    <div class="profileLabel col-4"><div class="frameLabel"><span class="labelContent">Password</span></div></div>
+                    <div class="profilePassword col-4">**********</div>
+                    <div class="profileUpdate col-4"><a href="#" class="btnPwd">Update</a></div>
                 </div>
             </div>
-        </footer>
+        </div>
+        </main>
+        <footer th:replace = "fragments/footer.html :: footer" />
         <script>
-            // function takeValue(){
-            //     var n= document.forms["nameUpdate"]["buttonUpdate"].value
-            //     alert(n);
-            // }
-
         // change first name
-        //     $(".btnFirstName").click(function() {
-        //         $(".profileFirstName " ).replaceWith('<input type="text" name="user_name_update" value="" class="newProfileInput col-4" placeholder="New first name">');
-        //         $(this).replaceWith(' ') ;
-        //     });
+            $(".btnFirstName").click(function() {
+                $(".profileFirstName " ).replaceWith('<input type="text" name="FirstName" value=""  class="newProfileInput col-4" placeholder="New first name">');
+                $(this).replaceWith('<a href="#" class="btnFirstName">Save</a>');
+                $(".btnFirstName").click(function(){
+                    window.location.href = "Profile";
+                });
+            });
         // change last name
-        //     $(".btnLastName").click(function() {
-        //         $(".profileLastName ").replaceWith('<input type="text"  name="user_lastname_update"  class="newProfileInput col-4" placeholder="New last name">');
-        //         $(this).replaceWith(' ');
-                // $(".btnLastName").click(function(){
-                //     window.location.href = "Profile";
-                // });
-            // });
+            $(".btnLastName").click(function() {
+                $(".profileLastName ").replaceWith('<input type="text" name="LastName" value=""  class="newProfileInput col-4" placeholder="New last name">');
+                $(this).replaceWith('<a href="#" class="btnLastName col-4">Save</a>');
+                $(".btnLastName").click(function(){
+                    window.location.href = "Profile";
+                });
+            });
         // change email
-        //     $(".btnEmail").click(function() {
-        //         $(".profileEmail").replaceWith('<input type="text" name="user_email_update"  class="newProfileInput col-4" placeholder="New email">');
-        //         $(this).replaceWith('');
-        //         // $(".btnEmail").click(function(){
-        //         //     window.location.href = "Profile";
-        //         // });
-        //     });
-            // $(".btnPwd").click(function() {
-            //     $(".profilePassword").replaceWith('<input type="text" name="user_password_update"  class="newProfileInput col-4" placeholder="New email">');
-            //     $(this).replaceWith('');
-            // });
-
-            // $('.profileLine').click(function(e) {
-            //     e.preventDefault();
-            //     $.ajax({
-            //         url: 'ProfilePage.html',
-            //         type: 'POST',
-            //         data: {
-            //         },
-            //     });
-            // });
-
-            // $('.SubmitBtn').click(function(e) {
-            //     e.preventDefault();
-            //     $.ajax({
-            //         url: 'ProfilePage.html',
-            //         type: 'POST',
-            //         data: {
-            //             user_name: $('.newProfileInput col-4').val(),
-            //         },
-            //         success: function(msg) {
-            //             alert('Name modified');
-            //         }
-            //     });
-            // });
+            $(".btnEmail").click(function() {
+                $(".profileEmail").replaceWith('<input type="text" name="Email" value=""  class="newProfileInput col-4" placeholder="New email">');
+                $(this).replaceWith('<a href="#" class="btnEmail col-4">Save</a>');
+                $(".btnEmail").click(function(){
+                    window.location.href = "Profile";
+                });
+            });
         // change password
-        //     $(".btnPwd").click(function () {
-        //             window.location.href = "UpdatePassword";
-        //     });
+            $(".btnPwd").click(function () {
+                    window.location.href = "UpdatePassword";
+            });
+        // toggle menu on click to the user icon
+        function openUserProfile() {
+            let userProfile = document.getElementById("userProfileBox");
+            if(userProfile.className === "profileBox col-lg-12 col-md-12"){ // Caution the col are working in a user menu configuration !!!!
+                userProfile.className += " openProfileBox"
+            }
+            else{
+                userProfile.className = "profileBox col-lg-12 col-md-12"
+            }
+        }
         </script>
 
     </div>
