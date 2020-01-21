@@ -34,7 +34,6 @@ public class UpdateProfileController {
         Model model) throws IOException, SQLException {
         System.out.println("Profile render sout");
 
-
         User theOne = UserDao.getUser(user_email_value, user_password_value);
         String oldName = theOne.getUser_name();
         String oldLastName = theOne.getUser_lastname();
@@ -43,7 +42,6 @@ public class UpdateProfileController {
         if((user_name_value==oldName)&&(user_lastname_value==oldLastName)&&
                 (user_email_value==oldEmail)&&(user_password_value==oldPassword )){
             System.out.println("missing");
-//           model.addAttribute("missingField", true);
             return "TeacherPage";
         }
         else if(oldName != user_name_value){
@@ -58,29 +56,12 @@ public class UpdateProfileController {
                 UserDao.updateUser("user_lastName",oldLastName, user_lastname_value);
                 if(oldEmail != user_email_value){
                     UserDao.updateUser("user_email",oldEmail, user_email_value);
-                    if(oldPassword != user_password_value){
-                        UserDao.updateUser("user_password",oldPassword, user_password_value);
-                    }return "TeacherPage";
+//                    if(oldPassword != user_password_value){
+//                        UserDao.updateUser("user_password",oldPassword, user_password_value);
+//                    }return "TeacherPage";
                 }return "TeacherPage";
             }return "TeacherPage";
         }return "TeacherPage";
         }
-//        else if("De Montmirail" != user_lastname_update){
-//            System.out.println("last name reussi");
-//            String oldLastName = theOne.getUser_lastname();
-//            UserDao.updateUserName("user_lastName",oldLastName, user_lastname_update);
-//            return "TeacherPage";
-//        }
-//        else if("monjoireSaintDenis@gmule.com" != user_email_update){
-//            System.out.println("mail reussi");
-//            String oldEmail = theOne.getUser_email();
-//            UserDao.updateUserName("user_email",oldEmail, user_email_update);
-//            return "TeacherPage";
-//        }
-//        else if("**********" != user_password_update){
-//            System.out.println(" psw reussi");
-//            String oldPassword = theOne.getUser_password();
-//            UserDao.updateUserName("user_password",oldPassword, user_password_update);
-//            return "TeacherPage";
-//        }
+
 }

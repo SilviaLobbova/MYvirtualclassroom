@@ -77,12 +77,12 @@
                         </div>
                         <div class="profileLine">
                             <div class="profileLabel col-4"><div class="frameLabel"><span class="labelContent">Email</span></div></div>
-                            <input type="email" class="profileEmail col-6" name="user_email_value" th:value="${session.login}">
-                            <div class="profileUpdate col-2"><a href="#" class="btnEmail">Update</a></div>
+                            <input type="email" class="profileEmail col-8" name="user_email_value" th:value="${session.login}">
+<!--                            <div class="profileUpdate col-2"><a href="#" class="btnEmail">Update</a></div>-->
                         </div>
                         <div class="profileLine">
                             <div class="profileLabel col-4"><div class="frameLabel"><span class="labelContent">Password</span></div></div>
-                            <input type="password" class="profilePassword col-6" name="user_password_value" th:value="${session.login_psw}">
+                            <input type="password" class="profilePassword col-6" name="user_password_value" th:value="${session.login_psw}" disabled>
                             <div class="profileUpdate col-2"><a th:href="@{UpdatePassword}" class="btnPwd">Update</a></div>
                         </div>
                             <div>
