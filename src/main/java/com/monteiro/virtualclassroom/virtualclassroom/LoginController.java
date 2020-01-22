@@ -37,6 +37,7 @@ public class LoginController{
         System.out.println("POST /LoginPage (LoginController)");
         //System.out.println(user_email);
         User myMail = UserDao.getUser(login_name, login_password);
+        System.out.println(myMail);
         if(myMail == null){
             model.addAttribute("invalidCredentials", true);
             return "LoginPage";
@@ -70,27 +71,20 @@ public class LoginController{
     @GetMapping("/TeacherPage")
     public String teacherPageRender () {
         System.out.println("what happens then");
-
         return "TeacherPage";
     }
     @GetMapping("/adminConnected")
     public String adminPageRender(Model model) {
             System.out.println("My Admin");
-            model.addAttribute("userIsAdmin",true);
+//            model.addAttribute("userIsAdmin",true);
             return "TeacherPage";
         }
     @GetMapping("/userConnected")
         public String userPageRender(Model model) {
             System.out.println("my not admin");
-            model.addAttribute("userIsNotAdmin",true);
+//            model.addAttribute("userIsNotAdmin",true);
             return "TeacherPage";
         }
-
-
-//    @GetMapping("/TeacherPage")
-//    public String teacherPageRender () {
-//        return "TeacherPage";
-//    }
 
     @RequestMapping(value = "/Logout")
     public String logout(HttpSession session) {
@@ -98,8 +92,5 @@ public class LoginController{
         session.invalidate();
         return "HomePage";
     }
-    @GetMapping("/HomePage")
-    public String homePageRender(){
-        return "HomePage";
-    }
+
 }

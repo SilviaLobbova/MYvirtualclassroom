@@ -4,6 +4,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Information;
@@ -48,6 +49,20 @@ public class ClassroomDao {
             connectionSource.close();
         }
     }
+//    public static int getClassroomCount() throws SQLException, IOException {
+//        JdbcConnectionSource connectionSource = null;
+//        try {
+//            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+//
+//            Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class);//creates a new dao object
+//           QueryBuilder query = clashClassroomDao.queryBuilder("Select");
+//            int Ju = clashClassroomDao.countOf (query);
+//            return Ju;
+//
+//        }  finally {
+//            connectionSource.close();
+//        }
+//    }
 
     // delete classroom method
     public static void deleteClassroom(int id) throws SQLException, IOException {

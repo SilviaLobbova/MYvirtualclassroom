@@ -16,13 +16,11 @@
         </li>
     </ul>
     <!-- End teacher menu -->
-    <div class="profileBox col-lg-5 col-md-4" id="userProfileBox">
+    <div class="adminProfileBox" id="adminProfileBox">
         <h5 class="profileName col-sm-0">
-            <div class="d-none d-md-block">
-                <p th:text="${session.login_first}"></p>
-            </div>
+            <p class="d-md-block" th:text="${session.login_first}"></p>
         </h5>
-        <a class="profileIcon" href="javascript:void(0);" onclick="openUserProfile()">
+        <a class="profileIcon" href="javascript:void(0)" onclick=openAdminProfile()>
             <i class="fas fa-user"></i>
         </a>
         <div class="hiddenProfile">

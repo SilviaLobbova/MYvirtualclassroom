@@ -20,7 +20,7 @@ public class UpdateProfileController {
     // render profile page
     @GetMapping("/ProfilePage")
     public String profileRender() {
-        System.out.println("Profile render sout");
+        System.out.println("Profile render Get");
         return "ProfilePage";
     }
 
@@ -32,13 +32,15 @@ public class UpdateProfileController {
         String user_password_value,
         HttpSession session,
         Model model) throws IOException, SQLException {
-        System.out.println("Profile render sout");
+        System.out.println("Profile render post");
 
         User theOne = UserDao.getUser(user_email_value, user_password_value);
         String oldName = theOne.getUser_name();
         String oldLastName = theOne.getUser_lastname();
         String oldEmail = theOne.getUser_email();
         String oldPassword = theOne.getUser_password();
+        System.out.println(oldPassword);
+        System.out.println(user_password_value);
         if((user_name_value==oldName)&&(user_lastname_value==oldLastName)&&
                 (user_email_value==oldEmail)&&(user_password_value==oldPassword )){
             System.out.println("missing");

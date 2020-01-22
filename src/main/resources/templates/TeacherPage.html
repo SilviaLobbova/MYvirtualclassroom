@@ -7,6 +7,7 @@
     <!-- CSS Stylesheet   -->
     <link rel="stylesheet" th:href="@{/css/footer.css}" media="screen" type="text/css" />
     <link rel="stylesheet" th:href="@{/css/teacherPageStyle.css}" media="screen" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/navBar.css}" media="screen" type="text/css" />
     <script type="text/javascript" th:src="@{/css/functions.js}"></script>
 
     <title>Teacher page</title>
@@ -16,17 +17,23 @@
         <!-- Header -->
         <header id="header" th:replace = "fragments/header.html :: header" />
         <!-- MenuBar -->
-        <div th:if="${userIsAdmin}"  >
+        <div th:if="${session.is_Admin == true}"  >
             <div th:replace="~{fragments/navBarAdmin.html :: navBarAdmin}"></div>
         </div>
-        <div th:if="${userIsNotAdmin}" >
+        <div th:if="${session.is_Admin == false }" >
             <div th:replace="~{fragments/navBarUser.html :: navBarUser}"></div>
         </div>
+<!--        <div th:if="${userIsAdmin}"  >-->
+<!--            <div th:replace="~{fragments/navBarAdmin.html :: navBarAdmin}"></div>-->
+<!--        </div>-->
+<!--        <div th:if="${userIsNotAdmin}" >-->
+<!--            <div th:replace="~{fragments/navBarUser.html :: navBarUser}"></div>-->
+<!--        </div>-->
 
         <main>
             <div class="pageContent">
                 <div th:replace = "~{fragments/titlePage.html :: titlePage(title='Questions')}"></div>
-                <div class="teacherContent col-md-10">
+                <div class="teacherContent">
 
                     <!-- Left part -->
                     <div class="teacherLeftContent">

@@ -19,14 +19,16 @@
                 <!-- title content -->
                 <div th:replace = "~{fragments/titlePage.html :: titlePage(title='Classrooms')}"></div>
                 <!-- Main contain -->
+
                 <div class="content">
-                    <ul class="classroomList">
-                        <li><a th:href="@{LoginPage}">Dev 19-03</a></li>
-                        <li> Dev 19-04</li>
-                        <li> Dev 19-05</li>
-                        <li> Dev 19-06</li>
-                        <li> Dev 19-07</li>
-                        <li> Dev 19-08</li>
+                    <ul class="classroomList" th:each="classroom : ${classrooms}">
+                        <li th:text="${classroom.getClassroom_name()}"></li>
+
+<!--                        <li> Dev 19-05</li>-->
+<!--                        <li> Dev 19-06</li>-->
+<!--                        <li> Dev 19-07</li>-->
+<!--                        <li> Dev 19-08</li>-->
+<!--                        <a th:action="@{/firstClass}" name="class_first">Dev 19-03</a>-->
                     </ul>
                 </div>
             </div>

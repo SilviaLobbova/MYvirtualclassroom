@@ -9,14 +9,23 @@ function openBurger() {
 }
 function openUserProfile(){
         var userProfile = document.getElementById("userProfileBox");
-        if(userProfile.className === "profileBox col-lg-5 col-md-4"){
+        if(userProfile.className === "profileBox col-lg-12 col-md-12"){
             userProfile.className += " openProfileBox"
         }
         else{
-            userProfile.className = "profileBox col-lg-5 col-md-4"
+            userProfile.className = "profileBox col-lg-12 col-md-12"
         }
     }
-
+function openAdminProfile(){
+    var adminProfile = document.getElementById("adminProfileBox");
+    if(userProfile.className === "adminProfileBox"){
+        userProfile.className += " openProfileBox"
+    }
+    else{
+        userProfile.className = "adminProfileBox"
+    }
+}
+userProfileBox
 function openQuestionContent(){
     var hiddenAns = document.getElementById("hiddenAnswer");
     if(hiddenAns.className === "hiddenAnswer"){
@@ -60,4 +69,7 @@ $(document).ready(function() {
         // call the function that toggles the type of selected input ID
         togglePassword(inputPsw);
     });
+});
+$(".profilePassword").click(function() {
+    $(this).replaceWith('<input class = "col-6" value="Please click on Update" disabled>');
 });

@@ -39,3 +39,12 @@
 .btnFirstName, .btnLastName, .btnEmail {
     display: contents;
 }
+.formBtns{
+    padding: 18px;
+}
+.backProfileBtn{
+    color: rgba(255, 255, 255, 1)!important;
+    border: 1px rgba(255,214,0,1) solid !important;
+    background: rgba(255, 214, 0, 1) !important;
+    font-weight: bold !important;
+}

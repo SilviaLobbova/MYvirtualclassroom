@@ -124,8 +124,8 @@ main {
 .SubmitBtn{
     background: rgba(255,214,0,1);
     color: white;
-    padding: 2px 25px;
     font-weight: bold;
+    width: 63px;
 }
 .SubmitBtn:hover{
     box-shadow: 3px 3px 7px rgba(65,65,70,1);
