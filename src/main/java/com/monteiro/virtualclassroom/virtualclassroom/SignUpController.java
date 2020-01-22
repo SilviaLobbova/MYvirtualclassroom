@@ -35,9 +35,9 @@ public class SignUpController {
         }
         else{
             System.out.println(user_lastname);
-            User newOne = new User(user_name, user_lastname, user_email, user_password, false, 8);
+            User newOne = new User(user_name, user_lastname, user_email, user_password, true, 8);
             UserDao.saveUser(newOne);
-            return null;
+            return "LoginPage";
         }
     }
 }

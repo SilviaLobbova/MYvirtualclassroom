@@ -19,22 +19,28 @@
                 <div th:replace = "~{fragments/titlePage.html :: titlePage(title='Sign Up')}"></div>
             <div class="content col-lg-12 col-md-9 col-sm-12">
                 <div class="signUpFrame col-lg-7 col-md-12 col-sm-10">
-                    <form class="signUpForm ">
+
+                    <form class="signUpForm" method="post" action="#" th:action="@{/SignUpPage}">
+                        <p th:if="${emptyField}" class="error">Please enter missing data</p>
                         <div class="signUpField form-group row">
                             <label for="firstName" class ="signUplabel col-md-4">First name</label>
-                            <input type="text" class="signUpInput form-control rounded-0 col-md-8" id="firstName" placeholder="Enter first name">
+                            <input type="text" class="signUpInput form-control rounded-0 col-md-8" id="firstName"
+                                   name="user_name" placeholder="Enter first name" >
                           </div>
                           <div class="signUpField form-group row">
                             <label for="lastName" class ="signUplabel col-md-4">Last name</label>
-                            <input type="text" class="signUpInput form-control rounded-0 col-md-8" id="lastName" placeholder="Enter last name">
+                            <input type="text" class="signUpInput form-control rounded-0 col-md-8" id="lastName"
+                                   name="user_lastname" placeholder="Enter last name" >
                           </div>
                         <div class="signUpField form-group row">
-                          <label for="email" class ="signUplabel col-md-4">Email</label>
-                          <input type="email" class="signUpInput form-control rounded-0 col-md-8" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                          <label for="e-mail" class ="signUplabel col-md-4">Email</label>
+                          <input  class="signUpInput form-control rounded-0 col-md-8" type="email" id="e-mail"
+                                  value="" name="user_email" placeholder="Enter email">
                         </div>
                         <div class="signUpField form-group row" >
-                          <label for="password" class ="signUplabel col-md-4">Password</label>
-                          <input type="password" class="signUpInput form-control rounded-0 col-md-8" id="password" placeholder="Password">
+                          <label for="pwd" class ="signUplabel col-md-4">Password</label>
+                          <input type="password" class="signUpInput form-control rounded-0 col-md-8" id="pwd"
+                                 value="" name="user_password" placeholder="Password" >
                         </div>
                         <div class= "signUpFormBtn row">
                             <a href="LoginPage"><button type="button" class="signUpBtn backBtn rounded-0"><i class="fas fa-angle-double-left"></i></button></a>
