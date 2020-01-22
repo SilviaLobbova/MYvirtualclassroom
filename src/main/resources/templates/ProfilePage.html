@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
     <link rel="stylesheet" th:href="@{/css/profile-style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/navBar.css}"/>
     <!--Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
     <title>Home page</title>
@@ -20,7 +21,7 @@
     <div class="container">
         <header id="header" th:replace = "fragments/header.html :: header" />
 
-        <div th:if="${session.is_Admin}"  >
+        <div th:if="${session.is_Admin == true}"  >
             <div th:replace="~{fragments/navBarAdmin.html :: navBarAdmin}"></div>
         </div>
         <div th:if="${session.is_Admin == false }" >

@@ -49,11 +49,11 @@ public class LoginController{
             System.out.println(session.getAttribute("login_first"));
             System.out.println(session.getAttribute("login_last"));
             System.out.println(session.getAttribute("is_Admin"));
-            if(user.getIsAdmin()){
+            if(myMail.getIsAdmin()==true){
                 System.out.println("render admin post method");
                 return "redirect:/adminConnected";
             }
-            else if(user.getIsAdmin()==false){
+            else if(myMail.getIsAdmin()==false){
                 System.out.println("render user post method");
                 return "redirect:/userConnected";
             }

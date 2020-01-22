@@ -1,13 +1,12 @@
 <div th:fragment="navBarUser" class="navBarUser" xmlns:th="http://www.thymeleaf.org">
 
-    <!-- Teacher menu -->
 
     <!-- End teacher menu -->
     <div class="profileBox col-lg-5 col-md-4" id="userProfileBox">
         <h5 class="profileName col-sm-0">
                 <p class="d-md-block" th:text="${session.login_first}"></p>
         </h5>
-        <a class="profileIcon" href="javascript:void(0);" onclick="openUserProfile()">
+        <a class="profileIcon" href="javascript:void(0)" onclick=openUserProfile()>
             <i class="fas fa-user"></i>
         </a>
         <div class="hiddenProfile">
