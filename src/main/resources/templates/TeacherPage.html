@@ -16,7 +16,12 @@
         <!-- Header -->
         <header id="header" th:replace = "fragments/header.html :: header" />
         <!-- MenuBar -->
-        <div th:replace="fragments/navBarAdmin.html :: navBarAdmin" />
+        <div th:if="${userIsAdmin}"  >
+            <div th:replace="~{fragments/navBarAdmin.html :: navBarAdmin}"></div>
+        </div>
+        <div th:if="${userIsNotAdmin}" >
+            <div th:replace="~{fragments/navBarUser.html :: navBarUser}"></div>
+        </div>
 
         <main>
             <div class="pageContent">
@@ -25,7 +30,7 @@
 
                     <!-- Left part -->
                     <div class="teacherLeftContent">
-                        <span th:replace = "fragments/teacherLeftContent.html :: teacherLeftContent" />
+                        <span th:replace = "~{fragments/teacherLeftContent.html :: teacherLeftContent}" />
                     </div>
 
                     <!-- Right part -->
@@ -70,35 +75,7 @@
         </main>
         <footer th:replace = "fragments/footer.html :: footer" />
     </div>
-    <script>
-        function openBurger() {
-            var burg = document.getElementById("teacherMenu");
-            if(burg.className === "navBarUser"){
-                burg.className += " openTeacherMenu";
-            }
-            else{
-                burg.className = "navBarUser"
-            }
-        }
-        function openUserProfile(){
-            var userProfile = document.getElementById("userProfileBox");
-            if(userProfile.className === "profileBox col-lg-5 col-md-4"){
-                userProfile.className += " openProfileBox"
-            }
-            else{
-                userProfile.className = "profileBox col-lg-5 col-md-4"
-            }
-        }
-        function openQuestionContent(){
-            var hiddenAns = document.getElementById("hiddenAnswer");
-            if(hiddenAns.className === "hiddenAnswer"){
-                hiddenAns.className += " showAnswer"
-            }
-            else{
-                hiddenAns.className = "hiddenAnswer"
-            }
-        }
-    </script>
+    <script type="text/javascript" src="/dynamic/functions.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -19,7 +19,7 @@
             <div class="pageContent">
                 <div th:replace = "~{fragments/titlePage.html :: titlePage(title='Login')}"></div>
             </div>
-            <div class="content col-lg-12 col-md-9 col-sm-12">
+            <div class="content col-lg-12 col-sm-12">
                 <div class="loginFrame col-lg-7 col-md-10 col-sm-12">
                     <!--/*@thymesVar id="user" type=""*/-->
                     <!--/*@thymesVar id="userDao" type=""*/-->
@@ -28,12 +28,12 @@
                         <p th:if="${invalidCredentials}" class="error">Username or password incorrect</p>
                         <div class="loginField form-group row col-sm-12">
                            <label for="user_name" class ="loginLabel col-md-4">Login</label>
-                            <input class = "loginInput form-control rounded-0  col-md-8" type="text" id="user_name" name="user_email"
+                            <input class = "loginInput form-control rounded-0  col-md-8" type="text" id="user_name" name="login_name"
                                    value="" placeholder="Enter login" >
                         </div>
                         <div class="loginField form-group row col-sm-12">
                             <label for="password" class ="loginLabel  col-md-4">Password</label>
-                            <input class = "loginInput form-control rounded-0  col-md-8" type="password" id="password" name="user_password"
+                            <input class = "loginInput form-control rounded-0  col-md-8" type="password" id="password" name="login_password"
                                    value="" placeholder="Enter password" >
                         </div>
                         <div class="loginSubmitBtn row col-sm-12">

@@ -48,11 +48,17 @@ public class LoginController{
             System.out.println(session.getAttribute("login_psw"));
             System.out.println(session.getAttribute("login_first"));
             System.out.println(session.getAttribute("login_last"));
-            return "TeacherPage";
-        } else {
-            model.addAttribute("invalidCredentials", true);
-            return "LoginPage";
-        }
+            System.out.println(session.getAttribute("is_Admin"));
+            if(user.getIsAdmin()){
+                System.out.println("render admin post method");
+                return "redirect:/adminConnected";
+            }
+            else if(user.getIsAdmin()==false){
+                System.out.println("render user post method");
+                return "redirect:/userConnected";
+            }
+        }System.out.println("here I am");
+        return "TeacherPage";
     }
     private void addUserInSession(User user, HttpSession session){
             session.setAttribute("login", user.getUser_email());
@@ -61,11 +67,30 @@ public class LoginController{
             session.setAttribute("login_last", user.getUser_lastname());
             session.setAttribute("is_Admin", user.getIsAdmin());
     }
-
     @GetMapping("/TeacherPage")
     public String teacherPageRender () {
+        System.out.println("what happens then");
+
         return "TeacherPage";
     }
+    @GetMapping("/adminConnected")
+    public String adminPageRender(Model model) {
+            System.out.println("My Admin");
+            model.addAttribute("userIsAdmin",true);
+            return "TeacherPage";
+        }
+    @GetMapping("/userConnected")
+        public String userPageRender(Model model) {
+            System.out.println("my not admin");
+            model.addAttribute("userIsNotAdmin",true);
+            return "TeacherPage";
+        }
+
+
+//    @GetMapping("/TeacherPage")
+//    public String teacherPageRender () {
+//        return "TeacherPage";
+//    }
 
     @RequestMapping(value = "/Logout")
     public String logout(HttpSession session) {

@@ -1,4 +1,4 @@
-<div th:fragment="navBarAdmin" class="navBarUser" id="teacherMenu">
+<div th:fragment="navBarAdmin" class="navBarAdmin" xmlns:th="http://www.thymeleaf.org">
     <a href="javascript:void(0);" class="burgerIcon" onclick="openBurger()">
         <i class="fa fa-bars"></i>
     </a>
@@ -19,14 +19,17 @@
     <div class="profileBox col-lg-5 col-md-4" id="userProfileBox">
         <h5 class="profileName col-sm-0">
             <div class="d-none d-md-block">
-                Anthony</div>
+                <p th:text="${session.login_first}"></p>
+            </div>
         </h5>
         <a class="profileIcon" href="javascript:void(0);" onclick="openUserProfile()">
             <i class="fas fa-user"></i>
         </a>
         <div class="hiddenProfile">
-            <p id="topProfile">Profile</p>
-            <p id="bottomProfile">Logout</p>
+            <a th:href="@{/ProfilePage}">
+                <p id="topProfile">Profile</p></a>
+            <a th:href="@{/Logout}">
+                <p id="bottomProfile" >Logout</p></a>
         </div>
     </div>
 </div>
