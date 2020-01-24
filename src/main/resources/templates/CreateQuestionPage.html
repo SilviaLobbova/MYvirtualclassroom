@@ -13,45 +13,54 @@
     <main>
         <div class="pageContent">
             <!--  title content      -->
-            <div th:replace = "~{fragments/titlePage.html :: titlePage(title='Create question')}"></div>
+            <div th:replace = "~{fragments/titlePage.html :: titlePage(title='CreateQuestion')}"></div>
             <div class="teacherContent col-md-10">
                 <!-- Left part -->
                 <span th:replace = "fragments/teacherLeftContent.html :: teacherLeftContent" />
                 <!-- Right part -->
                 <div class="teacherRightContent">
                     <div class="questionBox">
+
+                    <form class="CreateQuestionForm" method="post" action="#" th:action="@{/CreateQuestionPage}">
                         <div class="questionBar ">
-                            <div class="questionContent">
-                                <span class="questionLabel">Question 1: </span>
-                                <span class="questionText">What is the family name of Mickey ?</span>
+                            <!--/*@thymesVar id="emptyField" type="java"*/-->
+                            <p th:if="${emptyField}" class="error">Please enter missing data</p>
+                            <div class="questionContent col-7">
+                                <!-- set question -->
+                                <input class="col-12" type="text" id="question" name="question_content" placeholder="Enter the new question here.">
                             </div>
-                            <div class="topIcons">
-                                <a class="lockIcon" role="button">
-                                    <i class="fa fa-lock" id="locker" ></i>
-                                </a>
-                                <a class="arrowIcon" onclick="openQuestionContent()" data-toggle="collapse" href="#answer" role="button" aria-expanded="false" aria-controls="collapse">
-                                    <i class="fas fa-sort-down" id="iconUpDown"></i>
-                                </a>
+                            <div class="topIcons col-5">
+                            <!-- Display answer options type-->
+                                <span><input type="radio" class="radio" th:name="option" th:value= 1 /> Radio </span>
+                                <span><input type="radio" class="checkbox" th:name="option" th:value= 0 /> Checkbox </span>
                             </div>
-                        </div>
-                        <div id="hiddenAnswer" class="hiddenAnswer">
+<!--                                <button  type="submit" class="saveQuestion">-->
+<!--                                    Save-->
+<!--                                </button>-->
+
+                        </div><!-- end question bar -->
+                        <!-- answer setting part -->
+                        <div class="answerBar">
                             <div class="answerContent" >
                                 <div class="answerBody">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                    <input type="text" name = "option_content" th:class="answer" placeholder="Possible answer" />
+                                    <input type="text" name = "option_content" th:class="answer" placeholder="Possible answer" />
                                 </div>
                                 <div class="answerButtonBar">
-                                    <button class="teacherOk">
-                                        OK
+                                    <span id="addAnswer" class="addAnswer">+</span>
+                                    <button  type="submit" class="saveQuestion">
+                                        Save
                                     </button>
                                 </div>
                             </div>
                             <div class="answerFooter">
                                 <div clas="answerFooterIcons">
-                                    <button class="updateAnswer"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                    <button class="deleteAnswer"><i class="fa fa-trash" aria-hidden="true"></i></button>
+<!--                                    <button class="updateAnswer"><i class="fa fa-pencil" aria-hidden="true"></i></button>-->
+<!--                                    <button class="deleteAnswer"><i class="fa fa-trash" aria-hidden="true"></i></button>-->
                                 </div>
                             </div>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -60,6 +69,12 @@
 
     <footer th:replace = "fragments/footer.html :: footer" />
 
+    <script>
+        $("#addAnswer").click(function() {
+            $(".answerBody").append("<input type=\"text\" name=\"option_content\" class=\"answer\" placeholder=\"Possible answer\" />");
+        });
+
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
