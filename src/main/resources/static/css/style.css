@@ -228,7 +228,7 @@ main {
     flex-direction: column;
     justify-content: space-evenly;
 }
-li {
+.classroomListItem {
     font-size: 30px;
     text-decoration: underline;
     line-height: 2;

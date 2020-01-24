@@ -22,7 +22,7 @@
 
                 <div class="content">
                     <ul class="classroomList" >
-                        <a th:each="classroom: ${classrooms}" th:href="@{/LoginClass(id=${classroom.getId_classroom()})}" ><li th:text="${classroom.getClassroom_name()}">
+                        <a  th:each="classroom: ${classrooms}" th:href="@{/LoginClass(id=${classroom.getId_classroom()})}" ><li class="classroomListItem" th:text="${classroom.getClassroom_name()}">
                         </li>
                         </a>
                     </ul>

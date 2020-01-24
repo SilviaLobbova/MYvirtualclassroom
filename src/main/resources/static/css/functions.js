@@ -18,14 +18,13 @@ function openUserProfile(){
     }
 function openAdminProfile(){
     var adminProfile = document.getElementById("adminProfileBox");
-    if(userProfile.className === "adminProfileBox"){
-        userProfile.className += " openProfileBox"
+    if(adminProfile.className === "adminProfileBox"){
+        adminProfile.className += " openProfileBox"
     }
     else{
-        userProfile.className = "adminProfileBox"
+        adminProfile.className = "adminProfileBox"
     }
 }
-userProfileBox
 function openQuestionContent(){
     var hiddenAns = document.getElementById("hiddenAnswer");
     if(hiddenAns.className === "hiddenAnswer"){

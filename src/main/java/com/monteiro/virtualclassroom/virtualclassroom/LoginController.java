@@ -96,7 +96,7 @@ public class LoginController{
     public String logout(HttpSession session) {
         System.out.println("in logout");
         session.invalidate();
-        return "HomePage";
+        return "redirect:/HomePage";
     }
 
 }

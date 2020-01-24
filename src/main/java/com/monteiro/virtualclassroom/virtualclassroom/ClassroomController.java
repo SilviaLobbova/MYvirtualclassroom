@@ -15,8 +15,9 @@ import java.util.List;
 @Controller
 public class ClassroomController {
 
-    @ModelAttribute(name= "classroomList")
-    public List<Classroom> populateClasses() throws IOException, SQLException {
+    @GetMapping("/HomePage")
+    public String homePageRender(Model model) throws IOException, SQLException {
+        System.out.println("GET /HomePage (ClassroomController)");
         List<Classroom> classroomList = new ArrayList<>();
         long n = ClassroomDao.getClassroomCount();
         int id;
@@ -24,24 +25,16 @@ public class ClassroomController {
         for(id=1;id<=n;id++){
             myClass = ClassroomDao.getClassroom(id);
             classroomList.add(myClass);
-            System.out.println(myClass.getClassroom_name());
         }
-        return classroomList;
-    }
-    @GetMapping("/HomePage")
-    public String homePageRender(Model model) throws IOException, SQLException {
-        System.out.println("GET /HomePage (ClassroomController)");
-        List<Classroom> classroomList = populateClasses();
         model.addAttribute("classrooms", classroomList);
         return "HomePage";
     }
     @RequestMapping("/LoginClass")
-    public String loginClassRender(HttpSession session, Model model, @RequestParam(value = "id") long parameter) throws IOException, SQLException {
+    public String loginClassRender(HttpSession session, @RequestParam(value = "id") long parameter) throws IOException, SQLException {
         Classroom myClass = ClassroomDao.getClassroom(parameter);
         addClassroomInSession(myClass , session);
         System.out.println(session.getAttribute("classroomID"));
         System.out.println("GET /LoginPage (LoginClassController)");
-
         //return html page
         return "LoginPage";
     }

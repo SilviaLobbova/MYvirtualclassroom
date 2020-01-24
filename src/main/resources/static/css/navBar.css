@@ -7,6 +7,14 @@
     justify-content: space-between;
     margin: auto;
 }
+.navBarAdmin {
+    background: rgba(65, 65, 70, 1);
+    height: 64px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
 
 .burgerIcon{
     display: none;
