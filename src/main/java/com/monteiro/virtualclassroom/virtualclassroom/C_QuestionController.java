@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-
 
 @Controller
 public class C_QuestionController {
@@ -25,31 +23,36 @@ public class C_QuestionController {
     @PostMapping("/CreateQuestionPage")
     public String handleCreateQuestionRequest(
             @RequestParam String question_content,
-            Integer id_classroom,
             @RequestParam String option,
+            boolean isRadio,
             @RequestParam String option_content, //ArrayList<String>
-            Integer id_question,
-            Model model) throws Exception {
+            Model model,
+            Question question) throws Exception {
 
         System.out.println("POST /CreateQuestion (CreateQuestionController)");
-
+            if(option == "radio"){
+                question.setRadio(true);
+            }
+            else{
+                question.setRadio(false);
+            }
         // Verify if a field is empty on the question head
-        if( question_content.isEmpty() || (option.isEmpty()) || (option_content == null) ) {
+        if( question_content.isEmpty() || (isRadio) || (option_content == null) ) {
             System.out.println("missing");
             System.out.println("question content " + question_content);
-            System.out.println("option choice " + option);
+            System.out.println("option choice " + isRadio);
             System.out.println("option content " + option_content);
             model.addAttribute("emptyField", true);
             return "CreateQuestionPage";
         }
         else {
-            System.out.println(question_content+ ", " + option);
-            id_classroom = 1; // temporary !!! Retrieve from session
-            Question newQuestion = new Question(question_content, id_classroom , option);
+            System.out.println(question_content+ ", " + question.getIsRadio());
+            long id_classroom = 1; // temporary !!! Retrieve from session
+            Question newQuestion = new Question(question_content, id_classroom, question.getIsRadio());
             QuestionDao.saveQuestion(newQuestion);
-            id_question = newQuestion.getId_question();
+            int id_question = newQuestion.getId_question();
             System.out.println("writing question successful");
-            Option newOption = new Option(option_content,id_question);
+            Option newOption = new Option(option_content, id_question);
             System.out.println(option_content);
             OptionDao.saveOption(newOption);
             System.out.println("writing options successful");

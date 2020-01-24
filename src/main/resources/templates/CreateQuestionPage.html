@@ -13,7 +13,7 @@
     <main>
         <div class="pageContent">
             <!--  title content      -->
-            <div th:replace = "~{fragments/titlePage.html :: titlePage(title='CreateQuestion')}"></div>
+            <div th:replace = "~{fragments/titlePage.html :: titlePage(title='Create Question')}"></div>
             <div class="teacherContent col-md-10">
                 <!-- Left part -->
                 <span th:replace = "fragments/teacherLeftContent.html :: teacherLeftContent" />
@@ -31,14 +31,11 @@
                             </div>
                             <div class="topIcons col-5">
                             <!-- Display answer options type-->
-                                <span><input type="radio" class="radio" th:name="option" th:value= 1 /> Radio </span>
-                                <span><input type="radio" class="checkbox" th:name="option" th:value= 0 /> Checkbox </span>
+                                <span><input type="radio" class="radio" name="option" th:value="radio" /> Radio </span>
+                                <span><input type="radio" class="checkbox" name="option" th:value="checkbox" /> Checkbox </span>
                             </div>
-<!--                                <button  type="submit" class="saveQuestion">-->
-<!--                                    Save-->
-<!--                                </button>-->
-
-                        </div><!-- end question bar -->
+                        </div>
+                        <!-- end question bar -->
                         <!-- answer setting part -->
                         <div class="answerBar">
                             <div class="answerContent" >
