@@ -10,13 +10,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C_QuestionController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/build-history.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/C_QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/C_QuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/ClassroomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/ClassroomController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/bean/Option.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/bean/Option.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/bean/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/bean/Question.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/CreateQuestionPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/CreateQuestionPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/titlePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/titlePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navBarAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navBarAdmin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +92,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1VpsXSSk0uqe9Qwxsa3cdAYlY9M" />
   <component name="ProjectViewState">
@@ -110,6 +113,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\silvi\Documents\GitHub\MYvirtualclassroom\src\main\java\com\monteiro\virtualclassroom\virtualclassroom" />
       <recent name="C:\Users\silvi\Documents\GitHub\MYvirtualclassroom\src\main\resources\static\css" />
       <recent name="C:\Users\silvi\Documents\GitHub\MYvirtualclassroom\src\main\resources\templates" />
       <recent name="C:\Users\silvi\Documents\GitHub\MYvirtualclassroom\src\main\resources" />
@@ -148,7 +152,8 @@
       <updated>1577961409621</updated>
       <workItem from="1577961423195" duration="1000000" />
       <workItem from="1579683600943" duration="23444000" />
-      <workItem from="1579769084692" duration="40828000" />
+      <workItem from="1579769084692" duration="41089000" />
+      <workItem from="1579876407386" duration="3466000" />
     </task>
     <servers />
   </component>
@@ -164,46 +169,50 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="97" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1579683666281" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1579874270111">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1579879747451">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579874270111" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1579874270111">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579879747451" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1579879747450">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1579874270111" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1579874270110">
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1579879747450" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1579879747450">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1579874270110" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1579874270111">
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1579879747450" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1579879747450">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1579874270111" />
-    <state width="1237" height="163" key="GridCell.Tab.1.bottom" timestamp="1579874270111">
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1579879747450" />
+    <state width="1237" height="163" key="GridCell.Tab.1.bottom" timestamp="1579879747451">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579874270111" />
-    <state width="1237" height="163" key="GridCell.Tab.1.center" timestamp="1579874270111">
+    <state width="1237" height="163" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579879747451" />
+    <state width="1237" height="163" key="GridCell.Tab.1.center" timestamp="1579879747451">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1579874270111" />
-    <state width="1237" height="163" key="GridCell.Tab.1.left" timestamp="1579874270111">
+    <state width="1237" height="163" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1579879747451" />
+    <state width="1237" height="163" key="GridCell.Tab.1.left" timestamp="1579879747451">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1579874270111" />
-    <state width="1237" height="163" key="GridCell.Tab.1.right" timestamp="1579874270111">
+    <state width="1237" height="163" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1579879747451" />
+    <state width="1237" height="163" key="GridCell.Tab.1.right" timestamp="1579879747451">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1579874270111" />
+    <state width="1237" height="163" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1579879747451" />
     <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579686376352">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1579686376352" />
-    <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1579769087312">
+    <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1579876406919">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1579769087312" />
+    <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1579876406919" />
+    <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579876258715">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1579876258715" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1579872166061">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

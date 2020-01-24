@@ -21,7 +21,7 @@
                 <div class="teacherRightContent">
                     <div class="questionBox">
 
-                    <form class="CreateQuestionForm" method="post" action="#" th:action="@{/CreateQuestionPage}">
+                    <form class="CreateQuestionForm" method="post" action="#" th:action="@{/CreateQuestionPage}" th:object="${question}">
                         <div class="questionBar ">
                             <!--/*@thymesVar id="emptyField" type="java"*/-->
                             <p th:if="${emptyField}" class="error">Please enter missing data</p>
@@ -40,8 +40,8 @@
                         <div class="answerBar">
                             <div class="answerContent" >
                                 <div class="answerBody">
-                                    <input type="text" name = "option_content" th:class="answer" placeholder="Possible answer" />
-                                    <input type="text" name = "option_content" th:class="answer" placeholder="Possible answer" />
+                                    <input type="text" name = "option_content[]" th:class="answer" placeholder="Possible answer" />
+                                    <input type="text" name = "option_content[]" th:class="answer" placeholder="Possible answer" />
                                 </div>
                                 <div class="answerButtonBar">
                                     <span id="addAnswer" class="addAnswer">+</span>

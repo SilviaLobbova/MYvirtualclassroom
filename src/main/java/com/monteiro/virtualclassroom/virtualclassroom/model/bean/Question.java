@@ -15,7 +15,7 @@ public class Question {
     private long id_classroom;
 
     @DatabaseField(canBeNull = false)
-    private boolean isRadio =true;
+    private boolean isRadio;
 
     public Question(){};
 

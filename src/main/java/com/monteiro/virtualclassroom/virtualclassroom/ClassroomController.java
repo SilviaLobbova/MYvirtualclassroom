@@ -32,7 +32,7 @@ public class ClassroomController {
     @RequestMapping("/LoginClass")
     public String loginClassRender(HttpSession session, @RequestParam(value = "id") long parameter) throws IOException, SQLException {
         Classroom myClass = ClassroomDao.getClassroom(parameter);
-        addClassroomInSession(myClass , session);
+        addClassroomInSession(myClass, session);
         System.out.println(session.getAttribute("classroomID"));
         System.out.println("GET /LoginPage (LoginClassController)");
         //return html page
