@@ -36,7 +36,7 @@ public class ClassroomDao {
     }
 
     // retrieve classroom method
-    public static Classroom getClassroom(int classroomId) throws SQLException, IOException {
+    public static Classroom getClassroom(long classroomId) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
@@ -49,20 +49,18 @@ public class ClassroomDao {
             connectionSource.close();
         }
     }
-//    public static int getClassroomCount() throws SQLException, IOException {
-//        JdbcConnectionSource connectionSource = null;
-//        try {
-//            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
-//
-//            Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class);//creates a new dao object
-//           QueryBuilder query = clashClassroomDao.queryBuilder("Select");
-//            int Ju = clashClassroomDao.countOf (query);
-//            return Ju;
-//
-//        }  finally {
-//            connectionSource.close();
-//        }
-//    }
+    public static long getClassroomCount() throws SQLException, IOException {
+        JdbcConnectionSource connectionSource = null;
+        try {
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+
+            Dao<Classroom, String> ClassConnection = DaoManager.createDao(connectionSource, Classroom.class);//creates a new dao object
+            return ClassConnection.queryBuilder().countOf();
+
+        }  finally {
+            connectionSource.close();
+        }
+    }
 
     // delete classroom method
     public static void deleteClassroom(int id) throws SQLException, IOException {

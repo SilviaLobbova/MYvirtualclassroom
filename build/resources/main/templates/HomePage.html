@@ -21,14 +21,10 @@
                 <!-- Main contain -->
 
                 <div class="content">
-                    <ul class="classroomList" th:each="classroom : ${classrooms}">
-                        <li th:text="${classroom.getClassroom_name()}"></li>
-
-<!--                        <li> Dev 19-05</li>-->
-<!--                        <li> Dev 19-06</li>-->
-<!--                        <li> Dev 19-07</li>-->
-<!--                        <li> Dev 19-08</li>-->
-<!--                        <a th:action="@{/firstClass}" name="class_first">Dev 19-03</a>-->
+                    <ul class="classroomList" >
+                        <a th:each="classroom: ${classrooms}" th:href="@{/LoginClass(id=${classroom.getId_classroom()})}" ><li th:text="${classroom.getClassroom_name()}">
+                        </li>
+                        </a>
                     </ul>
                 </div>
             </div>

@@ -9,11 +9,11 @@ function openBurger() {
 }
 function openUserProfile(){
         var userProfile = document.getElementById("userProfileBox");
-        if(userProfile.className === "profileBox col-lg-12 col-md-12"){
+        if(userProfile.className === "userProfileBox col-lg-12 col-md-12"){
             userProfile.className += " openProfileBox"
         }
         else{
-            userProfile.className = "profileBox col-lg-12 col-md-12"
+            userProfile.className = "userProfileBox col-lg-12 col-md-12"
         }
     }
 function openAdminProfile(){

@@ -42,6 +42,10 @@
 .formBtns{
     padding: 18px;
 }
+.userProfileBox {
+    display: flex;
+    justify-content: flex-end;
+}
 .backProfileBtn{
     color: rgba(255, 255, 255, 1)!important;
     border: 1px rgba(255,214,0,1) solid !important;

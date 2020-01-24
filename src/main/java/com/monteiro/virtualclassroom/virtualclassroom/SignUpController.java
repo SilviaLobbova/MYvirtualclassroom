@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class SignUpController {
 
@@ -23,6 +25,7 @@ public class SignUpController {
             @RequestParam String user_lastname,
             @RequestParam String user_email,
             @RequestParam String user_password,
+            HttpSession session,
             Model model) throws Exception {
 
         System.out.println("POST /SignUpPage (SignUpController)");
@@ -35,7 +38,7 @@ public class SignUpController {
         }
         else{
             System.out.println(user_lastname);
-            User newOne = new User(user_name, user_lastname, user_email, user_password, true, 8);
+            User newOne = new User(user_name, user_lastname, user_email, user_password, false, (Long) session.getAttribute("classroomID"));
             UserDao.saveUser(newOne);
             return "LoginPage";
         }

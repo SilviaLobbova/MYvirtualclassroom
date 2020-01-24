@@ -1,6 +1,8 @@
 package com.monteiro.virtualclassroom.virtualclassroom;
 
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
+import com.monteiro.virtualclassroom.virtualclassroom.model.dao.ClassroomDao;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 
 @Controller
@@ -18,7 +21,7 @@ public class LoginController{
 
     //render login page
     @GetMapping("/LoginPage")
-    public String loginRender() {
+    public String loginRender(){
         System.out.println("GET /LoginPage (LoginController)");
         //return html page
         return "LoginPage";
@@ -50,6 +53,7 @@ public class LoginController{
             System.out.println(session.getAttribute("login_first"));
             System.out.println(session.getAttribute("login_last"));
             System.out.println(session.getAttribute("is_Admin"));
+            System.out.println(session.getAttribute("classroom"));
             if(myMail.getIsAdmin()==true){
                 System.out.println("render admin post method");
                 return "redirect:/adminConnected";
@@ -67,7 +71,9 @@ public class LoginController{
             session.setAttribute("login_first", user.getUser_name());
             session.setAttribute("login_last", user.getUser_lastname());
             session.setAttribute("is_Admin", user.getIsAdmin());
+            session.setAttribute("classroom", user.get_classroom());
     }
+
     @GetMapping("/TeacherPage")
     public String teacherPageRender () {
         System.out.println("what happens then");

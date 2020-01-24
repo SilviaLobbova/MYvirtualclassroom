@@ -5,6 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 
+
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
@@ -12,6 +13,7 @@ import java.security.NoSuchAlgorithmException;
 //annotations ORMLite
 @DatabaseTable(tableName = "USERS")
 public class User {
+
 
     @DatabaseField(generatedId = true)
     private int id_user;
@@ -34,14 +36,14 @@ public class User {
     @DatabaseField (canBeNull = false
 //            foreign = true, foreignColumnName = "id_classroom", foreignAutoCreate = true
     )
-    private int id_classroom;
+    private long id_classroom;
 
     // mandatory no-argument-constructor for ORMlite
     public User() {
     }
 
     // constructor
-    public User(String name, String lastname, String email, String password, boolean isAdmin, int classroom) {
+    public User(String name, String lastname, String email, String password, boolean isAdmin, long classroom) {
         this.user_name = name;
         this.user_lastname = lastname;
         this.user_email = email;
@@ -106,7 +108,7 @@ public class User {
     }
 
     // setter/getter id_classroom
-    public int get_classroom() {
+    public long get_classroom() {
         return id_classroom;
     }
 
