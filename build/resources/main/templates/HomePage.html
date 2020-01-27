@@ -22,10 +22,11 @@
 
                 <div class="content">
                     <ul class="classroomList" >
-                        <a  th:each="classroom: ${classrooms}" th:href="@{/LoginClass(id=${classroom.getId_classroom()})}" ><li class="classroomListItem" th:text="${classroom.getClassroom_name()}">
+                        <a th:each="classroom: ${classrooms}" th:href="@{/LoginClass(id=${classroom.getId_classroom()})}" ><li class="classroomListItem" th:text="${classroom.getClassroom_name()}">
                         </li>
                         </a>
                     </ul>
+                   <p th:if="${adminAccess}" class="adminOnly">"There are no classes available. Please login as admin to create one"</p>
                 </div>
             </div>
         </main>

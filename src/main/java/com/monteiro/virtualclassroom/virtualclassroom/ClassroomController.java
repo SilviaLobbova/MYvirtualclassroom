@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 public class ClassroomController {
 
-    @GetMapping("/HomePage")
+    @GetMapping("/")
     public String homePageRender(Model model) throws IOException, SQLException {
         System.out.println("GET /HomePage (ClassroomController)");
         List<Classroom> classroomList = new ArrayList<>();
@@ -27,6 +27,9 @@ public class ClassroomController {
             classroomList.add(myClass);
         }
         model.addAttribute("classrooms", classroomList);
+        if(classroomList.isEmpty()){
+            model.addAttribute("adminAccess", true);
+        }
         return "HomePage";
     }
     @RequestMapping("/LoginClass")

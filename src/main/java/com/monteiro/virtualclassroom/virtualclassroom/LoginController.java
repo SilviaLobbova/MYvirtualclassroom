@@ -27,6 +27,7 @@ public class LoginController{
         return "LoginPage";
     }
 
+
     //checking for credentials
     @PostMapping("/LoginPage")
     public String handleLoginRequest(
@@ -41,28 +42,37 @@ public class LoginController{
         //System.out.println(user_email);
         User myMail = UserDao.getUser(login_name, login_password);
         System.out.println(myMail);
+        long id_classroom = (long) session.getAttribute("classroomID");
+        System.out.println(id_classroom);
         if(myMail == null){
             model.addAttribute("invalidCredentials", true);
             return "LoginPage";
         }
-        else if (myMail.getUser_email().equals(login_name) && myMail.getUser_password().equals(login_password)){
-            System.out.println("getting logged in");
-            addUserInSession(myMail,session);
-            System.out.println(session.getAttribute("login"));
-            System.out.println(session.getAttribute("login_psw"));
-            System.out.println(session.getAttribute("login_first"));
-            System.out.println(session.getAttribute("login_last"));
-            System.out.println(session.getAttribute("is_Admin"));
-            System.out.println(session.getAttribute("classroom"));
-            if(myMail.getIsAdmin()==true){
-                System.out.println("render admin post method");
-                return "redirect:/adminConnected";
+        else if((myMail.getIsAdmin() == true)||(id_classroom == 0)){
+            if (myMail.getUser_email().equals(login_name) &&
+                    myMail.getUser_password().equals(login_password)){
+                addUserInSession(myMail,session);
             }
-            else if(myMail.getIsAdmin()==false){
-                System.out.println("render user post method");
-                return "redirect:/userConnected";
+            System.out.println("empty classroomList - admin post method");
+            System.out.println("render admin post method");
+            return "redirect:/adminConnected";
+        }
+        else if(myMail.getIsAdmin()==false){
+            if (myMail.getUser_email().equals(login_name) &&
+                    myMail.getUser_password().equals(login_password)&&
+                    myMail.get_classroom()==(id_classroom)){
+                addUserInSession(myMail,session);
+                System.out.println("getting logged in");
             }
-        }System.out.println("here I am");
+            System.out.println("render user post method");
+            return "redirect:/userConnected";
+        }
+        System.out.println("here I am"); System.out.println(session.getAttribute("login"));
+        System.out.println(session.getAttribute("login_psw"));
+        System.out.println(session.getAttribute("login_first"));
+        System.out.println(session.getAttribute("login_last"));
+        System.out.println(session.getAttribute("is_Admin"));
+        System.out.println(session.getAttribute("classroom"));
         return "TeacherPage";
     }
     private void addUserInSession(User user, HttpSession session){
@@ -80,7 +90,11 @@ public class LoginController{
         return "TeacherPage";
     }
     @GetMapping("/adminConnected")
-    public String adminPageRender(Model model) {
+    public String adminPageRender(Model model, HttpSession session) {
+        if((boolean)(session.getAttribute("is_Admin")) == false){
+            System.out.println( "You don't have an admin account");
+            model.addAttribute("NotAdmin", true);
+        }
             System.out.println("My Admin");
 //            model.addAttribute("userIsAdmin",true);
             return "TeacherPage";
@@ -96,7 +110,7 @@ public class LoginController{
     public String logout(HttpSession session) {
         System.out.println("in logout");
         session.invalidate();
-        return "redirect:/HomePage";
+        return "redirect:/";
     }
 
 }
