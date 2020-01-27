@@ -29,6 +29,9 @@
                    <div th:if="${adminAccess}" class="adminOnly">"There are no classes available. Please login as admin to create one"
                        <a href="/LoginPage">Login</a>
                    </div>
+                    <div th:if="${adminClassList}" class="adminOnly">
+                        "There are no classes available. Please click here to create one"
+                    </div>
                 </div>
             </div>
         </main>

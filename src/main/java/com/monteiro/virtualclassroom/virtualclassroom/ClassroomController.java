@@ -30,8 +30,21 @@ public class ClassroomController {
         if(classroomList.isEmpty()){
             model.addAttribute("adminAccess", true);
         }
+
         return "HomePage";
     }
+
+    @GetMapping("/ClassroomList")
+    public String ClassroomListRender(Model model, HttpSession session) throws IOException, SQLException {
+        homePageRender(model);
+        if((boolean)session.getAttribute("is_Admin")==true){
+            model.addAttribute("adminClassList", true);
+        }
+
+        return "HomePage";
+    }
+
+
     @RequestMapping("/LoginClass")
     public String loginClassRender(HttpSession session, @RequestParam(value = "id") long parameter) throws IOException, SQLException {
         Classroom myClass = ClassroomDao.getClassroom(parameter);
