@@ -216,7 +216,26 @@ main {
     color: rgba(255, 255, 255, 1)!important;
     text-decoration: none;
 }
+.fa-plus-circle{
+    color: rgba(255,214,0,1);
+    font-size: 35px !important;
+}
 
+.fa-plus-circle_text {
+    visibility: hidden;
+    width: 120px;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+.fa-plus-circle:hover .fa-plus-circle_text{
+    visibility: visible;
+}
 .loginSubmitBtn{
     display: flex;
     justify-content: space-between;

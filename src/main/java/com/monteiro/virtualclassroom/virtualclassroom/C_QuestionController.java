@@ -57,7 +57,7 @@ public class C_QuestionController {
                 System.out.println(question.getQuestion_content());
                 question.setRadio(false);
             }
-            long id_classroom = (long) session.getAttribute("classroomID"); // temporary !!! Retrieve from session
+            long id_classroom = (long) session.getAttribute("classroomID"); 
             Question newQuestion = new Question(question_content, id_classroom , question.getIsRadio());
             System.out.println(" isRadio ? " + question.getIsRadio());
             QuestionDao.saveQuestion(newQuestion);

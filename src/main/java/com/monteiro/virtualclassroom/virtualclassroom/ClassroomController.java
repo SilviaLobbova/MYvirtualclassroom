@@ -16,7 +16,7 @@ import java.util.List;
 public class ClassroomController {
 
     @GetMapping("/")
-    public String homePageRender(Model model) throws IOException, SQLException {
+    public String homePageRender(Model model, HttpSession session) throws IOException, SQLException {
         System.out.println("GET /HomePage (ClassroomController)");
         List<Classroom> classroomList = new ArrayList<>();
         long n = ClassroomDao.getClassroomCount();
@@ -27,22 +27,25 @@ public class ClassroomController {
             classroomList.add(myClass);
         }
         model.addAttribute("classrooms", classroomList);
-        if(classroomList.isEmpty()){
+        if((classroomList.isEmpty() ) && (session.getAttribute("login_first")==null)){
             model.addAttribute("adminAccess", true);
         }
-
-        return "HomePage";
-    }
-
-    @GetMapping("/ClassroomList")
-    public String ClassroomListRender(Model model, HttpSession session) throws IOException, SQLException {
-        homePageRender(model);
-        if((boolean)session.getAttribute("is_Admin")==true){
+        else if((classroomList.isEmpty() ) && (session.getAttribute("login_first")!=null)){
             model.addAttribute("adminClassList", true);
         }
 
         return "HomePage";
     }
+
+//    @GetMapping("/ClassroomList")
+//    public String ClassroomListRender(Model model, HttpSession session) throws IOException, SQLException {
+//        homePageRender(model);
+//        if((boolean)session.getAttribute("is_Admin")==true){
+//
+//        }
+//
+//        return "HomePage";
+//    }
 
 
     @RequestMapping("/LoginClass")
