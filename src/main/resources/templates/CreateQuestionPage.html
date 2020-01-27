@@ -19,12 +19,19 @@
                 <span th:replace = "fragments/teacherLeftContent.html :: teacherLeftContent" />
                 <!-- Right part -->
                 <div class="teacherRightContent">
+                    <!-- msg box -->
+                    <div class="errorBox">
+                        <!--/*@thymesVar id="emptyField" type="java"*/-->
+                        <p th:if="${emptyField}" class="error">Please enter missing data</p>
+                        <!--/*@thymesVar id="isRadioEmpty" type="java"*/-->
+                        <p th:if="${isRadioEmpty}" class="error">Question option empty</p>
+                        <!--/*@thymesVar id="emptyContent" type="java"*/-->
+                        <p th:if="${emptyContent}" class="error">Content empty</p>
+                    </div>
                     <div class="questionBox">
-
-                    <form class="CreateQuestionForm" method="post" action="#" th:action="@{/CreateQuestionPage}" th:object="${question}">
+                    <!--/*@thymesVar id="QuestionDao" type="java"*/-->
+                    <form class="CreateQuestionForm" method="post" action="#" th:action="@{/CreateQuestionPage}">
                         <div class="questionBar ">
-                            <!--/*@thymesVar id="emptyField" type="java"*/-->
-                            <p th:if="${emptyField}" class="error">Please enter missing data</p>
                             <div class="questionContent col-7">
                                 <!-- set question -->
                                 <input class="col-12" type="text" id="question" name="question_content" placeholder="Enter the new question here.">

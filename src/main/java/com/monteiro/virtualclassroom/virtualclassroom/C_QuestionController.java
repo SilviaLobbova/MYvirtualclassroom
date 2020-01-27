@@ -1,6 +1,5 @@
 package com.monteiro.virtualclassroom.virtualclassroom;
 
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Option;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.OptionDao;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 
@@ -27,39 +25,38 @@ public class C_QuestionController {
     @PostMapping("/CreateQuestionPage")
     public String handleCreateQuestionRequest(
             @RequestParam String question_content,
-            boolean isRadio,
-            @RequestParam String option,
+            String option,
             Question question,
             @RequestParam(value= "option_content[]")String[] options_content, // specify value request in tab
-            Model model,
-            Classroom classroom,
-            HttpSession session) throws Exception {
+            Model model) throws Exception {
 
         System.out.println("POST /CreateQuestion (CreateQuestionController)");
 
-        // Verify if a field is empty on the question head
-        if(question_content.isEmpty() || (options_content == null)) { // (isRadio)
-//            System.out.println("missing");
-//            System.out.println("question content " + question_content);
-//            System.out.println("option choice " + isRadio);
-//            System.out.println("option content " + options_content);
+        // Verification if a field is empty on the question head
+        if(question_content.isEmpty()) {
+            System.out.println("No label");
             model.addAttribute("emptyField", true);
             return "CreateQuestionPage";
+        } else if(option == null){
+            System.out.println("Radio empty");
+            System.out.println(options_content[0]);
+            model.addAttribute("isRadioEmpty", true);
+            return "CreateQuestionPage";
+        } else if(options_content[0].isEmpty()) {
+            System.out.println("option_content empty");
+            model.addAttribute("emptyContent", true);
+            return "CreateQuestionPage";
         }
-        else {
-//            System.out.println(question_content+ ", " + isRadio);
-            if(option.equals("radio")) {
-                System.out.println(" in the if ");
-                System.out.println(question.getId_question());
-                question.setRadio(true);
-            } else {
-                System.out.println(" in the else");
-                System.out.println(question.getQuestion_content());
-                question.setRadio(false);
-            }
-            long id_classroom = (long) session.getAttribute("classroomID"); 
+        else if(option == "radio") {
+//                System.out.println(" in the if ");
+            question.setRadio(true);
+        } else if(option != "radio") {
+//                System.out.println(" in the else");
+            question.setRadio(false);
+        }
+            long id_classroom = (long) session.getAttribute("classroomID");
             Question newQuestion = new Question(question_content, id_classroom , question.getIsRadio());
-            System.out.println(" isRadio ? " + question.getIsRadio());
+//            System.out.println(" isRadio ? " + question.getIsRadio());
             QuestionDao.saveQuestion(newQuestion);
             int id_question = newQuestion.getId_question();
             System.out.println("writing question successful");
@@ -72,5 +69,4 @@ public class C_QuestionController {
             }
             return "TeacherPage";
         }
-    }
 }
