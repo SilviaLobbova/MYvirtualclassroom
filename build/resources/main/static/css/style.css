@@ -86,14 +86,6 @@ main {
     background: rgba(255, 255, 255, 1);
     margin: 20px 0;
 }
-.pageContent{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
-.pageTitle{
-    margin: 5%;   
-}
 
 .underline{
     background: rgba(255,214,0,1);
@@ -104,6 +96,13 @@ main {
 .content{
     display: flex;
     justify-content: center;
+    width: 100%;
+    height:100%;
+    padding-bottom: 10%;
+}
+
+.classesContent{
+    display: flex;
     width: 100%;
     height:100%;
     padding-bottom: 10%;
@@ -217,25 +216,11 @@ main {
     text-decoration: none;
 }
 .fa-plus-circle{
-    color: rgba(255,214,0,1);
-    font-size: 35px !important;
-}
+     color: rgba(255,214,0,1);
+     font-size: 45px !important;
+     margin: 25px 10px 0 0;
+ }
 
-.fa-plus-circle_text {
-    visibility: hidden;
-    width: 120px;
-    color: black;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-}
-.fa-plus-circle:hover .fa-plus-circle_text{
-    visibility: visible;
-}
 .loginSubmitBtn{
     display: flex;
     justify-content: space-between;
@@ -290,4 +275,10 @@ footer {
     text-align: center;
     background: red;
     color: white;
+}
+.classroomsLeftContent{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 42px;
 }

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 
@@ -28,7 +30,9 @@ public class C_QuestionController {
             String option,
             Question question,
             @RequestParam(value= "option_content[]")String[] options_content, // specify value request in tab
-            Model model) throws Exception {
+            Model model,
+            HttpSession session
+        ) throws Exception {
 
         System.out.println("POST /CreateQuestion (CreateQuestionController)");
 

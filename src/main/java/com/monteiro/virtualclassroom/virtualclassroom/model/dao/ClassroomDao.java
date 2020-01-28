@@ -4,6 +4,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
@@ -13,6 +14,8 @@ import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
 import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.BDD_PSW;
@@ -36,19 +39,38 @@ public class ClassroomDao {
     }
 
     // retrieve classroom method
-    public static Classroom getClassroom(long classroomId) throws SQLException, IOException {
+    public static Classroom getClassroom(long firstId) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
 
             Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class);//creates a new dao object
 
-            return clashClassroomDao.queryBuilder().where().eq("id_classroom", classroomId).queryForFirst();
+            return clashClassroomDao.queryBuilder().where().eq("id_classroom", firstId).queryForFirst();
 
         }  finally {
             connectionSource.close();
         }
     }
+    public static List<Classroom> getClassroomRowsList(long offset, long end) throws IOException, SQLException {
+        List<Classroom> classroomRowList = new ArrayList<Classroom>();
+        JdbcConnectionSource connectionSource = null;
+        try {
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<Classroom, Long> dao = DaoManager.createDao(connectionSource, Classroom.class);
+            QueryBuilder<Classroom, Long> queryBuilder = dao.queryBuilder();
+            queryBuilder.offset(offset).limit(end);
+            PreparedQuery<Classroom> preparedQuery = queryBuilder.prepare();
+// query for all accounts that have "qwerty" as a password
+            classroomRowList = dao.query(preparedQuery);
+            return classroomRowList;
+
+        }  finally {
+            connectionSource.close();
+        }
+
+    }
+
     public static long getClassroomCount() throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {

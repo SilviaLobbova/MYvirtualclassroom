@@ -25,6 +25,15 @@ function openAdminProfile(){
         adminProfile.className = "adminProfileBox"
     }
 }
+function openCreateClassroom(){
+    var add = document.getElementById("adminOnly");
+    if(add.className === "adminOnly"){
+        add.className += " openCreateClass"
+    }
+    else{
+        add.className = "adminOnly"
+    }
+}
 function openQuestionContent(){
     var hiddenAns = document.getElementById("hiddenAnswer");
     if(hiddenAns.className === "hiddenAnswer"){
@@ -34,7 +43,15 @@ function openQuestionContent(){
         hiddenAns.className = "hiddenAnswer"
     }
 }
-
+function openClassroomDetails(){
+    var hiddenDetails = document.getElementById("hiddenClassroom");
+    if (hiddenDetails.className === "hiddenClassroom"){
+        hiddenDetails.className += " showClassroom"
+    }
+    else{
+        hiddenDetails.className= "hiddenClassroom"
+    }
+}
 // function that toggles the input type - to text (show psw) and password (hide psw)
 function togglePassword(input){
     if (input.attr("type") == "password") {

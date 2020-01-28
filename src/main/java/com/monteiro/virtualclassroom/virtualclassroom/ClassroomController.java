@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -20,33 +21,32 @@ public class ClassroomController {
         System.out.println("GET /HomePage (ClassroomController)");
         List<Classroom> classroomList = new ArrayList<>();
         long n = ClassroomDao.getClassroomCount();
-        int id;
-        Classroom myClass;
-        for(id=1;id<=n;id++){
-            myClass = ClassroomDao.getClassroom(id);
-            classroomList.add(myClass);
-        }
+        int id = 0;
+        classroomList = ClassroomDao.getClassroomRowsList(id, n);
+        //sorting the classroom's list by alphabetical order
+        classroomList.sort(Comparator.comparing(Classroom::getClassroom_name));
+        System.out.println(n);
+        System.out.println(classroomList);
         model.addAttribute("classrooms", classroomList);
+
         if((classroomList.isEmpty() ) && (session.getAttribute("login_first")==null)){
             model.addAttribute("adminAccess", true);
         }
         else if((classroomList.isEmpty() ) && (session.getAttribute("login_first")!=null)){
             model.addAttribute("adminClassList", true);
         }
-
+        else if((!classroomList.isEmpty()) && (session.getAttribute("login_first")!=null)){
+            model.addAttribute("adminAddClass", true);
+        }
         return "HomePage";
     }
 
-//    @GetMapping("/ClassroomList")
-//    public String ClassroomListRender(Model model, HttpSession session) throws IOException, SQLException {
-//        homePageRender(model);
-//        if((boolean)session.getAttribute("is_Admin")==true){
-//
-//        }
-//
-//        return "HomePage";
-//    }
-
+    @PostMapping("/addClassroom")
+    public String createClassroom(@RequestParam String classroomName) throws IOException, SQLException {
+        Classroom newClass = new Classroom (classroomName);
+        ClassroomDao.saveClassroom(newClass);
+        return "redirect:/";
+    }
 
     @RequestMapping("/LoginClass")
     public String loginClassRender(HttpSession session, @RequestParam(value = "id") long parameter) throws IOException, SQLException {
