@@ -11,6 +11,8 @@ import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
+
 import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
 
 
@@ -33,6 +35,20 @@ public class OptionDao {
         }
     }
 
+    /**
+     * @param idQuestion id de la question
+     * @return les options de reponse de la question
+     */
+    public static List<Option> getAllOptionsFromId(int idQuestion) throws Exception {
+        JdbcConnectionSource connectionSource = null;
+        try{
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<Option, String> clashOptionDao = DaoManager.createDao(connectionSource, Option.class);
+            return clashOptionDao.queryBuilder().where().eq("id_question", idQuestion).query();
+        } finally {
+            connectionSource.close();
+        }
+    }
     // retrieve classroom method
     public static Option getOption(int option_id) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
