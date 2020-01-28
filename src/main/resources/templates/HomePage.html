@@ -24,8 +24,8 @@
                 <div th:replace = "~{fragments/titlePage.html :: titlePage(title='Classrooms')}"></div>
                 <!-- Main contain -->
 
-                <div th:class="${session.is_Admin}? 'classesContent' : 'content'">
-                    <div th:if="${session.is_Admin == true}" class="classroomsLeftContent">
+                <div th:class="${session.is_Admin}? 'classesContent' : 'content'" id="classesContent">
+                    <div th:if="${session.is_Admin == true}" class="classroomsLeftContent" id="classroomsLeftContent">
                         <div th:replace="~{fragments/studentframe.html :: studentFrame}"></div>
                     </div>
                     <ul class="classroomList" >

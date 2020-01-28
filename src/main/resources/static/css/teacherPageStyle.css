@@ -283,10 +283,10 @@ main {
     font-size: 13px;
 }
 
-.studentFrame {
-    box-shadow: 2px 2px 5px rgba(65,65,65,1);
-    margin-top: 20px;
-}
+/*.studentFrame {*/
+/*    box-shadow: 2px 2px 5px rgba(65,65,65,1);*/
+/*    margin-top: 20px;*/
+/*}*/
 .frameHeader {
     display: flex;
     justify-content: space-between;

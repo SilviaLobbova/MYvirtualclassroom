@@ -44,12 +44,12 @@ function openQuestionContent(){
     }
 }
 function openClassroomDetails(){
-    var hiddenDetails = document.getElementById("hiddenClassroom");
-    if (hiddenDetails.className === "hiddenClassroom"){
+    var hiddenDetails = document.getElementById("classesContent");
+    if (hiddenDetails.className === "classesContent"){
         hiddenDetails.className += " showClassroom"
     }
     else{
-        hiddenDetails.className= "hiddenClassroom"
+        hiddenDetails.className= "classesContent"
     }
 }
 // function that toggles the input type - to text (show psw) and password (hide psw)
