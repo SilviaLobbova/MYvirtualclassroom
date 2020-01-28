@@ -6,18 +6,23 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
-
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
 
+/**
+ * La classe pour les requetes sur les questions
+ */
 public class QuestionDao {
     // constructor
     public QuestionDao(){
     }
 
+    /**
+     * Sauvegarde ou modifie la question en base
+     */
     public static void saveQuestion(Question question) throws Exception {
         JdbcConnectionSource connectionSource = null;
         // instantiate the dao with the connection source
@@ -32,8 +37,25 @@ public class QuestionDao {
         }
     }
 
+    // retrieve all results
+
+    /**
+     * @param idClassRoom id de la classe
+     * @return les questions de la classe
+     */
+    public static List<Question> getAllQuestionFromId(int idClassRoom) throws Exception {
+        JdbcConnectionSource connectionSource = null;
+        try{
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<Question, String> clashQuestionDao = DaoManager.createDao(connectionSource, Question.class);
+            return clashQuestionDao.queryBuilder().where().eq("id_classroom", idClassRoom).query();
+        } finally {
+            connectionSource.close();
+        }
+    }
+
     // retrieve question method
-    public static Question getQuestion(String question) throws SQLException, IOException {
+    public static Question getQuestion(Question question) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
