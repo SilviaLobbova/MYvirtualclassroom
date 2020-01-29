@@ -34,12 +34,10 @@
 
                                 </li>
                             </a>
-                            <a th:if="${session.is_Admin == true}" th:each="classroom: ${classrooms}"  href="javascript:void(0)" th:onclick="openClassroomDetails()">
-                             <li class="classroomListItem" th:text="${classroom.getClassroom_name()}" >
-
+                            <a th:if="${session.is_Admin == true}" th:each="classroom: ${classrooms}"  id="className">
+                             <li class="classroomListItem" id="classroomListItem" th:text="${classroom.getClassroom_name()}" th:value="${classroom.getClassroom_name()}">
                             </li>
                         </a>
-
                     </ul>
 
                    <div th:if="${adminAccess}" class="adminOnly">"There are no classes available. Please login as admin to create one"

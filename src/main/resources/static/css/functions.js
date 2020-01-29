@@ -43,15 +43,42 @@ function openQuestionContent(){
         hiddenAns.className = "hiddenAnswer"
     }
 }
+
 function openClassroomDetails(){
     var hiddenDetails = document.getElementById("classesContent");
+
     if (hiddenDetails.className === "classesContent"){
-        hiddenDetails.className += " showClassroom"
+        hiddenDetails.className += " showClassroom";
+        document.getElementById("classTitle").textContent = document.getElementById("classroomListItem").textContent;
     }
     else{
         hiddenDetails.className= "classesContent"
     }
 }
+// $('#sortable2').each(function(){// id of ul
+//     var li = $(this).find('li')//get each li in ul
+//
+//     console.log(li.text())//get text of each li
+//
+//     jQuery(document).ready(function(){
+//         jQuery('#sortable2 li').each(function(){
+//             console.log($(this).text()); //prints each li text value in console
+//         });
+//
+//     });
+
+$(document).ready(function() {
+    $(".studentFrame").hide();
+    $(".classroomListItem").on('click', function() {
+    // var value = $("#className li:selected").attr('text');
+    // console.log(value);
+    $(".studentFrame").show();;
+    console.log($(this).text())
+    $('.classTitle').text($(this).text())
+    // $('.classTitle li').val($(".classroomListItem").data('text'))
+})
+});
+
 // function that toggles the input type - to text (show psw) and password (hide psw)
 function togglePassword(input){
     if (input.attr("type") == "password") {
@@ -89,3 +116,5 @@ $(document).ready(function() {
 $(".profilePassword").click(function() {
     $(this).replaceWith('<input class = "col-6" value="Please click on Update" disabled>');
 });
+
+

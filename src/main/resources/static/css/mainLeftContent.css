@@ -60,14 +60,12 @@
 /*    margin-top: 20px;*/
 /*}*/
 .studentFrame{
-    display: none;
-}
-.showClassroom .studentFrame{
     display: flex;
     flex-direction: column;
     position: absolute;
     box-shadow: 2px 2px 5px rgba(65, 65, 70, 1);
     margin-top: 20px;
+    width: 170px;
 }
 .frameHeader {
     display: flex;
