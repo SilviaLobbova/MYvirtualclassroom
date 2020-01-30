@@ -85,7 +85,7 @@ public class ClassroomDao {
     }
 
     // delete classroom method
-    public static void deleteClassroom(int id) throws SQLException, IOException {
+    public static void deleteClassroom(String name) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the dao with the connection source
@@ -96,7 +96,7 @@ public class ClassroomDao {
             // DAO setting
             DeleteBuilder<Classroom, String> deleteBuilder = classroom.deleteBuilder();
             // request initialization
-            deleteBuilder.where().eq("id_classroom", id);
+            deleteBuilder.where().eq("classroom_name", name);
             // request execution
             deleteBuilder.delete();
         } finally {
@@ -105,7 +105,7 @@ public class ClassroomDao {
     }
 
     // update classroom
-    public static void updateQuestion(int id,String targetColumn, String newValue) throws SQLException, IOException {
+    public static void updateClassroomName(String oldValue, String newValue) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the DAO with the connection source
@@ -116,9 +116,9 @@ public class ClassroomDao {
             // DAO setting
             UpdateBuilder<Classroom,String > updateBuilder = classroomUpdate.updateBuilder();
             // set the criteria
-            updateBuilder.where().eq("id_classroom", id);
+            updateBuilder.where().eq("classroom_name", oldValue);
             // update the value of the target fields
-            updateBuilder.updateColumnValue(targetColumn, newValue);
+            updateBuilder.updateColumnValue(oldValue, newValue);
             // update execution
             updateBuilder.update();
         } finally {

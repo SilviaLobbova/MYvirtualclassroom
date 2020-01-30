@@ -1,10 +1,23 @@
 <div th:fragment="studentFrame" class="studentFrame" id="studentFrame"  xmlns:th="http://www.w3.org/1999/xhtml">
-    <div class="frameHeader">
-        <div class="classTitle" id="classTitle" value="Hello">Hello</div>
-        <div class="frameHeaderOptions">
-            <button class="updateFrame"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-            <button class="deleteFrame"><i class="fa fa-trash" aria-hidden="true"></i></button>
-        </div>
+    <div class="frameHeader" id="frameHeader">
+<!--        <span th:each="classroom: ${classrooms}">-->
+
+<!--            <div class="classTitle" id="classTitle">Hello</div>-->
+            <p class="classTitle" name="classTitle"></p>
+            <div class="frameHeaderOptions">
+                <form class="updateFrame" th:action="@{/updateClassroom}" method="post">
+                <button type="submit" class="updateFrameIcon" name="classNameModify">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+
+            </form>
+            <form class="deleteFrame" th:action="@{/deleteClassroom}" method="post">
+                <button type="submit" class="deleteFrameIcon" name="classDelete">
+                    <i class="fa fa-trash" aria-hidden="true" ></i>
+                </button>
+
+            </form>
+            </div>
     </div>
     <div class="frameBody">
         <ul>

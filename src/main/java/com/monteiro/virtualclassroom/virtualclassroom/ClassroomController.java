@@ -41,10 +41,26 @@ public class ClassroomController {
         return "HomePage";
     }
 
+//    @GetMapping("/ClassID")
+//    public String getUrl(@RequestParam(value = "id") long classroomId){
+//        return "redirect:/";
+//    }
     @PostMapping("/addClassroom")
     public String createClassroom(@RequestParam String classroomName) throws IOException, SQLException {
         Classroom newClass = new Classroom (classroomName);
         ClassroomDao.saveClassroom(newClass);
+        return "redirect:/";
+    }
+    @PostMapping("/deleteClassroom")
+    public String deleteClassroomFromList(@RequestParam String classDelete) throws IOException, SQLException {
+        System.out.println(classDelete);
+        ClassroomDao.deleteClassroom(classDelete);
+        return "redirect:/";
+    }
+    @PostMapping("/updateClassroom")
+    public String updateClassroomfromList(@RequestParam String classNameModify){
+        System.out.println(classNameModify);
+//        ClassroomDao.updateClassroomName();
         return "redirect:/";
     }
 
