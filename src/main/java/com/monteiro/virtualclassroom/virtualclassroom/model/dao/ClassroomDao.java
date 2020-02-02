@@ -118,7 +118,7 @@ public class ClassroomDao {
             // set the criteria
             updateBuilder.where().eq("classroom_name", oldValue);
             // update the value of the target fields
-            updateBuilder.updateColumnValue(oldValue, newValue);
+            updateBuilder.updateColumnValue("classroom_name", newValue);
             // update execution
             updateBuilder.update();
         } finally {

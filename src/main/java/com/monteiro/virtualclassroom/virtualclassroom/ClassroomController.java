@@ -34,6 +34,7 @@ public class ClassroomController {
         }
         else if((classroomList.isEmpty() ) && (session.getAttribute("login_first")!=null)){
             model.addAttribute("adminClassList", true);
+            model.addAttribute("adminAddClass", true);
         }
         else if((!classroomList.isEmpty()) && (session.getAttribute("login_first")!=null)){
             model.addAttribute("adminAddClass", true);
@@ -48,7 +49,9 @@ public class ClassroomController {
     @PostMapping("/addClassroom")
     public String createClassroom(@RequestParam String classroomName) throws IOException, SQLException {
         Classroom newClass = new Classroom (classroomName);
-        ClassroomDao.saveClassroom(newClass);
+        if (!classroomName.equals("")){
+            ClassroomDao.saveClassroom(newClass);
+        }
         return "redirect:/";
     }
     @PostMapping("/deleteClassroom")
@@ -57,10 +60,15 @@ public class ClassroomController {
         ClassroomDao.deleteClassroom(classDelete);
         return "redirect:/";
     }
-    @PostMapping("/updateClassroom")
-    public String updateClassroomfromList(@RequestParam String classNameModify){
+    @RequestMapping(value = "/updateClassroom")
+    public String updateClassroomfromList(@RequestParam String classNameModify, @RequestParam String newClassroomName) throws IOException, SQLException {
         System.out.println(classNameModify);
-//        ClassroomDao.updateClassroomName();
+        System.out.println(newClassroomName);
+        if(!newClassroomName.equals("")){
+            System.out.println("le nom n'est pas vide");
+            ClassroomDao.updateClassroomName(classNameModify, newClassroomName);
+        }
+        System.out.println("le nom est vide");
         return "redirect:/";
     }
 

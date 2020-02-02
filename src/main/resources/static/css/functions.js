@@ -44,75 +44,57 @@ function openQuestionContent(){
     }
 }
 
-// function openClassroomDetails(){
-//     var hiddenDetails = document.getElementById("classesContent");
-//
-//     if (hiddenDetails.className === "classesContent"){
-//         hiddenDetails.className += " showClassroom";
-//         document.getElementById("classTitle").textContent = document.getElementById("classroomListItem").textContent;
-//     }
-//     else{
-//         hiddenDetails.className= "classesContent"
-//     }
-// }
-
-$(document).ready(function() {
-    $(".studentFrame").hide();
-    console.log("here I went")
-    $(".classroomListItem").on('click', function() {
-    // var value = $("#className li:selected").attr('text');
-    // console.log(value);
-    $(".studentFrame").show();
-    console.log($(this).text())
-    $('.classTitle').text($(this).text())
-        $(".deleteFrameIcon").attr("value", $(this).text())
-        $(".updateFrameIcon").attr("value", $(this).text())
-        console.log($(".deleteFrameIcon").attr("value"))
-        console.log($('.classTitle').attr("name"))
-    // $('.classTitle li').val($(".classroomListItem").data('text'))
-})
-    $(".deleteFrame").on('click', function(){
-        // $('this').attr("name", "ClassName")
-        var className = $('.classTitle').text()
-        if (window.confirm("Are you sure that you want to delete the classroom " + className + " ?")===true) {
-            location.action = this.action;
-        }else{
-            window.location('/');
-        }
-    })
-    // var elementClicked;
-    // $("body").click(function(){
-    //     elementClicked = true;
-    // })
-    var handler = function (){
-        var className = $('.classTitle').text()
-        console.log("entered function")
-        $(".classTitle").replaceWith('<input class="classNameInput" name = "newValue" value= '+ className + ' >')
-        $(".fa-pencil").replaceWith('<button class="renameBtn">OK</button>');
+function showStudentFrame(){
+    var x = document.getElementById("classroomsLeftContent");
+    if (x.style.visibility === "hidden") {
+        x.style.visibility = "visible";
     }
+}
 
-    $(".fa-pencil").bind('click', handler);
-    //     console.log("entered 2.function")
-    //     var className = $('.classTitle').text()
-    //     $(".classTitle").replaceWith('<input class="classNameInput" name = "newValue" value= '+ className + ' >')
-    //     $(this).replaceWith('<button class="renameBtn">OK</button>')
-    // })
-    $( "body" ).on('click',function(evt) {
-        console.log("entered 3;function")
-        if(evt.target.className !== 'fa-pencil' && evt.target.id !== 'frameHeader') {
-            console.log("OK")
-            $(".fa-pencil").unbind('click', handler)
-                console.log("NOK")
-        }else{
-            console.log("pas compris")
-        }
+function editClass(){
+    var x = document.getElementById("updateFrame");
+    var y= document.getElementById("updateForm");
+    if (x.style.display === "flex") {
+        x.style.display = "none";
+        y.style.display = "flex"
+    } else {
+        x.style.display = "flex";
+        y.style.display = "none"
+    }
+}
 
-    });
-    // $('body').on('click', function(){
-    //     $(".classNameInput").replaceWith($(".classTitle"))
-    //     $(".renameBtn").replaceWith($(".fa-pencil"))
-    // })
+function removeToggle(event){
+    var x = document.getElementById("updateFrame")
+    var y= document.getElementById("updateForm")
+    var except1 = document.getElementById("classroomListItem")
+    var except2 = document.getElementById("updateFrameIcon")
+    var except3 = document.getElementById("classNameInput")
+    except1.addEventListener("click", function (ev) {
+        ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
+    }, false);
+    except2.addEventListener("click", function (ev) {
+        ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
+    }, false);
+    except3.addEventListener("click", function (ev) {
+        ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
+    }, false);
 
+    if (y.style.display === "flex"){
+        y.style.display = "none";
+        x.style.display = "flex";
+    }
+}
+$(document).ready(function() {
+    console.log("here I went")
+    // $(".studentFrame").hide();
+    console.log("here I went after")
+    $(".classroomListItem").click(function() {
+    console.log($(this).text())
+    $('.studentFrame').attr("value",$(this).text())
+    $('.classTitle').text($(this).text())
+    $(".classDelete").attr("value", $(this).text())
+    $(".renameClassBtn").attr("value",$(this).text())
+})
 });
 
 // function that toggles the input type - to text (show psw) and password (hide psw)

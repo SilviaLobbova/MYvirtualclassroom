@@ -64,7 +64,7 @@
     flex-direction: column;
     position: absolute;
     box-shadow: 2px 2px 5px rgba(65, 65, 70, 1);
-    width: 170px;
+    width: 185px;
 }
 .frameHeader {
     display: flex;
@@ -84,11 +84,23 @@ button.updateFrameIcon, button.deleteFrameIcon {
     background: none;
     border: none;
 }
-.renameBtn{
+.renameClassBtn{
     background: rgba(255,214,0,1);
 }
 .updateFrame .fa-pencil,.deleteFrame .fa-trash {
     color: rgba(255,214,0,1);
+}
+.updateFrame{
+    display: flex;
+    width: 140px;
+    justify-content: space-between;
+    height: 27px;
+}
+.invisible{
+    visibility: hidden;
+}
+.visible{
+    visibility: visible;
 }
 .frameBody {
     padding: 10px;

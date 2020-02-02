@@ -7,7 +7,7 @@
     <script type="text/javascript" th:src="@{/css/functions.js}"></script>
     <title>Home page</title>
 </head>
-<body>
+<body onclick="removeToggle()">
 
     <div class="container">
         <!-- Header -->
@@ -25,7 +25,7 @@
                 <!-- Main contain -->
 
                 <div th:class="${session.is_Admin}? 'classesContent' : 'content'" id="classesContent">
-                    <div th:if="${session.is_Admin == true}" class="classroomsLeftContent" id="classroomsLeftContent">
+                    <div th:if="${session.is_Admin == true}" class="classroomsLeftContent" id="classroomsLeftContent" style="visibility: hidden;">
                         <div th:replace="~{fragments/studentframe.html :: studentFrame}"></div>
                     </div>
                     <ul class="classroomList" >
@@ -35,7 +35,7 @@
                                 </li>
                             </a>
                             <a th:if="${session.is_Admin == true}" th:each="classroom: ${classrooms}"  id="className" >
-                             <li class="classroomListItem" id="classroomListItem" th:text="${classroom.getClassroom_name()}" th:value="${classroom.getClassroom_name()}">
+                             <li class="classroomListItem" onclick="showStudentFrame()" id="classroomListItem" th:text="${classroom.getClassroom_name()}" th:value="${classroom.getClassroom_name()}">
                             </li>
                         </a>
                     </ul>
