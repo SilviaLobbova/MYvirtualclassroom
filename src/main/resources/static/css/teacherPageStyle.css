@@ -215,6 +215,14 @@ main {
     background: rgba(255, 255, 255, 1);
     margin: 20px 0px;
 }
+.pageContent{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pageTitle{
+    margin: 5%;   
+}
 
 .underline{
     background: rgba(255,214,0,1);
@@ -283,10 +291,10 @@ main {
     font-size: 13px;
 }
 
-/*.studentFrame {*/
-/*    box-shadow: 2px 2px 5px rgba(65,65,65,1);*/
-/*    margin-top: 20px;*/
-/*}*/
+.studentFrame {
+    box-shadow: 2px 2px 5px rgba(65,65,65,1);
+    margin-top: 20px;
+}
 .frameHeader {
     display: flex;
     justify-content: space-between;
@@ -379,6 +387,11 @@ li .fa-trash{
     color: rgba(255, 255, 255, 1);
     font-size: xx-large;
 }
+.fa-sort-up {
+    color: rgba(255, 255, 255, 1);
+    font-size: xx-large;
+    margin-top: 15px;
+}
 .hiddenAnswer{
     display: none;
 }
@@ -394,7 +407,7 @@ li .fa-trash{
     display: flex;
     justify-content: flex-end;
 }
-.teacherOk {
+.btnAnswer {
     background-color:rgba(255,214,0,1);
     padding: 5px 15px;
     color: rgba(255, 255, 255, 1);
