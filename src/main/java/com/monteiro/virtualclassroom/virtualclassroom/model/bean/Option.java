@@ -15,9 +15,6 @@ public class Option {
     private int id_question;
 
     public Option() {}
-    public Option(String option_content){
-        this.option_content=option_content;
-    };
     public Option(String option_content, int id_question) {
         this.option_content = option_content;
         this.id_question = id_question;
@@ -31,13 +28,14 @@ public class Option {
         this.id_option = id_option;
     }
 
-    public String getOption_content() {
+    public String getOption_content(int id_question) {
         return option_content;
     }
 
     public void setOption_content(String option_content) {
         this.option_content = option_content;
     }
+
     public int getId_question() {
         return id_question;
     }
