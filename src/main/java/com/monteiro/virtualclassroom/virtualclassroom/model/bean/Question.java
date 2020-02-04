@@ -3,6 +3,8 @@ package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.util.List;
+
 @DatabaseTable(tableName = "questions")
 public class Question {
     @DatabaseField(generatedId = true)
@@ -15,7 +17,10 @@ public class Question {
     private long id_classroom;
 
     @DatabaseField(canBeNull = false)
-    private boolean isRadio;
+    private boolean isRadio =true;
+
+    // list option param
+    public List<Option> options;
 
     public Question(){};
 
@@ -50,10 +55,18 @@ public class Question {
     }
 
     public boolean getIsRadio() {
-        return isRadio;
+        return this.isRadio;
     }
 
     public void setRadio(boolean radio) {
-        isRadio = radio;
+        this.isRadio = radio;
+    }
+
+    // method  get and set of options
+    public List<Option> getOptions() {
+        return this.options;
+    }
+    public void setOptions(List<Option> options) {
+        this.options = options;
     }
 }

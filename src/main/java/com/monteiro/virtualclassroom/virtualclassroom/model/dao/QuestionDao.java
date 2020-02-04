@@ -4,10 +4,14 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.PreparedQuery;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
+import com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
@@ -21,7 +25,7 @@ public class QuestionDao {
     }
 
     /**
-     * Sauvegarde ou modifie la question en base
+     * Save or update the question in the database
      */
     public static void saveQuestion(Question question) throws Exception {
         JdbcConnectionSource connectionSource = null;
@@ -43,12 +47,29 @@ public class QuestionDao {
      * @param idClassRoom id de la classe
      * @return les questions de la classe
      */
-    public static List<Question> getAllQuestionFromId(int idClassRoom) throws Exception {
+    public static List<Question> getAllQuestionFromId(long idClassRoom, long startRow, long endRow) throws Exception {
+
+        // initiate a list of questions
+//        List<Question> questionList = new ArrayList<>();
+
+        // initiate connectionSource
+        JdbcConnectionSource connectionSource = null;
+        try {
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<Question, Long> clashQuestionDao = DaoManager.createDao(connectionSource, Question.class);
+            // retrieve options from it
+            return clashQuestionDao.queryBuilder().offset(startRow).limit(endRow).where().eq("id_classroom", idClassRoom).query();
+        } finally {
+            connectionSource.close();
+        }
+    }
+
+    public static long getQuestionCount() throws Exception {
         JdbcConnectionSource connectionSource = null;
         try{
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<Question, String> clashQuestionDao = DaoManager.createDao(connectionSource, Question.class);
-            return clashQuestionDao.queryBuilder().where().eq("id_classroom", idClassRoom).query();
+            return clashQuestionDao.queryBuilder().countOf();
         } finally {
             connectionSource.close();
         }

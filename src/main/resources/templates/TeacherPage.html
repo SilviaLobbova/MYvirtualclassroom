@@ -23,12 +23,6 @@
         <div th:if="${session.is_Admin == false }" >
             <div th:replace="~{fragments/navBarUser.html :: navBarUser}"></div>
         </div>
-<!--        <div th:if="${userIsAdmin}"  >-->
-<!--            <div th:replace="~{fragments/navBarAdmin.html :: navBarAdmin}"></div>-->
-<!--        </div>-->
-<!--        <div th:if="${userIsNotAdmin}" >-->
-<!--            <div th:replace="~{fragments/navBarUser.html :: navBarUser}"></div>-->
-<!--        </div>-->
 
         <main>
             <div class="pageContent">
@@ -41,35 +35,38 @@
                     </div>
 
                     <!-- Right part -->
-                    <div class="teacherRightContent"> 
-                        <div class="questionBox">
-                            <div class="questionBar ">
-                                <div class="questionContent">
-                                    <span class="questionLabel">Question 1: </span>
-                                    <span class="questionText">What is the family name of Mickey ?</span> 
+                    <div class="teacherRightContent">
+<!--                        look at it this is when u have to load the function-->
+                        <div class="questionBox" th:each="question: ${questions}">
+                            <div class="questionBar">
+                                <div class="questionContent" >
+                                    <span class="questionTitle">Question: </span>
+<!--                                    use the id question to identify the question from the others -->
+                                    <div th:class="questionLabel"  th:text="${question.getQuestion_content()}"></div>
                                 </div>
                                 <div class="topIcons">
                                     <a class="lockIcon" role="button">
-                                    <i class="fa fa-lock" id="locker" ></i>
+                                        <i class="fa fa-lock" id="locker"></i>
                                     </a>
-                                    <a class="arrowIcon" onclick="openQuestionContent()" data-toggle="collapse" href="#answer" role="button" aria-expanded="false" aria-controls="collapse">
-                                    <i class="fas fa-sort-down" id="iconUpDown"></i>
-                                    </a>
+                                    <a class="arrowIcon"   data-toggle="collapse" href="#answer" role="button" aria-expanded="false" aria-controls="collapse">
+                                    <i class="fas fa-sort-down" th:id="${question.getId_question()}"></i></a>
                                 </div>
                             </div>
-                            <div id="hiddenAnswer" class="hiddenAnswer">
-                                <div class="answerContent" >
-                                    <div class="answerBody">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                    </div>
-                                    <div class="answerButtonBar">
-                                        <button class="teacherOk">
-                                            OK
-                                        </button>
-                                    </div>
+<!--                            choice of answer-->
+                            <div th:id="hiddenAnswer" th:class="hiddenAnswer" th:classappend="${question.getId_question()}">
+                                <div class="answerContent" th:each="option: ${question.getOptions()}">
+<!--                                    <div th:text="${question.getIsRadio()}"></div>-->
+                                    <span th:if="${question.getIsRadio()== false }"><input th:type="radio" th:name="option_type"></span>
+                                    <span th:if="${question.getIsRadio()== true }"><input th:type="checkbox" th:name="option_type"></span>
+<!--                                        -->
+                                    <label class="answerBody" th:text="${option.getOption_content(question.getId_question())}"></label>
+                                </div>
+<!--                                button ok-->
+                                <div class="answerButtonBar">
+                                    <button id ="btnAnswer" class="btnAnswer">OK</button>
                                 </div>
                                 <div class="answerFooter">
-                                    <div clas="answerFooterIcons">
+                                    <div class="answerFooterIcons">
                                         <button class="updateAnswer"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                                         <button class="deleteAnswer"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                     </div>
@@ -80,6 +77,11 @@
                 </div>
             </div>
         </main>
+        <script>
+            $(".btnAnswer").click(function(e) {
+                console.log("btn clicked");
+            });
+        </script>
         <footer th:replace = "fragments/footer.html :: footer" />
     </div>
 
