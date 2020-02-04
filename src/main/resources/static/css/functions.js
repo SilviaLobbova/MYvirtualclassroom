@@ -51,6 +51,36 @@ function showStudentFrame(){
     }
 }
 
+
+function loadSearchResult() {
+    var url = "/studentFrame.html";
+    $("#classroomsLeftContent").load(url + ' #studentFrame');
+    // if ($('.classroomListItem').val() != '') {
+    //     url = url + $('.classroomListItem').val();
+    // }
+}
+function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("classroomsLeftContent").innerHTML =
+                this.responseText;
+        }
+    };
+    xhttp.open("GET", "studentFrame", true);
+    xhttp.send();
+}
+
+function retrieveGuests() {
+    var url = '/' + $(".classroomListItem").val();
+    //
+    // if ($('#searchSurname').val() != '') {
+    //     url = url + '/' + $('#searchSurname').val();
+    // }
+
+    $("#classroomsLeftContent").load(url);
+}
+
 function editClass(){
     var x = document.getElementById("updateFrame");
     var y= document.getElementById("updateForm");
@@ -62,40 +92,35 @@ function editClass(){
         y.style.display = "none"
     }
 }
-
-function removeToggle(event){
+function removeToggle(){
+    console.log("entered toggle remove function")
     var x = document.getElementById("updateFrame")
     var y= document.getElementById("updateForm")
-    var except1 = document.getElementById("classroomListItem")
-    var except2 = document.getElementById("updateFrameIcon")
-    var except3 = document.getElementById("classNameInput")
-    except1.addEventListener("click", function (ev) {
-        ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-    }, false);
-    except2.addEventListener("click", function (ev) {
-        ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-    }, false);
-    except3.addEventListener("click", function (ev) {
-        ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-    }, false);
-
     if (y.style.display === "flex"){
+        console.log("entered the first statement")
         y.style.display = "none";
         x.style.display = "flex";
-    }
-}
-$(document).ready(function() {
-    console.log("here I went")
-    // $(".studentFrame").hide();
-    console.log("here I went after")
-    $(".classroomListItem").click(function() {
-    console.log($(this).text())
-    $('.studentFrame').attr("value",$(this).text())
-    $('.classTitle').text($(this).text())
-    $(".classDelete").attr("value", $(this).text())
-    $(".renameClassBtn").attr("value",$(this).text())
-})
-});
+    }else{
+        console.log("form is not displayed, cannot do anything")
+        return;
+    }};
+
+// $(document).ready(function() {
+//         //call function when page is loaded
+//
+//
+//     console.log("here I went")
+//     // $(".studentFrame").hide();
+//     console.log("here I went after")
+//     // $(".classroomListItem").click(function() {
+//     // console.log($(this).text())
+//     //
+//     //
+//
+//
+//
+// // })
+// });
 
 // function that toggles the input type - to text (show psw) and password (hide psw)
 function togglePassword(input){

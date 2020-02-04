@@ -1,7 +1,9 @@
 package com.monteiro.virtualclassroom.virtualclassroom;
 
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.ClassroomDao;
+import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,10 +44,28 @@ public class ClassroomController {
         return "HomePage";
     }
 
-//    @GetMapping("/ClassID")
-//    public String getUrl(@RequestParam(value = "id") long classroomId){
-//        return "redirect:/";
-//    }
+    @RequestMapping(value = "/studentFrame/{className}", method = RequestMethod.GET)
+    public String getStudentsOfTheClass(@PathVariable("className")String className, Model model) throws IOException, SQLException {
+        System.out.println("enters the studentFrame Controller");
+        System.out.println(className);
+        model.addAttribute("studentFrameActive", true);
+        List<User> studentsList;
+        Classroom myClass = ClassroomDao.getClassroomByName(className);
+        long classroomID = myClass.getId_classroom();
+        System.out.println(classroomID);
+        studentsList = UserDao.getStudentsList(classroomID);
+        System.out.println(studentsList);
+        model.addAttribute("students", studentsList);
+        return "fragments/studentFrame";
+    }
+
+    @RequestMapping(value = "/deleteStudent")
+    public String deleteStudentFromClassroomList(int studentDelete) throws IOException, SQLException {
+        System.out.println(studentDelete);
+        UserDao.deleteUser(studentDelete);
+        return "redirect:/";
+    }
+
     @PostMapping("/addClassroom")
     public String createClassroom(@RequestParam String classroomName) throws IOException, SQLException {
         Classroom newClass = new Classroom (classroomName);
@@ -54,6 +74,7 @@ public class ClassroomController {
         }
         return "redirect:/";
     }
+
     @PostMapping("/deleteClassroom")
     public String deleteClassroomFromList(@RequestParam String classDelete) throws IOException, SQLException {
         System.out.println(classDelete);
@@ -61,7 +82,7 @@ public class ClassroomController {
         return "redirect:/";
     }
     @RequestMapping(value = "/updateClassroom")
-    public String updateClassroomfromList(@RequestParam String classNameModify, @RequestParam String newClassroomName) throws IOException, SQLException {
+    public String updateClassroomFromList(@RequestParam String classNameModify, @RequestParam String newClassroomName) throws IOException, SQLException {
         System.out.println(classNameModify);
         System.out.println(newClassroomName);
         if(!newClassroomName.equals("")){

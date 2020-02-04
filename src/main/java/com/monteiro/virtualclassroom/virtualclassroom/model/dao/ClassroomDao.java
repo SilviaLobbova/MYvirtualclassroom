@@ -52,6 +52,19 @@ public class ClassroomDao {
             connectionSource.close();
         }
     }
+    public static Classroom getClassroomByName(String className) throws SQLException, IOException {
+        JdbcConnectionSource connectionSource = null;
+        try {
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+
+            Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class);//creates a new dao object
+
+            return clashClassroomDao.queryBuilder().where().eq("classroom_name", className).queryForFirst();
+
+        }  finally {
+            connectionSource.close();
+        }
+    }
     public static List<Classroom> getClassroomRowsList(long offset, long end) throws IOException, SQLException {
         List<Classroom> classroomRowList = new ArrayList<Classroom>();
         JdbcConnectionSource connectionSource = null;
@@ -61,14 +74,12 @@ public class ClassroomDao {
             QueryBuilder<Classroom, Long> queryBuilder = dao.queryBuilder();
             queryBuilder.offset(offset).limit(end);
             PreparedQuery<Classroom> preparedQuery = queryBuilder.prepare();
-// query for all accounts that have "qwerty" as a password
             classroomRowList = dao.query(preparedQuery);
             return classroomRowList;
 
         }  finally {
             connectionSource.close();
         }
-
     }
 
     public static long getClassroomCount() throws SQLException, IOException {
@@ -111,7 +122,6 @@ public class ClassroomDao {
             // initiate the DAO with the connection source
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<Classroom, String>  classroomUpdate = DaoManager.createDao(connectionSource, Classroom.class);
-
             /*                      ----update call----                 */
             // DAO setting
             UpdateBuilder<Classroom,String > updateBuilder = classroomUpdate.updateBuilder();
