@@ -99,11 +99,11 @@ public class LoginController{
             System.out.println("My Admin");
             return "TeacherPage";
         }
-    @GetMapping("/userConnected")
-        public String userPageRender(Model model) {
-            System.out.println("my not admin");
-            return "TeacherPage";
-        }
+//    @GetMapping("/userConnected")
+//        public String userPageRender(Model model) {
+//            System.out.println("my not admin");
+//            return "TeacherPage";
+//        }
 
     @RequestMapping(value = "/Logout")
     public String logout(HttpSession session) {
