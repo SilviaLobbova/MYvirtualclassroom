@@ -1,28 +1,15 @@
 package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
-
-@DatabaseTable(tableName = "information")
 public class Information {
-    @DatabaseField(generatedId = true)
     private int id_information;
-
-    @DatabaseField(canBeNull = false)
     private String information_label;
-
-    @DatabaseField(canBeNull = false)
     private String information_url;
-
-    @DatabaseField(canBeNull = false)
-    private long id_classroom;
 
     public Information() {}
 
-    public Information(String information_label, String information_url, long id_classroom) {
+    public Information(String information_label, String information_url) {
         this.information_label = information_label;
         this.information_url = information_url;
-        this.id_classroom = id_classroom;
     }
 
     public int getId_information() {

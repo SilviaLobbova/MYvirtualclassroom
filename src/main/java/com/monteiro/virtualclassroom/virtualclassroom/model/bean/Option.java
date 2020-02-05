@@ -15,6 +15,7 @@ public class Option {
     private int id_question;
 
     public Option() {}
+
     public Option(String option_content, int id_question) {
         this.option_content = option_content;
         this.id_question = id_question;
