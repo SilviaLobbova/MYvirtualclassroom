@@ -1,7 +1,20 @@
-<div  th:fragment="informationBox" class="informationBox">
+<div th:fragment="informationBox" class="informationBox" xmlns:th="http://www.w3.org/1999/xhtml">
+
     <div class="informationTitle">
-        Information
-        <i class="fas fa-plus"></i>
+        <p>Information</p>
+
+        <div th:if="${session.is_Admin == true}" class="infoBox" id="infoBox">
+            <a class="addInfo" href="javascript:void(0)" th:onclick="openCreateInformation()">
+                <i class="fas fa-plus"></i>
+            </a>
+            <form class="hiddenCreateInfo" th:action="@{/addInformation}" method="post">
+                <input type="text" placeholder="Enter new Information label" class="createInfoText" name="infoName">
+                <input type="text" placeholder="Enter new Information link" class="createInfoLink" name="infoLink">
+                <input type="submit" value="OK" class="createInfoBtn">
+            </form>
+        </div>
+
+
     </div>
     <div class="linkWrap">
         <div class="linkAndInfo">

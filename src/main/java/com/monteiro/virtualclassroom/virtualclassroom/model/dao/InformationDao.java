@@ -34,7 +34,7 @@ public class InformationDao {
     }
 
     // retrieve information method
-    public static Information getClassroom(int information) throws SQLException, IOException {
+    public static Information getInformation(int information) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
@@ -69,7 +69,7 @@ public class InformationDao {
     }
 
     // update information
-    public static void updateQuestion(int id,String targetColumn, String newValue) throws SQLException, IOException {
+    public static void updateInformation(int id,String targetColumn, String newValue) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the DAO with the connection source

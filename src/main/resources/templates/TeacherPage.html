@@ -26,13 +26,22 @@
 
         <main>
             <div class="pageContent">
-                <div th:replace = "~{fragments/titlePage.html :: titlePage(title='Questions')}"></div>
+                <div class="classes">
+                    <div class="pageTitle offset-md-4" id="title">
+                        <div class="title">
+                            <h1>Questions</h1>
+                        </div>
+                        <div class="underline">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="teacherContent">
 
                     <!-- Left part -->
-                    <div class="teacherLeftContent">
                         <span th:replace = "~{fragments/teacherLeftContent.html :: teacherLeftContent}" />
-                    </div>
+
 
                     <!-- Right part -->
                     <div class="teacherRightContent">
@@ -46,20 +55,43 @@
                                 </div>
                                 <div class="topIcons">
                                     <a class="lockIcon" role="button">
-                                        <i class="fa fa-lock" id="locker"></i>
+                                        <i class="fa fa-lock questionLock" id="locker"></i>
                                     </a>
                                     <a th:class="arrowIcon"   th:data-toggle="collapse" th:href="@{/#answer}" th:role="button" th:aria-expanded="false" th:aria-controls="collapse">
-                                    <i class="fas fa-sort-down" th:id="${question.getId_question()}"></i></a>
+                                    <i class="fas fa-sort-down answerToggle" th:id="${question.getId_question()}"></i></a>
                                 </div>
                             </div>
+
+
+
 <!--                            choice of answer-->
                             <div th:id="hiddenAnswer" th:class="hiddenAnswer" th:classappend="${question.getId_question()}">
-                                <div th:class="answerContent" th:each="option: ${question.getOptions()}">
+                                <div th:class="answerContent" >
+                                    <div th:if="${session.is_Admin != true}" th:each="option: ${question.getOptions()}">
 <!--                                    set the option of the question depending of the user choice -->
                                     <span th:if="${question.getIsRadio()== false }"><input th:type="radio" th:name="option_type" th:id="${option.getId_option()}"></span>
                                     <span th:if="${question.getIsRadio()== true }"><input th:type="checkbox" th:name="option_type"></span>
 <!--                                    display the pull of possible answer-->
                                     <label class="answerBody" th:text="${option.getOption_content(question.getId_question())}"></label>
+                                    </div>
+                                    <div th:if="${session.is_Admin == true}">
+                                        <table>
+                                            <tr>
+                                                <th>Student Name</th>
+                                                <span th:each="option: ${question.getOptions()}">
+                                                <th th:text="${option.getOption_content(question.getId_question())}">Option1</th>
+                                                </span>
+                                            </tr>
+                                            <div th:each="student: ${students}">
+                                            <tr>
+                                                <td th:value="${student.getUser_id()}" th:text="${student.getUser_name()}"></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            </div>
+
+                                        </table>
+                                    </div>
                                 </div>
 <!--                                button ok-->
                                 <form th:class="answerButtonBar" method="post">

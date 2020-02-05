@@ -44,7 +44,7 @@ public class ClassroomDao {
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
 
-            Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class);
+            Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class);//creates a new dao object
 
             return clashClassroomDao.queryBuilder().where().eq("id_classroom", firstId).queryForFirst();
 
@@ -52,18 +52,31 @@ public class ClassroomDao {
             connectionSource.close();
         }
     }
-
-    public static List<Classroom> getClassroomRowsList(int offset, long end) throws IOException, SQLException {
-        List<Classroom> classroomRowList;
+    public static Classroom getClassroomByName(String className) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
-            Dao<Classroom, Integer> dao = DaoManager.createDao(connectionSource, Classroom.class);
-            QueryBuilder<Classroom, Integer> queryBuilder = dao.queryBuilder();
-            queryBuilder.offset((long) offset).limit(end);
+
+            Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class);//creates a new dao object
+
+            return clashClassroomDao.queryBuilder().where().eq("classroom_name", className).queryForFirst();
+
+        }  finally {
+            connectionSource.close();
+        }
+    }
+    public static List<Classroom> getClassroomRowsList(long offset, long end) throws IOException, SQLException {
+        List<Classroom> classroomRowList = new ArrayList<Classroom>();
+        JdbcConnectionSource connectionSource = null;
+        try {
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<Classroom, Long> dao = DaoManager.createDao(connectionSource, Classroom.class);
+            QueryBuilder<Classroom, Long> queryBuilder = dao.queryBuilder();
+            queryBuilder.offset(offset).limit(end);
             PreparedQuery<Classroom> preparedQuery = queryBuilder.prepare();
             classroomRowList = dao.query(preparedQuery);
             return classroomRowList;
+
         }  finally {
             connectionSource.close();
         }
@@ -83,7 +96,7 @@ public class ClassroomDao {
     }
 
     // delete classroom method
-    public static void deleteClassroom(int id) throws SQLException, IOException {
+    public static void deleteClassroom(String name) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the dao with the connection source
@@ -94,7 +107,7 @@ public class ClassroomDao {
             // DAO setting
             DeleteBuilder<Classroom, String> deleteBuilder = classroom.deleteBuilder();
             // request initialization
-            deleteBuilder.where().eq("id_classroom", id);
+            deleteBuilder.where().eq("classroom_name", name);
             // request execution
             deleteBuilder.delete();
         } finally {
@@ -103,20 +116,19 @@ public class ClassroomDao {
     }
 
     // update classroom
-    public static void updateQuestion(int id,String targetColumn, String newValue) throws SQLException, IOException {
+    public static void updateClassroomName(String oldValue, String newValue) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the DAO with the connection source
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<Classroom, String>  classroomUpdate = DaoManager.createDao(connectionSource, Classroom.class);
-
             /*                      ----update call----                 */
             // DAO setting
             UpdateBuilder<Classroom,String > updateBuilder = classroomUpdate.updateBuilder();
             // set the criteria
-            updateBuilder.where().eq("id_classroom", id);
+            updateBuilder.where().eq("classroom_name", oldValue);
             // update the value of the target fields
-            updateBuilder.updateColumnValue(targetColumn, newValue);
+            updateBuilder.updateColumnValue("classroom_name", newValue);
             // update execution
             updateBuilder.update();
         } finally {

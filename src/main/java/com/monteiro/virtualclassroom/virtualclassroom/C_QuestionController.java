@@ -65,6 +65,6 @@ public class C_QuestionController {
             OptionDao.saveOption(newOption);
             System.out.println("writing options successful");
         }
-        return "TeacherPage";
+        return "CreateQuestionPage";
     }
 }
