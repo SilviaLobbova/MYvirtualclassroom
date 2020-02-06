@@ -65,7 +65,7 @@
 
 
 <!--                            choice of answer-->
-                            <form th:id="hiddenAnswer" th:class="hiddenAnswer" th:classappend="${question.getId_question()}" method="post">
+                            <form th:id="hiddenAnswer" th:class="hiddenAnswer" th:classappend="${question.getId_question()}" method="post" th:action="@{/sendAnswer}">
                                 <div th:class="answerContent" >
                                     <div th:if="${session.is_Admin != true}" th:each="option: ${question.getOptions()}">
 <!--                                    set the option of the question depending of the user choice -->

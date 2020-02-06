@@ -13,17 +13,20 @@
             </form>
         </div>
     </div>
+
     <div class="linkWrap">
-        <div class="linkAndInfo">
-            <p class="linkTitle">Lesson</p>
+        <div class="linkAndInfo" th:each="info: ${information}">
+            <p class="linkTitle" th:text="${info.getInformation_label()}"></p>
                 <span class="linkWrapIcons">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    <button class="deleteIcon" data-toggle="modal" data-target="#updateInfo">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                    <button class="deleteIcon" data-toggle="modal" data-target="#deleteInfo">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
                 </span>
-
-            <a href="" class="infoLink" >
-                <p>http://www.amonteiro.fr/index.html</p>
-
+            <a href="" class="infoLink" th:value="${info.getInformation_url()}">
+                <p th:text="${info.getInformation_url()}"></p>
             </a>
         </div>
 <!--        <div class="linkAndInfo">-->

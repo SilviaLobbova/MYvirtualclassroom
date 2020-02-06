@@ -1,8 +1,10 @@
 package com.monteiro.virtualclassroom.virtualclassroom;
 
 // imports
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Information;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
+import com.monteiro.virtualclassroom.virtualclassroom.model.dao.InformationDao;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.OptionDao;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.QuestionDao;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
@@ -39,6 +41,9 @@ public class AnswerController {
             // add to the model
             model.addAttribute("questions", questionList);
 
+            List<Information> informationList=  InformationDao.getInformation(classroomId);
+            model.addAttribute("information", informationList);
+
         for (Question value : questionList) {
             // store the id_question from the current displayed question
             int questionId = value.getId_question();
@@ -48,7 +53,7 @@ public class AnswerController {
         return "TeacherPage"; //view
         }
 
-    @PostMapping("/userConnected")  //use the save answer
+    @PostMapping("/sendAnswer")  //use the save answer
     public String saveUserAnswer (
             @RequestParam int questionId,
             @RequestParam(value="option_type[]") String option_type, // specify value request in tab
@@ -99,9 +104,11 @@ public class AnswerController {
 
         // creation of a list which will be used by thymeleaf and store the result of the function call in the list
         List<Question> questionList = QuestionDao.getAllQuestionFromId(classroomId, startRow, QuestionDao.getQuestionCount());
-
         // add to the model
         model.addAttribute("questions", questionList);
+
+        List<Information> informationList=  InformationDao.getInformation(classroomId);
+        model.addAttribute("information", informationList);
 
         List<User>listOfUsers= UserDao.getStudentsList(classroomId);
 

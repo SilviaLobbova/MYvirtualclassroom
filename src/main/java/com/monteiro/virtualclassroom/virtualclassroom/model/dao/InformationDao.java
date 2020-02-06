@@ -11,6 +11,7 @@ import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
 
@@ -34,14 +35,14 @@ public class InformationDao {
     }
 
     // retrieve information method
-    public static Information getInformation(int information) throws SQLException, IOException {
+    public static List<Information> getInformation(long IdClass) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
 
-            Dao<Information, String> clashInformationDao = DaoManager.createDao(connectionSource, Information.class);//creates a new dao object
+            Dao<Information, String> InformationDao = DaoManager.createDao(connectionSource, Information.class);//creates a new dao object
 
-            return clashInformationDao.queryBuilder().where().eq("id_classroom", information).queryForFirst();
+            return InformationDao.queryBuilder().where().eq("id_classroom", IdClass).query();
 
         }  finally {
             connectionSource.close();

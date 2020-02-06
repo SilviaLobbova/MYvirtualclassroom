@@ -1,7 +1,7 @@
 /* left part content */
 .teacherLeftContent {
     flex-direction: column;
-    width: 200px;
+    width: 250px;
 }
 .content{
     display: flex;
