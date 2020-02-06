@@ -60,9 +60,9 @@ public class ClassroomController {
     }
 
     @RequestMapping(value = "/deleteStudent")
-    public String deleteStudentFromClassroomList(int userIdStore) throws IOException, SQLException {
-        System.out.println(userIdStore);
-        UserDao.deleteUser(userIdStore);
+    public String deleteStudentFromClassroomList(int studentDelete) throws IOException, SQLException {
+        System.out.println(studentDelete);
+        UserDao.deleteUser(studentDelete);
         return "redirect:/";
     }
 

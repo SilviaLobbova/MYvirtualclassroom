@@ -35,7 +35,7 @@ public class InformationDao {
     }
 
     // retrieve information method
-    public static List<Information> getInformation(long IdClass) throws SQLException, IOException {
+    public static List<Information> showInformation(long IdClass) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);

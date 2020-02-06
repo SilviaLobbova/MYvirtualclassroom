@@ -1,13 +1,11 @@
 package com.monteiro.virtualclassroom.virtualclassroom;
 
 // imports
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Answer;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Information;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
-import com.monteiro.virtualclassroom.virtualclassroom.model.dao.InformationDao;
-import com.monteiro.virtualclassroom.virtualclassroom.model.dao.OptionDao;
-import com.monteiro.virtualclassroom.virtualclassroom.model.dao.QuestionDao;
-import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
+import com.monteiro.virtualclassroom.virtualclassroom.model.dao.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +39,7 @@ public class AnswerController {
             // add to the model
             model.addAttribute("questions", questionList);
 
-            List<Information> informationList=  InformationDao.getInformation(classroomId);
+            List<Information> informationList=  InformationDao.showInformation(classroomId);
             model.addAttribute("information", informationList);
 
         for (Question value : questionList) {
@@ -56,6 +54,7 @@ public class AnswerController {
     @PostMapping("/sendAnswer")  //use the save answer
     public String saveUserAnswer (
             @RequestParam int questionId,
+            @RequestParam(value="option_type[]") int option_type, // specify value request in tab
             HttpSession session,
             Model model) throws Exception {
 
@@ -69,6 +68,10 @@ public class AnswerController {
 
         // debug
         session.setAttribute("questionID", questionId);
+
+        Answer answer = new Answer(userId, option_type);
+        AnswerDao.saveAnswer(answer);
+
         System.out.println("Session attribute ID classroom: " + classroomId);
         System.out.println("Session attribute ID user: " + userId);
         // get question id
@@ -93,7 +96,7 @@ public class AnswerController {
         // add to the model
         model.addAttribute("questions", questionList);
 
-        List<Information> informationList=  InformationDao.getInformation(classroomId);
+        List<Information> informationList=  InformationDao.showInformation(classroomId);
         model.addAttribute("information", informationList);
 
         List<User>listOfUsers= UserDao.getStudentsList(classroomId);

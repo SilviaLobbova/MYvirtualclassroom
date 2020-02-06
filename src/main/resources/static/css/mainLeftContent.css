@@ -112,7 +112,7 @@ button.updateFrameIcon, button.deleteFrameIcon {
     display: flex;
     justify-content: space-between;
 }
-.deleteIcon {
+.deleteIcon .updateIcon{
     border: none;
     background: none;
 }
