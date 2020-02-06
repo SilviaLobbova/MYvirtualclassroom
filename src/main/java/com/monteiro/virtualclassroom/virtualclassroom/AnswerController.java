@@ -51,7 +51,6 @@ public class AnswerController {
     @PostMapping("/userConnected")  //use the save answer
     public String saveUserAnswer (
             @RequestParam int questionId,
-            @RequestParam(value="option_type[]") String option_type, // specify value request in tab
             HttpSession session,
             Model model) throws Exception {
 
@@ -65,19 +64,6 @@ public class AnswerController {
 
         // debug
         session.setAttribute("questionID", questionId);
-        // long id_classroom = (long) session.getAttribute("classroomID");
-        //        // instanciation
-        //        Question newQuestion = new Question(question_content, id_classroom, question.getIsRadio());
-        //        // save question label
-        //        QuestionDao.saveQuestion(newQuestion);
-        //        int id_question = newQuestion.getId_question();
-        //        System.out.println("writing question successful");
-
-        //instanciation
-
-
-        // debug
-        System.out.println(option_type);
         System.out.println("Session attribute ID classroom: " + classroomId);
         System.out.println("Session attribute ID user: " + userId);
         // get question id

@@ -19,14 +19,11 @@ import java.util.List;
 @Controller
 public class InformationController {
     @PostMapping("/addInformation")
-    public String createInformation(@RequestParam String infoName, String infoLink, HttpSession session) throws IOException, SQLException {
+    public String createClassroom(@RequestParam String infoName, String infoLink, HttpSession session) throws IOException, SQLException {
         Information newInfo = new Information (infoName, infoLink, 4);
         if (!infoName.equals("") && !infoLink.equals("")){
             InformationDao.saveInformation(newInfo);
         }
         return "redirect:/adminConnected";
     }
-
-    @GetMapping("")
-    public String show
 }
