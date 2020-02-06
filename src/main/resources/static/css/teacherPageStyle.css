@@ -235,11 +235,7 @@ main {
     display:flex;
     padding: 40px;
 }
-.teacherLeftContent{
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-}
+
 @media screen and (max-width: 550px){
     .teacherLeftContent{
         width: 150px;
@@ -397,7 +393,6 @@ li .fa-trash{
 }
 .showAnswer{
     display: block;
-    
 }
 .answerContent{
     padding: 15px;

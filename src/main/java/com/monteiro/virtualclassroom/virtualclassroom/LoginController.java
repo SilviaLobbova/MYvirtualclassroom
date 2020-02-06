@@ -85,11 +85,12 @@ public class LoginController{
         session.setAttribute("userID", user.getUser_id());
     }
 
-    @GetMapping("/adminConnected")
-    public String adminPageRender() {
-        System.out.println("My Admin");
-        return "TeacherPage";
-    }
+
+//    @GetMapping("/userConnected")
+//        public String userPageRender(Model model) {
+//            System.out.println("my not admin");
+//            return "TeacherPage";
+//        }
 
     @RequestMapping(value = "/Logout")
     public String logout(HttpSession session) {

@@ -11,7 +11,7 @@ public class Classroom {
     @DatabaseField(columnName = "id_classroom", generatedId = true)
     private long id_classroom;
 
-    @DatabaseField
+    @DatabaseField(columnName = "classroom_name")
     private String classroom_name;
 
     public Classroom(){

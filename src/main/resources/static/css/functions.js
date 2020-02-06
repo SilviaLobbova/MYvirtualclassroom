@@ -27,43 +27,65 @@ function openAdminProfile(){
         adminProfile.className = "adminProfileBox"
     }
 }
-
-
-// listen to the click of the arrow
-$(document).ready(function() {
-    // arrow animation
-    $(".fas").click(function() {
-        $(this).toggleClass("fa-sort-down fa-sort-up");
-        // store id on click
-        let questionId = "." + $(this).attr('id');
-        $(questionId).toggle();
-    });
-
-    // locker animation
-    $('.fa').click(function(){
-        $(this).toggleClass("fas fa-lock fas fa-lock-open");
-    });
-});
-
-
-
-// retrieve text from question_content on click
-function questionContent() {
-    // target the text on the div
-    let text = document.getElementsByClassName("questionLabel").valueOf();
-    alert(text);
-    // display it
+function openCreateInformation(){
+    var add = document.getElementById("infoBox");
+    if(add.className === "infoBox"){
+        add.className += " openCreateInfo"
+    }
+    else{
+        add.className = "infoBox"
+    }
+}
+function openCreateClassroom(){
+    var add = document.getElementById("adminOnly");
+    if(add.className === "adminOnly"){
+        add.className += " openCreateClass"
+    }
+    else{
+        add.className = "adminOnly"
+    }
+}
+function openQuestionContent(){
+    var hiddenAns = document.getElementById("hiddenAnswer");
+    if(hiddenAns.className === "hiddenAnswer"){
+        hiddenAns.className += " showAnswer"
+    }
+    else{
+        hiddenAns.className = "hiddenAnswer"
+    }
 }
 
-// function openQuestionContent() {
-//     var hiddenAns = document.getElementById("hiddenAnswer");
-//     if(hiddenAns.className === "hiddenAnswer"){
-//         hiddenAns.className += " showAnswer"
-//     }
-//     else{
-//         hiddenAns.className = "hiddenAnswer"
+function showStudentFrame(){
+    var x = document.getElementById("classroomsLeftContent");
+    if (x.style.visibility === "hidden") {
+        x.style.visibility = "visible";
+    }
+}
+
+// function editClass(){
+//     var x = document.getElementById("updateFrame");
+//     var y= document.getElementById("updateForm");
+//     if (x.style.display === "flex") {
+//         x.style.display = "none";
+//         y.style.display = "flex"
+//     } else {
+//         x.style.display = "flex";
+//         y.style.display = "none"
 //     }
 // }
+function removeToggle(){
+    console.log("entered toggle remove function")
+    var x = document.getElementById("updateFrame")
+    var y= document.getElementById("updateForm")
+    if (y.style.display === "flex"){
+        console.log("entered the first statement")
+        y.style.display = "none";
+        x.style.display = "flex";
+    }else{
+        console.log("form is not displayed, cannot do anything")
+        return;
+    }};
+
 
 // function that toggles the input type - to text (show psw) and password (hide psw)
 function togglePassword(input){
@@ -103,4 +125,31 @@ $(document).ready(function() {
 
 $(".profilePassword").click(function() {
     $(this).replaceWith('<input class = "col-6" value="Please click on Update" disabled>');
+});
+
+// listen to the click of the arrow
+$(document).ready(function() {
+    // arrow animation
+    $(".answerToggle").click(function() {
+        $(this).toggleClass("fa-sort-down fa-sort-up");
+        // store id on click
+        let questionId = "." + $(this).attr('id');
+        console.log(questionId);
+        $(questionId).toggle();
+        // alert($(this).attr('id'));
+        // alert($(this).attr('value'));
+    });
+
+    // locker animation
+    $('.questionLock').click(function(){
+        $(this).toggleClass("fa-lock fa-lock-open");
+    });
+
+    // retrieve text from question_content on click
+    function questionContent() {
+        // target the text on the div
+        let text = document.getElementsByClassName("questionLabel").valueOf();
+        alert(text);
+        // display it
+    }
 });

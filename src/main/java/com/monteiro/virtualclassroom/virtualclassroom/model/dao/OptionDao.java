@@ -77,7 +77,7 @@ public class OptionDao {
      * @throws IOException
      */
     // retrieve classroom method
-    public static Option getOption(int option_id) throws Exception {
+    public static Option getOption(int option_id) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);

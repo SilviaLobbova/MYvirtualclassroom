@@ -1,26 +1,39 @@
-<div  th:fragment="informationBox" class="informationBox">
+<div th:fragment="informationBox" class="informationBox" xmlns:th="http://www.w3.org/1999/xhtml">
+
     <div class="informationTitle">
-        Information
-        <i class="fas fa-plus"></i>
+        <p>Information</p>
+        <div th:if="${session.is_Admin == true}" class="infoBox" id="infoBox">
+            <a class="addInfo" href="javascript:void(0)" th:onclick="openCreateInformation()">
+                <i class="fas fa-plus"></i>
+            </a>
+            <form class="hiddenCreateInfo" th:action="@{/addInformation}" method="post">
+                <input type="text" placeholder="Enter new Information label" class="createInfoText" name="infoName">
+                <input type="text" placeholder="Enter new Information link" class="createInfoLink" name="infoLink">
+                <input type="submit" value="OK" class="createInfoBtn">
+            </form>
+        </div>
     </div>
     <div class="linkWrap">
         <div class="linkAndInfo">
-            <p class="linkTitle">Lesson
+            <p class="linkTitle">Lesson</p>
                 <span class="linkWrapIcons">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </span>
-            </p>
-            <a href="" class="infoLink">http://www.amonteiro.fr/index.html</a>
+
+            <a href="" class="infoLink" >
+                <p>http://www.amonteiro.fr/index.html</p>
+
+            </a>
         </div>
-        <div class="linkAndInfo">
-            <p class="linkTitle">Correction
-                <span class="linkWrapIcons">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                </span>
-            </p>
-            <a href="" class="infoLink">http://www.amonteiro.fr/index.html</a>
-        </div>
+<!--        <div class="linkAndInfo">-->
+<!--            <p class="linkTitle">Correction-->
+<!--                <span class="linkWrapIcons">-->
+<!--                    <i class="fa fa-pencil" aria-hidden="true"></i>-->
+<!--                    <i class="fa fa-trash" aria-hidden="true"></i>-->
+<!--                </span>-->
+<!--            </p>-->
+<!--            <a href="" class="infoLink">http://www.amonteiro.fr/index.html</a>-->
+<!--        </div>-->
     </div>
 </div>
