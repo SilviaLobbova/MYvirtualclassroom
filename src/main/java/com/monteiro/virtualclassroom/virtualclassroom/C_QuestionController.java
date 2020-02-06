@@ -36,12 +36,15 @@ public class C_QuestionController {
 
         // Verification if a field is empty on the question head
         if (question_content.isEmpty()) {
+//            System.out.println("No label");
             model.addAttribute("emptyField", true);
             return "CreateQuestionPage";
         } else if (option == null) {
+//            System.out.println("Radio empty");
+//            System.out.println(options_content[0]);
             model.addAttribute("isRadioEmpty", true);
             return "CreateQuestionPage";
-        } else if( (options_content[0].isEmpty()) || (options_content[1].isEmpty()) ){
+        } else if (options_content[0].isEmpty()) {
             System.out.println("option_content empty");
             model.addAttribute("emptyContent", true);
             return "CreateQuestionPage";
@@ -51,13 +54,11 @@ public class C_QuestionController {
             question.setRadio(false);
         }
         long id_classroom = (long) session.getAttribute("classroomID");
-        // instanciation
         Question newQuestion = new Question(question_content, id_classroom, question.getIsRadio());
-        // save question label
         QuestionDao.saveQuestion(newQuestion);
         int id_question = newQuestion.getId_question();
         System.out.println("writing question successful");
-        // save answer choice
+        // answer
         for (String option_content : options_content) {
             Option newOption = new Option(option_content, id_question);
             System.out.println(option_content);

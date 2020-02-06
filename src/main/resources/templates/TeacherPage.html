@@ -69,12 +69,8 @@
                                 <div th:class="answerContent" >
                                     <div th:if="${session.is_Admin != true}" th:each="option: ${question.getOptions()}">
 <!--                                    set the option of the question depending of the user choice -->
-                                    <span th:if="${question.getIsRadio()== true }">
-                                        <input th:type="radio" class="toto" name="option_type[]" th:id="${option.getId_option()}" th:with="optionId=${option.getId_option()}" th:value="${optionId}">
-                                    </span>
-                                    <span th:if="${question.getIsRadio()== false }">
-                                        <input th:type="checkbox" class="toto" name="option_type[]" th:value="${option.getId_option()}">
-                                    </span>
+                                    <span th:if="${question.getIsRadio()== false }"><input th:type="radio" th:name="option_type" th:id="${option.getId_option()}"></span>
+                                    <span th:if="${question.getIsRadio()== true }"><input th:type="checkbox" th:name="option_type"></span>
 <!--                                    display the pull of possible answer-->
                                     <label class="answerBody" th:text="${option.getOption_content(question.getId_question())}"></label>
                                     </div>
@@ -98,9 +94,9 @@
                                     </div>
                                 </div>
 <!--                                button ok-->
-                                <div th:class="answerButtonBar">
+                                <form th:class="answerButtonBar" method="post">
                                     <button th:class="btnAnswer" th:with="questionId=${question.getId_question()}" th:id="${questionId}" th:value="${questionId}" th:type="submit" th:name="questionId">OK</button>
-                                </div>
+                                </form>
 
                                 <div th:class="answerFooter">
                                     <div th:class="answerFooterIcons">
@@ -108,7 +104,7 @@
                                         <button th:class="deleteAnswer"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

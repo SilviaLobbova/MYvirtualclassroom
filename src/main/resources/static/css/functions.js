@@ -7,7 +7,6 @@ function openBurger() {
         burg.className = "navBarAdmin"
     }
 }
-
 function openUserProfile(){
         var userProfile = document.getElementById("userProfileBox");
         if(userProfile.className === "userProfileBox col-lg-12 col-md-12"){
@@ -17,7 +16,6 @@ function openUserProfile(){
             userProfile.className = "userProfileBox col-lg-12 col-md-12"
         }
     }
-
 function openAdminProfile(){
     var adminProfile = document.getElementById("adminProfileBox");
     if(adminProfile.className === "adminProfileBox"){
@@ -62,17 +60,47 @@ function showStudentFrame(){
     }
 }
 
-// function editClass(){
-//     var x = document.getElementById("updateFrame");
-//     var y= document.getElementById("updateForm");
-//     if (x.style.display === "flex") {
-//         x.style.display = "none";
-//         y.style.display = "flex"
-//     } else {
-//         x.style.display = "flex";
-//         y.style.display = "none"
-//     }
-// }
+
+function loadSearchResult() {
+    var url = "/studentFrame.html";
+    $("#classroomsLeftContent").load(url + ' #studentFrame');
+    // if ($('.classroomListItem').val() != '') {
+    //     url = url + $('.classroomListItem').val();
+    // }
+}
+function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("classroomsLeftContent").innerHTML =
+                this.responseText;
+        }
+    };
+    xhttp.open("GET", "studentFrame", true);
+    xhttp.send();
+}
+
+function retrieveGuests() {
+    var url = '/' + $(".classroomListItem").val();
+    //
+    // if ($('#searchSurname').val() != '') {
+    //     url = url + '/' + $('#searchSurname').val();
+    // }
+
+    $("#classroomsLeftContent").load(url);
+}
+
+function editClass(){
+    var x = document.getElementById("updateFrame");
+    var y= document.getElementById("updateForm");
+    if (x.style.display === "flex") {
+        x.style.display = "none";
+        y.style.display = "flex"
+    } else {
+        x.style.display = "flex";
+        y.style.display = "none"
+    }
+}
 function removeToggle(){
     console.log("entered toggle remove function")
     var x = document.getElementById("updateFrame")
@@ -86,6 +114,22 @@ function removeToggle(){
         return;
     }};
 
+$(document).ready(function() {
+        //call function when page is loaded
+
+
+    console.log("here I went")
+    // $(".studentFrame").hide();
+    console.log("here I went after")
+    // $(".classroomListItem").click(function() {
+    // console.log($(this).text())
+    //
+    //
+
+
+
+// })
+});
 
 // function that toggles the input type - to text (show psw) and password (hide psw)
 function togglePassword(input){
@@ -96,7 +140,6 @@ function togglePassword(input){
         input.attr("type", "password");
     }
 }
-
 // !!! jquery part do not delete it  !!!
 $(document).ready(function() {
     // event listener click on i tag ....- .toggle-password is pointing to the specific class of the eye icon
@@ -122,7 +165,6 @@ $(document).ready(function() {
         togglePassword(inputPsw);
     });
 });
-
 $(".profilePassword").click(function() {
     $(this).replaceWith('<input class = "col-6" value="Please click on Update" disabled>');
 });

@@ -6,7 +6,7 @@
         <h5 class="profileName col-sm-0">
                 <p class="d-md-block" th:text="${session.login_first}"></p>
         </h5>
-        <a class="profileIcon" href="javascript:void(0)" onclick=openUserProfile()>
+        <a class="profileIcon" href="javascript:void(0)" th:onclick="openUserProfile()">
             <i class="fas fa-user"></i>
         </a>
         <div class="hiddenProfile">

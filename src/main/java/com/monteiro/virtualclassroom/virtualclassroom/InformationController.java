@@ -27,5 +27,4 @@ public class InformationController {
         }
         return "redirect:/adminConnected";
     }
-
 }
