@@ -34,6 +34,20 @@ public class InformationDao {
         }
     }
 
+    public static Information getInformation(int idInfo) throws SQLException, IOException {
+        JdbcConnectionSource connectionSource = null;
+        try {
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+
+            Dao<Information, String> InformationDao = DaoManager.createDao(connectionSource, Information.class);//creates a new dao object
+
+            return InformationDao.queryBuilder().where().eq("id_information", idInfo).queryForFirst();
+
+        }  finally {
+            connectionSource.close();
+        }
+    }
+
     // retrieve information method
     public static List<Information> showInformation(long IdClass) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
@@ -70,7 +84,7 @@ public class InformationDao {
     }
 
     // update information
-    public static void updateInformation(int id,String targetColumn, String newValue) throws SQLException, IOException {
+    public static void updateInformation(String column,String OldValue, String newValue) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the DAO with the connection source
@@ -81,13 +95,14 @@ public class InformationDao {
             // DAO setting
             UpdateBuilder<Information,String > updateBuilder = informationUpdate.updateBuilder();
             // set the criteria
-            updateBuilder.where().eq("id_information", id);
+            updateBuilder.where().eq(column, OldValue);
             // update the value of the target fields
-            updateBuilder.updateColumnValue(targetColumn, newValue);
+            updateBuilder.updateColumnValue(column, newValue);
             // update execution
             updateBuilder.update();
         } finally {
             connectionSource.close();
         }
     }
+
 }

@@ -261,6 +261,7 @@ main {
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-bottom: 10px;
+    flex-direction: column;
 }
 .linkAndInfo p{
     margin:0px;
@@ -323,9 +324,13 @@ button.updateFrame{
 .frameBody ul {
     padding-left: 10px;
 }
-.deleteIcon .updateIcon{
+.deleteIcon {
     border: none;
     background: none;  
+}
+.updateInfoIcon{
+    border: none;
+    background: none;
 }
 li .fa-trash{
     color: rgba(65,65,70,1);

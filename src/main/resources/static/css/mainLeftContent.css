@@ -32,6 +32,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-bottom: 10px;
+    flex-direction: column;
 }
 .linkTitle {
     margin: 0;
@@ -112,10 +113,16 @@ button.updateFrameIcon, button.deleteFrameIcon {
     display: flex;
     justify-content: space-between;
 }
-.deleteIcon .updateIcon{
+.deleteIcon {
     border: none;
     background: none;
 }
+
+.updateInfoIcon{
+    border: none;
+    background: none;
+}
+
 .deleteIcon .fa-trash {
     color: rgba(65,65,70,1);
 }
@@ -129,16 +136,18 @@ button.updateFrameIcon, button.deleteFrameIcon {
     position: absolute;
     margin-left: -9px;
     box-shadow:4px 7px 5px black;
-    width: 70px;
-    align-items: center;
+    z-index: 1;
 }
 .createInfoBtn{
     background: rgba(255,214,0,1);
-    width: 70px;
     border: none;
 }
 .createInfoText .createInfoLink{
     width: 200px;
+}
+.updateInfoForm{
+    display: flex;
+    flex-direction: column;
 }
 
 /* end display student box */
