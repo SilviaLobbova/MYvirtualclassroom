@@ -12,6 +12,7 @@
 /* information box */
 .informationBox {
     box-shadow: 2px 2px 5px rgba(65, 65, 70, 1);
+    margin-bottom: 20px;
 }
 .informationTitle {
     background: rgba(65, 65, 70, 1);
@@ -48,6 +49,10 @@
 .linkTitle .fa-pencil, .linkTitle .fa-trash {
     color: rgba(65, 65, 70, 1);
 }
+.deleteIcon, .updateIcon {
+    border: none;
+    background: none;
+}
 
 .infoLink {
     color: rgba(65, 65, 70, 1);
@@ -55,16 +60,14 @@
 }
 /* end information box */
 /* display student box */
-/*.studentFrame {*/
-/*    box-shadow: 2px 2px 5px rgba(65, 65, 70, 1);*/
-/*    margin-top: 20px;*/
-/*}*/
+
 .studentFrame{
     display: flex;
     flex-direction: column;
-    position: absolute;
+    /*position: absolute;*/
     box-shadow: 2px 2px 5px rgba(65, 65, 70, 1);
-    width: 185px;
+    box-shadow: 2px 2px 5px rgba(65, 65, 70, 1);
+    /*width: 185px;*/
 }
 .frameHeader {
     display: flex;

@@ -103,14 +103,8 @@
         x.style.display = "none";
         console.log("changed to none display");
         y.style.display = "flex"
-
-    // else {
-    //     x.style.display = "flex";
-    //     y.style.display = "none"
-    // }
-
-
     });
+
     $("body").on("click", function(){
         console.log("studentFram is active, clicked on body")
         var except2 = document.getElementById("updateFrameIcon")
@@ -129,9 +123,6 @@
         except3.addEventListener("click", function (ev) {
             ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
         }, false);
-
-        // console.log("remove toggle activation")
-        // removeToggle(event);
     })
     });
 </script>

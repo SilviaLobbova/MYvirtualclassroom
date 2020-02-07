@@ -72,11 +72,10 @@ public class AnswerController {
         Answer answer = new Answer(userId, option_type);
         AnswerDao.saveAnswer(answer);
 
-        System.out.println("Session attribute ID classroom: " + classroomId);
-        System.out.println("Session attribute ID user: " + userId);
-        // get question id
-        System.out.println("Session attribute ID question: " + questionId);
-
+//        System.out.println("Session attribute ID classroom: " + classroomId);
+//        System.out.println("Session attribute ID user: " + userId);
+//        // get question id
+//        System.out.println("Session attribute ID question: " + questionId);
 
         return "redirect:/userConnected";
     }

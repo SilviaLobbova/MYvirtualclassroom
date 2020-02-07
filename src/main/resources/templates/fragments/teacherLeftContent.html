@@ -1,4 +1,4 @@
 <div th:fragment="teacherLeftContent" class="teacherLeftContent">
-    <div th:replace = "fragments/informationBox.html :: informationBox" />
-    <div th:replace = "fragments/studentFrame.html :: studentFrame"/>
+    <span th:replace = "~{fragments/informationBox.html :: informationBox}" />
+    <span th:if="${session.is_Admin == true}" th:insert="~{fragments/studentFrame.html :: studentFrame}"></span>
 </div>
