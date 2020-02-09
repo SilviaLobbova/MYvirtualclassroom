@@ -38,13 +38,11 @@
                 </div>
 
                 <div class="teacherContent">
-
                     <!-- Left part -->
-                        <span th:replace = "~{fragments/teacherLeftContent.html :: teacherLeftContent}" />
-
+                    <span th:replace = "fragments/teacherLeftContent.html :: teacherLeftContent" />
 
                     <!-- Right part -->
-                    <div class="teacherRightContent">
+                    <div class="teacherRightContent col-9">
 <!--                        look at it this is when u have to load the function-->
                         <div class="questionBox" th:each="question: ${questions}">
                             <div class="questionBar">
@@ -113,7 +111,7 @@
                                     <button th:class="btnAnswer" th:with="questionId=${question.getId_question()}" th:id="${questionId}" th:value="${questionId}" th:type="submit" th:name="questionId">OK</button>
                                 </div>
 
-                                <div th:class="answerFooter">
+                                <div th:if="${session.is_Admin == true}" th:class="answerFooter">
                                     <div th:class="answerFooterIcons">
                                         <button th:class="updateAnswer"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                                         <button th:class="deleteAnswer"><i class="fa fa-trash" aria-hidden="true"></i></button>
@@ -126,11 +124,7 @@
             </div>
         </main>
 <!--        debug -->
-<!--        <script>-->
-<!--            $(".btnAnswer").click(function(e) {-->
-<!--               -->
-<!--            });-->
-<!--        </script>-->
+
         <footer th:replace = "fragments/footer.html :: footer" />
     </div>
 
