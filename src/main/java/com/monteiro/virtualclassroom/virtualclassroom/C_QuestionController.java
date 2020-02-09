@@ -1,9 +1,12 @@
 package com.monteiro.virtualclassroom.virtualclassroom;
 
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Option;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.OptionDao;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.QuestionDao;
+import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,14 +56,16 @@ public class C_QuestionController {
         } else if (option.equals(false)) {
             question.setRadio(false);
         }
-        long id_classroom = (long) session.getAttribute("classroomID");
-        Question newQuestion = new Question(question_content, id_classroom, question.getIsRadio());
+        Classroom currentClassroom = (Classroom) session.getAttribute("classroom");
+        Question newQuestion = new Question(question_content, question.getIsRadio());
+        System.out.println("current class" + currentClassroom);
+        newQuestion.setClassroom(currentClassroom);
         QuestionDao.saveQuestion(newQuestion);
-        int id_question = newQuestion.getId_question();
+
         System.out.println("writing question successful");
         // answer
         for (String option_content : options_content) {
-            Option newOption = new Option(option_content, id_question);
+            Option newOption = new Option(option_content, newQuestion);
             System.out.println(option_content);
             OptionDao.saveOption(newOption);
             System.out.println("writing options successful");

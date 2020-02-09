@@ -30,7 +30,7 @@
                 </div>
             <a th:href="${info.getInformation_url()}" class="infoLink" th:value="${info.getInformation_url()}" th:text="${info.getInformation_url()}"></a>
         </div>
-        <form th:action="@{/updateInformation}" class="updateInfoForm" id="updateInfoForm" method="post" style="display: none;">
+        <form th:action="@{/updateInformation}" class="updateInfoForm" th:id="${info.getInformation_label()}" method="post" style="display: none;">
             <input class="infoNameInput" id="infoNameInput" name = "newInfoName" th:value="${info.getInformation_label()}">
             <input class="infoURLInput" id="infoURLInput" name = "newInfoUrl" th:value="${info.getInformation_url()}">
             <button class="renameInfoBtn" id="renameInfoBtn" type="submit" th:value="${info.getId_information()}" name="idInfo">OK</button>
@@ -70,10 +70,13 @@
 
 
                 let a = $(this).parent().parent().parent().attr("id");
+                let b = $(this).parent().parent().parent().next().attr("id")
                 let x = document.getElementById(a);
-                let y= document.getElementById("updateInfoForm");
-                console.log(x)
-                console.log(y)
+                let y= document.getElementById(b);
+                console.log("x"+ x)
+                console.log("y"+ y)
+                console.log("a"+ a)
+                console.log("b"+ b)
                 if(idInfo ==idVerify && y.style.display === "none" ) {
                     y.style.display = "flex"
                     console.log("updateFrame is in flex display");
@@ -88,9 +91,23 @@
                 except2.addEventListener("click", function (ev) {
                     ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
                 }, false);
-                removeToggle();
 
-                // var except1 = document.getElementById("className")
+                var getForms = document.getElementsByClassName("updateInfoForm")
+                var getFrames = document.getElementsByClassName("updateInfoFrame")
+                console.log(getForms)
+                var formDisplayed = Array.prototype.map.call(getForms, function(getForm){
+                    return getForm.style.cssText === "display: flex;"
+                })
+                var frameDisplayed = Array.prototype.map.call(getFrames, function(getFrame){
+                    return getFrame.style.cssText === "display: none;"
+                })
+                for(let i=0; i< getForms.length; i++){
+                    if(formDisplayed[i] === true){
+                       getForms[i].style.cssText = "display: none;";
+                       getFrames[i].style.cssText = "display: flex;"
+                    }
+                }
+
                 var except1 = document.getElementById("infoNameInput")
                 var except3 = document.getElementById("infoURLInput")
                 except1.addEventListener("click", function (ev) {

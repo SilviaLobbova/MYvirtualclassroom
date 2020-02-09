@@ -1,10 +1,7 @@
 package com.monteiro.virtualclassroom.virtualclassroom;
 
 // imports
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Answer;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Information;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.*;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +25,8 @@ public class AnswerController {
             System.out.println("GET /DisplayQuestion (AnswerController)");
 
             // get the selected class stored in the session
-            long classroomId = (long) session.getAttribute("classroomID");
+            Classroom classroom = (Classroom) session.getAttribute("classroom");
+            long classroomId = classroom.getId_classroom();
 
             // creation of the list question
             int startRow = 0;
@@ -54,26 +52,27 @@ public class AnswerController {
     @PostMapping("/sendAnswer")  //use the save answer
     public String saveUserAnswer (
             @RequestParam int questionId,
-            @RequestParam(value="option_type[]") int option_type, // specify value request in tab
+            @RequestParam(value="option_type[]") Option selectedOption, // specify value request in tab
             HttpSession session,
             Model model) throws Exception {
 
         System.out.println("POST /saveUserAnswer (AnswerController)");
 
         // get the selected class stored in the session
-        long classroomId = (long) session.getAttribute("classroomID");
+        Classroom classroom = (Classroom) session.getAttribute("classroomID");
+        long classroomId = classroom.getId_classroom();
         // get the user_id
-        int userId = (int) session.getAttribute("userID");
+        User userInSession = (User) session.getAttribute("user");
         // get the selected options
 
         // debug
         session.setAttribute("questionID", questionId);
 
-        Answer answer = new Answer(userId, option_type);
+        Answer answer = new Answer(userInSession, selectedOption);
         AnswerDao.saveAnswer(answer);
 
         System.out.println("Session attribute ID classroom: " + classroomId);
-        System.out.println("Session attribute ID user: " + userId);
+        System.out.println("Session attribute ID user: " + userInSession);
         // get question id
         System.out.println("Session attribute ID question: " + questionId);
 
@@ -86,7 +85,10 @@ public class AnswerController {
         System.out.println("My Admin");
 
         // get the selected class stored in the session
-        long classroomId = (long) session.getAttribute("classroomID");
+        Classroom classroom1 = (Classroom) session.getAttribute("classroom");
+        System.out.println("classroom1 "+classroom1);
+        long classroomId = classroom1.getId_classroom();
+        System.out.println("classroomId"+classroomId);
 
         // creation of the list question
         int startRow = 0;
@@ -100,8 +102,11 @@ public class AnswerController {
         model.addAttribute("information", informationList);
 
         List<User>listOfUsers= UserDao.getStudentsList(classroomId);
-
         model.addAttribute("students", listOfUsers);
+
+        List<Answer>listOfAnswers = AnswerDao.getAllAnswersOfUser(21);
+        System.out.println("my list of answers"+ listOfAnswers);
+        model.addAttribute("answers", listOfAnswers);
 //
         for (Question value : questionList) {
             // store the id_question from the current displayed question

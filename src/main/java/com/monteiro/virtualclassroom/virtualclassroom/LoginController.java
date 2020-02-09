@@ -1,5 +1,6 @@
 package com.monteiro.virtualclassroom.virtualclassroom;
 
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
 import org.springframework.stereotype.Controller;
@@ -43,6 +44,7 @@ public class LoginController{
         }
 
         else if((myMail.getIsAdmin())) {
+            System.out.println("I try to verify the mail and psw");
             if (myMail.getUser_email().equals(login_name) &&
                     myMail.getUser_password().equals(login_password)){
                 addUserInSession(myMail,session);
@@ -52,20 +54,20 @@ public class LoginController{
         }
 
         else if(!myMail.getIsAdmin()) {
-            if(session.getAttribute("classroomID") == null){
+            if(session.getAttribute("classroom") == null){
                 model.addAttribute("NotAdmin", true);
-                System.out.println(session.getAttribute("classroomID"));
+                System.out.println(session.getAttribute("classroom"));
                 return "LoginPage";
             }
 
-            else if(myMail.get_classroom()!= ((long) session.getAttribute("classroomID"))) {
+            else if(myMail.get_UserClassroomId()!= (((Classroom) session.getAttribute("classroom")).getId_classroom())) {
                 model.addAttribute("invalidClassroom", true);
                 return "LoginPage";
             }
 
             else if (myMail.getUser_email().equals(login_name) &&
                     myMail.getUser_password().equals(login_password)&&
-                    myMail.get_classroom()==((long) session.getAttribute("classroomID"))) {
+                    myMail.get_UserClassroomId()==(((Classroom) session.getAttribute("classroom")).getId_classroom())) {
                 addUserInSession(myMail,session);
                 System.out.println("getting logged in");
                 return "redirect:/userConnected";
@@ -76,12 +78,13 @@ public class LoginController{
 
 
     private void addUserInSession(User user, HttpSession session){
+        session.setAttribute("user", user);
         session.setAttribute("login", user.getUser_email());
         session.setAttribute("login_psw", user.getUser_password());
         session.setAttribute("login_first", user.getUser_name());
         session.setAttribute("login_last", user.getUser_lastname());
         session.setAttribute("is_Admin", user.getIsAdmin());
-        session.setAttribute("classroom", user.get_classroom());
+        session.setAttribute("user_classroom", user.get_UserClassroomId());
         session.setAttribute("userID", user.getUser_id());
     }
 

@@ -13,8 +13,8 @@ public class Question {
     @DatabaseField(canBeNull = false)
     private String question_content;
 
-    @DatabaseField(canBeNull = false)
-    private long id_classroom;
+    @DatabaseField(canBeNull = false, foreign = true, columnName = "classroom_id")
+    private Classroom classroom;
 
     @DatabaseField(canBeNull = false)
     private boolean isRadio =true;
@@ -24,9 +24,8 @@ public class Question {
 
     public Question(){};
 
-    public Question(String question_content,long id_classroom,boolean isRadio) {
+    public Question(String question_content, boolean isRadio) {
         this.question_content = question_content;
-        this.id_classroom = id_classroom;
         this.isRadio = isRadio;
     }
 
@@ -46,12 +45,12 @@ public class Question {
         this.question_content = question_content;
     }
 
-    public long getId_classroom() {
-        return id_classroom;
+    public Classroom getClassroom() {
+        return classroom;
     }
 
-    public void setId_classroom(long id_classroom) {
-        this.id_classroom = id_classroom;
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
     }
 
     public boolean getIsRadio() {

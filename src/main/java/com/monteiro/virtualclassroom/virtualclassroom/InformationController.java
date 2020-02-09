@@ -20,8 +20,8 @@ import java.util.List;
 public class InformationController {
     @PostMapping("/addInformation")
     public String createInformation(@RequestParam String infoName, String infoLink, HttpSession session) throws IOException, SQLException {
-        long classroomId = (long) session.getAttribute("classroomID");
-        Information newInfo = new Information (infoName, infoLink, classroomId);
+        Classroom classroom = (Classroom) session.getAttribute("classroom");
+        Information newInfo = new Information (infoName, infoLink, classroom);
         if (!infoName.equals("") && !infoLink.equals("")){
             InformationDao.saveInformation(newInfo);
         }

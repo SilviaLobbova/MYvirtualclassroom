@@ -21,7 +21,20 @@ import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
 import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.BDD_PSW;
 
 public class ClassroomDao {
-    public ClassroomDao(){
+
+    public ClassroomDao() throws IOException {
+        JdbcConnectionSource connectionSource = null;
+        try {
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+
+            Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class);//creates a new dao object
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connectionSource.close();
+        }
     }
 
     // save classroom method

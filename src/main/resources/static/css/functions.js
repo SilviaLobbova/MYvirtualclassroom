@@ -103,13 +103,8 @@ function editClass(){
 }
 function removeToggle(){
     console.log("entered toggle remove function")
-    if($(".updateInfoForm") === "flex"){
-        
-    }
-    var b= $("#renameInfoBtn").attr("value")
-    var x = document.getElementById(b);
+    var x = document.getElementById("updateInfoFrame");
     var y= document.getElementById("updateInfoForm");
-
     if (y.style.display === "flex"){
         console.log("entered the first statement")
         y.style.display = "none";

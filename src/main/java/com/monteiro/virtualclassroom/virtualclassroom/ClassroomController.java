@@ -97,13 +97,12 @@ public class ClassroomController {
     public String loginClassRender(HttpSession session, @RequestParam(value = "id") long parameter) throws IOException, SQLException {
         Classroom myClass = ClassroomDao.getClassroom(parameter);
         addClassroomInSession(myClass, session);
-        System.out.println(session.getAttribute("classroomID"));
         System.out.println("GET /LoginPage (LoginClassController)");
         //return html page
         return "LoginPage";
     }
     private void addClassroomInSession(Classroom classroom, HttpSession session){
-        session.setAttribute("classroomID",classroom.getId_classroom());
+        session.setAttribute("classroom",classroom);
     }
 
 }

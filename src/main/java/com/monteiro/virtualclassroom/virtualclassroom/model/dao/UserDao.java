@@ -29,9 +29,13 @@ public class UserDao {
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
 
-            Dao<User, String> clashUserDao = DaoManager.createDao(connectionSource, User.class);
+            Dao<User, String> userDao = DaoManager.createDao(connectionSource, User.class);
+            Dao<Classroom, String> classDao = DaoManager.createDao(connectionSource, Classroom.class);
 
-            clashUserDao.createOrUpdate(user);
+            classDao.refresh(user.getClassroom());
+            System.out.println("now the user is set"+ user.getClassroom().getClassroom_name());
+
+            userDao.createOrUpdate(user);
         } finally {
             connectionSource.close();
         }
@@ -41,6 +45,7 @@ public class UserDao {
         JdbcConnectionSource connectionSource = null;
         User gotUserMail = null;
         User gotUserPsw = null;
+        System.out.println("I am in the getUser method ");
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<User, String> clashUserDao = DaoManager.createDao(connectionSource, User.class); //creates a new dao object
@@ -82,7 +87,7 @@ public class UserDao {
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<User, Long> myDao = DaoManager.createDao(connectionSource, User.class);
-            studentRowList = myDao.queryBuilder().where().eq("id_classroom", id_Class).query();
+            studentRowList = myDao.queryBuilder().where().eq("classroom_id", id_Class).query();
             return studentRowList;
 
         }  finally {

@@ -8,6 +8,7 @@ import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt;
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,9 +34,11 @@ public class QuestionDao {
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
 
-            Dao<Question, String> clashUserDao = DaoManager.createDao(connectionSource, Question.class);
+            Dao<Question, String> questionDao = DaoManager.createDao(connectionSource, Question.class);
+            Dao<Classroom, String> classDao = DaoManager.createDao(connectionSource, Classroom.class);
 
-            clashUserDao.createOrUpdate(question);
+            classDao.refresh(question.getClassroom());
+            questionDao.createOrUpdate(question);
         } finally {
             connectionSource.close();
         }
@@ -58,7 +61,7 @@ public class QuestionDao {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<Question, Long> clashQuestionDao = DaoManager.createDao(connectionSource, Question.class);
             // retrieve options from it
-            return clashQuestionDao.queryBuilder().offset(startRow).limit(endRow).where().eq("id_classroom", idClassRoom).query();
+            return clashQuestionDao.queryBuilder().offset(startRow).limit(endRow).where().eq("classroom_id", idClassRoom).query();
         } finally {
             connectionSource.close();
         }
