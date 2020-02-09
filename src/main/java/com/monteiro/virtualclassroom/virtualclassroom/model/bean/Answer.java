@@ -9,6 +9,7 @@ public class Answer {
     private long id_answer;
     @DatabaseField(canBeNull = false, foreign = true, columnName = "id_user")
     private User user;
+
     @DatabaseField(canBeNull = false, foreign = true, columnName = "id_option")
     private Option option;
 
@@ -16,19 +17,24 @@ public class Answer {
     public Answer(){
     }
 
-    public Answer(User user, Option option) {
-        this.user = user;
-        this.option = option;
-    }
-    public int getId_user() {
-        return user.getUser_id();
-    }
-    public int getId_userFromOption(int id_option) {
-        return user.getUser_id();
+    public User getUser() {
+        return user;
     }
 
-    public void setId_user(User user) {
+    public void setUser(User user) {
         this.user = user;
+    }
+
+    public Option getOption() {
+        return option;
+    }
+
+    public void setOption(Option option) {
+        this.option = option;
+    }
+
+    public int getId_userFromOption(int id_option) {
+        return user.getUser_id();
     }
 
     public int getId_optionFromAnswer(int id_question) {

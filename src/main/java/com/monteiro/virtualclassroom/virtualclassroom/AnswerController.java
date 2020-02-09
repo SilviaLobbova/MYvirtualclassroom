@@ -52,7 +52,7 @@ public class AnswerController {
     @PostMapping("/sendAnswer")  //use the save answer
     public String saveUserAnswer (
             @RequestParam int questionId,
-            @RequestParam(value="option_type[]") Option selectedOption, // specify value request in tab
+            @RequestParam(name="selectedOption") Option selectedOption, // specify value request in tab
             HttpSession session,
             Model model) throws Exception {
 
@@ -68,8 +68,13 @@ public class AnswerController {
         // debug
         session.setAttribute("questionID", questionId);
 
-        Answer answer = new Answer(userInSession, selectedOption);
-        AnswerDao.saveAnswer(answer);
+        Answer newAnswer = new Answer();
+
+        //doesn't work to get the Option object from string name:
+        newAnswer.setOption(selectedOption);
+
+        newAnswer.setUser(userInSession);
+        AnswerDao.saveAnswer(newAnswer);
 
         System.out.println("Session attribute ID classroom: " + classroomId);
         System.out.println("Session attribute ID user: " + userInSession);

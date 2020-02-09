@@ -4,10 +4,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.QueryBuilder;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Answer;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Option;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,6 +24,12 @@ public class AnswerDao {
                 connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
 
                 Dao<Answer, String> answerDao = DaoManager.createDao(connectionSource, Answer.class); //creates a new dao object
+                Dao<Option, String> optionDao = DaoManager.createDao(connectionSource, Option.class);
+                Dao<User, String> userDao = DaoManager.createDao(connectionSource, User.class);
+
+                optionDao.refresh(answer.getOption());
+                userDao.refresh(answer.getUser());
+
                 answerDao.createOrUpdate(answer);
             } finally {
                 connectionSource.close();
