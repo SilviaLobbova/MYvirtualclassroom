@@ -28,10 +28,12 @@ public class UserDao {
         // instantiate the dao with the connection source
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
-
+            // initaitte  user
             Dao<User, String> userDao = DaoManager.createDao(connectionSource, User.class);
+            // initiate classroom
             Dao<Classroom, String> classDao = DaoManager.createDao(connectionSource, Classroom.class);
-
+            
+            // refresh mandatory to get the FK
             classDao.refresh(user.getClassroom());
             System.out.println("now the user is set"+ user.getClassroom().getClassroom_name());
 
@@ -94,6 +96,7 @@ public class UserDao {
             connectionSource.close();
         }
     }
+
     public static List<User> readAll() throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {

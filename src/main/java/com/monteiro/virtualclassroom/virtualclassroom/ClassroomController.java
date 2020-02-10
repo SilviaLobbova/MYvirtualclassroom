@@ -21,7 +21,7 @@ public class ClassroomController {
     @GetMapping("/")
     public String homePageRender(Model model, HttpSession session) throws IOException, SQLException {
         System.out.println("GET /HomePage (ClassroomController)");
-        List<Classroom> classroomList = new ArrayList<>();
+        List<Classroom> classroomList;
         long n = ClassroomDao.getClassroomCount();
         int id = 0;
         classroomList = ClassroomDao.getClassroomRowsList(id, n);

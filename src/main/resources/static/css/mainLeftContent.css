@@ -153,4 +153,10 @@ button.updateFrameIcon, button.deleteFrameIcon {
     flex-direction: column;
 }
 
+@media screen and (max-width: 450px){
+    .teacherContent{
+        padding: 0;
+    }
+}
+
 /* end display student box */

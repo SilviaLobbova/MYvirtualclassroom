@@ -30,17 +30,18 @@ public class SignUpController {
             Model model) throws Exception {
 
         System.out.println("POST /SignUpPage (SignUpController)");
-        if((user_name.isEmpty())||(user_lastname.isEmpty())||(user_password.isEmpty())||(user_email.isEmpty()) ){
+        if((user_name.isEmpty())||(user_lastname.isEmpty())||(user_password.isEmpty())||(user_email.isEmpty()) ) {
             System.out.println("missing");
             System.out.println(user_password);
             model.addAttribute("emptyField", true);
             return "SignUpPage";
         }
-        else{
-//            (Classroom) session.getAttribute("classroom");
+        else {
             System.out.println(user_lastname);
             User newOne = new User(user_name, user_lastname, user_email, user_password, false);
+            // classroom set separatly
             newOne.setClassroom((Classroom) session.getAttribute("classroom"));
+            // new user creation
             UserDao.saveUser(newOne);
 
             return "LoginPage";
