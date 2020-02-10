@@ -14,7 +14,6 @@ import java.security.NoSuchAlgorithmException;
 @DatabaseTable(tableName = "USERS")
 public class User {
 
-
     @DatabaseField(generatedId = true)
     private int id_user;
 
@@ -32,14 +31,6 @@ public class User {
 
     @DatabaseField
     private boolean isAdmin;
-
-    public Classroom getClassroom() {
-        return classroom;
-    }
-
-    public void setClassroom(Classroom classroom) {
-        this.classroom = classroom;
-    }
 
     @DatabaseField (canBeNull = false, foreign = true, columnName = "classroom_id")
     private Classroom classroom;
@@ -83,6 +74,13 @@ public class User {
 
     public void setUser_password(String user_password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         this.user_password = user_password;
+    }
+    public Classroom getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
     }
 
 

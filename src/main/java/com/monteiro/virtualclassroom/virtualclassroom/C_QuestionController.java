@@ -51,9 +51,9 @@ public class C_QuestionController {
             System.out.println("option_content empty");
             model.addAttribute("emptyContent", true);
             return "CreateQuestionPage";
-        } else if (option.equals(true)) {
+        } else if (option.equals("radio")) {
             question.setRadio(true);
-        } else if (option.equals(false)) {
+        } else if (option.equals("checkbox")) {
             question.setRadio(false);
         }
         Classroom currentClassroom = (Classroom) session.getAttribute("classroom");

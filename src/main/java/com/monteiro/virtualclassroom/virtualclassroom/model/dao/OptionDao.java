@@ -5,10 +5,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
-import com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Information;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Option;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,7 +17,8 @@ import static com.monteiro.virtualclassroom.virtualclassroom.ConstantsKt.*;
 public class OptionDao {
 
     // constructor
-    public OptionDao() {}
+    public OptionDao() {
+    }
 
     // save classroom method
     public static void saveOption(Option option) throws SQLException, IOException {
@@ -37,9 +35,9 @@ public class OptionDao {
     }
 
     /**
+     * @return row count of the target table
      * @throws SQLException
      * @throws IOException
-     * @return row count of the target table
      */
     public static long getOptionCount() throws Exception {
         JdbcConnectionSource connectionSource = null;
@@ -84,9 +82,9 @@ public class OptionDao {
 
             Dao<Option, String> clashOptionDao = DaoManager.createDao(connectionSource, Option.class);//creates a new dao object
 
-            return clashOptionDao.queryBuilder().where().eq("id_classroom", option_id).queryForFirst();
+            return clashOptionDao.queryBuilder().where().eq("id_option", option_id).queryForFirst();
 
-        }  finally {
+        } finally {
             connectionSource.close();
         }
     }
@@ -112,22 +110,50 @@ public class OptionDao {
     }
 
     // update Option
-    public static void updateQuestion(int id,String targetColumn, String newValue) throws SQLException, IOException {
+    public static void updateQuestion(int id, String targetColumn, String newValue) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the DAO with the connection source
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
-            Dao<Option, String>  optionUpdate = DaoManager.createDao(connectionSource, Option.class);
+            Dao<Option, String> optionUpdate = DaoManager.createDao(connectionSource, Option.class);
 
             /*                      ----update call----                 */
             // DAO setting
-            UpdateBuilder<Option,String > updateBuilder = optionUpdate.updateBuilder();
+            UpdateBuilder<Option, String> updateBuilder = optionUpdate.updateBuilder();
             // set the criteria
             updateBuilder.where().eq("id_option", id);
             // update the value of the target fields
             updateBuilder.updateColumnValue(targetColumn, newValue);
             // update execution
             updateBuilder.update();
+        } finally {
+            connectionSource.close();
+        }
+    }
+
+    public static List<Option> getOptionList(int idQuestion) throws IOException, SQLException {
+        List<Option> optionList;
+        JdbcConnectionSource connectionSource = null;
+        try {
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<Option, Integer> optionDao = DaoManager.createDao(connectionSource, Option.class);
+            optionList = optionDao.queryBuilder().where().eq("id_question", idQuestion).query();
+            return optionList;
+
+        } finally {
+            connectionSource.close();
+        }
+    }
+
+    public static List<Option> getAllOptionList() throws IOException, SQLException {
+        List<Option> optionList;
+        JdbcConnectionSource connectionSource = null;
+        try {
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+            Dao<Option, Integer> optionDao = DaoManager.createDao(connectionSource, Option.class);
+            optionList = optionDao.queryBuilder().query();
+            return optionList;
+
         } finally {
             connectionSource.close();
         }

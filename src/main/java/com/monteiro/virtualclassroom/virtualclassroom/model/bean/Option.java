@@ -32,7 +32,7 @@ public class Option {
         this.id_option = id_option;
     }
 
-    public String getOption_content(int id_question) {
+    public String getOption_content() {
         return option_content;
     }
 
@@ -46,5 +46,10 @@ public class Option {
 
     public void setId_question(Question question) {
         this.question = question;
+    }
+
+    // setter/getter id_classroom
+    public long get_OptionQuestionId() {
+        return question.getId_question();
     }
 }
