@@ -44,19 +44,12 @@ public class AnswerController {
         AnswerForm answerForm = new AnswerForm();
         model.addAttribute("answerForm", answerForm);
 
-
-        //List<Option> optionList = OptionDao.getAllOptionList();
-//
-//            model.addAttribute("options", optionList);
-
         for (Question value : questionList) {
             // store the id_question from the current displayed question
             int questionIdentification = value.getId_question();
             // retrieve options store in optionDao
             value.setOptions(OptionDao.getAllOptionsFromQuestion(questionIdentification, startRow, OptionDao.getOptionCount()));
         }
-
-
         return "TeacherPage"; //view
     }
 
@@ -66,36 +59,35 @@ public class AnswerController {
             // Option selectedOption, // specify value request in tab
             HttpSession session,
             Model model) throws Exception {
-
-        System.out.println("POST /saveUserAnswer (AnswerController) form=" + answerForm.getMultiCheckboxSelectedValues());
-
+        Option checkBoxOptions;
         Option radioOption = OptionDao.getOption(answerForm.getId_option());
 
-        Option checkBoxOptions = OptionDao.getOptions(answerForm.getMultiCheckboxSelectedValues());
         // get the selected class stored in the session
         Classroom classroom = (Classroom) session.getAttribute("classroom");
         long classroomId = classroom.getId_classroom();
         // get the user_id
         User userInSession = (User) session.getAttribute("user");
-        // get the selected options
 
-        // debug
-        //session.setAttribute("questionID", option.getQuestion().getId_question());
-
-
-        Answer newAnswer = new Answer();
-
-        newAnswer.setOption(radioOption);
-        newAnswer.setOption(checkBoxOptions);
-
-        newAnswer.setUser(userInSession);
-        AnswerDao.saveAnswer(newAnswer);
+        if (radioOption == null) {
+            for (int i = 0; i < 2; i++) {
+                checkBoxOptions = OptionDao.getOption(answerForm.getMultiCheckboxSelectedValues()[i]);
+                System.out.println(checkBoxOptions);
+                Answer newAnswer1 = new Answer();
+                newAnswer1.setOption(checkBoxOptions);
+                newAnswer1.setUser(userInSession);
+                AnswerDao.saveAnswer(newAnswer1);
+            }
+        } else {
+            Answer newAnswer = new Answer();
+            newAnswer.setOption(radioOption);
+            newAnswer.setUser(userInSession);
+            AnswerDao.saveAnswer(newAnswer);
+        }
 
         System.out.println("Session attribute ID classroom: " + classroomId);
         System.out.println("Session attribute ID user: " + userInSession);
         // get question id
         //  System.out.println("Session attribute ID question: " + option.getQuestion().getId_question());
-
 
         return "redirect:/userConnected";
     }

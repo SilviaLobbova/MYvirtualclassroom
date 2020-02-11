@@ -2,19 +2,18 @@ package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 
-@DatabaseTable( tableName = "classrooms")
+@DatabaseTable(tableName = "classrooms")
 public class Classroom {
 
-    @DatabaseField(columnName = "classroom_id", generatedId = true)
+    @DatabaseField(columnName = "id_classroom", generatedId = true)
     private long id_classroom;
 
     @DatabaseField(columnName = "classroom_name")
     private String classroom_name;
 
-    public Classroom(){
+    public Classroom() {
     }
 
     public Classroom(String classroom_name) {
@@ -38,7 +37,7 @@ public class Classroom {
     }
 
     @Override
-    public String toString(){
-        return "("+ classroom_name +")";
+    public String toString() {
+        return "(" + classroom_name + ")";
     }
 }

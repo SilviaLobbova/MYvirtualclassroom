@@ -3,7 +3,6 @@ package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
 public class AnswerForm {
 
-    boolean singleCheckboxField;
 
     int[] multiCheckboxSelectedValues;
 
@@ -14,13 +13,6 @@ public class AnswerForm {
     public AnswerForm() {
     }
 
-    public boolean isSingleCheckboxField() {
-        return singleCheckboxField;
-    }
-
-    public void setSingleCheckboxField(boolean singleCheckboxField) {
-        this.singleCheckboxField = singleCheckboxField;
-    }
 
     public int[] getMultiCheckboxSelectedValues() {
         return multiCheckboxSelectedValues;
