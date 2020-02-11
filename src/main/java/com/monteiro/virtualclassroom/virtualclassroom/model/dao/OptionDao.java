@@ -89,6 +89,20 @@ public class OptionDao {
         }
     }
 
+    public static Option getOptions(int[] option_id) throws Exception {
+        JdbcConnectionSource connectionSource = null;
+        try {
+            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
+
+            Dao<Option, String> clashOptionDao = DaoManager.createDao(connectionSource, Option.class);//creates a new dao object
+
+            return clashOptionDao.queryBuilder().where().eq("id_option", option_id).queryForFirst();
+
+        } finally {
+            connectionSource.close();
+        }
+    }
+
     // delete information method
     public static void deleteOption(int id) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;

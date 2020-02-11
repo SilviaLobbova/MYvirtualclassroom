@@ -67,10 +67,11 @@ public class AnswerController {
             HttpSession session,
             Model model) throws Exception {
 
-        System.out.println("POST /saveUserAnswer (AnswerController) form=" + answerForm.getId_option());
+        System.out.println("POST /saveUserAnswer (AnswerController) form=" + answerForm.getMultiCheckboxSelectedValues());
 
-        Option option = OptionDao.getOption(answerForm.getId_option());
+        Option radioOption = OptionDao.getOption(answerForm.getId_option());
 
+        Option checkBoxOptions = OptionDao.getOptions(answerForm.getMultiCheckboxSelectedValues());
         // get the selected class stored in the session
         Classroom classroom = (Classroom) session.getAttribute("classroom");
         long classroomId = classroom.getId_classroom();
@@ -84,8 +85,8 @@ public class AnswerController {
 
         Answer newAnswer = new Answer();
 
-//        //doesn't work to get the Option object from string name:
-        newAnswer.setOption(option);
+        newAnswer.setOption(radioOption);
+        newAnswer.setOption(checkBoxOptions);
 
         newAnswer.setUser(userInSession);
         AnswerDao.saveAnswer(newAnswer);
@@ -98,6 +99,7 @@ public class AnswerController {
 
         return "redirect:/userConnected";
     }
+
 
     @GetMapping("/adminConnected")
     public String adminPageRender(Model model, HttpSession session) throws Exception {

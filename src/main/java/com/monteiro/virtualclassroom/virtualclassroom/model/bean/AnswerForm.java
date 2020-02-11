@@ -5,7 +5,7 @@ public class AnswerForm {
 
     boolean singleCheckboxField;
 
-    String[] multiCheckboxSelectedValues;
+    int[] multiCheckboxSelectedValues;
 
 
     int id_option;
@@ -22,11 +22,11 @@ public class AnswerForm {
         this.singleCheckboxField = singleCheckboxField;
     }
 
-    public String[] getMultiCheckboxSelectedValues() {
+    public int[] getMultiCheckboxSelectedValues() {
         return multiCheckboxSelectedValues;
     }
 
-    public void setMultiCheckboxSelectedValues(String[] multiCheckboxSelectedValues) {
+    public void setMultiCheckboxSelectedValues(int[] multiCheckboxSelectedValues) {
         this.multiCheckboxSelectedValues = multiCheckboxSelectedValues;
     }
 

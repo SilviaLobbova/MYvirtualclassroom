@@ -79,14 +79,17 @@
                                                     th:for="${#ids.prev('id_option')}"
                                                     th:text="${radioValue.getOption_content()}"></label>
                                         </span>
-                                    <!--                                        th:id="${option.getId_option()}" th:value="${option}"-->
 
-                                    <!--span th:if="${question.getIsRadio()== false }">
+
+                                    <span th:if="${question.getIsRadio()== false }"
+                                          th:each="checkboxValue: ${question.getOptions()}">
                                             <input th:type="checkbox" class="toto" name="selectedOption"
-                                                   th:value="${option}">
+                                                   th:field="*{multiCheckboxSelectedValues}"
+                                                   th:value="${checkboxValue.getId_option()}">
 
-                                         <label class="answerBody" th:text="${option.getOption_content()}"></label>
-                                        </span-->
+                                         <label class="answerBody" th:for="${#ids.prev('multiCheckboxSelectedValues')}"
+                                                th:text="${checkboxValue.getOption_content()}"></label>
+                                        </span>
                                     <!--                                    display the pull of possible answer-->
 
                                 </div>
