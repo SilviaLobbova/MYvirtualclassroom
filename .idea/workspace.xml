@@ -171,6 +171,7 @@
       <workItem from="1581257280775" duration="3042000" />
       <workItem from="1581316315005" duration="21999000" />
       <workItem from="1581346847594" duration="10136000" />
+
       <workItem from="1581410271318" duration="3408000" />
       <workItem from="1581414047217" duration="6813000" />
     </task>
@@ -321,16 +322,5 @@
     </state>
     <state x="-1465" y="2" width="1008" height="1037" key="search.everywhere.popup/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581084266533" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1579687362765" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/C_QuestionController.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
