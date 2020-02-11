@@ -14,7 +14,7 @@ public class Information {
     @DatabaseField(canBeNull = false)
     private String information_url;
 
-    @DatabaseField(canBeNull = false, foreign = true, columnName = "id_classroom")
+    @DatabaseField(canBeNull = false, foreign = true, columnName = "classroom_id")
     private Classroom classroom;
 
     public Information() {}

@@ -1,13 +1,13 @@
 package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
 // imports
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
+        import com.j256.ormlite.field.DatabaseField;
+        import com.j256.ormlite.table.DatabaseTable;
 
 
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
+        import java.io.UnsupportedEncodingException;
+        import java.security.NoSuchAlgorithmException;
 
 
 //annotations ORMLite

@@ -59,7 +59,7 @@ public class ClassroomDao {
 
             Dao<Classroom, String> clashClassroomDao = DaoManager.createDao(connectionSource, Classroom.class);//creates a new dao object
 
-            return clashClassroomDao.queryBuilder().where().eq("id_classroom", firstId).queryForFirst();
+            return clashClassroomDao.queryBuilder().where().eq("classroom_id", firstId).queryForFirst();
 
         }  finally {
             connectionSource.close();

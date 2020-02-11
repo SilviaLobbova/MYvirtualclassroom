@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 @DatabaseTable( tableName = "classrooms")
 public class Classroom {
 
-    @DatabaseField(columnName = "id_classroom", generatedId = true)
+    @DatabaseField(columnName = "classroom_id", generatedId = true)
     private long id_classroom;
 
     @DatabaseField(columnName = "classroom_name")
