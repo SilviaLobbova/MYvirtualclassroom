@@ -6,6 +6,7 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Option;
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,7 +28,12 @@ public class OptionDao {
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
 
-            Dao<Option, String> clashOptionDao = DaoManager.createDao(connectionSource, Option.class); //creates a new dao object
+            Dao<Option, String> clashOptionDao = DaoManager.createDao(connectionSource, Option.class);
+
+            // initiate classroom
+            Dao<Question, String> questionDao = DaoManager.createDao(connectionSource, Question.class);
+
+            questionDao.refresh(option.getQuestion());
             clashOptionDao.createOrUpdate(option);
         } finally {
             connectionSource.close();
@@ -76,20 +82,6 @@ public class OptionDao {
      */
     // retrieve classroom method
     public static Option getOption(int option_id) throws Exception {
-        JdbcConnectionSource connectionSource = null;
-        try {
-            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
-
-            Dao<Option, String> clashOptionDao = DaoManager.createDao(connectionSource, Option.class);//creates a new dao object
-
-            return clashOptionDao.queryBuilder().where().eq("id_option", option_id).queryForFirst();
-
-        } finally {
-            connectionSource.close();
-        }
-    }
-
-    public static Option getOptions(int[] option_id) throws Exception {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -69,7 +72,8 @@ public class AnswerController {
         User userInSession = (User) session.getAttribute("user");
 
         if (radioOption == null) {
-            for (int i = 0; i < 2; i++) {
+            long formLength = answerForm.getMultiCheckboxSelectedValues().length;
+            for (int i = 0; i < formLength; i++) {
                 checkBoxOptions = OptionDao.getOption(answerForm.getMultiCheckboxSelectedValues()[i]);
                 System.out.println(checkBoxOptions);
                 Answer newAnswer1 = new Answer();
@@ -108,6 +112,7 @@ public class AnswerController {
 
         // creation of a list which will be used by thymeleaf and store the result of the function call in the list
         List<Question> questionList = QuestionDao.getAllQuestionFromId(classroomId, startRow, QuestionDao.getQuestionCount());
+        questionList.sort(Comparator.comparing(Question::getId_question));
         // add to the model
         model.addAttribute("questions", questionList);
 
@@ -117,17 +122,38 @@ public class AnswerController {
         List<User> listOfUsers = UserDao.getStudentsList(classroomId);
         model.addAttribute("students", listOfUsers);
 
-        List<Answer> listOfAnswers = AnswerDao.getAllAnswersOfUser(21);
+        List<Answer> listOfAnswers = AnswerDao.getAnswers();
+
+
         System.out.println("my list of answers" + listOfAnswers);
+        System.out.println("one of my answers_option" + listOfAnswers.get(0).getOption().getId_option());
+        System.out.println("one of my answers_user" + listOfAnswers.get(0).getUser().getUser_name());
         model.addAttribute("answers", listOfAnswers);
-//
+
+
         for (Question value : questionList) {
             // store the id_question from the current displayed question
             int questionId = value.getId_question();
+            System.out.println(questionId);
+//            List<Answer> listOfAnswersFromQuestion = AnswerDao.getAllAnswersOfQuestion(questionId, id, n);
+//
+//            model.addAttribute("answersOfQ", listOfAnswersFromQuestion);
+//            System.out.println("my list of answers of the same Question" + listOfAnswersFromQuestion);
+
             // retrieve options store in optionDao
             value.setOptions(OptionDao.getAllOptionsFromQuestion(questionId, startRow, OptionDao.getOptionCount()));
+            value.setAnswers(AnswerDao.getAllAnswersOfQuestion(questionId, startRow, AnswerDao.getAnswerCount()));
         }
         return "TeacherPage"; //view
+    }
+
+    @PostMapping("/deleteQuestion")
+    public String deleteQuestion(int questionId) throws IOException, SQLException {
+        System.out.println("I try to display the question value");
+        System.out.println(questionId);
+        QuestionDao.deleteQuestion(questionId);
+
+        return "redirect:/adminConnected";
     }
 }
 

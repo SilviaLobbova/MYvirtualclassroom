@@ -21,12 +21,12 @@ public class ClassroomController {
     public String homePageRender(Model model, HttpSession session) throws IOException, SQLException {
         System.out.println("GET /HomePage (ClassroomController)");
         List<Classroom> classroomList;
-//        long n = ClassroomDao.getClassroomCount();
-//        int id = 0;
-        classroomList = ClassroomDao.getClassroomList();
+        long n = ClassroomDao.getClassroomCount();
+        int id = 0;
+        classroomList = ClassroomDao.getClassroomRowsList(id, n);
         //sorting the classroom's list by alphabetical order
         classroomList.sort(Comparator.comparing(Classroom::getClassroom_name));
-//        System.out.println(n);
+        System.out.println(n);
         System.out.println(classroomList);
         model.addAttribute("classrooms", classroomList);
 

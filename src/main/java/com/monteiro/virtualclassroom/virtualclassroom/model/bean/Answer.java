@@ -22,6 +22,10 @@ public class Answer {
         return user;
     }
 
+    public String getUserName(User user) {
+        return user.getUser_name();
+    }
+
     public void setUser(User user) {
         this.user = user;
     }
@@ -34,8 +38,8 @@ public class Answer {
         this.option = option;
     }
 
-    public int getId_userFromOption(int id_option) {
-        return user.getUser_id();
+    public String get_userFromOption(int id_option) {
+        return user.getUser_name();
     }
 
     public int getId_optionFromAnswer(int id_question) {

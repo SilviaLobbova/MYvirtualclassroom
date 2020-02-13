@@ -17,12 +17,16 @@ public class Question {
     private Classroom classroom;
 
     @DatabaseField(canBeNull = false)
-    private boolean isRadio =true;
+    private boolean isRadio = true;
 
     // list option param
     public List<Option> options;
 
-    public Question(){};
+
+    public List<Answer> answers;
+
+    public Question() {
+    }
 
     public Question(String question_content, boolean isRadio) {
         this.question_content = question_content;
@@ -54,18 +58,27 @@ public class Question {
     }
 
     public boolean getIsRadio() {
-        return this.isRadio;
+        return isRadio;
     }
 
     public void setRadio(boolean radio) {
-        this.isRadio = radio;
+        isRadio = radio;
     }
 
     // method  get and set of options
     public List<Option> getOptions() {
-        return this.options;
+        return options;
     }
+
     public void setOptions(List<Option> options) {
         this.options = options;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 }
