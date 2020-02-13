@@ -80,6 +80,7 @@ main {
 
 .questionBox {
     box-shadow: 2px 2px 5px rgba(65, 65, 65, 1);
+    margin-block-end: 10px;
 }
 
 .questionBar {
@@ -144,6 +145,15 @@ main {
     padding: 15px;
 }
 
+.answerTable {
+    width:100%;
+}
+.answerTableHeader, .answerTableBody {
+    text-align: center;
+}
+.answerOrder {
+    display: grid;
+}
 .answerButtonBar {
     display: flex;
     justify-content: flex-end;
@@ -175,7 +185,7 @@ main {
     color: rgba(255, 255, 255, 1) !important;
 }
 
-.deleteAnswer {
+.deleteQuestion {
     margin: 0px 5px;
     background: rgba(65, 65, 70, 1) !important;
     border: none !important;

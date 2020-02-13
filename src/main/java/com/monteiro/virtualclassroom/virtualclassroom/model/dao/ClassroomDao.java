@@ -65,7 +65,7 @@ public class ClassroomDao {
     }
 
     public static List<Classroom> getClassroomRowsList(long offset, long end) throws IOException, SQLException {
-        List<Classroom> classroomRowList = new ArrayList<>();
+        List<Classroom> classroomRowList;
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
@@ -82,7 +82,7 @@ public class ClassroomDao {
     }
 
     public static List<Classroom> getClassroomList() throws SQLException, IOException {
-        List<Classroom> classroomRowList = new ArrayList<>();
+        List<Classroom> classroomRowList;
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
