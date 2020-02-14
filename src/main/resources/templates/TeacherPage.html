@@ -80,7 +80,7 @@
                             <form method="post" th:action="@{/sendAnswer}" th:object="${answerForm}"
                                   th:id="${question.getId_question()}">
                                 <div th:class="answerContent">
-                                    <div th:if="${session.is_Admin != true}">
+                                    <div class="answerOrder" th:if="${session.is_Admin != true}">
                                         <!--                                    set the option of the question depending of the user choice -->
                                         <span th:if="${question.getIsRadio()== true }"
                                               th:each="radioValue: ${question.getOptions()}">
@@ -106,8 +106,8 @@
                                     </div>
 
                                     <div th:if="${session.is_Admin == true}">
-                                        <table>
-                                            <thead>
+                                        <table class="answerTable">
+                                            <thead class="answerTableHeader">
                                             <tr>
                                                 <th>Student Name</th>
                                                 <span th:each="option: ${question.getOptions()}">
@@ -115,7 +115,7 @@
                                             </span>
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody class="answerTableBody">
                                             <tr th:if="${question.getAnswers().isEmpty()}">
                                                 <td>No answers</td>
                                             </tr>
