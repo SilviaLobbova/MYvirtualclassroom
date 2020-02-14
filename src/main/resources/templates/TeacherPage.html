@@ -39,7 +39,7 @@
                 <div class="teacherLeftContent col-sm-4 col-lg-3">
                     <!-- Left part -->
                     <span th:replace="~{fragments/informationBox.html :: informationBox}"/>
-                    <div class="studentFrame">
+                    <div th:if="${session.is_Admin == true}" class="studentFrame">
                         <div class="frameHeader">
                             <p class="classTitle" th:text="${session.classroom.getClassroom_name()}"></p>
                         </div>
@@ -54,7 +54,8 @@
                 <!-- Right part -->
                 <div class="teacherRightContent col-9">
                     <!--                        look at it this is when u have to load the function-->
-                    <div class="questionBox" th:each="question: ${questions}">
+                    <div class="questionBox" th:id="${question.getId_question()}"
+                         th:each="question: ${questions}">
 
                         <div class="questionBar">
                             <div class="questionContent">
@@ -76,7 +77,8 @@
                         <!--                            choice of answer-->
                         <div th:id="hiddenAnswer" th:class="hiddenAnswer"
                              th:classappend="${question.getId_question()}">
-                            <form method="post" th:action="@{/sendAnswer}" th:object="${answerForm}">
+                            <form method="post" th:action="@{/sendAnswer}" th:object="${answerForm}"
+                                  th:id="${question.getId_question()}">
                                 <div th:class="answerContent">
                                     <div th:if="${session.is_Admin != true}">
                                         <!--                                    set the option of the question depending of the user choice -->
@@ -143,7 +145,7 @@
                                 </div>
 
                                 <div th:if="${session.is_Admin != true}" th:class="answerButtonBar">
-                                    <button th:class="btnAnswer" th:type="submit" th:name="option">OK
+                                    <button th:class="btnAnswer" th:type="submit">OK
                                     </button>
                                 </div>
                             </form>
@@ -202,6 +204,31 @@
         $(".infoDelete").attr("value", idValue)
     });
 
+    $(".btnAnswer").on("click", function (ev) {
+        ev.stopPropagation();
+        var form = $(this).parent().parent().attr("id");
+        var formElement = document.getElementById(form)
+        console.log(form)
+        console.log(formElement)
+        $(formElement).on("submit", function (e) {
+            $.ajax({
+                url: formElement.attr('action'),
+                type: formElement.attr('method'),
+                success: function () {
+                    console.log("entered the answer deleting")
+                    alert("answer sent")
+                    // Inject the result in the HTML
+                    var questionBox = $(this).parent().parent().parent().parent().attr("id")
+                    var question = document.getElementById(questionBox)
+                    question.style.display = "none";
+                },
+            });  // prevent form submission
+            e.preventDefault();
+        })
+
+        // submit the form via Ajax
+
+    });
 
 </script>
 

@@ -175,7 +175,7 @@ main {
     color: rgba(255, 255, 255, 1) !important;
 }
 
-.deleteAnswer {
+.deleteQuestion {
     margin: 0px 5px;
     background: rgba(65, 65, 70, 1) !important;
     border: none !important;

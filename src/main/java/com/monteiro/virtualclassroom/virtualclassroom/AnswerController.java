@@ -32,14 +32,23 @@ public class AnswerController {
         Classroom classroom = (Classroom) session.getAttribute("classroom");
         long classroomId = classroom.getId_classroom();
 
+        User user = (User) session.getAttribute("user");
+        int userId = user.getUser_id();
+        System.out.println("THe ID of my connected user" + userId);
         // creation of the list question
         int startRow = 0;
 
         // creation of a list which will be used by thymeleaf and store the result of the function call in the list
         List<Question> questionList = QuestionDao.getAllQuestionFromId(classroomId, startRow, QuestionDao.getQuestionCount());
-
+        List<Question> selectiveQuestionList = QuestionDao.getAllQuestionsFromClassExceptOneUser(classroomId, userId, startRow, QuestionDao.getQuestionCount());
         // add to the model
         model.addAttribute("questions", questionList);
+        model.addAttribute("selectedQuestions", selectiveQuestionList);
+        int i;
+        for (i = 0; i < selectiveQuestionList.size(); i++) {
+            System.out.println("my selective list" + selectiveQuestionList.get(i).getQuestion_content());
+        }
+
 
         List<Information> informationList = InformationDao.showInformation(classroomId);
         model.addAttribute("information", informationList);
