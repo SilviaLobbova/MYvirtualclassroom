@@ -164,6 +164,27 @@ public class AnswerController {
 
         return "redirect:/adminConnected";
     }
+
+    @PostMapping("/updateQuestion")
+    public String updateQuestion(int questionToModify, String newQuestionContent) throws IOException, SQLException {
+        System.out.println("I try to display the question value");
+        System.out.println(questionToModify);
+        Question q = QuestionDao.getQuestion(questionToModify);
+        if (!newQuestionContent.equals("") && !newQuestionContent.equals(q.getQuestion_content())) {
+            QuestionDao.updateQuestion(questionToModify, newQuestionContent);
+        }
+        return "redirect:/adminConnected";
+    }
+
+    @PostMapping("/updateOption")
+    public String updateOption(int optionToModify, String newOptionContent) throws Exception {
+        System.out.println(optionToModify);
+        Option o = OptionDao.getOption(optionToModify);
+        if (!newOptionContent.equals("") && !newOptionContent.equals(o.getOption_content())) {
+            OptionDao.updateOption(optionToModify, newOptionContent);
+        }
+        return "redirect:/adminConnected";
+    }
 }
 
 

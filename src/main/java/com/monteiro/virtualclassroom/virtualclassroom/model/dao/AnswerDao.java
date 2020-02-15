@@ -31,10 +31,20 @@ public class AnswerDao {
             Dao<Option, String> optionDao = DaoManager.createDao(connectionSource, Option.class);
             Dao<User, String> userDao = DaoManager.createDao(connectionSource, User.class);
 
+//            if (answerDao.queryBuilder().where().eq("id_user", answer.getUser().getUser_id()).countOf() > 0) {
             optionDao.refresh(answer.getOption());
             userDao.refresh(answer.getUser());
-
             answerDao.createOrUpdate(answer);
+//            } else {
+//                UpdateBuilder<Answer, String> updateBuilder = answerDao.updateBuilder();
+//                // set the criteria
+//                updateBuilder.where().eq("id_user", answer.getUser().getUser_id());
+//                // update the value of the target fields
+//                updateBuilder.updateColumnValue("id_option", answer.getOption().getId_option());
+//                // update execution
+//                updateBuilder.update();
+//            }
+
         } finally {
             connectionSource.close();
         }
@@ -52,14 +62,14 @@ public class AnswerDao {
         }
     }
 
-    public static Answer getAnswer(long answerId) throws SQLException, IOException {
+    public static Answer getAnswer(int userId) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
 
             Dao<Answer, String> answerDao = DaoManager.createDao(connectionSource, Answer.class);//creates a new dao object
 
-            return answerDao.queryBuilder().where().eq("id_answer", answerId).queryForFirst();
+            return answerDao.queryBuilder().where().eq("id_user", userId).queryForFirst();
 
         } finally {
             connectionSource.close();

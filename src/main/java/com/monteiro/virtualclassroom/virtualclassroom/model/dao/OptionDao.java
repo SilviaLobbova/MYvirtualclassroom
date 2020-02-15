@@ -116,7 +116,7 @@ public class OptionDao {
     }
 
     // update Option
-    public static void updateQuestion(int id, String targetColumn, String newValue) throws SQLException, IOException {
+    public static void updateOption(int id, String newValue) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the DAO with the connection source
@@ -129,7 +129,7 @@ public class OptionDao {
             // set the criteria
             updateBuilder.where().eq("id_option", id);
             // update the value of the target fields
-            updateBuilder.updateColumnValue(targetColumn, newValue);
+            updateBuilder.updateColumnValue("option_content", newValue);
             // update execution
             updateBuilder.update();
         } finally {

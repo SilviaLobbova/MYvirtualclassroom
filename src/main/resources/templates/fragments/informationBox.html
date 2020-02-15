@@ -70,8 +70,9 @@
         </div>
     </div>
     <script>
-
         $(function () {
+
+            //to update Information in infoBox
             $(".updateInfoIcon").on("click", function (ev) {
                 ev.stopPropagation();
                 let idInfo = $(this).attr("value")
@@ -79,23 +80,20 @@
                 console.log(idInfo)
                 console.log(idVerify)
 
-
                 let a = $(this).parent().parent().parent().attr("id");
                 let b = $(this).parent().parent().parent().next().attr("id")
                 let x = document.getElementById(a);
                 let y = document.getElementById(b);
-                console.log("x" + x)
-                console.log("y" + y)
-                console.log("a" + a)
-                console.log("b" + b)
+
                 if (idInfo == idVerify && y.style.display === "none") {
                     y.style.display = "flex"
                     console.log("updateFrame is in flex display");
                     x.style.display = "none";
                     console.log("changed to none display");
-                    // $(this).parent().parent().parent().attr("id", "updateInfoFrame")
                 }
             })
+
+            //to reverse the update form
             $("body").on("click", function () {
                 console.log("studentFrame is active, clicked on body")
                 var except2 = document.getElementById("updateInfoIcon")
@@ -129,7 +127,6 @@
                 }, false);
             })
         });
-
     </script>
 
 </div>

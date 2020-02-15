@@ -74,12 +74,12 @@ public class QuestionDao {
     }
 
     // retrieve question method
-    public static Question getQuestion(Question question) throws SQLException, IOException {
+    public static Question getQuestion(int id) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<Question, String> clashUserDao = DaoManager.createDao(connectionSource, Question.class); //creates a new dao object
-            return clashUserDao.queryBuilder().where().eq("question_content", question).queryForFirst();
+            return clashUserDao.queryBuilder().where().eq("id_question", id).queryForFirst();
         } finally {
             connectionSource.close();
         }
@@ -106,7 +106,7 @@ public class QuestionDao {
     }
 
     // update question
-    public static void updateQuestion(int id, String targetColumn, String newValue) throws SQLException, IOException {
+    public static void updateQuestion(int id, String newValue) throws SQLException, IOException {
         JdbcConnectionSource connectionSource = null;
         try {
             // initiate the DAO with the connection source
@@ -119,7 +119,7 @@ public class QuestionDao {
             // set the criteria
             updateBuilder.where().eq("id_question", id);
             // update the value of the target fields
-            updateBuilder.updateColumnValue(targetColumn, newValue);
+            updateBuilder.updateColumnValue("question_content", newValue);
             // update execution
             updateBuilder.update();
         } finally {
@@ -147,7 +147,7 @@ public class QuestionDao {
             questionQb.where().eq("classroom_id", idClassRoom);
 //            QueryBuilder<Option, String> optionQb = optionDao.queryBuilder();
 //            optionQb.where().eq("id_question",
-//                    new ColumnArg("questions", "id_question"));
+//                    new ColumnArg("questions", "id_question"));x
             // retrieve options from it
             List<Question> results = questionQb.offset(startRow).limit(endRow).query();
             return results;

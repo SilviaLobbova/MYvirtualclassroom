@@ -52,44 +52,127 @@ function openQuestionContent() {
     }
 }
 
-function showStudentFrame() {
-    var x = document.getElementById("classroomsLeftContent");
-    if (x.style.visibility === "hidden") {
-        x.style.visibility = "visible";
-    }
-}
+// function showStudentFrame() {
+//     var x = document.getElementById("classroomsLeftContent");
+//     if (x.style.visibility === "hidden") {
+//         x.style.visibility = "visible";
+//     }
+// }
+
+//Teacher page - admin access utilities
 
 
-function loadSearchResult() {
-    var url = "/studentFrame.html";
-    $("#classroomsLeftContent").load(url + ' #studentFrame');
-    // if ($('.classroomListItem').val() != '') {
-    //     url = url + $('.classroomListItem').val();
-    // }
-}
+// to update the question label
+$(function () {
+    // $(".updateQuestion").on("click", function (ev) {
+    //     ev.stopPropagation();
+    //     let a = $(this).parent().parent().parent().prev().find("p").attr("id");
+    //     console.log("my attribute id" + a);
+    //     let b = $(this).parent().parent().parent().prev().find("form").attr("id");
+    //     console.log("my content attribute id" + b);
+    //     var x = document.getElementById(a);
+    //     var y = document.getElementById(b);
+    //     if (x.style.display === "flex")
+    //         console.log("questionLabel is in flex display");
+    //     x.style.display = "none";
+    //     console.log("changed to none display");
+    //     y.style.display = "flex"
+    // });
+    // once the question label clicked,
+    $(".questionLabel").on("click", function (ev) {
+        ev.stopPropagation();
+
+        //find the input element
+        var myInputId = $(this).next().attr("id");
+        var myInput = document.getElementById(myInputId);
+
+        // hide the label and display the input form
+        if (this.style.display == "flex") {
+            console.log("recognized clicked question")
+            this.style.display = "none";
+            myInput.style.display = "flex";
+        }
+    })
+    //to reverse the update form
+    $("body").on("click", function () {
 
 
-function retrieveGuests() {
-    var url = '/' + $(".classroomListItem").val();
-    //
-    // if ($('#searchSurname').val() != '') {
-    //     url = url + '/' + $('#searchSurname').val();
-    // }
+        //getting the elements to be exchanged
+        var getForms = document.getElementsByClassName("updateQForm")
+        var getFrames = document.getElementsByClassName("questionLabel")
 
-    $("#classroomsLeftContent").load(url);
-}
+        //creating an array of all "updateQForm" elements
+        var formDisplayed = Array.prototype.map.call(getForms, function (getForm) {
+            return getForm.style.cssText === "display: flex;"
+        })
 
-function editClass() {
-    var x = document.getElementById("updateFrame");
-    var y = document.getElementById("updateForm");
-    if (x.style.display === "flex") {
-        x.style.display = "none";
-        y.style.display = "flex"
-    } else {
-        x.style.display = "flex";
-        y.style.display = "none"
-    }
-}
+        //a loop to find a "form" being open (true means present, false hidden)
+        for (let i = 0; i < getForms.length; i++) {
+            //if the form is open, hide it - change display to none and show the label
+            if (formDisplayed[i] === true) {
+                getForms[i].style.cssText = "display: none;";
+                getFrames[i].style.cssText = "display: flex;"
+            }
+        }
+        //exceptions located on body
+        var except1 = document.getElementById("renameQuestionBtn")
+        except1.addEventListener("click", function (ev) {
+            ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
+        }, false);
+
+        var except2 = document.getElementById("questionContentInput")
+        except2.addEventListener("click", function (ev) {
+            ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
+        }, false);
+
+    })
+});
+
+$(function () {
+    // once the option label clicked,
+    $(".optionContent").on("click", function (e) {
+        e.stopPropagation();
+
+        //find the input element
+        var myInputId = $(this).next().attr("id");
+        var myInput = document.getElementById(myInputId);
+
+        // hide the option and display the input form
+        if (this.style.display == "table-cell") {
+            console.log("recognized clicked option id")
+            this.style.display = "none";
+            myInput.style.display = "table-cell";
+        }
+    })
+
+    //to reverse the update form
+    $("body").on("click", function () {
+
+        var getForms = document.getElementsByClassName("updateOption")
+        var getFrames = document.getElementsByClassName("optionContent")
+
+        var formDisplayed = Array.prototype.map.call(getForms, function (getForm) {
+            return getForm.style.cssText === "display: table-cell;"
+        })
+
+        for (let i = 0; i < getForms.length; i++) {
+            if (formDisplayed[i] === true) {
+                getForms[i].style.cssText = "display: none;";
+                getFrames[i].style.cssText = "display: table-cell;"
+            }
+        }
+        var except1 = document.getElementById("firstRow")
+        except1.addEventListener("click", function (ev) {
+            ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
+        }, false);
+
+        var except2 = document.getElementById("questionContentInput")
+        except2.addEventListener("click", function (ev) {
+            ev.stopPropagation();
+        }, false);
+    })
+});
+
 
 function removeToggle() {
     console.log("entered toggle remove function")
@@ -105,21 +188,6 @@ function removeToggle() {
     }
 };
 
-$(document).ready(function () {
-    //call function when page is loaded
-
-
-    console.log("here I went")
-    // $(".studentFrame").hide();
-    console.log("here I went after")
-
-});
-
-// function removeAnsweredQuestion() {
-//     var question = document.getElementById("questionBox")
-//     question.style.display = "none";
-// }
-
 // function that toggles the input type - to text (show psw) and password (hide psw)
 function togglePassword(input) {
     if (input.attr("type") == "password") {
@@ -129,7 +197,7 @@ function togglePassword(input) {
     }
 }
 
-// !!! jquery part do not delete it  !!!
+
 $(document).ready(function () {
     // event listener click on i tag ....- .toggle-password is pointing to the specific class of the eye icon
     $(".toggle-password").click(function () {
@@ -152,6 +220,7 @@ $(document).ready(function () {
         togglePassword(inputPsw);
     });
 });
+
 $(".profilePassword").click(function () {
     $(this).replaceWith('<input class = "col-6" value="Please click on Update" disabled>');
 });
@@ -165,8 +234,7 @@ $(document).ready(function () {
         let questionId = "." + $(this).attr('id');
         console.log(questionId);
         $(questionId).toggle();
-        // alert($(this).attr('id'));
-        // alert($(this).attr('value'));
+
     });
 
     // locker animation
@@ -181,4 +249,5 @@ $(document).ready(function () {
         alert(text);
         // display it
     }
+
 });

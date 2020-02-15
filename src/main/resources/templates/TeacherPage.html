@@ -54,14 +54,25 @@
                 <!-- Right part -->
                 <div class="teacherRightContent col-9">
                     <!--                        look at it this is when u have to load the function-->
-                    <div class="questionBox" th:id="${question.getId_question()}"
+                    <div class="questionBox"
                          th:each="question: ${questions}">
 
-                        <div class="questionBar">
+                        <div class="questionBar" id="questionBar">
                             <div class="questionContent">
                                 <span class="questionTitle">Question: </span>
                                 <!--                                    use the id question to identify the question from the others -->
-                                <p th:class="questionLabel" th:text="${question.getQuestion_content()}"></p>
+                                <p th:class="questionLabel" th:id="${question.getId_question()}"
+                                   th:text="${question.getQuestion_content()}" style="display: flex;"></p>
+                                <form th:action="@{/updateQuestion}" class="updateQForm"
+                                      th:id="${question.getQuestion_content()}" method="post"
+                                      style="display: none;">
+                                    <input class="questionContentInput" id="questionContentInput"
+                                           name="newQuestionContent" th:value="${question.getQuestion_content()}">
+                                    <button class="renameQuestionBtn" id="renameQuestionBtn" name="questionToModify"
+                                            type="submit"
+                                            th:value="${question.getId_question()}">OK
+                                    </button>
+                                </form>
                             </div>
                             <div class="topIcons">
                                 <a class="lockIcon" role="button">
@@ -108,11 +119,29 @@
                                     <div th:if="${session.is_Admin == true}">
                                         <table class="answerTable">
                                             <thead class="answerTableHeader">
-                                            <tr>
+                                            <tr th:id="firstRow">
                                                 <th>Student Name</th>
-                                                <span th:each="option: ${question.getOptions()}">
-                                                    <th th:text="${option.getOption_content()}">Option1</th>
-                                            </span>
+                                                <div th:each="option: ${question.getOptions()}">
+                                                    <th th:text="${option.getOption_content()}" class="optionContent"
+                                                        th:id="${option.getId_option()}"
+                                                        style="display: table-cell;">Option1
+                                                    </th>
+                                                    <th style="display: none;" class="updateOption"
+                                                        th:id="${option.getOption_content()}">
+                                                        <form th:if="${session.is_Admin == true}"
+                                                              th:action="@{/updateOption}"
+                                                              method="post">
+                                                            <span>
+                                                            <input th:value="${option.getOption_content()}"
+                                                                   name="newOptionContent">
+                                                            <button class="renameOptionBtn" name="optionToModify"
+                                                                    type="submit"
+                                                                    th:value="${option.getId_option()}">OK
+                                                            </button>
+                                                                </span>
+                                                        </form>
+                                                    </th>
+                                                </div>
                                             </tr>
                                             </thead>
                                             <tbody class="answerTableBody">
@@ -151,11 +180,12 @@
                             </form>
                             <div th:if="${session.is_Admin == true}" th:class="answerFooter">
                                 <div th:class="answerFooterIcons">
-                                    <button th:class="updateAnswer">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </button>
+                                    <!--                                    <button th:class="updateQuestion" id="updateQuestion">-->
+                                    <!--                                        <i class="fa fa-pencil" aria-hidden="true"></i>-->
+                                    <!--                                    </button>-->
+
                                     <button th:class="deleteQuestion" data-toggle="modal" id="deleteQuestionIcon"
-                                            data-target="#deleteQuestion">
+                                            data-target="#deleteQuestion" th:value="${question.getId_question()}">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </div>
@@ -181,7 +211,7 @@
                                                 Cancel
                                             </button>
                                             <button type="submit" class="btn btn-primary questionDelete"
-                                                    name="questionId" th:value="${question.getId_question()}">Delete
+                                                    name="questionId">Delete
                                             </button>
                                         </div>
                                     </form>
@@ -199,10 +229,17 @@
 </div>
 
 <script>
+
     $(".deleteIcon").on("click", function () {
         var idValue = $(this).attr("value")
         $(".infoDelete").attr("value", idValue)
+        $(".questionDelete").attr("value", idValue)
     });
+    $(".deleteQuestion").on("click", function () {
+        var idValue = $(this).attr("value")
+        $(".questionDelete").attr("value", idValue)
+    });
+
 
     $(".btnAnswer").on("click", function (ev) {
         ev.stopPropagation();
