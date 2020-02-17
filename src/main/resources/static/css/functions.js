@@ -93,9 +93,14 @@ $(function () {
             myInput.style.display = "flex";
         }
     })
+
+    //excludes the form from the function that initiates once body is clicked
+    $(".updateQForm").on("click", function (ev) {
+        ev.stopPropagation();
+    })
+    
     //to reverse the update form
     $("body").on("click", function () {
-
 
         //getting the elements to be exchanged
         var getForms = document.getElementsByClassName("updateQForm")
@@ -114,17 +119,6 @@ $(function () {
                 getFrames[i].style.cssText = "display: flex;"
             }
         }
-        //exceptions located on body
-        var except1 = document.getElementById("renameQuestionBtn")
-        except1.addEventListener("click", function (ev) {
-            ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-        }, false);
-
-        var except2 = document.getElementById("questionContentInput")
-        except2.addEventListener("click", function (ev) {
-            ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-        }, false);
-
     })
 });
 
@@ -145,6 +139,15 @@ $(function () {
         }
     })
 
+    //excludes the input  field from the body function
+    $(".newOptionContent").on("click", function (ev) {
+        ev.stopPropagation();
+    })
+    //excludes the submit button from the body function
+    $(".renameOptionBtn").on("click", function (ev) {
+        ev.stopPropagation();
+    })
+
     //to reverse the update form
     $("body").on("click", function () {
 
@@ -161,15 +164,6 @@ $(function () {
                 getFrames[i].style.cssText = "display: table-cell;"
             }
         }
-        var except1 = document.getElementById("firstRow")
-        except1.addEventListener("click", function (ev) {
-            ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-        }, false);
-
-        var except2 = document.getElementById("questionContentInput")
-        except2.addEventListener("click", function (ev) {
-            ev.stopPropagation();
-        }, false);
     })
 });
 

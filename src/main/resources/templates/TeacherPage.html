@@ -88,10 +88,11 @@
                         <!--                            choice of answer-->
                         <div th:id="hiddenAnswer" th:class="hiddenAnswer"
                              th:classappend="${question.getId_question()}">
-                            <form method="post" th:action="@{/sendAnswer}" th:object="${answerForm}"
-                                  th:id="${question.getId_question()}">
-                                <div th:class="answerContent">
-                                    <div class="answerOrder" th:if="${session.is_Admin != true}">
+                            <div th:class="answerContent">
+                                <form th:if="${session.is_Admin != true}" method="post" th:action="@{/sendAnswer}"
+                                      th:object="${answerForm}"
+                                      th:id="${question.getId_question()}">
+                                    <div class="answerOrder">
                                         <!--                                    set the option of the question depending of the user choice -->
                                         <span th:if="${question.getIsRadio()== true }"
                                               th:each="radioValue: ${question.getOptions()}">
@@ -116,46 +117,55 @@
                                         <!--                                    display the pull of possible answer-->
                                     </div>
 
-                                    <div th:if="${session.is_Admin == true}">
-                                        <table class="answerTable">
-                                            <thead class="answerTableHeader">
-                                            <tr th:id="firstRow">
-                                                <th>Student Name</th>
-                                                <div th:each="option: ${question.getOptions()}">
-                                                    <th th:text="${option.getOption_content()}" class="optionContent"
-                                                        th:id="${option.getId_option()}"
-                                                        style="display: table-cell;">Option1
-                                                    </th>
-                                                    <th style="display: none;" class="updateOption"
-                                                        th:id="${option.getOption_content()}">
-                                                        <form th:if="${session.is_Admin == true}"
-                                                              th:action="@{/updateOption}"
-                                                              method="post">
-                                                            <span>
+                                    <div th:class="answerButtonBar">
+                                        <button th:class="btnAnswer" th:type="submit">OK
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <div th:if="${session.is_Admin == true}">
+                                    <table class="answerTable">
+                                        <thead class="answerTableHeader">
+                                        <tr th:id="firstRow">
+                                            <th>Student Name</th>
+                                            <div th:each="option: ${question.getOptions()}">
+                                                <th th:text="${option.getOption_content()}" class="optionContent"
+                                                    th:id="${option.getId_option()}"
+                                                    style="display: table-cell;">Option1
+                                                </th>
+                                                <th style="display: none;" class="updateOption"
+                                                    th:id="${option.getOption_content()}">
+                                                        <span>
+                                                        <form th:action="@{/updateOption}"
+                                                              method="post"
+                                                              class="updateOptionFrom"
+                                                              th:if="${session.is_Admin == true}">
+
                                                             <input th:value="${option.getOption_content()}"
-                                                                   name="newOptionContent">
+                                                                   name="newOptionContent" class="newOptionContent">
                                                             <button class="renameOptionBtn" name="optionToModify"
                                                                     type="submit"
                                                                     th:value="${option.getId_option()}">OK
                                                             </button>
+                                                            </form>
                                                                 </span>
-                                                        </form>
-                                                    </th>
-                                                </div>
-                                            </tr>
-                                            </thead>
-                                            <tbody class="answerTableBody">
-                                            <tr th:if="${question.getAnswers().isEmpty()}">
-                                                <td>No answers</td>
-                                            </tr>
 
-                                            <tr th:each="student : ${students}"
-                                                th:value="${question.getId_question()}">
-                                                <td th:text="${student.getUser_name()}"
-                                                    th:value="${student.getUser_id()}"></td>
+                                                </th>
+                                            </div>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="answerTableBody">
+                                        <tr th:if="${question.getAnswers().isEmpty()}">
+                                            <td>No answers</td>
+                                        </tr>
 
-                                                <div th:each="option : ${question.getOptions()}">
-                                                    <td class="chosenAnswer">
+                                        <tr th:each="student : ${students}"
+                                            th:value="${question.getId_question()}">
+                                            <td th:text="${student.getUser_name()}"
+                                                th:value="${student.getUser_id()}"></td>
+
+                                            <div th:each="option : ${question.getOptions()}">
+                                                <td class="chosenAnswer">
                                                         <span th:each="answer: ${question.getAnswers()}"
                                                               th:value=" ${answer.getOption().getId_option()}"
                                                               th:id=" ${option.getId_option()}"
@@ -165,19 +175,15 @@
                                                             <i class="fas fa-check"></i>
                                                             </span>
                                                         </span>
-                                                    </td>
-                                                </div>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
 
-                                <div th:if="${session.is_Admin != true}" th:class="answerButtonBar">
-                                    <button th:class="btnAnswer" th:type="submit">OK
-                                    </button>
-                                </div>
-                            </form>
+
+                            </div>
                             <div th:if="${session.is_Admin == true}" th:class="answerFooter">
                                 <div th:class="answerFooterIcons">
                                     <!--                                    <button th:class="updateQuestion" id="updateQuestion">-->

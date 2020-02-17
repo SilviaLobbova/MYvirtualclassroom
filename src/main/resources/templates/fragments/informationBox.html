@@ -93,6 +93,9 @@
                 }
             })
 
+            $(".updateInfoForm").on("click", function (ev) {
+                ev.stopPropagation();
+            })
             //to reverse the update form
             $("body").on("click", function () {
                 console.log("studentFrame is active, clicked on body")
@@ -116,15 +119,6 @@
                         getFrames[i].style.cssText = "display: flex;"
                     }
                 }
-
-                var except1 = document.getElementById("infoNameInput")
-                var except3 = document.getElementById("infoURLInput")
-                except1.addEventListener("click", function (ev) {
-                    ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-                }, false);
-                except3.addEventListener("click", function (ev) {
-                    ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-                }, false);
             })
         });
     </script>
