@@ -114,22 +114,6 @@ function removeToggle(){
         return;
     }};
 
-$(document).ready(function() {
-        //call function when page is loaded
-
-
-    console.log("here I went")
-    // $(".studentFrame").hide();
-    console.log("here I went after")
-    // $(".classroomListItem").click(function() {
-    // console.log($(this).text())
-    //
-    //
-
-
-
-// })
-});
 
 // function that toggles the input type - to text (show psw) and password (hide psw)
 function togglePassword(input){
@@ -173,20 +157,17 @@ $(".profilePassword").click(function() {
 $(document).ready(function() {
     // arrow animation
     $(".answerToggle").click(function() {
-        $(this).toggleClass("fa-sort-down fa-sort-up");
+        $(this).toggleClass("fa-sort-up fa-sort-down");
         // store id on click
         let questionId = "." + $(this).attr('id');
         console.log(questionId);
         $(questionId).toggle();
-        // alert($(this).attr('id'));
-        // alert($(this).attr('value'));
-    });
 
-    // locker animation
-    $('.questionLock').click(function(){
-        $(this).toggleClass("fa-lock fa-lock-open");
+        // locker animation
+        $('.questionLock').click(function () {
+            $(this).toggleClass("fa-lock fa-lock-open");
+        });
     });
-
     // retrieve text from question_content on click
     function questionContent() {
         // target the text on the div
