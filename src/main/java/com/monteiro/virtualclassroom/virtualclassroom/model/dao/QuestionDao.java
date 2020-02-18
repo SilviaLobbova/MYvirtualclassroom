@@ -4,9 +4,9 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
-import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
-import com.monteiro.virtualclassroom.virtualclassroom.model.bean.*;
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
+import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Question;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -47,7 +47,7 @@ public class QuestionDao {
      * @param idClassRoom id de la classe
      * @return les questions de la classe
      */
-    public static List<Question> getAllQuestionFromId(long idClassRoom, long startRow, long endRow) throws Exception {
+    public static List<Question> getAllQuestionsFromId(long idClassRoom, long startRow, long endRow) throws Exception {
 
         // initiate connectionSource
         JdbcConnectionSource connectionSource = null;
@@ -127,32 +127,4 @@ public class QuestionDao {
         }
     }
 
-    public static List<Question> getAllQuestionsFromClassExceptOneUser(long idClassRoom, int userId, long startRow, long endRow) throws Exception {
-
-        // initiate connectionSource
-        JdbcConnectionSource connectionSource = null;
-        try {
-            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
-            Dao<Answer, String> answerDao = DaoManager.createDao(connectionSource, Answer.class);
-            Dao<Question, Long> questionDao = DaoManager.createDao(connectionSource, Question.class);
-            Dao<User, Long> userDao = DaoManager.createDao(connectionSource, User.class);
-            Dao<Classroom, Long> classDao = DaoManager.createDao(connectionSource, Classroom.class);
-            Dao<Option, String> optionDao = DaoManager.createDao(connectionSource, Option.class);
-
-            //get all answers of users except for one
-            QueryBuilder<Answer, String> answerQb = answerDao.queryBuilder();
-            answerQb.where().not().eq("id_user", userId);
-            //get questions of one class
-            QueryBuilder<Question, Long> questionQb = questionDao.queryBuilder();
-            questionQb.where().eq("classroom_id", idClassRoom);
-//            QueryBuilder<Option, String> optionQb = optionDao.queryBuilder();
-//            optionQb.where().eq("id_question",
-//                    new ColumnArg("questions", "id_question"));x
-            // retrieve options from it
-            List<Question> results = questionQb.offset(startRow).limit(endRow).query();
-            return results;
-        } finally {
-            connectionSource.close();
-        }
-    }
 }

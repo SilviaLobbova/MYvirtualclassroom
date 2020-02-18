@@ -39,16 +39,10 @@ public class AnswerController {
         int startRow = 0;
 
         // creation of a list which will be used by thymeleaf and store the result of the function call in the list
-        List<Question> questionList = QuestionDao.getAllQuestionFromId(classroomId, startRow, QuestionDao.getQuestionCount());
-        List<Question> selectiveQuestionList = QuestionDao.getAllQuestionsFromClassExceptOneUser(classroomId, userId, startRow, QuestionDao.getQuestionCount());
+        List<Question> questionList = QuestionDao.getAllQuestionsFromId(classroomId, startRow, QuestionDao.getQuestionCount());
+
         // add to the model
         model.addAttribute("questions", questionList);
-        model.addAttribute("selectedQuestions", selectiveQuestionList);
-        int i;
-        for (i = 0; i < selectiveQuestionList.size(); i++) {
-            System.out.println("my selective list" + selectiveQuestionList.get(i).getQuestion_content());
-        }
-
 
         List<Information> informationList = InformationDao.showInformation(classroomId);
         model.addAttribute("information", informationList);
@@ -68,7 +62,6 @@ public class AnswerController {
     @PostMapping("/sendAnswer")  //use the save answer
     public String saveUserAnswer(
             @ModelAttribute("answerForm") AnswerForm answerForm,
-            // Option selectedOption, // specify value request in tab
             HttpSession session,
             Model model) throws Exception {
         Option checkBoxOptions;
@@ -99,8 +92,6 @@ public class AnswerController {
 
         System.out.println("Session attribute ID classroom: " + classroomId);
         System.out.println("Session attribute ID user: " + userInSession);
-        // get question id
-        //  System.out.println("Session attribute ID question: " + option.getQuestion().getId_question());
 
         return "redirect:/userConnected";
     }
@@ -120,7 +111,7 @@ public class AnswerController {
         int startRow = 0;
 
         // creation of a list which will be used by thymeleaf and store the result of the function call in the list
-        List<Question> questionList = QuestionDao.getAllQuestionFromId(classroomId, startRow, QuestionDao.getQuestionCount());
+        List<Question> questionList = QuestionDao.getAllQuestionsFromId(classroomId, startRow, QuestionDao.getQuestionCount());
         questionList.sort(Comparator.comparing(Question::getId_question));
         // add to the model
         model.addAttribute("questions", questionList);
@@ -132,11 +123,6 @@ public class AnswerController {
         model.addAttribute("students", listOfUsers);
 
         List<Answer> listOfAnswers = AnswerDao.getAnswers();
-
-
-        System.out.println("my list of answers" + listOfAnswers);
-        System.out.println("one of my answers_option" + listOfAnswers.get(0).getOption().getId_option());
-        System.out.println("one of my answers_user" + listOfAnswers.get(0).getUser().getUser_name());
         model.addAttribute("answers", listOfAnswers);
 
 
@@ -144,10 +130,6 @@ public class AnswerController {
             // store the id_question from the current displayed question
             int questionId = value.getId_question();
             System.out.println(questionId);
-//            List<Answer> listOfAnswersFromQuestion = AnswerDao.getAllAnswersOfQuestion(questionId, id, n);
-//
-//            model.addAttribute("answersOfQ", listOfAnswersFromQuestion);
-//            System.out.println("my list of answers of the same Question" + listOfAnswersFromQuestion);
 
             // retrieve options store in optionDao
             value.setOptions(OptionDao.getAllOptionsFromQuestion(questionId, startRow, OptionDao.getOptionCount()));

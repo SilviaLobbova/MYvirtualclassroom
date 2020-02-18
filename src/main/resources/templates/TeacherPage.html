@@ -91,7 +91,7 @@
                             <div th:class="answerContent">
                                 <form th:if="${session.is_Admin != true}" method="post" th:action="@{/sendAnswer}"
                                       th:object="${answerForm}"
-                                      th:id="${question.getId_question()}">
+                                      class="submitAnswer">
                                     <div class="answerOrder">
                                         <!--                                    set the option of the question depending of the user choice -->
                                         <span th:if="${question.getIsRadio()== true }"
@@ -246,38 +246,53 @@
         $(".questionDelete").attr("value", idValue)
     });
 
+    // this is the id of the form
+    $(".submitAnswer").submit(function (e) {
 
-    $(".btnAnswer").on("click", function (ev) {
-        ev.stopPropagation();
-        var form = $(this).parent().parent().attr("id");
-        var formElement = document.getElementById(form)
-        console.log(form)
-        console.log(formElement)
-        $(formElement).on("submit", function (e) {
-            $.ajax({
-                url: formElement.attr('action'),
-                type: formElement.attr('method'),
-                success: function () {
-                    console.log("entered the answer deleting")
-                    alert("answer sent")
-                    // Inject the result in the HTML
-                    var questionBox = $(this).parent().parent().parent().parent().attr("id")
-                    var question = document.getElementById(questionBox)
-                    question.style.display = "none";
-                },
-            });  // prevent form submission
-            e.preventDefault();
-        })
+        e.preventDefault(); // avoid to execute the actual submit of the form.
 
-        // submit the form via Ajax
+        var form = $(this);
+        var url = form.attr('action');
+        console.log("this my form's action " + url)
 
+        jQuery.ajax({
+            url: url,
+            type: "POST",
+            data: form.serialize(), // serializes the form's elements.
+            // success: function (data) {
+            //     alert(data); // show response from the php script.
+            // }
+        });
     });
+
+    // $(".btnAnswer").on("click", function (ev) {
+    //     ev.stopPropagation();
+    //     var form = $(this).parent().parent().attr("id");
+    //     var formElement = document.getElementById(form)
+    //     console.log(form)
+    //     console.log(formElement)
+    //     $(formElement).on("submit", function (e) {
+    //         $.ajax({
+    //             url: formElement.attr('action'),
+    //             type: formElement.attr('method'),
+    //             success: function () {
+    //                 console.log("entered the answer deleting")
+    //                 alert("answer sent")
+    //                 // Inject the result in the HTML
+    //                 var questionBox = $(this).parent().parent().parent().parent().attr("id")
+    //                 var question = document.getElementById(questionBox)
+    //                 question.style.display = "none";
+    //             },
+    //         });  // prevent form submission
+    //         e.preventDefault();
+    //     })
+    //
+    //     // submit the form via Ajax
+    //
+    // });
 
 </script>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>

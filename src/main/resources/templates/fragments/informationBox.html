@@ -20,7 +20,7 @@
              th:value="${info.getId_information()}" style="display: flex;">
             <div class="linkTitle">
                 <p th:text="${info.getInformation_label()}"></p>
-                <div class="linkWrapIcons">
+                <div th:if="${session.is_Admin == true}" class="linkWrapIcons">
                     <button class="updateInfoIcon" id="updateInfoIcon" th:value="${info.getId_information()}">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>

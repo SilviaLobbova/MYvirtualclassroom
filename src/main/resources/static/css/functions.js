@@ -64,63 +64,66 @@ function openQuestionContent() {
 
 // to update the question label
 $(function () {
-    // $(".updateQuestion").on("click", function (ev) {
-    //     ev.stopPropagation();
-    //     let a = $(this).parent().parent().parent().prev().find("p").attr("id");
-    //     console.log("my attribute id" + a);
-    //     let b = $(this).parent().parent().parent().prev().find("form").attr("id");
-    //     console.log("my content attribute id" + b);
-    //     var x = document.getElementById(a);
-    //     var y = document.getElementById(b);
-    //     if (x.style.display === "flex")
-    //         console.log("questionLabel is in flex display");
-    //     x.style.display = "none";
-    //     console.log("changed to none display");
-    //     y.style.display = "flex"
-    // });
-    // once the question label clicked,
-    $(".questionLabel").on("click", function (ev) {
-        ev.stopPropagation();
+    if (session.is_Admin == true) {
+        // $(".updateQuestion").on("click", function (ev) {
+        //     ev.stopPropagation();
+        //     let a = $(this).parent().parent().parent().prev().find("p").attr("id");
+        //     console.log("my attribute id" + a);
+        //     let b = $(this).parent().parent().parent().prev().find("form").attr("id");
+        //     console.log("my content attribute id" + b);
+        //     var x = document.getElementById(a);
+        //     var y = document.getElementById(b);
+        //     if (x.style.display === "flex")
+        //         console.log("questionLabel is in flex display");
+        //     x.style.display = "none";
+        //     console.log("changed to none display");
+        //     y.style.display = "flex"
+        // });
+        // once the question label clicked,
+        $(".questionLabel").on("click", function (ev) {
+            ev.stopPropagation();
 
-        //find the input element
-        var myInputId = $(this).next().attr("id");
-        var myInput = document.getElementById(myInputId);
+            //find the input element
+            var myInputId = $(this).next().attr("id");
+            var myInput = document.getElementById(myInputId);
 
-        // hide the label and display the input form
-        if (this.style.display == "flex") {
-            console.log("recognized clicked question")
-            this.style.display = "none";
-            myInput.style.display = "flex";
-        }
-    })
-
-    //excludes the form from the function that initiates once body is clicked
-    $(".updateQForm").on("click", function (ev) {
-        ev.stopPropagation();
-    })
-    
-    //to reverse the update form
-    $("body").on("click", function () {
-
-        //getting the elements to be exchanged
-        var getForms = document.getElementsByClassName("updateQForm")
-        var getFrames = document.getElementsByClassName("questionLabel")
-
-        //creating an array of all "updateQForm" elements
-        var formDisplayed = Array.prototype.map.call(getForms, function (getForm) {
-            return getForm.style.cssText === "display: flex;"
+            // hide the label and display the input form
+            if (this.style.display == "flex") {
+                console.log("recognized clicked question")
+                this.style.display = "none";
+                myInput.style.display = "flex";
+            }
         })
 
-        //a loop to find a "form" being open (true means present, false hidden)
-        for (let i = 0; i < getForms.length; i++) {
-            //if the form is open, hide it - change display to none and show the label
-            if (formDisplayed[i] === true) {
-                getForms[i].style.cssText = "display: none;";
-                getFrames[i].style.cssText = "display: flex;"
+        //excludes the form from the function that initiates once body is clicked
+        $(".updateQForm").on("click", function (ev) {
+            ev.stopPropagation();
+        })
+
+        //to reverse the update form
+        $("body").on("click", function () {
+
+            //getting the elements to be exchanged
+            var getForms = document.getElementsByClassName("updateQForm")
+            var getFrames = document.getElementsByClassName("questionLabel")
+
+            //creating an array of all "updateQForm" elements
+            var formDisplayed = Array.prototype.map.call(getForms, function (getForm) {
+                return getForm.style.cssText === "display: flex;"
+            })
+
+            //a loop to find a "form" being open (true means present, false hidden)
+            for (let i = 0; i < getForms.length; i++) {
+                //if the form is open, hide it - change display to none and show the label
+                if (formDisplayed[i] === true) {
+                    getForms[i].style.cssText = "display: none;";
+                    getFrames[i].style.cssText = "display: flex;"
+                }
             }
-        }
-    })
+        })
+    }
 });
+
 
 $(function () {
     // once the option label clicked,
