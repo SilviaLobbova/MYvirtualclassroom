@@ -20,7 +20,7 @@
              th:value="${info.getId_information()}" style="display: flex;">
             <div class="linkTitle">
                 <p th:text="${info.getInformation_label()}"></p>
-                <div class="linkWrapIcons">
+                <div th:if="${session.is_Admin == true}" class="linkWrapIcons">
                     <button class="updateInfoIcon" id="updateInfoIcon" th:value="${info.getId_information()}">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
@@ -70,8 +70,9 @@
         </div>
     </div>
     <script>
-
         $(function () {
+
+            //to update Information in infoBox
             $(".updateInfoIcon").on("click", function (ev) {
                 ev.stopPropagation();
                 let idInfo = $(this).attr("value")
@@ -79,23 +80,23 @@
                 console.log(idInfo)
                 console.log(idVerify)
 
-
                 let a = $(this).parent().parent().parent().attr("id");
                 let b = $(this).parent().parent().parent().next().attr("id")
                 let x = document.getElementById(a);
                 let y = document.getElementById(b);
-                console.log("x" + x)
-                console.log("y" + y)
-                console.log("a" + a)
-                console.log("b" + b)
+
                 if (idInfo == idVerify && y.style.display === "none") {
                     y.style.display = "flex"
                     console.log("updateFrame is in flex display");
                     x.style.display = "none";
                     console.log("changed to none display");
-                    // $(this).parent().parent().parent().attr("id", "updateInfoFrame")
                 }
             })
+
+            $(".updateInfoForm").on("click", function (ev) {
+                ev.stopPropagation();
+            })
+            //to reverse the update form
             $("body").on("click", function () {
                 console.log("studentFrame is active, clicked on body")
                 var except2 = document.getElementById("updateInfoIcon")
@@ -118,18 +119,8 @@
                         getFrames[i].style.cssText = "display: flex;"
                     }
                 }
-
-                var except1 = document.getElementById("infoNameInput")
-                var except3 = document.getElementById("infoURLInput")
-                except1.addEventListener("click", function (ev) {
-                    ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-                }, false);
-                except3.addEventListener("click", function (ev) {
-                    ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-                }, false);
             })
         });
-
     </script>
 
 </div>

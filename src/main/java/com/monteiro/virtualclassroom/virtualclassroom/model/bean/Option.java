@@ -5,6 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "options")
 public class Option {
+
     @DatabaseField(generatedId = true)
     private int id_option;
 

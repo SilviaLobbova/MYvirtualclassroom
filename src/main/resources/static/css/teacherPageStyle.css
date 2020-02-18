@@ -145,14 +145,17 @@ main {
 }
 
 .answerTable {
-    width:100%;
+    width: 100%;
 }
+
 .answerTableHeader, .answerTableBody {
     text-align: center;
 }
+
 .answerOrder {
     display: grid;
 }
+
 .answerButtonBar {
     display: flex;
     justify-content: flex-end;
@@ -177,7 +180,7 @@ main {
     justify-content: flex-end;
 }
 
-.updateAnswer {
+.updateQuestion {
     margin: 0px 5px;
     background: rgba(65, 65, 70, 1) !important;
     border: none !important;

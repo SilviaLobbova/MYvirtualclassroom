@@ -22,7 +22,6 @@ public class Question {
     // list option param
     public List<Option> options;
 
-
     public List<Answer> answers;
 
     public Question() {

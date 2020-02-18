@@ -32,11 +32,14 @@ public class AnswerController {
         Classroom classroom = (Classroom) session.getAttribute("classroom");
         long classroomId = classroom.getId_classroom();
 
+        User user = (User) session.getAttribute("user");
+        int userId = user.getUser_id();
+        System.out.println("THe ID of my connected user" + userId);
         // creation of the list question
         int startRow = 0;
 
         // creation of a list which will be used by thymeleaf and store the result of the function call in the list
-        List<Question> questionList = QuestionDao.getAllQuestionFromId(classroomId, startRow, QuestionDao.getQuestionCount());
+        List<Question> questionList = QuestionDao.getAllQuestionsFromId(classroomId, startRow, QuestionDao.getQuestionCount());
 
         // add to the model
         model.addAttribute("questions", questionList);
@@ -59,7 +62,6 @@ public class AnswerController {
     @PostMapping("/sendAnswer")  //use the save answer
     public String saveUserAnswer(
             @ModelAttribute("answerForm") AnswerForm answerForm,
-            // Option selectedOption, // specify value request in tab
             HttpSession session,
             Model model) throws Exception {
         Option checkBoxOptions;
@@ -90,8 +92,6 @@ public class AnswerController {
 
         System.out.println("Session attribute ID classroom: " + classroomId);
         System.out.println("Session attribute ID user: " + userInSession);
-        // get question id
-        //  System.out.println("Session attribute ID question: " + option.getQuestion().getId_question());
 
         return "redirect:/userConnected";
     }
@@ -111,7 +111,7 @@ public class AnswerController {
         int startRow = 0;
 
         // creation of a list which will be used by thymeleaf and store the result of the function call in the list
-        List<Question> questionList = QuestionDao.getAllQuestionFromId(classroomId, startRow, QuestionDao.getQuestionCount());
+        List<Question> questionList = QuestionDao.getAllQuestionsFromId(classroomId, startRow, QuestionDao.getQuestionCount());
         questionList.sort(Comparator.comparing(Question::getId_question));
         // add to the model
         model.addAttribute("questions", questionList);
@@ -123,11 +123,6 @@ public class AnswerController {
         model.addAttribute("students", listOfUsers);
 
         List<Answer> listOfAnswers = AnswerDao.getAnswers();
-
-
-        System.out.println("my list of answers" + listOfAnswers);
-        System.out.println("one of my answers_option" + listOfAnswers.get(0).getOption().getId_option());
-        System.out.println("one of my answers_user" + listOfAnswers.get(0).getUser().getUser_name());
         model.addAttribute("answers", listOfAnswers);
 
 
@@ -135,10 +130,6 @@ public class AnswerController {
             // store the id_question from the current displayed question
             int questionId = value.getId_question();
             System.out.println(questionId);
-//            List<Answer> listOfAnswersFromQuestion = AnswerDao.getAllAnswersOfQuestion(questionId, id, n);
-//
-//            model.addAttribute("answersOfQ", listOfAnswersFromQuestion);
-//            System.out.println("my list of answers of the same Question" + listOfAnswersFromQuestion);
 
             // retrieve options store in optionDao
             value.setOptions(OptionDao.getAllOptionsFromQuestion(questionId, startRow, OptionDao.getOptionCount()));
@@ -153,6 +144,27 @@ public class AnswerController {
         System.out.println(questionId);
         QuestionDao.deleteQuestion(questionId);
 
+        return "redirect:/adminConnected";
+    }
+
+    @PostMapping("/updateQuestion")
+    public String updateQuestion(int questionToModify, String newQuestionContent) throws IOException, SQLException {
+        System.out.println("I try to display the question value");
+        System.out.println(questionToModify);
+        Question q = QuestionDao.getQuestion(questionToModify);
+        if (!newQuestionContent.equals("") && !newQuestionContent.equals(q.getQuestion_content())) {
+            QuestionDao.updateQuestion(questionToModify, newQuestionContent);
+        }
+        return "redirect:/adminConnected";
+    }
+
+    @PostMapping("/updateOption")
+    public String updateOption(int optionToModify, String newOptionContent) throws Exception {
+        System.out.println(optionToModify);
+        Option o = OptionDao.getOption(optionToModify);
+        if (!newOptionContent.equals("") && !newOptionContent.equals(o.getOption_content())) {
+            OptionDao.updateOption(optionToModify, newOptionContent);
+        }
         return "redirect:/adminConnected";
     }
 }
