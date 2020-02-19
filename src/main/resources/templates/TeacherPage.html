@@ -254,42 +254,11 @@
         var form = $(this);
         var url = form.attr('action');
         console.log("this my form's action " + url)
-
         jQuery.ajax({
             url: url,
             type: "POST",
-            data: form.serialize(), // serializes the form's elements.
-            // success: function (data) {
-            //     alert(data); // show response from the php script.
-            // }
         });
     });
-
-    // $(".btnAnswer").on("click", function (ev) {
-    //     ev.stopPropagation();
-    //     var form = $(this).parent().parent().attr("id");
-    //     var formElement = document.getElementById(form)
-    //     console.log(form)
-    //     console.log(formElement)
-    //     $(formElement).on("submit", function (e) {
-    //         $.ajax({
-    //             url: formElement.attr('action'),
-    //             type: formElement.attr('method'),
-    //             success: function () {
-    //                 console.log("entered the answer deleting")
-    //                 alert("answer sent")
-    //                 // Inject the result in the HTML
-    //                 var questionBox = $(this).parent().parent().parent().parent().attr("id")
-    //                 var question = document.getElementById(questionBox)
-    //                 question.style.display = "none";
-    //             },
-    //         });  // prevent form submission
-    //         e.preventDefault();
-    //     })
-    //
-    //     // submit the form via Ajax
-    //
-    // });
 
 </script>
 

@@ -64,12 +64,20 @@ public class ClassroomController {
     }
 
     @PostMapping("/addClassroom")
-    public String createClassroom(@RequestParam String classroomName) throws IOException, SQLException {
+    @ResponseBody
+    public String createClassroom(@RequestParam String classroomName, Model model) throws IOException, SQLException {
         Classroom newClass = new Classroom(classroomName);
-        if (!classroomName.equals("")) {
+        System.out.println(ClassroomDao.getClassroomByName(classroomName));
+        if (classroomName.equals("")) {
+            return ("empty");
+
+        } else if (ClassroomDao.getClassroomByName(classroomName) != null) {
+            return ("exists");
+        } else if (ClassroomDao.getClassroomByName(classroomName) == null) {
             ClassroomDao.saveClassroom(newClass);
+            return ("success");
         }
-        return "redirect:/";
+        return "dunno what happened";
     }
 
     @PostMapping("/deleteClassroom")
