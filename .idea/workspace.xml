@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9dff8f06-368a-4d6a-a30e-56bbdcea2bcc" name="Default Changelist" comment="">
+    <list default="true" id="9dff8f06-368a-4d6a-a30e-56bbdcea2bcc" name="Default Changelist" comment="Clean up of style.css and import of the fragments into ProfilePage.html">
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/build-history.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/last-build.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/fragments/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/fragments/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/AnswerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/AnswerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/bean/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/bean/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/dao/AnswerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/dao/AnswerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/dao/QuestionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/dao/QuestionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/TeacherPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/TeacherPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/informationBox.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/informationBox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ProfilePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ProfilePage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,6 +171,7 @@
       <workItem from="1581668067028" duration="1199000" />
       <workItem from="1581767193865" duration="25384000" />
       <workItem from="1581880457907" duration="18685000" />
+      <workItem from="1582145343004" duration="4901000" />
     </task>
     <task id="LOCAL-00002" summary=" update css for the display of the answer. Elements centred in the table and addition of a margin block end  to questionBox. Reactivation of the css of the trashbin in answerDisplay.">
       <created>1581621723446</created>
@@ -208,7 +202,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update css" />
     <MESSAGE value=" update css for the display of the answer. Elements centred in the table and addition of a margin block end  to questionBox. Reactivation of the css of the trashbin in answerDisplay." />
-    <option name="LAST_COMMIT_MESSAGE" value=" update css for the display of the answer. Elements centred in the table and addition of a margin block end  to questionBox. Reactivation of the css of the trashbin in answerDisplay." />
+    <MESSAGE value="Clean up of style.css and import of the fragments into ProfilePage.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean up of style.css and import of the fragments into ProfilePage.html" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1251" y="40" key="#com.intellij.ide.util.MemberChooser" timestamp="1581588795735">
@@ -224,10 +219,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581327750400" />
-    <state x="698" y="37" width="838" height="794" key="CommitChangelistDialog2" timestamp="1581621720183">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="558" y="29" width="838" height="794" key="CommitChangelistDialog2" timestamp="1582151776305">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="558" y="30" width="838" height="794" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581350498897" />
+    <state x="558" y="29" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1582151776305" />
     <state x="698" y="37" key="CommitChangelistDialog2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1581621720183" />
     <state x="-97" y="121" width="1080" height="480" key="DiffContextDialog" timestamp="1580980535963">
       <screen x="0" y="0" width="1280" height="680" />
@@ -237,54 +233,62 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="421" y="97" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1580980500790" />
-    <state width="1237" height="139" key="GridCell.Tab.0.bottom" timestamp="1581965025533">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="224" key="GridCell.Tab.0.bottom" timestamp="1582152811321">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="243" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581809553052" />
     <state width="1237" height="121" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960117" />
     <state width="1237" height="139" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1581965025533" />
-    <state width="1237" height="139" key="GridCell.Tab.0.center" timestamp="1581965025529">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="224" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582152811321" />
+    <state width="1493" height="224" key="GridCell.Tab.0.center" timestamp="1582152811321">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="243" key="GridCell.Tab.0.center/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581809553052" />
     <state width="1237" height="121" key="GridCell.Tab.0.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960113" />
     <state width="1237" height="139" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1581965025529" />
-    <state width="1237" height="139" key="GridCell.Tab.0.left" timestamp="1581965025529">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="224" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582152811321" />
+    <state width="1493" height="224" key="GridCell.Tab.0.left" timestamp="1582152811321">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="243" key="GridCell.Tab.0.left/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581809553052" />
     <state width="1237" height="121" key="GridCell.Tab.0.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960113" />
     <state width="1237" height="139" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1581965025529" />
-    <state width="1237" height="139" key="GridCell.Tab.0.right" timestamp="1581965025529">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="224" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582152811321" />
+    <state width="1493" height="224" key="GridCell.Tab.0.right" timestamp="1582152811321">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="243" key="GridCell.Tab.0.right/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581809553052" />
     <state width="1237" height="121" key="GridCell.Tab.0.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960113" />
     <state width="1237" height="139" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1581965025529" />
-    <state width="1237" height="139" key="GridCell.Tab.1.bottom" timestamp="1581965025533">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="224" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582152811321" />
+    <state width="1493" height="224" key="GridCell.Tab.1.bottom" timestamp="1582152811321">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="243" key="GridCell.Tab.1.bottom/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581809553053" />
     <state width="1237" height="121" key="GridCell.Tab.1.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960117" />
     <state width="1237" height="139" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1581965025533" />
-    <state width="1237" height="139" key="GridCell.Tab.1.center" timestamp="1581965025533">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="224" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582152811321" />
+    <state width="1493" height="224" key="GridCell.Tab.1.center" timestamp="1582152811321">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="243" key="GridCell.Tab.1.center/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581809553052" />
     <state width="1237" height="121" key="GridCell.Tab.1.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960117" />
     <state width="1237" height="139" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1581965025533" />
-    <state width="1237" height="139" key="GridCell.Tab.1.left" timestamp="1581965025533">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="224" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1582152811321" />
+    <state width="1493" height="224" key="GridCell.Tab.1.left" timestamp="1582152811321">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="243" key="GridCell.Tab.1.left/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581809553052" />
     <state width="1237" height="121" key="GridCell.Tab.1.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960117" />
     <state width="1237" height="139" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1581965025533" />
-    <state width="1237" height="139" key="GridCell.Tab.1.right" timestamp="1581965025533">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="224" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1582152811321" />
+    <state width="1493" height="224" key="GridCell.Tab.1.right" timestamp="1582152811321">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="243" key="GridCell.Tab.1.right/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581809553052" />
     <state width="1237" height="121" key="GridCell.Tab.1.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960117" />
     <state width="1237" height="139" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1581965025533" />
+    <state width="1493" height="224" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1582152811321" />
     <state width="1237" height="131" key="GridCell.Tab.2.bottom" timestamp="1581363605036">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
@@ -314,16 +318,18 @@
     </state>
     <state x="-1702" y="227" width="1643" height="758" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581809497220" />
     <state x="129" y="111" width="1095" height="495" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1581880740203" />
-    <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1581880457737">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="404" y="201" key="com.intellij.ide.util.TipDialog" timestamp="1582145347963">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1414" y="254" key="com.intellij.ide.util.TipDialog/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581257281416" />
     <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581768102205" />
     <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1581880457737" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581350366260">
+    <state x="404" y="201" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582145347963" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582145361151">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581350366260" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1582145361151" />
     <state x="723" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1581621569619" />
     <state x="91" y="78" width="1099" height="564" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1581329701427">
       <screen x="0" y="0" width="1280" height="680" />
