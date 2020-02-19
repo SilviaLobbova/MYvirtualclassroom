@@ -214,8 +214,8 @@ $(".profilePassword").click(function () {
 // listen to the click of the arrow
 $(document).ready(function () {
     // arrow animation
-    $(".answerToggle").click(function () {
-        $(this).toggleClass("fa-sort-down fa-sort-up");
+    $(".answerToggle").click(function() {
+        $(this).toggleClass("fa-sort-up fa-sort-down");
         // store id on click
         let questionId = "." + $(this).attr('id');
         console.log(questionId);

@@ -3,11 +3,9 @@ package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 // imports
         import com.j256.ormlite.field.DatabaseField;
         import com.j256.ormlite.table.DatabaseTable;
-
-
-
         import java.io.UnsupportedEncodingException;
         import java.security.NoSuchAlgorithmException;
+//        import org.springframework.security
 
 
 //annotations ORMLite
@@ -116,5 +114,9 @@ public class User {
         return classroom.getId_classroom();
     }
 
+    @Override
+    public int hashCode() {
+        return (int) user_password.hashCode() * user_email.hashCode();
+    }
 
 }

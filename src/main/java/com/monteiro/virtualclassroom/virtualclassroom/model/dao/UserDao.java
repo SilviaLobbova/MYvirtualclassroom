@@ -28,7 +28,7 @@ public class UserDao {
         // instantiate the dao with the connection source
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
-            // initaitte  user
+            // initiate  user
             Dao<User, String> userDao = DaoManager.createDao(connectionSource, User.class);
             // initiate classroom
             Dao<Classroom, String> classDao = DaoManager.createDao(connectionSource, Classroom.class);

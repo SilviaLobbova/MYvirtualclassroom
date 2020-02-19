@@ -113,9 +113,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/jar_files" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.47263682" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
@@ -240,8 +240,8 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="-97" y="121" width="1080" height="480" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1580980535963" />
-    <state x="421" y="97" key="FileChooserDialogImpl" timestamp="1580980500790">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="505" y="118" key="FileChooserDialogImpl" timestamp="1581796526804">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="421" y="97" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1580980500790" />
     <state width="1237" height="138" key="GridCell.Tab.0.bottom" timestamp="1582063863657">
@@ -312,8 +312,8 @@
     </state>
     <state width="1237" height="131" key="GridCell.Tab.2.right/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581363605036" />
     <state width="1237" height="131" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1581348315635" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1581410874744">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="170" y="0" key="SettingsEditor" timestamp="1581797466046">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1581410874744" />
     <state x="129" y="111" width="1095" height="495" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1581880740203">
