@@ -53,6 +53,7 @@ public class AnswerController {
         for (Question value : questionList) {
             // store the id_question from the current displayed question
             int questionIdentification = value.getId_question();
+            System.out.println("I am in for loop, looking for IDs of my questions" + questionIdentification + "how many options I have in this question" + OptionDao.getOptionCount());
             // retrieve options store in optionDao
             value.setOptions(OptionDao.getAllOptionsFromQuestion(questionIdentification, startRow, OptionDao.getOptionCount()));
         }
@@ -63,10 +64,12 @@ public class AnswerController {
     public String saveUserAnswer(
             @ModelAttribute("answerForm") AnswerForm answerForm,
             HttpSession session,
+            int questionHiddenValue,
             Model model) throws Exception {
         Option checkBoxOptions;
         Option radioOption = OptionDao.getOption(answerForm.getId_option());
-
+        Question questionValue = QuestionDao.getQuestion(questionHiddenValue);
+        System.out.println("Question Value is" + questionValue);
         // get the selected class stored in the session
         Classroom classroom = (Classroom) session.getAttribute("classroom");
         long classroomId = classroom.getId_classroom();
@@ -74,16 +77,18 @@ public class AnswerController {
         User userInSession = (User) session.getAttribute("user");
 
         if (radioOption == null) {
+            AnswerDao.deleteAnswer(userInSession.getUser_id(), questionValue.getId_question());
             long formLength = answerForm.getMultiCheckboxSelectedValues().length;
             for (int i = 0; i < formLength; i++) {
                 checkBoxOptions = OptionDao.getOption(answerForm.getMultiCheckboxSelectedValues()[i]);
-                System.out.println(checkBoxOptions);
+                System.out.println("my checkboxOptions" + checkBoxOptions.getId_option());
                 Answer newAnswer1 = new Answer();
                 newAnswer1.setOption(checkBoxOptions);
                 newAnswer1.setUser(userInSession);
                 AnswerDao.saveAnswer(newAnswer1);
             }
         } else {
+            System.out.println("I see it is radio");
             Answer newAnswer = new Answer();
             newAnswer.setOption(radioOption);
             newAnswer.setUser(userInSession);

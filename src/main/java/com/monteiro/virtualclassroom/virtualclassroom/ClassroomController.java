@@ -26,8 +26,8 @@ public class ClassroomController {
         classroomList = ClassroomDao.getClassroomRowsList(id, n);
         //sorting the classroom's list by alphabetical order
         classroomList.sort(Comparator.comparing(Classroom::getClassroom_name));
-        System.out.println(n);
-        System.out.println(classroomList);
+        System.out.println("classes count" + n);
+        System.out.println("classrooms :" + classroomList);
         model.addAttribute("classrooms", classroomList);
 
         if ((classroomList.isEmpty()) && (session.getAttribute("login_first") == null)) {
@@ -44,21 +44,20 @@ public class ClassroomController {
     @RequestMapping(value = "/studentFrame/{className}", method = RequestMethod.GET)
     public String getStudentsOfTheClass(@PathVariable("className") String className, Model model) throws IOException, SQLException {
         System.out.println("enters the studentFrame Controller");
-        System.out.println(className);
         model.addAttribute("studentFrameActive", true);
         List<User> studentsList;
         Classroom myClass = ClassroomDao.getClassroomByName(className);
         long classroomID = myClass.getId_classroom();
-        System.out.println(classroomID);
+        System.out.println("classroom Id" + classroomID);
         studentsList = UserDao.getStudentsList(classroomID);
-        System.out.println(studentsList);
+        System.out.println("List of students" + studentsList);
         model.addAttribute("students", studentsList);
         return "fragments/studentFrame";
     }
 
     @RequestMapping(value = "/deleteStudent")
     public String deleteStudentFromClassroomList(int studentDelete) throws IOException, SQLException {
-        System.out.println(studentDelete);
+        System.out.println("student to be deleted" + studentDelete);
         UserDao.deleteUser(studentDelete);
         return "redirect:/";
     }
