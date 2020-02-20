@@ -6,7 +6,7 @@
                 <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
         </div>
-        <form th:action="@{/updateClassroom}" class="updateFrame" id="updateForm" method="post" style="display: none;">
+        <form th:action="@{/updateClassroom}" class="updateForm" id="updateForm" method="post" style="display: none;">
             <input class="classNameInput" id="classNameInput" name="newClassroomName" value=>
             <button class="renameClassBtn" name="classNameModify" type="submit" value='classNameBtn'>OK</button>
         </form>
@@ -99,28 +99,21 @@
                 var x = document.getElementById("updateFrame");
                 var y = document.getElementById("updateForm");
                 if (x.style.display === "flex")
-                    console.log("updateFrame is in flex display");
-                x.style.display = "none";
-                console.log("changed to none display");
+                    x.style.display = "none";
                 y.style.display = "flex"
+                $(".classNameInput").attr("value", $('.classTitle').text());
             });
-
+            //excludes the input  field from the body function
+            $(".classNameInput").on("click", function (ev) {
+                ev.stopPropagation();
+            })
+            //excludes the submit button from the body function
+            $(".updateFrame").on("click", function (ev) {
+                ev.stopPropagation();
+            })
             $("body").on("click", function () {
                 console.log("studentFram is active, clicked on body")
-                var except2 = document.getElementById("updateFrameIcon")
-                except2.addEventListener("click", function (ev) {
-                    ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-                }, false);
                 removeToggle();
-
-                var except1 = document.getElementById("className")
-                var except3 = document.getElementById("classNameInput")
-                except1.addEventListener("click", function (ev) {
-                    ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-                }, false);
-                except3.addEventListener("click", function (ev) {
-                    ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-                }, false);
             })
         });
     </script>

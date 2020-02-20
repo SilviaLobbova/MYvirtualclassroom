@@ -43,14 +43,14 @@ function openCreateClassroom() {
     }
 }
 
-function openQuestionContent() {
-    var hiddenAns = document.getElementById("hiddenAnswer");
-    if (hiddenAns.className === "hiddenAnswer") {
-        hiddenAns.className += " showAnswer"
-    } else {
-        hiddenAns.className = "hiddenAnswer"
-    }
-}
+// function openQuestionContent() {
+// //     var hiddenAns = document.getElementById("hiddenAnswer");
+// //     if (hiddenAns.className === "hiddenAnswer") {
+// //         hiddenAns.className += " showAnswer"
+// //     } else {
+// //         hiddenAns.className = "hiddenAnswer"
+// //     }
+// // }
 
 // function showStudentFrame() {
 //     var x = document.getElementById("classroomsLeftContent");
@@ -64,21 +64,8 @@ function openQuestionContent() {
 
 // to update the question label
 $(function () {
-    if (session.is_Admin == true) {
-        // $(".updateQuestion").on("click", function (ev) {
-        //     ev.stopPropagation();
-        //     let a = $(this).parent().parent().parent().prev().find("p").attr("id");
-        //     console.log("my attribute id" + a);
-        //     let b = $(this).parent().parent().parent().prev().find("form").attr("id");
-        //     console.log("my content attribute id" + b);
-        //     var x = document.getElementById(a);
-        //     var y = document.getElementById(b);
-        //     if (x.style.display === "flex")
-        //         console.log("questionLabel is in flex display");
-        //     x.style.display = "none";
-        //     console.log("changed to none display");
-        //     y.style.display = "flex"
-        // });
+    if (session.is_Admin === true) {
+
         // once the question label clicked,
         $(".questionLabel").on("click", function (ev) {
             ev.stopPropagation();
@@ -124,7 +111,7 @@ $(function () {
     }
 });
 
-
+//change the option frame
 $(function () {
     // once the option label clicked,
     $(".optionContent").on("click", function (e) {
@@ -154,13 +141,16 @@ $(function () {
     //to reverse the update form
     $("body").on("click", function () {
 
+        //get all elements with classes
         var getForms = document.getElementsByClassName("updateOption")
         var getFrames = document.getElementsByClassName("optionContent")
 
+        //the open forms are found by map.call method - looking for displayed and stocking into an array
         var formDisplayed = Array.prototype.map.call(getForms, function (getForm) {
             return getForm.style.cssText === "display: table-cell;"
         })
 
+        //loop over my array, if a form on index "i" is displayed, close the form and replace by original frame
         for (let i = 0; i < getForms.length; i++) {
             if (formDisplayed[i] === true) {
                 getForms[i].style.cssText = "display: none;";
@@ -170,11 +160,10 @@ $(function () {
     })
 });
 
-
 function removeToggle() {
     console.log("entered toggle remove function")
-    var x = document.getElementById("updateInfoFrame");
-    var y = document.getElementById("updateInfoForm");
+    var x = document.getElementById("updateFrame");
+    var y = document.getElementById("updateForm");
     if (y.style.display === "flex") {
         console.log("entered the first statement")
         y.style.display = "none";
@@ -238,12 +227,80 @@ $(document).ready(function () {
     $('.questionLock').click(function () {
         $(this).toggleClass("fa-lock fa-lock-open");
     });
-    // retrieve text from question_content on click
-    function questionContent() {
-        // target the text on the div
-        let text = document.getElementsByClassName("questionLabel").valueOf();
-        alert(text);
-        // display it
-    }
 
+    // // retrieve text from question_content on click
+    // function questionContent() {
+    //     // target the text on the div
+    //     let text = document.getElementsByClassName("questionLabel").valueOf();
+    //     alert(text);
+    //     // display it
+    // }
+
+});
+//functions executed on classroomList Page
+$(function () {
+    //show studentFrame
+
+    $(".classroomListItem").on("click", function (e) {
+        var url = "/studentFrame/";
+        var addExtension = ($(this).text().toString());
+        e.stopPropagation();
+        //call function when className is clicked
+        getContent();
+
+        $("#studentFrame").attr("value", $(this).text())
+        //set on change listener
+        $('.classroomListItem').change(getContent);
+
+        function getContent() {
+            //create url to request fragment
+            url = url + addExtension;
+
+            //load fragment and replace content
+            $('#studentFrame').load(url);
+        }
+    });
+
+//form to validate the new classroom creation
+    $("#valid-creation").on("click", function (e) {
+
+        var form = $("#hiddenCreateClass").get(0);
+        var url = $(form).attr('action');
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: new FormData(form),
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            complete: function (pData) {
+                console.log('COMPLETE');
+            },
+            success: function (pData) {
+                console.log("SUCCESS", pData);
+                if (pData === "success") document.location.href = "/";
+                else if (pData === "exists") {
+                    $('#warn-exists').show();
+                    $('#warn-empty').hide();
+                } else if (pData === "empty") {
+                    $('#warn-empty').show();
+                    $('#warn-exists').hide();
+                }
+            },
+            error: function (pData) {
+                console.log('Error : ', pData);
+            }
+        });
+    });
+//when clicked into input, hide the error message
+    $(".createClassInput").on("click", function () {
+        if ($("#warn-empty").get(0).style.display == "") {
+            $('#warn-empty').hide();
+
+        } else if ($('#warn-exists').get(0).style.display == "") {
+            $('#warn-exists').hide();
+        }
+    })
 });

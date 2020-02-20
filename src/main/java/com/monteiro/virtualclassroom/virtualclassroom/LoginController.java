@@ -56,7 +56,7 @@ public class LoginController {
         } else if (!myMail.getIsAdmin()) {
             if (session.getAttribute("classroom") == null) {
                 model.addAttribute("NotAdmin", true);
-                System.out.println(session.getAttribute("classroom"));
+                System.out.println("my classroom Object" + session.getAttribute("classroom"));
                 return "LoginPage";
             } else if (myMail.get_UserClassroomId() != (((Classroom) session.getAttribute("classroom")).getId_classroom())) {
                 model.addAttribute("invalidClassroom", true);
