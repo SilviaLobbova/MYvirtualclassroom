@@ -99,10 +99,10 @@
             //to reverse the update form
             $("body").on("click", function () {
                 console.log("studentFrame is active, clicked on body")
-                var except2 = document.getElementById("updateInfoIcon")
-                except2.addEventListener("click", function (ev) {
-                    ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
-                }, false);
+                // var except2 = document.getElementById("updateInfoIcon")
+                // except2.addEventListener("click", function (ev) {
+                //     ev.stopPropagation(); //this is important! If removed, it will count to the function executed on body tag
+                // }, false);
 
                 var getForms = document.getElementsByClassName("updateInfoForm")
                 var getFrames = document.getElementsByClassName("updateInfoFrame")
