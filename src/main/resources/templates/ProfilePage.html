@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div th:replace = "fragments/head.html :: head" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
-    <link rel="stylesheet" th:href="@{/css/profile-style.css}"/>
-    <!--Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <title>Profile page</title>
+<div th:replace="fragments/head.html :: head"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}"/>
+<link rel="stylesheet" th:href="@{/css/profile-style.css}"/>
+<!--Fonts-->
+<link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+<title>Profile page</title>
 </head>
 <body>
 <div class="container">
@@ -22,17 +23,14 @@
         <div class="pageContent">
             <div th:replace="~{fragments/titlePage.html :: titlePage(title='Classrooms')}"></div>
             <div class="profileContent">
-                <form method="post" name="nameUpdate" action="#" th:action="@{/ProfilePage}" th:object="${user}">
-                    <!--/*@thymesVar id="user" type=""*/-->
+                <form method="post" name="nameUpdate" action="#" th:action="@{/updateProfilePage}">
+                    <p th:if="${emptyField}" class="error">You cannot submit empty field</p>
                     <div class="profileLine" id="nameLine">
-                        <!--/*@thymesVar id="missingField" type=""*/-->
-                        <p th:if="${missingField}" class="error">Please enter missing data</p>
                         <div class="profileLabel col-4">
                             <div class="frameLabel"><span class="labelContent">First Name</span></div>
                         </div>
                         <input type="text" class="profileFirstName col-8" name="user_name_value"
                                th:value="${session.login_first}">
-                        <!--                            <p th:text="${login}"></p>-->
                     </div>
                     <div class="profileLine">
                         <div class="profileLabel col-4">

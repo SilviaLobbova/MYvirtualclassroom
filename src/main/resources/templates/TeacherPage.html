@@ -61,8 +61,12 @@
                             <div class="questionContent">
                                 <span class="questionTitle">Question: </span>
                                 <!--                                    use the id question to identify the question from the others -->
-                                <p th:class="questionLabel" th:id="${question.getId_question()}"
+                                <p th:if="${session.is_Admin == true}" th:class="questionLabel"
+                                   th:id="${question.getId_question()}"
                                    th:text="${question.getQuestion_content()}" style="display: flex;"></p>
+                                <p th:if="${session.is_Admin != true}" th:class="questionLabelStudent"
+                                   th:id="${question.getId_question()}"
+                                   th:text="${question.getQuestion_content()}"></p>
                                 <form th:action="@{/updateQuestion}" class="updateQForm"
                                       th:id="${question.getQuestion_content()}" method="post"
                                       style="display: none;">
@@ -104,6 +108,7 @@
                                                     th:for="${#ids.prev('id_option')}"
                                                     th:text="${radioValue.getOption_content()}"></label>
                                         </span>
+
                                         <input type="hidden" th:value="${question.getId_question()}"
                                                name="questionHiddenValue">
 
@@ -190,7 +195,7 @@
                                     <!--                                        <i class="fa fa-pencil" aria-hidden="true"></i>-->
                                     <!--                                    </button>-->
 
-                                    <button th:class="deleteQuestion" data-toggle="modal" id="deleteQuestionIcon"
+                                    <button th:class="deleteQuestion" data-toggle="modal"
                                             data-target="#deleteQuestion" th:value="${question.getId_question()}">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>

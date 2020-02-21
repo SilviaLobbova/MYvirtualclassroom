@@ -16,7 +16,6 @@ import java.sql.SQLException;
 
 
 @Controller
-//@SessionAttributes("login_first", "login", "login_last", "login_psw")
 
 public class LoginController {
 
@@ -28,43 +27,50 @@ public class LoginController {
         return "LoginPage";
     }
 
-
     //checking for credentials
     @PostMapping("/LoginPage")
     public String handleLoginRequest(
             @RequestParam String login_name,
             @RequestParam String login_password,
-            //we are also sending back the model from the DispatcherServlet controller to the view
             HttpSession session,
+            //we are also sending back the model from the DispatcherServlet controller to the view
             Model model) throws IOException, SQLException {
 
         System.out.println("POST /LoginPage (LoginController)");
-        //System.out.println(user_email);
-        User myMail = UserDao.getUser(login_name, login_password);
 
-        if (myMail == null) {
+        User connectedUser = UserDao.getUser(login_name, login_password);
+
+        System.out.println("connected User: " + connectedUser);
+        //could not find the combination of login and psw in db
+        if (connectedUser == null) {
             model.addAttribute("invalidCredentials", true);
             return "LoginPage";
-        } else if ((myMail.getIsAdmin())) {
-            System.out.println("I try to verify the mail and psw");
-            if (myMail.getUser_email().equals(login_name) &&
-                    myMail.getUser_password().equals(login_password)) {
-                addUserInSession(myMail, session);
-                System.out.println("empty classroomList or admin - admin post method");
-                return "redirect:/adminConnected";
-            }
-        } else if (!myMail.getIsAdmin()) {
+        }
+        //connected user is Admin
+        else if (connectedUser.getIsAdmin() && connectedUser.getUser_email().equals(login_name) &&
+                connectedUser.getUser_password().equals(login_password)) {
+            //admin connected and added to the session
+            addUserInSession(connectedUser, session);
+            return "redirect:/adminConnected";
+        }
+        //connected student
+        else if (!connectedUser.getIsAdmin()) {
+            //there is no class yet created
             if (session.getAttribute("classroom") == null) {
                 model.addAttribute("NotAdmin", true);
                 System.out.println("my classroom Object" + session.getAttribute("classroom"));
                 return "LoginPage";
-            } else if (myMail.get_UserClassroomId() != (((Classroom) session.getAttribute("classroom")).getId_classroom())) {
+            }
+            //student is not registered to this classroom
+            else if (connectedUser.get_UserClassroomId() != (((Classroom) session.getAttribute("classroom")).getId_classroom())) {
                 model.addAttribute("invalidClassroom", true);
                 return "LoginPage";
-            } else if (myMail.getUser_email().equals(login_name) &&
-                    myMail.getUser_password().equals(login_password) &&
-                    myMail.get_UserClassroomId() == (((Classroom) session.getAttribute("classroom")).getId_classroom())) {
-                addUserInSession(myMail, session);
+            }
+            //the credentials and the classroom are both valid, logging in
+            else if (connectedUser.getUser_email().equals(login_name) &&
+                    connectedUser.getUser_password().equals(login_password) &&
+                    connectedUser.get_UserClassroomId() == (((Classroom) session.getAttribute("classroom")).getId_classroom())) {
+                addUserInSession(connectedUser, session);
                 System.out.println("getting logged in");
                 return "redirect:/userConnected";
             }

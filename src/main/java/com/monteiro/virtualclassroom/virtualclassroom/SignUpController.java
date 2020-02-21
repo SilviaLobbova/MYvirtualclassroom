@@ -20,7 +20,8 @@ public class SignUpController {
         System.out.println("GET /SignUpPage (SignUpController)");
         return "SignUpPage"; //view
     }
-    @PostMapping ("/SignUpPage")
+
+    @PostMapping("/SignUp")
     public String handleSignUpRequest(
             @RequestParam String user_name,
             @RequestParam String user_lastname,
@@ -30,20 +31,15 @@ public class SignUpController {
             Model model) throws Exception {
 
         System.out.println("POST /SignUpPage (SignUpController)");
-        if((user_name.isEmpty())||(user_lastname.isEmpty())||(user_password.isEmpty())||(user_email.isEmpty()) ) {
-            System.out.println("missing");
-            System.out.println(user_password);
+        if ((user_name.isEmpty()) || (user_lastname.isEmpty()) || (user_password.isEmpty()) || (user_email.isEmpty())) {
             model.addAttribute("emptyField", true);
             return "SignUpPage";
-        }
-        else {
-            System.out.println(user_lastname);
+        } else {
             User newOne = new User(user_name, user_lastname, user_email, user_password, false);
-            // classroom set separatly
+            // classroom set separately
             newOne.setClassroom((Classroom) session.getAttribute("classroom"));
             // new user creation
             UserDao.saveUser(newOne);
-
             return "LoginPage";
         }
     }

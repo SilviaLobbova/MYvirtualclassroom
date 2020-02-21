@@ -12,57 +12,48 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @Controller
-//@SessionAttributes("login")
 public class UpdateProfileController {
     // render profile page
     @GetMapping("/ProfilePage")
     public String profileRender() {
-        System.out.println("Profile render Get");
+        System.out.println("Profile render: Get");
         return "ProfilePage";
     }
 
-    @PostMapping("/ProfilePage")
+    @PostMapping("/updateProfilePage")
     public String profileUpdate(
             String user_name_value,
             String user_lastname_value,
             String user_email_value,
-            String user_password_value,
             HttpSession session,
             Model model) throws IOException, SQLException {
-        System.out.println("Profile render post");
+        System.out.println("Profile render: post");
 
-        User theOne = UserDao.getUser(user_email_value, user_password_value);
+        User theOne = (User) session.getAttribute("user");
         String oldName = theOne.getUser_name();
         String oldLastName = theOne.getUser_lastname();
         String oldEmail = theOne.getUser_email();
-        String oldPassword = theOne.getUser_password();
-        System.out.println(oldPassword);
-        System.out.println(user_password_value);
-        if ((user_name_value == oldName) && (user_lastname_value == oldLastName) &&
-                (user_email_value == oldEmail) && (user_password_value == oldPassword)) {
-            System.out.println("missing");
-            return "TeacherPage";
-        } else if (oldName != user_name_value) {
-            System.out.println(" name reussi");
-            System.out.println(user_name_value);
-            System.out.println(oldName);
-            UserDao.updateUser("user_name", oldName, user_name_value);
-            if (oldLastName != user_lastname_value) {
-                System.out.println("last name reussi");
-                System.out.println(user_lastname_value);
-                System.out.println(oldLastName);
-                UserDao.updateUser("user_lastName", oldLastName, user_lastname_value);
-                if (oldEmail != user_email_value) {
-                    UserDao.updateUser("user_email", oldEmail, user_email_value);
-//                    if(oldPassword != user_password_value){
-//                        UserDao.updateUser("user_password",oldPassword, user_password_value);
-//                    }return "TeacherPage";
-                }
-                return "TeacherPage";
+        if ((user_name_value.isEmpty()) || (user_lastname_value.isEmpty()) ||
+                (user_email_value.isEmpty())) {
+            model.addAttribute("emptyField", true);
+            return "ProfilePage";
+        } else {
+            if (oldName != user_name_value) {
+                UserDao.updateUser("user_name", oldName, user_name_value);
+                session.setAttribute("login_first", user_name_value);
+                return "redirect:/ProfilePage";
             }
-            return "TeacherPage";
-        }
-        return "TeacherPage";
-    }
 
+            if (oldLastName != user_lastname_value) {
+                UserDao.updateUser("user_lastName", oldLastName, user_lastname_value);
+                session.setAttribute("login_last", user_lastname_value);
+                return "redirect:/ProfilePage";
+            }
+            if (oldEmail != user_email_value) {
+                UserDao.updateUser("user_email", oldEmail, user_email_value);
+                return "redirect:/ProfilePage";
+            }
+        }
+        return "redirect:/ProfilePage";
+    }
 }

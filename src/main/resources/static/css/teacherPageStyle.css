@@ -102,6 +102,12 @@ main {
     margin-right: 15px;
 }
 
+.questionLabelStudent {
+    color: rgba(255, 214, 0, 1);
+    padding: 0px !important;
+    margin-right: 15px;
+}
+
 .topIcons {
     display: flex;
     justify-content: space-between;
