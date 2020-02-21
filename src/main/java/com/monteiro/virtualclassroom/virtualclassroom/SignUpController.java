@@ -35,9 +35,12 @@ public class SignUpController {
             model.addAttribute("emptyField", true);
             return "SignUpPage";
         } else {
-            User newOne = new User(user_name, user_lastname, user_email, user_password, false);
+
+            User newOne = new User(user_name, user_lastname, user_email, false);
             // classroom set separately
             newOne.setClassroom((Classroom) session.getAttribute("classroom"));
+            newOne.setPassword(user_password);
+
             // new user creation
             UserDao.saveUser(newOne);
             return "LoginPage";

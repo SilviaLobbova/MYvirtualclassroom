@@ -1,10 +1,13 @@
 package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
 // imports
-        import com.j256.ormlite.field.DatabaseField;
-        import com.j256.ormlite.table.DatabaseTable;
-        import java.io.UnsupportedEncodingException;
-        import java.security.NoSuchAlgorithmException;
+
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import org.thymeleaf.util.TextUtils;
+
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 //        import org.springframework.security
 
 
@@ -22,7 +25,9 @@ public class User {
     private String user_email;
 
     @DatabaseField(canBeNull = false)
-    private String  user_password;
+    private String user_password;
+    //private String passwordHash;
+
 
     @DatabaseField(canBeNull = false)
     private String user_lastname;
@@ -30,7 +35,7 @@ public class User {
     @DatabaseField
     private boolean isAdmin;
 
-    @DatabaseField (canBeNull = false, foreign = true, columnName = "classroom_id")
+    @DatabaseField(canBeNull = false, foreign = true, columnName = "classroom_id")
     private Classroom classroom;
 
     // mandatory no-argument-constructor for ORMlite
@@ -38,13 +43,23 @@ public class User {
     }
 
     // constructor
-    public User(String name, String lastname, String email, String password, boolean isAdmin) {
-        this.user_name = name;
-        this.user_lastname = lastname;
-        this.user_email = email;
-        this.user_password = password;
+    public User(String name, String lastname, String email, boolean isAdmin) {
+        user_name = name;
+        user_lastname = lastname;
+        user_email = email;
         this.isAdmin = isAdmin;
+    }
 
+    public void setPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        user_password = hashPassword(password);
+    }
+
+    public boolean isPasswordCorrect(String givenPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return TextUtils.equals(true, hashPassword(givenPassword), user_password);
+    }
+
+    public static String hashPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return AeSimpleSHA1.SHA1(password);
     }
 
     // setter/getter id_user
@@ -70,9 +85,7 @@ public class User {
         return user_password;
     }
 
-    public void setUser_password(String user_password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        this.user_password = user_password;
-    }
+
     public Classroom getClassroom() {
         return classroom;
     }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 
@@ -34,13 +35,14 @@ public class LoginController {
             @RequestParam String login_password,
             HttpSession session,
             //we are also sending back the model from the DispatcherServlet controller to the view
-            Model model) throws IOException, SQLException {
+            Model model) throws IOException, SQLException, NoSuchAlgorithmException {
 
         System.out.println("POST /LoginPage (LoginController)");
 
         User connectedUser = UserDao.getUser(login_name, login_password);
-
+        boolean isPswOk = connectedUser.isPasswordCorrect(login_password);
         System.out.println("connected User: " + connectedUser);
+        System.out.println("is the password OK? " + isPswOk);
         //could not find the combination of login and psw in db
         if (connectedUser == null) {
             model.addAttribute("invalidCredentials", true);
@@ -48,7 +50,7 @@ public class LoginController {
         }
         //connected user is Admin
         else if (connectedUser.getIsAdmin() && connectedUser.getUser_email().equals(login_name) &&
-                connectedUser.getUser_password().equals(login_password)) {
+                isPswOk) {
             //admin connected and added to the session
             addUserInSession(connectedUser, session);
             return "redirect:/adminConnected";
@@ -67,14 +69,19 @@ public class LoginController {
                 return "LoginPage";
             }
             //the credentials and the classroom are both valid, logging in
-            else if (connectedUser.getUser_email().equals(login_name) &&
-                    connectedUser.getUser_password().equals(login_password) &&
-                    connectedUser.get_UserClassroomId() == (((Classroom) session.getAttribute("classroom")).getId_classroom())) {
-                addUserInSession(connectedUser, session);
-                System.out.println("getting logged in");
-                return "redirect:/userConnected";
+            else if (isPswOk) {
+                System.out.println("I am in the correct condition");
+                System.out.println(connectedUser.getUser_email());
+                System.out.println("entered name" + login_name);
+                System.out.println("class" + ((Classroom) session.getAttribute("classroom")).getId_classroom());
+                if ((connectedUser.getUser_email().toUpperCase().equals(login_name.toUpperCase())) &&
+                        (connectedUser.get_UserClassroomId()) == (((Classroom) session.getAttribute("classroom")).getId_classroom())) {
+                    addUserInSession(connectedUser, session);
+                    System.out.println("getting logged in");
+                    return "redirect:/userConnected";
+                }
             }
-
+            System.out.println("I am out of conditions");
         }
         return "LoginPage";
     }
