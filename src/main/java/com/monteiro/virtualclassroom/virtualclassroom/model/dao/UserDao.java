@@ -11,6 +11,7 @@ import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -43,14 +44,14 @@ public class UserDao {
         }
     }
 
-    public static User getUser(String email, String password) throws SQLException, IOException {
+    public static User getUser(String email, String password) throws SQLException, IOException, NoSuchAlgorithmException {
         JdbcConnectionSource connectionSource = null;
         User gotUser;
         System.out.println("I am in the getUser method ");
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<User, String> userDao = DaoManager.createDao(connectionSource, User.class); //creates a new dao object
-            gotUser = userDao.queryBuilder().where().eq("user_email", email).and().eq("user_password", password).queryForFirst();
+            gotUser = userDao.queryBuilder().where().eq("user_email", email).and().eq("user_password", User.hashPassword(password)).queryForFirst();
             return gotUser;
         } finally {
             connectionSource.close();
@@ -64,7 +65,7 @@ public class UserDao {
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<User, Long> myDao = DaoManager.createDao(connectionSource, User.class);
-            studentRowList = myDao.queryBuilder().where().eq("classroom_id", id_Class).query();
+            studentRowList = myDao.queryBuilder().where().eq("id_classroom", id_Class).query();
             return studentRowList;
 
         } finally {
