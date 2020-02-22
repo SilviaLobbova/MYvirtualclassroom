@@ -13,7 +13,7 @@ public class Question {
     @DatabaseField(canBeNull = false)
     private String question_content;
 
-    @DatabaseField(canBeNull = false, foreign = true, columnName = "classroom_id")
+    @DatabaseField(canBeNull = false, foreign = true, columnName = "id_classroom")
     private Classroom classroom;
 
     @DatabaseField(canBeNull = false)

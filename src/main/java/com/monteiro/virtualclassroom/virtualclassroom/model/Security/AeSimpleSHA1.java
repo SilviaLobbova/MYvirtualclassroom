@@ -1,4 +1,4 @@
-package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
+package com.monteiro.virtualclassroom.virtualclassroom.model.Security;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

@@ -55,7 +55,7 @@ public class QuestionDao {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<Question, Long> clashQuestionDao = DaoManager.createDao(connectionSource, Question.class);
             // retrieve options from it
-            return clashQuestionDao.queryBuilder().offset(startRow).limit(endRow).where().eq("classroom_id", idClassRoom).query();
+            return clashQuestionDao.queryBuilder().offset(startRow).limit(endRow).where().eq("id_classroom", idClassRoom).query();
         } finally {
             connectionSource.close();
         }

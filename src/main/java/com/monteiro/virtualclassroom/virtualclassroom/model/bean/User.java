@@ -4,6 +4,7 @@ package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.monteiro.virtualclassroom.virtualclassroom.model.Security.AeSimpleSHA1;
 import org.thymeleaf.util.TextUtils;
 
 import java.io.UnsupportedEncodingException;
@@ -26,8 +27,6 @@ public class User {
 
     @DatabaseField(canBeNull = false)
     private String user_password;
-    //private String passwordHash;
-
 
     @DatabaseField(canBeNull = false)
     private String user_lastname;
@@ -35,7 +34,7 @@ public class User {
     @DatabaseField
     private boolean isAdmin;
 
-    @DatabaseField(canBeNull = false, foreign = true, columnName = "classroom_id")
+    @DatabaseField(canBeNull = false, foreign = true, columnName = "id_classroom")
     private Classroom classroom;
 
     // mandatory no-argument-constructor for ORMlite

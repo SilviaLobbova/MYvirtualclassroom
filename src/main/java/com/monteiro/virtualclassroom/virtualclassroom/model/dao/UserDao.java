@@ -65,7 +65,7 @@ public class UserDao {
         try {
             connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
             Dao<User, Long> myDao = DaoManager.createDao(connectionSource, User.class);
-            studentRowList = myDao.queryBuilder().where().eq("classroom_id", id_Class).query();
+            studentRowList = myDao.queryBuilder().where().eq("id_classroom", id_Class).query();
             return studentRowList;
 
         } finally {
