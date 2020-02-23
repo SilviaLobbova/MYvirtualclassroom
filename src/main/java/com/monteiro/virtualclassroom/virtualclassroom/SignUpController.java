@@ -32,6 +32,7 @@ public class SignUpController {
         User newOne;
 
         System.out.println("POST /SignUpPage (SignUpController)");
+        User newOne;
         if ((user_name.isEmpty()) || (user_lastname.isEmpty()) || (user_password.isEmpty()) || (user_email.isEmpty())) {
             model.addAttribute("emptyField", true);
             return "SignUpPage";
@@ -47,6 +48,7 @@ public class SignUpController {
 
             // new user creation
             UserDao.saveUser(newOne);
+
             return "LoginPage";
         }
     }
