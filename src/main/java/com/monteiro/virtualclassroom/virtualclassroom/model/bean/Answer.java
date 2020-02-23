@@ -5,8 +5,6 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "answers")
 public class Answer {
-    @DatabaseField(columnName = "id_answer", generatedId = true)
-    private long id_answer;
 
     @DatabaseField(canBeNull = false, foreign = true, columnName = "id_user")
     private User user;
@@ -22,10 +20,6 @@ public class Answer {
         return user;
     }
 
-    public String getUserName(User user) {
-        return user.getUser_name();
-    }
-
     public void setUser(User user) {
         this.user = user;
     }
@@ -36,14 +30,6 @@ public class Answer {
 
     public void setOption(Option option) {
         this.option = option;
-    }
-
-    public String get_userFromOption(int id_option) {
-        return user.getUser_name();
-    }
-
-    public int getId_optionFromAnswer(int id_question) {
-        return option.getId_option();
     }
 
 

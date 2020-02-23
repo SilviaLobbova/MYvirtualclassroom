@@ -3,9 +3,7 @@ package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
 public class AnswerForm {
 
-
     int[] multiCheckboxSelectedValues;
-
 
     int id_option;
 

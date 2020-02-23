@@ -69,10 +69,10 @@ public class ClassroomController {
         System.out.println(ClassroomDao.getClassroomByName(classroomName));
         if (classroomName.equals("")) {
             return ("empty");
-
         } else if (ClassroomDao.getClassroomByName(classroomName) != null) {
             return ("exists");
         } else if (ClassroomDao.getClassroomByName(classroomName) == null) {
+            System.out.println("saving a new class" + classroomName);
             ClassroomDao.saveClassroom(newClass);
             return ("success");
         }

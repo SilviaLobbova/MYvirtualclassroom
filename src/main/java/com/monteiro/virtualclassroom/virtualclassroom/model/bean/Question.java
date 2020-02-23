@@ -17,7 +17,7 @@ public class Question {
     private Classroom classroom;
 
     @DatabaseField(canBeNull = false)
-    private boolean isRadio = true;
+    private boolean isRadio;
 
     // list option param
     public List<Option> options;

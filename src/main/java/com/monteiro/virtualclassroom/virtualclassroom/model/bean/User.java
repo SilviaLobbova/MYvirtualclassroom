@@ -34,7 +34,7 @@ public class User {
     @DatabaseField
     private boolean isAdmin;
 
-    @DatabaseField (canBeNull = false, foreign = true, columnName = "id_classroom")
+    @DatabaseField(canBeNull = false, foreign = true, columnName = "id_classroom")
     private Classroom classroom;
 
     // mandatory no-argument-constructor for ORMlite
@@ -124,11 +124,6 @@ public class User {
     // setter/getter id_classroom
     public long get_UserClassroomId() {
         return classroom.getId_classroom();
-    }
-
-    @Override
-    public int hashCode() {
-        return (int) user_password.hashCode() * user_email.hashCode();
     }
 
 }
