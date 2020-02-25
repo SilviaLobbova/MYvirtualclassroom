@@ -1,3 +1,5 @@
+CREATE USER 'admin'@'%' IDENTIFIED BY 'friends';
+GRANT ALL PRIVILEGES ON virtualclassroom.* TO 'admin'@'%';
 DROP TABLE IF EXISTS `USERS`;
 CREATE TABLE IF NOT EXISTS `USERS`
 (
@@ -32,7 +34,9 @@ DROP TABLE IF EXISTS `QUESTIONS`;
 CREATE TABLE IF NOT EXISTS `QUESTIONS`
 (
     `id_question`      int          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `question_content` varchar(255) NOT NULL
+    `question_content` varchar(255) NOT NULL,
+    `isRadio`          boolean
+
 );
 DROP TABLE IF EXISTS `ANSWERS`;
 CREATE TABLE IF NOT EXISTS `ANSWERS`
