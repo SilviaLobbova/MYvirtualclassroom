@@ -40,9 +40,6 @@ public class AnswerDao {
             userDao.refresh(answer.getUser());
             questionDao.refresh(answer.getOption().getQuestion());
 
-            //Get all checkbox questions
-
-
             //build the query of all answers of this user
             QueryBuilder<Answer, String> answerQb = answerDao.queryBuilder();
             answerQb.where().eq("id_user", answer.getUser().getUser_id());
@@ -53,7 +50,6 @@ public class AnswerDao {
 
             //join both builders and query, it creates a joined list
             List<Answer> answersOfUserOnQuestion = answerQb.join(optionQb).query();
-
 
             QueryBuilder<Question, String> questionQb = questionDao.queryBuilder();
             questionQb.where().eq("isRadio", 0);
@@ -147,7 +143,6 @@ public class AnswerDao {
                 // request execution
                 deleteAnswer.delete();
             }
-
         } finally {
             connectionSource.close();
         }

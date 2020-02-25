@@ -36,8 +36,4 @@ public class Classroom {
         this.classroom_name = classroom_name;
     }
 
-    @Override
-    public String toString() {
-        return "(" + classroom_name + ")";
-    }
 }

@@ -151,17 +151,4 @@ public class OptionDao {
         }
     }
 
-    public static List<Option> getAllOptionList() throws IOException, SQLException {
-        List<Option> optionList;
-        JdbcConnectionSource connectionSource = null;
-        try {
-            connectionSource = new JdbcConnectionSource(BDD_URL, BDD_ADMIN, BDD_PSW);
-            Dao<Option, Integer> optionDao = DaoManager.createDao(connectionSource, Option.class);
-            optionList = optionDao.queryBuilder().query();
-            return optionList;
-
-        } finally {
-            connectionSource.close();
-        }
-    }
 }

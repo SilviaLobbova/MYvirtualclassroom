@@ -29,16 +29,16 @@ public class SignUpController {
             @RequestParam String user_password,
             HttpSession session,
             Model model) throws Exception {
+        User newOne;
 
         System.out.println("POST /SignUpPage (SignUpController)");
-        User newOne;
         if ((user_name.isEmpty()) || (user_lastname.isEmpty()) || (user_password.isEmpty()) || (user_email.isEmpty())) {
             model.addAttribute("emptyField", true);
             return "SignUpPage";
         } else {
-            if(((Classroom) session.getAttribute("classroom")).getClassroom_name().equals("Admin"))
+            if (((Classroom) session.getAttribute("classroom")).getClassroom_name().equals("Admin")) {
                 newOne = new User(user_name, user_lastname, user_email, true);
-            else {
+            } else {
                 newOne = new User(user_name, user_lastname, user_email, false);
             }
             // classroom set separately

@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @Controller
-//@SessionAttributes("login")
 public class UpdatePasswordController {
     UserDao dao = new UserDao();
 

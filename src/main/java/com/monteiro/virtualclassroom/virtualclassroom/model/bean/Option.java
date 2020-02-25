@@ -12,7 +12,6 @@ public class Option {
     @DatabaseField(canBeNull = false)
     private String option_content;
 
-
     @DatabaseField(foreign = true, columnName = "id_question")
     private Question question;
 
@@ -27,9 +26,6 @@ public class Option {
         return id_option;
     }
 
-    public int getId_optionByQuestion(int id_question) {
-        return id_option;
-    }
 
     public void setId_option(int id_option) {
         this.id_option = id_option;
@@ -47,17 +43,8 @@ public class Option {
         return question;
     }
 
-    public int getQuestionId() {
-        return question.getId_question();
-    }
-
     public void setQuestion(Question question) {
         this.question = question;
     }
 
-
-    // setter/getter id_classroom
-    public long get_OptionQuestionId() {
-        return question.getId_question();
-    }
 }
