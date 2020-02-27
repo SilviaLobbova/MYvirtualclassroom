@@ -12,7 +12,6 @@
     background: rgba(65, 65, 70, 1);
     color: rgba(255, 255, 255, 1);
     padding: 2px 10px;
-    height: 45px;
 }
 .questionContent {
     display: flex;
@@ -77,4 +76,37 @@
     text-align: center;
     background: red;
     color: white;
+}
+
+@media only screen and (max-width: 990px) {
+    /* for small screen */
+    .teacherContent {
+        margin-left: 0px;
+        width: 100%;
+    }
+    .questionBox {
+        padding: 0px;
+    }
+    .questionBar {
+        display: block;
+    }
+    .questionContent input {
+        min-width: 140px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background: rgba(65, 65, 70, 1);
+        color: rgba(255,255,255,1);
+    }
+    .topIcons {
+        display: flex;
+    }
+    .topIcons span {
+        display: flex;
+        margin-left: 5px;
+    }
+    .radio, .checkbox {
+        margin-top: 6px;
+    }
+
 }
