@@ -103,7 +103,7 @@
                                               th:each="radioValue: ${question.getOptions()}">
 
                                             <input th:type="radio" class="toto" name="selectedOption"
-                                                   th:field="*{id_option}"
+                                                   th:field="*{radioOption}"
                                                    th:value="${radioValue.getId_option()}">
                                             <label
                                                     th:for="${#ids.prev('id_option')}"

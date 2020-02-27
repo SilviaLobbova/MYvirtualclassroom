@@ -67,7 +67,7 @@ public class AnswerController {
             int questionHiddenValue,
             Model model) throws Exception {
         Option checkBoxOptions;
-        Option radioOption = OptionDao.getOption(answerForm.getId_option());
+        Option radioOption = OptionDao.getOption(answerForm.getRadioOption());
         Question questionValue = QuestionDao.getQuestion(questionHiddenValue);
         System.out.println("Question Value is" + questionValue);
         // get the selected class stored in the session

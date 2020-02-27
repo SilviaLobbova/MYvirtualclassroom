@@ -5,7 +5,7 @@ public class AnswerForm {
 
     int[] multiCheckboxSelectedValues;
 
-    int id_option;
+    int radioOption;
 
 
     public AnswerForm() {
@@ -20,11 +20,11 @@ public class AnswerForm {
         this.multiCheckboxSelectedValues = multiCheckboxSelectedValues;
     }
 
-    public int getId_option() {
-        return id_option;
+    public int getRadioOption() {
+        return radioOption;
     }
 
-    public void setId_option(int id_option) {
-        this.id_option = id_option;
+    public void setRadioOption(int radioOption) {
+        this.radioOption = radioOption;
     }
 }
