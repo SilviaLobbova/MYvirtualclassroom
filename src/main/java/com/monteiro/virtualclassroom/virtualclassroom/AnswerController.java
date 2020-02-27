@@ -32,9 +32,6 @@ public class AnswerController {
         Classroom classroom = (Classroom) session.getAttribute("classroom");
         long classroomId = classroom.getId_classroom();
 
-        User user = (User) session.getAttribute("user");
-        int userId = user.getUser_id();
-        System.out.println("THe ID of my connected user" + userId);
         // creation of the list question
         int startRow = 0;
 
@@ -53,7 +50,6 @@ public class AnswerController {
         for (Question value : questionList) {
             // store the id_question from the current displayed question
             int questionIdentification = value.getId_question();
-            System.out.println("I am in for loop, looking for IDs of my questions" + questionIdentification + "how many options I have in this question" + OptionDao.getOptionCount());
             // retrieve options store in optionDao
             value.setOptions(OptionDao.getAllOptionsFromQuestion(questionIdentification, startRow, OptionDao.getOptionCount()));
         }
@@ -78,9 +74,9 @@ public class AnswerController {
 
         if (radioOption == null) {
             AnswerDao.deleteAnswer(userInSession.getUser_id(), questionValue.getId_question());
-            long formLength = answerForm.getMultiCheckboxSelectedValues().length;
+            long formLength = answerForm.getCheckboxOptions().length;
             for (int i = 0; i < formLength; i++) {
-                checkBoxOptions = OptionDao.getOption(answerForm.getMultiCheckboxSelectedValues()[i]);
+                checkBoxOptions = OptionDao.getOption(answerForm.getCheckboxOptions()[i]);
                 System.out.println("my checkboxOptions" + checkBoxOptions.getId_option());
                 Answer newAnswer1 = new Answer();
                 newAnswer1.setOption(checkBoxOptions);
@@ -94,9 +90,6 @@ public class AnswerController {
             newAnswer.setUser(userInSession);
             AnswerDao.saveAnswer(newAnswer);
         }
-
-        System.out.println("Session attribute ID classroom: " + classroomId);
-        System.out.println("Session attribute ID user: " + userInSession);
 
         return "redirect:/userConnected";
     }

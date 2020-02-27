@@ -3,7 +3,7 @@ package com.monteiro.virtualclassroom.virtualclassroom.model.bean;
 
 public class AnswerForm {
 
-    int[] multiCheckboxSelectedValues;
+    int[] checkboxOptions;
 
     int radioOption;
 
@@ -12,12 +12,12 @@ public class AnswerForm {
     }
 
 
-    public int[] getMultiCheckboxSelectedValues() {
-        return multiCheckboxSelectedValues;
+    public int[] getCheckboxOptions() {
+        return checkboxOptions;
     }
 
-    public void setMultiCheckboxSelectedValues(int[] multiCheckboxSelectedValues) {
-        this.multiCheckboxSelectedValues = multiCheckboxSelectedValues;
+    public void setCheckboxOptions(int[] checkboxOptions) {
+        this.checkboxOptions = checkboxOptions;
     }
 
     public int getRadioOption() {

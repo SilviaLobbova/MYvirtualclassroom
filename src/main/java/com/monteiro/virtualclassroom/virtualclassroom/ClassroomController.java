@@ -76,7 +76,7 @@ public class ClassroomController {
             ClassroomDao.saveClassroom(newClass);
             return ("success");
         }
-        return "dunno what happened";
+        return "/";
     }
 
     @PostMapping("/deleteClassroom")

@@ -101,6 +101,7 @@
     </script>
     <script type="text/javascript" th:if="${studentFrameActive}">
         $(function () {
+            //update classroom name
             $("#updateFrameIcon").on("click", function (ev) {
                 ev.stopPropagation();
                 var x = document.getElementById("updateFrame");
@@ -155,7 +156,6 @@
                 removeToggle();
                 if ($("#class-empty").get(0).style.display == "") {
                     $('#class-empty').hide();
-
                 }
             })
         });
