@@ -217,9 +217,3 @@ body {
         margin: 42px 0px 42px 20px;
     }
 }
-
-@media screen and (max-width: 830px) {
-    .classroomListItem {
-        justify-content: left;
-    }
-}

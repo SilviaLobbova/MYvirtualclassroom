@@ -265,6 +265,8 @@ $(function () {
         var form = $("#hiddenCreateClass").get(0);
         var url = $(form).attr('action');
 
+        console.log("my new Class form" + form)
+
         $.ajax({
             url: url,
             type: "POST",
@@ -292,6 +294,7 @@ $(function () {
             }
         });
     });
+
 //when clicked into input, hide the error message
     $(".createClassInput").on("click", function () {
         if ($("#warn-empty").get(0).style.display == "") {
