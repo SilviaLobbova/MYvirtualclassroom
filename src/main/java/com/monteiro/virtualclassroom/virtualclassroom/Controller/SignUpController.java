@@ -39,6 +39,7 @@ public class SignUpController {
             model.addAttribute("existingUser", true);
             return "SignUpPage";
         } else {
+            // check if the user is Admin
             if (((Classroom) session.getAttribute("classroom")).getClassroom_name().equals("Admin")) {
                 newOne = new User(user_name, user_lastname, user_email, true);
             } else {
