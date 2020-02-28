@@ -76,7 +76,7 @@ public class ClassroomController {
             ClassroomDao.saveClassroom(newClass);
             return ("success");
         }
-        return "dunno what happened";
+        return "/";
     }
 
     @PostMapping("/deleteClassroom")
@@ -87,15 +87,17 @@ public class ClassroomController {
     }
 
     @RequestMapping(value = "/updateClassroom")
+    @ResponseBody
     public String updateClassroomFromList(@RequestParam String classNameModify, @RequestParam String newClassroomName) throws IOException, SQLException {
         System.out.println(classNameModify);
         System.out.println(newClassroomName);
-        if (!newClassroomName.equals("")) {
+        if (newClassroomName.equals("")) {
+            return ("emptyClass");
+        } else {
             System.out.println("le nom n'est pas vide");
             ClassroomDao.updateClassroomName(classNameModify, newClassroomName);
+            return ("successClass");
         }
-        System.out.println("le nom est vide");
-        return "redirect:/";
     }
 
     @RequestMapping("/LoginClass")
