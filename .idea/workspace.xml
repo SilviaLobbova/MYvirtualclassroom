@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9dff8f06-368a-4d6a-a30e-56bbdcea2bcc" name="Default Changelist" comment="Clean up of style.css and import of the fragments into ProfilePage.html">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/OptionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/SignUpController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +37,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -173,7 +177,7 @@
       <workItem from="1582728009973" duration="7563000" />
       <workItem from="1582814380224" duration="341000" />
       <workItem from="1582815155889" duration="4660000" />
-      <workItem from="1582881046309" duration="1411000" />
+      <workItem from="1582881046309" duration="6696000" />
     </task>
     <task id="LOCAL-00002" summary=" update css for the display of the answer. Elements centred in the table and addition of a margin block end  to questionBox. Reactivation of the css of the trashbin in answerDisplay.">
       <created>1581621723446</created>
