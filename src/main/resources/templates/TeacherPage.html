@@ -53,9 +53,9 @@
                 </div>
 
                 <!-- Right part -->
-                <div class="teacherRightContent col-9">
+                <div class="teacherRightContent col-sm-8">
                     <!--                        look at it this is when u have to load the function-->
-                    <div class="questionBox"
+                    <div class="questionBox col-sm-12"
                          th:each="question: ${questions}">
 
                         <div class="questionBar" id="questionBar">
@@ -133,7 +133,7 @@
                                 </form>
 
                                 <div th:if="${session.is_Admin == true}">
-                                    <table class="answerTable">
+                                    <table class="answerTable col-sm-12">
                                         <thead class="answerTableHeader">
                                         <tr th:id="firstRow">
                                             <th>Student Name</th>
