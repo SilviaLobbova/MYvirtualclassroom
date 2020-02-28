@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9dff8f06-368a-4d6a-a30e-56bbdcea2bcc" name="Default Changelist" comment="Clean up of style.css and import of the fragments into ProfilePage.html">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/OptionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/AnswerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/Controller/AnswerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/C_QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/Controller/C_QuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/ClassroomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/Controller/ClassroomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/InformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/Controller/InformationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/Controller/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/UpdatePasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/Controller/UpdatePasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/UpdateProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/Controller/UpdateProfileController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,9 +250,10 @@
     <state x="558" y="30" width="838" height="794" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581350498897" />
     <state x="558" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1582152835068" />
     <state x="698" y="37" key="CommitChangelistDialog2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1581621720183" />
-    <state x="-97" y="121" width="1080" height="480" key="DiffContextDialog" timestamp="1580980535963">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="1977" y="339" width="1620" height="735" key="DiffContextDialog" timestamp="1582895636818">
+      <screen x="1920" y="171" width="1920" height="1040" />
     </state>
+    <state x="1977" y="339" width="1620" height="735" key="DiffContextDialog/0.0.1280.680/1920.171.1920.1040@1920.171.1920.1040" timestamp="1582895636818" />
     <state x="-97" y="121" width="1080" height="480" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1580980535963" />
     <state x="505" y="118" key="FileChooserDialogImpl" timestamp="1581796526804">
       <screen x="0" y="0" width="1536" height="824" />
@@ -360,7 +368,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="518" y="128" key="VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824" timestamp="1582152875740" />
-    <state x="129" y="111" width="1095" height="495" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582824698880">
+    <state x="2012" y="263" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1582895636818">
+      <screen x="1920" y="171" width="1920" height="1040" />
+    </state>
+    <state x="2012" y="263" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.680/1920.171.1920.1040@1920.171.1920.1040" timestamp="1582895636818" />
+    <state x="129" y="111" width="1095" height="495" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582895636818">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="-1702" y="227" width="1643" height="758" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1581809497220" />
