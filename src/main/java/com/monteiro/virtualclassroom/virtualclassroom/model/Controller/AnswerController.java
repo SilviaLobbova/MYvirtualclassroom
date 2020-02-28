@@ -1,4 +1,4 @@
-package com.monteiro.virtualclassroom.virtualclassroom.Controller;
+package com.monteiro.virtualclassroom.virtualclassroom.model.Controller;
 
 // imports
 
@@ -32,9 +32,6 @@ public class AnswerController {
         Classroom classroom = (Classroom) session.getAttribute("classroom");
         long classroomId = classroom.getId_classroom();
 
-        User user = (User) session.getAttribute("user");
-        int userId = user.getUser_id();
-        System.out.println("THe ID of my connected user" + userId);
         // creation of the list question
         int startRow = 0;
 
@@ -53,7 +50,6 @@ public class AnswerController {
         for (Question value : questionList) {
             // store the id_question from the current displayed question
             int questionIdentification = value.getId_question();
-            System.out.println("I am in for loop, looking for IDs of my questions" + questionIdentification + "how many options I have in this question" + OptionDao.getOptionCount());
             // retrieve options store in optionDao
             value.setOptions(OptionDao.getAllOptionsFromQuestion(questionIdentification, startRow, OptionDao.getOptionCount()));
         }
@@ -67,7 +63,7 @@ public class AnswerController {
             int questionHiddenValue,
             Model model) throws Exception {
         Option checkBoxOptions;
-        Option radioOption = OptionDao.getOption(answerForm.getId_option());
+        Option radioOption = OptionDao.getOption(answerForm.getRadioOption());
         Question questionValue = QuestionDao.getQuestion(questionHiddenValue);
         System.out.println("Question Value is" + questionValue);
         // get the selected class stored in the session
@@ -78,9 +74,9 @@ public class AnswerController {
 
         if (radioOption == null) {
             AnswerDao.deleteAnswer(userInSession.getUser_id(), questionValue.getId_question());
-            long formLength = answerForm.getMultiCheckboxSelectedValues().length;
+            long formLength = answerForm.getCheckboxOptions().length;
             for (int i = 0; i < formLength; i++) {
-                checkBoxOptions = OptionDao.getOption(answerForm.getMultiCheckboxSelectedValues()[i]);
+                checkBoxOptions = OptionDao.getOption(answerForm.getCheckboxOptions()[i]);
                 System.out.println("my checkboxOptions" + checkBoxOptions.getId_option());
                 Answer newAnswer1 = new Answer();
                 newAnswer1.setOption(checkBoxOptions);
@@ -95,9 +91,6 @@ public class AnswerController {
             AnswerDao.saveAnswer(newAnswer);
         }
 
-        System.out.println("Session attribute ID classroom: " + classroomId);
-        System.out.println("Session attribute ID user: " + userInSession);
-
         return "redirect:/userConnected";
     }
 
@@ -107,40 +100,46 @@ public class AnswerController {
         System.out.println("My Admin");
 
         // get the selected class stored in the session
-        Classroom classroom1 = (Classroom) session.getAttribute("classroom");
-        System.out.println("classroom1 " + classroom1);
-        long classroomId = classroom1.getId_classroom();
-        System.out.println("classroomId" + classroomId);
+        Classroom classroom = (Classroom) session.getAttribute("classroom");
+        System.out.println("classroom1 " + classroom);
 
-        // creation of the list question
-        int startRow = 0;
+        if (classroom != null) {
 
-        // creation of a list which will be used by thymeleaf and store the result of the function call in the list
-        List<Question> questionList = QuestionDao.getAllQuestionsFromId(classroomId, startRow, QuestionDao.getQuestionCount());
-        questionList.sort(Comparator.comparing(Question::getId_question));
-        // add to the model
-        model.addAttribute("questions", questionList);
+            long classroomId = classroom.getId_classroom();
+            System.out.println("classroomId" + classroomId);
 
-        List<Information> informationList = InformationDao.showInformation(classroomId);
-        model.addAttribute("information", informationList);
+            // creation of the list question
+            int startRow = 0;
 
-        List<User> listOfUsers = UserDao.getStudentsList(classroomId);
-        model.addAttribute("students", listOfUsers);
+            // creation of a list which will be used by thymeleaf and store the result of the function call in the list
+            List<Question> questionList = QuestionDao.getAllQuestionsFromId(classroomId, startRow, QuestionDao.getQuestionCount());
+            questionList.sort(Comparator.comparing(Question::getId_question));
+            // add to the model
+            model.addAttribute("questions", questionList);
 
-        List<Answer> listOfAnswers = AnswerDao.getAnswers();
-        model.addAttribute("answers", listOfAnswers);
+            List<Information> informationList = InformationDao.showInformation(classroomId);
+            model.addAttribute("information", informationList);
+
+            List<User> listOfUsers = UserDao.getStudentsList(classroomId);
+            model.addAttribute("students", listOfUsers);
+
+            List<Answer> listOfAnswers = AnswerDao.getAnswers();
+            model.addAttribute("answers", listOfAnswers);
 
 
-        for (Question value : questionList) {
-            // store the id_question from the current displayed question
-            int questionId = value.getId_question();
-            System.out.println(questionId);
+            for (Question value : questionList) {
+                // store the id_question from the current displayed question
+                int questionId = value.getId_question();
+                System.out.println(questionId);
 
-            // retrieve options store in optionDao
-            value.setOptions(OptionDao.getAllOptionsFromQuestion(questionId, startRow, OptionDao.getOptionCount()));
-            value.setAnswers(AnswerDao.getAllAnswersOfQuestion(questionId, startRow, AnswerDao.getAnswerCount()));
+                // retrieve options store in optionDao
+                value.setOptions(OptionDao.getAllOptionsFromQuestion(questionId, startRow, OptionDao.getOptionCount()));
+                value.setAnswers(AnswerDao.getAllAnswersOfQuestion(questionId, startRow, AnswerDao.getAnswerCount()));
+            }
+            return "TeacherPage"; //view
+        } else {
+            return "TeacherPage";
         }
-        return "TeacherPage"; //view
     }
 
     @PostMapping("/deleteQuestion")
