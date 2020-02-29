@@ -64,15 +64,13 @@ public class ClassroomController {
 
     @PostMapping("/addClassroom")
     @ResponseBody
-    public String createClassroom(@RequestParam String classroomName, Model model) throws IOException, SQLException {
+    public String createClassroom(@RequestParam String classroomName) throws IOException, SQLException {
         Classroom newClass = new Classroom(classroomName);
-        System.out.println(ClassroomDao.getClassroomByName(classroomName));
         if (classroomName.equals("")) {
             return ("empty");
         } else if (ClassroomDao.getClassroomByName(classroomName) != null) {
             return ("exists");
         } else if (ClassroomDao.getClassroomByName(classroomName) == null) {
-            System.out.println("saving a new class" + classroomName);
             ClassroomDao.saveClassroom(newClass);
             return ("success");
         }
@@ -89,12 +87,9 @@ public class ClassroomController {
     @RequestMapping(value = "/updateClassroom")
     @ResponseBody
     public String updateClassroomFromList(@RequestParam String classNameModify, @RequestParam String newClassroomName) throws IOException, SQLException {
-        System.out.println(classNameModify);
-        System.out.println(newClassroomName);
         if (newClassroomName.equals("")) {
             return ("emptyClass");
         } else {
-            System.out.println("le nom n'est pas vide");
             ClassroomDao.updateClassroomName(classNameModify, newClassroomName);
             return ("successClass");
         }

@@ -39,19 +39,12 @@ public class SignUpController {
             model.addAttribute("existingUser", true);
             return "SignUpPage";
         } else {
-            // check if the user is Admin
-            if (((Classroom) session.getAttribute("classroom")).getClassroom_name().equals("Admin")) {
-                newOne = new User(user_name, user_lastname, user_email, true);
-            } else {
-                newOne = new User(user_name, user_lastname, user_email, false);
-            }
+            newOne = new User(user_name, user_lastname, user_email, false);
             // classroom set separately
             newOne.setClassroom((Classroom) session.getAttribute("classroom"));
             newOne.setPassword(user_password);
-
             // new user creation
             UserDao.saveUser(newOne);
-
             return "LoginPage";
         }
     }

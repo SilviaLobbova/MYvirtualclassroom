@@ -36,7 +36,6 @@ public class LoginController {
             HttpSession session,
             //we are also sending back the model from the DispatcherServlet controller to the view
             Model model) throws IOException, SQLException, NoSuchAlgorithmException {
-        boolean isPswOk;
 
         System.out.println("POST /LoginPage (LoginController)");
 
@@ -45,15 +44,6 @@ public class LoginController {
             model.addAttribute("invalidCredentials", true);
             return "LoginPage";
         }
-
-        //isPswOk = connectedUser.isPasswordCorrect(login_password);
-//        if (!isPswOk){
-//            model.addAttribute("user not existing", true);
-//        }
-
-        System.out.println("connected User: " + connectedUser);
-        //System.out.println("is the password OK? " + isPswOk);
-        //could not find the combination of login and psw in db
 
         //connected user is Admin
         if (connectedUser.getIsAdmin()) {
@@ -80,11 +70,7 @@ public class LoginController {
             System.out.println("entered name" + login_name);
             System.out.println("class" + ((Classroom) session.getAttribute("classroom")).getId_classroom());
 
-            //je ne vois pas l'utilité de ce if
-//            if ((connectedUser.getUser_email().toUpperCase().equals(login_name.toUpperCase())) &&
-//                    (connectedUser.get_UserClassroomId()) == (((Classroom) session.getAttribute("classroom")).getId_classroom())) {
             addUserInSession(connectedUser, session);
-            System.out.println("getting logged in");
             return "redirect:/userConnected";
 //            }
         }

@@ -15,10 +15,10 @@ public class VirtualclassroomApplication extends SpringBootServletInitializer {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(VirtualclassroomApplication.class, args);
 
-        //On créer l'admin s'il n'hesiste pas déja
+        //On crée l'admin s'il n'existe pas déjà
         if (!UserDao.isAdmin()) {
             //on insert un Admin
-            User user = new User("Admin", "Admin", "Admin", true);
+            User user = new User("Admin", "Admin", ConstantsKt.BDD_ADMIN, true);
             user.setPassword(ConstantsKt.BDD_PSW);
             UserDao.saveUser(user);
         }

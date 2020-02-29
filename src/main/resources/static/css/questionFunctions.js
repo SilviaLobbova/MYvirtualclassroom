@@ -159,3 +159,9 @@ function openCreateInformation() {
         add.className = "infoBox"
     }
 }
+
+//if there is no classroom yet and admin wants to create a question
+$("#questionHasNoClassroom").on("click", function (ev) {
+    ev.stopPropagation();
+    alert('You should first login to a classroom in order to create a question. If there is no classroom, please create one in "Classroom List". Then logout and login again into the current classroom.')
+})

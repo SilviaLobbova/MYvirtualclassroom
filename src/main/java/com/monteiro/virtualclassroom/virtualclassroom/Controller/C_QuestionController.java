@@ -22,13 +22,9 @@ import java.util.List;
 public class C_QuestionController {
     // render CreateQuestion Page
     @GetMapping("/CreateQuestionPage")
-    public String signUpRender(Model model, HttpSession session) throws IOException, SQLException {
+    public String createQuestionRender(Model model, HttpSession session) throws IOException, SQLException {
         System.out.println("GET /CreateQuestion (CreateQuestionController)");
         Classroom currentClassroom = (Classroom) session.getAttribute("classroom");
-        if (currentClassroom == null) {
-            model.addAttribute("noExistingClassroom", true);
-            return "redirect:/AdminPage";
-        }
         long classroomId = currentClassroom.getId_classroom();
         List<Information> informationList = InformationDao.showInformation(classroomId);
         model.addAttribute("information", informationList);
