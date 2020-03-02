@@ -1,4 +1,4 @@
-package com.monteiro.virtualclassroom.virtualclassroom.Controller;
+package com.monteiro.virtualclassroom.virtualclassroom.controller;
 
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.*;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.InformationDao;
@@ -19,7 +19,7 @@ import java.util.List;
 
 
 @Controller
-public class C_QuestionController {
+public class CreateQuestionController {
     // render CreateQuestion Page
     @GetMapping("/CreateQuestionPage")
     public String createQuestionRender(Model model, HttpSession session) throws IOException, SQLException {

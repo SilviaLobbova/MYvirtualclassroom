@@ -1,4 +1,4 @@
-package com.monteiro.virtualclassroom.virtualclassroom.Controller;
+package com.monteiro.virtualclassroom.virtualclassroom.controller;
 
 // imports
 
@@ -134,7 +134,7 @@ public class AnswerController {
 
                 // retrieve options store in optionDao
                 value.setOptions(OptionDao.getAllOptionsFromQuestion(questionId, startRow, OptionDao.getOptionCount()));
-                value.setAnswers(AnswerDao.getAllAnswersOfQuestion(questionId, startRow, AnswerDao.getAnswerCount()));
+                value.answerQuestion(AnswerDao.getAllAnswersOfQuestion(questionId, startRow, AnswerDao.getAnswerCount()));
             }
             return "TeacherPage"; //view
         } else {

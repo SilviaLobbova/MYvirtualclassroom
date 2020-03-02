@@ -1,13 +1,13 @@
-package com.monteiro.virtualclassroom.virtualclassroom.Controller;
+package com.monteiro.virtualclassroom.virtualclassroom.controller;
 
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.User;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.UserDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
@@ -17,14 +17,10 @@ import java.sql.SQLException;
 
 
 @Controller
-
 public class LoginController {
-
     //render login page
-    @GetMapping("/LoginPage")
+    @RequestMapping(value = "/LoginPage", method = RequestMethod.GET)
     public String loginRender() {
-        System.out.println("GET /LoginPage (LoginController)");
-        //return html page
         return "LoginPage";
     }
 

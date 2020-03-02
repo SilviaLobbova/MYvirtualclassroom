@@ -9,10 +9,8 @@ import org.thymeleaf.util.TextUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-//        import org.springframework.security
 
 
-//annotations ORMLite
 @DatabaseTable(tableName = "USERS")
 public class User {
 
@@ -23,13 +21,13 @@ public class User {
     private String user_name;
 
     @DatabaseField(canBeNull = false)
+    private String user_lastname;
+
+    @DatabaseField(canBeNull = false)
     private String user_email;
 
     @DatabaseField(canBeNull = false)
     private String user_password;
-
-    @DatabaseField(canBeNull = false)
-    private String user_lastname;
 
     @DatabaseField
     private boolean isAdmin;

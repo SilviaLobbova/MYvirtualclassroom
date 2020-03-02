@@ -16,10 +16,10 @@ public class Question {
     @DatabaseField(canBeNull = false, foreign = true, columnName = "id_classroom")
     private Classroom classroom;
 
-    @DatabaseField(canBeNull = false)
+    @DatabaseField
     private boolean isRadio;
 
-    // list option param
+    // not database fields
     public List<Option> options;
 
     public List<Answer> answers;
@@ -77,7 +77,7 @@ public class Question {
         return answers;
     }
 
-    public void setAnswers(List<Answer> answers) {
+    public void answerQuestion(List<Answer> answers) {
         this.answers = answers;
     }
 }
