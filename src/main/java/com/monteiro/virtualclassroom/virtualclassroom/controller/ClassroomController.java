@@ -28,12 +28,12 @@ public class ClassroomController {
         System.out.println("classrooms :" + classroomList);
         model.addAttribute("classrooms", classroomList);
 
-        if ((classroomList.isEmpty()) && (session.getAttribute("login_first") == null)) {
+        if ((classroomList.isEmpty()) && (session.getAttribute("user") == null)) {
             model.addAttribute("adminAccess", true);
-        } else if ((classroomList.isEmpty()) && (session.getAttribute("login_first") != null)) {
+        } else if ((classroomList.isEmpty()) && (session.getAttribute("user") != null)) {
             model.addAttribute("adminClassList", true);
             model.addAttribute("adminAddClass", true);
-        } else if ((!classroomList.isEmpty()) && (session.getAttribute("login_first") != null)) {
+        } else if ((!classroomList.isEmpty()) && (session.getAttribute("user") != null)) {
             model.addAttribute("adminAddClass", true);
         }
         return "HomePage";

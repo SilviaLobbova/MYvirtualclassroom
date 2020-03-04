@@ -93,11 +93,13 @@
                                       th:object="${answerForm}"
                                       class="submitAnswer">
                                     <div class="answerOrder">
-                                        <!--                                    set the option of the question depending of the user choice -->
+                                        <!-- th:field="*{radioOption}" and th:field="*{checkboxOptions}" are variable expressions,
+                                        they will be executed on a previously selected object: th:object="${answerForm}"
+                                        it is equivalent to : answerForm.getRadioOption or answerForm.getCheckboxOptions -->
                                         <span th:if="${question.getIsRadio()== true }"
                                               th:each="radioValue: ${question.getOptions()}">
 
-                                            <input th:type="radio" class="toto" name="selectedOption"
+                                            <input th:type="radio"
                                                    th:field="*{radioOption}"
                                                    th:value="${radioValue.getId_option()}">
                                             <label
@@ -110,7 +112,7 @@
 
                                         <span th:if="${question.getIsRadio()== false }"
                                               th:each="checkboxValue: ${question.getOptions()}">
-                                            <input th:type="checkbox" class="toto" name="questionValue"
+                                            <input th:type="checkbox"
                                                    th:field="*{checkboxOptions}"
                                                    th:value="${checkboxValue.getId_option()}">
 
@@ -228,7 +230,6 @@
             </div>
         </div>
     </main>
-    <!--        debug -->
 
     <footer th:replace="fragments/footer.html :: footer"/>
 </div>

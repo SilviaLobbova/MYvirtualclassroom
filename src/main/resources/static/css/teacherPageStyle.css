@@ -222,3 +222,7 @@ table {
 .fa-check {
     color: rgba(255, 214, 0, 1);
 }
+
+.adminOnly {
+    float: right;
+}

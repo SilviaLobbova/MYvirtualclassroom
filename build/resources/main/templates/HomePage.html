@@ -17,14 +17,13 @@
             <!-- title content -->
             <div th:replace="~{fragments/titlePage.html :: titlePage(title='Classrooms')}"></div>
             <!-- Main contain -->
-
             <div th:class="${session.is_Admin}? 'classesContent' : 'content'" id="classesContent">
                 <div th:if="${session.is_Admin == true}" class="classroomsLeftContent" id="classroomsLeftContent">
                     <div id="studentFrame"></div>
                 </div>
                 <div th:class="${session.is_Admin}? 'teacherRightCenterContent col-10' : 'teacherRightContent col-6'">
                     <ul class="classroomList">
-                        <a th:if="${session.classroom == null}" th:each="classroom: ${classrooms}"
+                        <a th:if="${session.is_Admin == null}" th:each="classroom: ${classrooms}"
                            th:href="@{/LoginClass(id=${classroom.getId_classroom()})}">
                             <li class="classroomListItem" th:text="${classroom.getClassroom_name()}">
                             </li>
@@ -35,15 +34,16 @@
                             </li>
                         </a>
                     </ul>
+                    <div th:if="${adminAccess}" class="adminOnly">"There are no classes available. Please login as admin
+                        to
+                        create one"
+                        <a href="/LoginPage">Login</a>
+                    </div>
+                    <div th:if="${adminClassList}" class="adminOnly">
+                        "There are no classes available."
+                    </div>
                 </div>
 
-                <div th:if="${adminAccess}" class="adminOnly">"There are no classes available. Please login as admin to
-                    create one"
-                    <a href="/LoginPage">Login</a>
-                </div>
-                <div th:if="${adminClassList}" class="adminOnly">
-                    "There are no classes available."
-                </div>
             </div>
         </div>
     </main>
