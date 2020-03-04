@@ -73,7 +73,7 @@ public class AnswerController {
         User userInSession = (User) session.getAttribute("user");
 
         if (radioOption == null) {
-            AnswerDao.deleteAnswer(userInSession.getUser_id(), questionValue.getId_question());
+            AnswerDao.deleteAnswerOfUser(userInSession.getUser_id(), questionValue.getId_question());
             long formLength = answerForm.getCheckboxOptions().length;
             for (int i = 0; i < formLength; i++) {
                 checkBoxOptions = OptionDao.getOption(answerForm.getCheckboxOptions()[i]);
@@ -134,7 +134,7 @@ public class AnswerController {
 
                 // retrieve options store in optionDao
                 value.setOptions(OptionDao.getAllOptionsFromQuestion(questionId, startRow, OptionDao.getOptionCount()));
-                value.answerQuestion(AnswerDao.getAllAnswersOfQuestion(questionId, startRow, AnswerDao.getAnswerCount()));
+                value.answerQuestion(AnswerDao.getAnswersList(questionId));
             }
             return "TeacherPage"; //view
         } else {
@@ -145,8 +145,18 @@ public class AnswerController {
     @PostMapping("/deleteQuestion")
     public String deleteQuestion(int questionId) throws IOException, SQLException {
         System.out.println("I try to display the question value");
-        System.out.println(questionId);
-        QuestionDao.deleteQuestion(questionId);
+
+        Question question = QuestionDao.getQuestion(questionId);
+        List<Option> options = OptionDao.getOptionList(questionId);
+        List<Answer> answers = AnswerDao.getAnswersList(questionId);
+
+        for (Answer answer : answers) {
+            AnswerDao.deleteAnswer(answer);
+        }
+        for (Option value : options) {
+            OptionDao.deleteOption(value);
+        }
+        QuestionDao.deleteQuestion(question);
 
         return "redirect:/adminConnected";
     }

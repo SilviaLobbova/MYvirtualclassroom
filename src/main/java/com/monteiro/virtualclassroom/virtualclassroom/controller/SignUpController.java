@@ -35,7 +35,7 @@ public class SignUpController {
         if ((user_name.isEmpty()) || (user_lastname.isEmpty()) || (user_password.isEmpty()) || (user_email.isEmpty())) {
             model.addAttribute("emptyField", true);
             return "SignUpPage";
-        } else if (UserDao.getUser(user_email, user_password) != null) {
+        } else if (UserDao.getUserLogin(user_email, user_password) != null) {
             model.addAttribute("existingUser", true);
             return "SignUpPage";
         } else {

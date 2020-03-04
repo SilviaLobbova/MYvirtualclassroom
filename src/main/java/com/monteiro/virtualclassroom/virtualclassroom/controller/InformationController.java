@@ -27,9 +27,8 @@ public class InformationController {
 
     @PostMapping("/deleteInfo")
     public String deleteInformation(int infoDelete) throws IOException, SQLException {
-        System.out.println("I try to display the info value");
-        System.out.println(infoDelete);
-        InformationDao.deleteInformation(infoDelete);
+        Information info = InformationDao.getInformation(infoDelete);
+        InformationDao.deleteInformation(info);
         return "redirect:/adminConnected";
     }
 

@@ -35,7 +35,7 @@ public class LoginController {
 
         System.out.println("POST /LoginPage (LoginController)");
 
-        User connectedUser = UserDao.getUser(login_name, login_password);
+        User connectedUser = UserDao.getUserLogin(login_name, login_password);
         if (connectedUser == null) {
             model.addAttribute("invalidCredentials", true);
             return "LoginPage";

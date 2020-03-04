@@ -75,10 +75,15 @@ public class CreateQuestionController {
             System.out.println("writing question successful");
             // answer
             for (String option_content : options_content) {
-                Option newOption = new Option(option_content);
-                newOption.setQuestion(newQuestion);
-                System.out.println(option_content);
-                OptionDao.saveOption(newOption);
+                if (!option_content.equals("")) {
+                    Option newOption = new Option(option_content);
+                    newOption.setQuestion(newQuestion);
+                    System.out.println(option_content);
+                    System.out.println("new option is : " + newOption);
+
+                    OptionDao.saveOption(newOption);
+                }
+
                 System.out.println("writing options successful");
             }
             model.addAttribute("questionSuccess", true);
