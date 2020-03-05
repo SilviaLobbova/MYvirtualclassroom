@@ -2,15 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9dff8f06-368a-4d6a-a30e-56bbdcea2bcc" name="Default Changelist" comment="Clean up of style.css and import of the fragments into ProfilePage.html">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creationTable.sql" beforeDir="false" afterPath="$PROJECT_DIR$/creationTable.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/controller/ClassroomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/controller/ClassroomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/model/bean/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/teacherPageStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/teacherPageStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HomePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/HomePage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/SignUpPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/SignUpPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/TeacherPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/TeacherPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/build-history.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/constants.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/constants.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/constants.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/constants.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/package-parts.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/package-parts.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/package-parts.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/package-parts.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/last-build.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/AnswerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/monteiro/virtualclassroom/virtualclassroom/Controller/AnswerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,8 +322,8 @@
     </state>
     <state x="2551" y="320" key="FileChooserDialogImpl/0.0.1280.680/1920.171.1920.1040@1920.171.1920.1040" timestamp="1583067116768" />
     <state x="421" y="97" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1580980500790" />
-    <state width="1877" height="113" key="GridCell.Tab.0.bottom" timestamp="1583358697130">
-      <screen x="1920" y="171" width="1920" height="1040" />
+    <state width="1493" height="224" key="GridCell.Tab.0.bottom" timestamp="1583407206544">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="233" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582148142185" />
     <state width="1237" height="121" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960117" />
@@ -315,9 +331,10 @@
     <state width="1222" height="113" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.171.1920.1040@0.0.1280.680" timestamp="1583265994177" />
     <state width="1877" height="113" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.171.1920.1040@1920.171.1920.1040" timestamp="1583358697130" />
     <state width="1222" height="113" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583336369395" />
+    <state width="1493" height="224" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1583407206544" />
     <state width="938" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582820906724" />
-    <state width="1877" height="113" key="GridCell.Tab.0.center" timestamp="1583358697130">
-      <screen x="1920" y="171" width="1920" height="1040" />
+    <state width="1493" height="224" key="GridCell.Tab.0.center" timestamp="1583407206544">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="233" key="GridCell.Tab.0.center/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582148142185" />
     <state width="1237" height="121" key="GridCell.Tab.0.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960113" />
@@ -325,9 +342,10 @@
     <state width="1222" height="113" key="GridCell.Tab.0.center/0.0.1280.680/1920.171.1920.1040@0.0.1280.680" timestamp="1583265994176" />
     <state width="1877" height="113" key="GridCell.Tab.0.center/0.0.1280.680/1920.171.1920.1040@1920.171.1920.1040" timestamp="1583358697130" />
     <state width="1222" height="113" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583336369395" />
+    <state width="1493" height="224" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1583407206544" />
     <state width="938" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582820906724" />
-    <state width="1877" height="113" key="GridCell.Tab.0.left" timestamp="1583358697130">
-      <screen x="1920" y="171" width="1920" height="1040" />
+    <state width="1493" height="224" key="GridCell.Tab.0.left" timestamp="1583407206544">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="233" key="GridCell.Tab.0.left/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582148142185" />
     <state width="1237" height="121" key="GridCell.Tab.0.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960113" />
@@ -335,9 +353,10 @@
     <state width="1222" height="113" key="GridCell.Tab.0.left/0.0.1280.680/1920.171.1920.1040@0.0.1280.680" timestamp="1583265994176" />
     <state width="1877" height="113" key="GridCell.Tab.0.left/0.0.1280.680/1920.171.1920.1040@1920.171.1920.1040" timestamp="1583358697130" />
     <state width="1222" height="113" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583336369395" />
+    <state width="1493" height="224" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1583407206544" />
     <state width="938" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582820906724" />
-    <state width="1877" height="113" key="GridCell.Tab.0.right" timestamp="1583358697130">
-      <screen x="1920" y="171" width="1920" height="1040" />
+    <state width="1493" height="224" key="GridCell.Tab.0.right" timestamp="1583407206544">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="233" key="GridCell.Tab.0.right/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582148142185" />
     <state width="1237" height="121" key="GridCell.Tab.0.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960113" />
@@ -345,9 +364,10 @@
     <state width="1222" height="113" key="GridCell.Tab.0.right/0.0.1280.680/1920.171.1920.1040@0.0.1280.680" timestamp="1583265994177" />
     <state width="1877" height="113" key="GridCell.Tab.0.right/0.0.1280.680/1920.171.1920.1040@1920.171.1920.1040" timestamp="1583358697130" />
     <state width="1222" height="113" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583336369395" />
+    <state width="1493" height="224" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1583407206544" />
     <state width="938" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582820906724" />
-    <state width="1877" height="113" key="GridCell.Tab.1.bottom" timestamp="1583358697130">
-      <screen x="1920" y="171" width="1920" height="1040" />
+    <state width="1493" height="224" key="GridCell.Tab.1.bottom" timestamp="1583407206544">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="233" key="GridCell.Tab.1.bottom/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582148142185" />
     <state width="1237" height="121" key="GridCell.Tab.1.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960117" />
@@ -355,9 +375,10 @@
     <state width="1222" height="113" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.171.1920.1040@0.0.1280.680" timestamp="1583265994177" />
     <state width="1877" height="113" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.171.1920.1040@1920.171.1920.1040" timestamp="1583358697130" />
     <state width="1222" height="113" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583336369395" />
+    <state width="1493" height="224" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1583407206544" />
     <state width="938" height="269" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582820906725" />
-    <state width="1877" height="113" key="GridCell.Tab.1.center" timestamp="1583358697130">
-      <screen x="1920" y="171" width="1920" height="1040" />
+    <state width="1493" height="224" key="GridCell.Tab.1.center" timestamp="1583407206544">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="233" key="GridCell.Tab.1.center/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582148142185" />
     <state width="1237" height="121" key="GridCell.Tab.1.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960117" />
@@ -365,9 +386,10 @@
     <state width="1222" height="113" key="GridCell.Tab.1.center/0.0.1280.680/1920.171.1920.1040@0.0.1280.680" timestamp="1583265994177" />
     <state width="1877" height="113" key="GridCell.Tab.1.center/0.0.1280.680/1920.171.1920.1040@1920.171.1920.1040" timestamp="1583358697130" />
     <state width="1222" height="113" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1583336369395" />
+    <state width="1493" height="224" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1583407206544" />
     <state width="938" height="269" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582820906725" />
-    <state width="1877" height="113" key="GridCell.Tab.1.left" timestamp="1583358697130">
-      <screen x="1920" y="171" width="1920" height="1040" />
+    <state width="1493" height="224" key="GridCell.Tab.1.left" timestamp="1583407206544">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="233" key="GridCell.Tab.1.left/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582148142185" />
     <state width="1237" height="121" key="GridCell.Tab.1.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960117" />
@@ -375,9 +397,10 @@
     <state width="1222" height="113" key="GridCell.Tab.1.left/0.0.1280.680/1920.171.1920.1040@0.0.1280.680" timestamp="1583265994177" />
     <state width="1877" height="113" key="GridCell.Tab.1.left/0.0.1280.680/1920.171.1920.1040@1920.171.1920.1040" timestamp="1583358697130" />
     <state width="1222" height="113" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1583336369395" />
+    <state width="1493" height="224" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1583407206544" />
     <state width="938" height="269" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582820906724" />
-    <state width="1877" height="113" key="GridCell.Tab.1.right" timestamp="1583358697130">
-      <screen x="1920" y="171" width="1920" height="1040" />
+    <state width="1493" height="224" key="GridCell.Tab.1.right" timestamp="1583407206544">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="233" key="GridCell.Tab.1.right/0.0.1280.680/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582148142185" />
     <state width="1237" height="121" key="GridCell.Tab.1.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1581358960117" />
@@ -385,6 +408,7 @@
     <state width="1222" height="113" key="GridCell.Tab.1.right/0.0.1280.680/1920.171.1920.1040@0.0.1280.680" timestamp="1583265994177" />
     <state width="1877" height="113" key="GridCell.Tab.1.right/0.0.1280.680/1920.171.1920.1040@1920.171.1920.1040" timestamp="1583358697130" />
     <state width="1222" height="113" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1583336369395" />
+    <state width="1493" height="224" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1583407206544" />
     <state width="1493" height="224" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1582403393973" />
     <state width="938" height="269" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582820906725" />
     <state width="1237" height="131" key="GridCell.Tab.2.bottom" timestamp="1581363605036">
