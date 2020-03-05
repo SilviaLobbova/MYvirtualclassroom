@@ -62,15 +62,12 @@ public class AnswerDao {
 
             if (selectedCheckbox.size() == 0) {
                 if (answerDao.queryBuilder().where().eq("id_user", answer.getUser().getUser_id()).countOf() == 0) {
-                    System.out.println("I cannot see this user in the table answers");
                     answerDao.create(answer);
                 } else if (answersOfUserOnQuestion.size() == 0) {
-                    System.out.println("I can see the user and he has answered another question");
                     answerDao.create(answer);
                 }
                 //update the existing answer of this user to this question
                 else {
-                    System.out.println("There is already an answer to this question");
                     UpdateBuilder<Answer, String> updateBuilder = answerDao.updateBuilder();
                     // set the criteria
                     updateBuilder.where().eq("id_user", answer.getUser().getUser_id());
@@ -88,18 +85,11 @@ public class AnswerDao {
                 newAnswerQb.where().eq("id_user", answer.getUser().getUser_id());
 
                 List<Answer> answerOption = newAnswerQb.join(newOptionQb).query();
-                System.out.println("We have a checkbox");
-                System.out.println("My option's ID " + selectedCheckbox.get(0).getId_option());
                 if (answerDao.queryBuilder().where().eq("id_user", answer.getUser().getUser_id()).countOf() == 0) {
-                    System.out.println("I cannot see this user in the table answers");
                     answerDao.create(answer);
-
                 } else if (answerOption.size() == 0) {
-                    System.out.println("I can see this option empty " + answerOption.size());
                     answerDao.create(answer);
-
                 } else if (answerDao.queryBuilder().where().eq("id_option", selectedCheckbox.get(0).getId_option()).countOf() > 0) {
-                    System.out.println("I am updating the checkbox");
                     UpdateBuilder<Answer, String> updateBuilder = answerDao.updateBuilder();
                     // set the criteria
                     updateBuilder.where().eq("id_user", answer.getUser().getUser_id());

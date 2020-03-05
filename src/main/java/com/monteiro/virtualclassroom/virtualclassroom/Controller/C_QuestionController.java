@@ -1,4 +1,4 @@
-package com.monteiro.virtualclassroom.virtualclassroom.model.Controller;
+package com.monteiro.virtualclassroom.virtualclassroom.Controller;
 
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.*;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.InformationDao;
@@ -22,16 +22,14 @@ import java.util.List;
 public class C_QuestionController {
     // render CreateQuestion Page
     @GetMapping("/CreateQuestionPage")
-    public String signUpRender(Model model, HttpSession session) throws IOException, SQLException {
+    public String CreateQuestionRender(Model model, HttpSession session) throws IOException, SQLException {
         System.out.println("GET /CreateQuestion (CreateQuestionController)");
         Classroom currentClassroom = (Classroom) session.getAttribute("classroom");
-        if (currentClassroom == null) {
-            model.addAttribute("noExistingClassroom", true);
-            return "redirect:/AdminPage";
-        }
         long classroomId = currentClassroom.getId_classroom();
+        // information frame display
         List<Information> informationList = InformationDao.showInformation(classroomId);
         model.addAttribute("information", informationList);
+        // Student list display
         List<User> studentsList;
         studentsList = UserDao.getStudentsList(classroomId);
         System.out.println(studentsList);
@@ -54,10 +52,10 @@ public class C_QuestionController {
 
         // Verification if a field is empty on the question head
         if (question_content.isEmpty()) {
-//            model.addAttribute("emptyField", true);
+            model.addAttribute("emptyField", true);
             return ("emptyQuestionContent");
         } else if (option == null) {
-//            model.addAttribute("isRadioEmpty", true);
+            model.addAttribute("isRadioEmpty", true);
 //            return "CreateQuestionPage";
             return ("emptyType");
         } else if (options_content[0].isEmpty()) {

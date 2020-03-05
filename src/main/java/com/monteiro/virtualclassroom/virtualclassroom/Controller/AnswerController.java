@@ -1,4 +1,4 @@
-package com.monteiro.virtualclassroom.virtualclassroom.model.Controller;
+package com.monteiro.virtualclassroom.virtualclassroom.Controller;
 
 // imports
 
@@ -25,9 +25,7 @@ public class AnswerController {
             HttpSession session,
             Model model
     ) throws Exception {
-
         System.out.println("GET /DisplayQuestion (AnswerController)");
-
         // get the selected class stored in the session
         Classroom classroom = (Classroom) session.getAttribute("classroom");
         long classroomId = classroom.getId_classroom();
@@ -65,13 +63,11 @@ public class AnswerController {
         Option checkBoxOptions;
         Option radioOption = OptionDao.getOption(answerForm.getRadioOption());
         Question questionValue = QuestionDao.getQuestion(questionHiddenValue);
-        System.out.println("Question Value is" + questionValue);
         // get the selected class stored in the session
         Classroom classroom = (Classroom) session.getAttribute("classroom");
         long classroomId = classroom.getId_classroom();
         // get the user_id
         User userInSession = (User) session.getAttribute("user");
-
         if (radioOption == null) {
             AnswerDao.deleteAnswer(userInSession.getUser_id(), questionValue.getId_question());
             long formLength = answerForm.getCheckboxOptions().length;
@@ -84,13 +80,11 @@ public class AnswerController {
                 AnswerDao.saveAnswer(newAnswer1);
             }
         } else {
-            System.out.println("I see it is radio");
             Answer newAnswer = new Answer();
             newAnswer.setOption(radioOption);
             newAnswer.setUser(userInSession);
             AnswerDao.saveAnswer(newAnswer);
         }
-
         return "redirect:/userConnected";
     }
 

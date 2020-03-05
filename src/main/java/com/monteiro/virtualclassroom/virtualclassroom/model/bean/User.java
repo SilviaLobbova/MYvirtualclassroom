@@ -66,10 +66,6 @@ public class User {
         return id_user;
     }
 
-    public void setUser_id(int id_user) {
-        this.id_user = id_user;
-    }
-
     // setter/getter lastname
     public String getUser_lastname() {
         return user_lastname;
