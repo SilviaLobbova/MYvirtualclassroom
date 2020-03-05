@@ -5,6 +5,8 @@ $(function () {
     $(".classroomListItem").on("click", function (e) {
         var url = "/studentFrame/";
         var addExtension = ($(this).text().toString());
+        $(".teacherRightCenterContent").removeClass("col-10").addClass("col-5");
+
         e.stopPropagation();
         //call function when className is clicked
         getContent();
@@ -68,11 +70,7 @@ $(function () {
         }
     })
 
-    //if there is no classroom yet and admin wants to create a question
-    $("#questionHasNoClassroom").on("click", function (ev) {
-        ev.stopPropagation();
-        alert('You should first login to a classroom in order to create a question. If there is no classroom, please create one in "Classroom List". Then logout and login again into the current classroom.')
-    })
+
     $("#infoHasNoClassroom").on("click", function (ev) {
         ev.stopPropagation();
         alert('You should first login to a classroom in order to create an information. If there is no classroom, please create one in "Classroom List". Then logout and login again into the current classroom.')
@@ -94,7 +92,6 @@ function removeToggle() {
 };
 
 function openCreateClassroom() {
-    console.log("I am in openCreateClassroom")
     var add = document.getElementById("adminOnly");
     if (add.className === "adminOnly") {
         add.className += " openCreateClass"
