@@ -19,12 +19,6 @@ body {
     text-decoration: none;
 }
 
-.titleBox {
-    position: relative !important;
-    /* width: 50%; */
-    padding: 1.5% 8% !important;
-}
-
 .navBar {
     background: rgba(65, 65, 70, 1);
     height: 64px;
@@ -44,7 +38,6 @@ body {
     width: 100%;
     height: 100%;
     padding-bottom: 10%;
-    height: 500px;
 }
 
 .signUpFrame {
@@ -197,6 +190,7 @@ body {
     line-height: 2;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 
@@ -212,8 +206,8 @@ body {
     margin: 42px;
 }
 
-@media screen and (max-width: 570px) {
-    .classroomsLeftContent {
-        margin: 42px 0px 42px 20px;
-    }
-}
+/*@media screen and (max-width: 570px) {*/
+/*    .classroomsLeftContent {*/
+/*        margin: 42px 0px 42px 20px;*/
+/*    }*/
+/*}*/

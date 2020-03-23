@@ -19,7 +19,7 @@ public class User {
     @DatabaseField(canBeNull = false)
     private String user_name;
 
-    @DatabaseField
+    @DatabaseField(canBeNull = false)
     private String user_lastname;
 
     @DatabaseField(canBeNull = false)
@@ -45,11 +45,6 @@ public class User {
         user_email = email;
         this.isAdmin = isAdmin;
     }
-
-    public void setPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        user_password = hashPassword(password);
-    }
-
 
     public static String hashPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         return AeSimpleSHA1.SHA1(password);
@@ -94,6 +89,10 @@ public class User {
     // setter/getter password
     public String getUser_password() {
         return user_password;
+    }
+
+    public void setPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        user_password = hashPassword(password);
     }
 
     public Classroom getClassroom() {

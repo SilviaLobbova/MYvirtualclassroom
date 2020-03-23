@@ -1,6 +1,5 @@
 package com.monteiro.virtualclassroom.virtualclassroom.controller;
 
-
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Classroom;
 import com.monteiro.virtualclassroom.virtualclassroom.model.bean.Information;
 import com.monteiro.virtualclassroom.virtualclassroom.model.dao.InformationDao;
