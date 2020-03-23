@@ -49,14 +49,13 @@
 
                 <!-- Right part -->
                 <div class="teacherRightContent col-sm-8">
-                    <!--                        look at it this is when u have to load the function-->
+                    <!-- look at it this is when u have to load the function -->
                     <div class="questionContentBox col-sm-12"
                          th:each="question: ${questions}">
-
                         <div class="questionContentBar" id="questionBar">
                             <div class="questionContentInAnswer">
                                 <span class="questionTitle">Question : </span>
-                                <!--                                    use the id question to identify the question from the others -->
+                                <!-- use the id question to identify the question from the others -->
                                 <p th:if="${session.is_Admin == true}" th:class="questionLabel"
                                    th:id="${question.getId_question()}"
                                    th:text="${question.getQuestion_content()}" style="display: flex;"></p>
@@ -75,17 +74,16 @@
                                 </form>
                             </div>
                             <div class="topArrow">
-                                <!--                                <a class="lockIcon" role="button">-->
-                                <!--                                    <i class="fa fa-lock questionLock" id="locker"></i>-->
-                                <!--                                </a>-->
                                 <a th:class="arrowIcon" th:data-toggle="collapse" th:role="button"
                                    th:aria-expanded="false" th:aria-controls="collapse">
                                     <i class="fas fa-sort-up answerToggle"
-                                       th:id="${question.getId_question()}"></i></a>
+                                       th:id="${question.getId_question()}">
+                                    </i>
+                                </a>
                             </div>
                         </div>
 
-                        <!--                            choice of answer-->
+                        <!-- choice of answer -->
                         <div th:id="hiddenAnswer" th:class="hiddenAnswer"
                              th:classappend="${question.getId_question()}">
                             <div th:class="answerContent">
@@ -98,7 +96,6 @@
                                         it is equivalent to : answerForm.getRadioOption or answerForm.getCheckboxOptions -->
                                         <span th:if="${question.getIsRadio()== true }"
                                               th:each="radioValue: ${question.getOptions()}">
-
                                             <input th:type="radio"
                                                    th:field="*{radioOption}"
                                                    th:value="${radioValue.getId_option()}">
@@ -128,9 +125,10 @@
                                         </button>
                                     </div>
                                 </form>
-
+                                <!-- AnswerTable -->
                                 <div th:if="${session.is_Admin == true}">
                                     <table class="answerTable col-sm-12">
+                                        <!-- AnswerTable head start -->
                                         <thead class="answerTableHeader">
                                         <tr th:id="firstRow">
                                             <th>Student Name</th>
@@ -158,13 +156,13 @@
                                             </div>
                                         </tr>
                                         </thead>
+                                        <!-- AnswerTable head end -->
+                                        <!-- AnswerTable body -->
                                         <tbody class="answerTableBody">
-
                                         <tr th:each="student : ${students}"
                                             th:value="${question.getId_question()}">
                                             <td th:text="${student.getUser_name()}"
                                                 th:value="${student.getUser_id()}"></td>
-
                                             <div th:each="option : ${question.getOptions()}">
                                                 <td class="chosenAnswer">
                                                     <span th:each="answer: ${question.getAnswers()}"
@@ -180,25 +178,22 @@
                                             </div>
                                         </tr>
                                         </tbody>
+                                        <!-- AnswerTable body end -->
                                     </table>
                                 </div>
-
-
                             </div>
+                            <!-- AnswerTable end -->
+                            <!-- AnswerTableFooter -->
                             <div th:if="${session.is_Admin == true}" th:class="answerFooter">
                                 <div th:class="answerFooterIcons">
-                                    <!--                                    <button th:class="updateQuestion" id="updateQuestion">-->
-                                    <!--                                        <i class="fa fa-pencil" aria-hidden="true"></i>-->
-                                    <!--                                    </button>-->
-
-                                    <button th:class="deleteQuestion" data-toggle="modal"
+                                     <button th:class="deleteQuestion" data-toggle="modal"
                                             data-target="#deleteQuestion" th:value="${question.getId_question()}">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </div>
                             </div>
+                            <!-- AnswerTableFooter end -->
                         </div>
-
                         <div class="modal fade" id="deleteQuestion" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -227,6 +222,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </main>

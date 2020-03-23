@@ -16,7 +16,7 @@ public class User {
     @DatabaseField(generatedId = true)
     private int id_user;
 
-    @DatabaseField
+    @DatabaseField(canBeNull = false)
     private String user_name;
 
     @DatabaseField
@@ -46,13 +46,14 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-//    public boolean isPasswordCorrect(String givenPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-//        return TextUtils.equals(true, setPassword(givenPassword), user_password);
-//    }
+    public void setPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        user_password = hashPassword(password);
+    }
 
-//    public static String hashPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-//        return (password);
-//    }
+
+    public static String hashPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return AeSimpleSHA1.SHA1(password);
+    }
 
     // setter/getter id_user
     public int getUser_id() {
@@ -93,10 +94,6 @@ public class User {
     // setter/getter password
     public String getUser_password() {
         return user_password;
-    }
-
-    public void setPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        user_password = AeSimpleSHA1.SHA1(password);
     }
 
     public Classroom getClassroom() {
